@@ -1,0 +1,19 @@
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Debug\LWD_DataProcess.exe.config
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Debug\LWD_DataProcess.exe
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Debug\LWD_DataProcess.pdb
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Debug\System.Data.SQLite.dll
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.Properties.Resources.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.SQLiteDBHelper.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.Form1.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.Curve_Compare.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.DBConfig.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.GammaCorrection.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.GDIR_Correction.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.TDP.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.WPR_Correction.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess_Correction.csproj.GenerateResource.Cache
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.exe
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Debug\LWD_DataProcess.pdb
+D:\我的文档\desktop\预处理软件\LWD_DataProcess\bin\Debug\LWD_DataProcess.exe.config
+D:\我的文档\desktop\预处理软件\LWD_DataProcess\obj\Debug\LWD_DataProcess.exe
+D:\我的文档\desktop\预处理软件\LWD_DataProcess\obj\Debug\LWD_DataProcess.pdb

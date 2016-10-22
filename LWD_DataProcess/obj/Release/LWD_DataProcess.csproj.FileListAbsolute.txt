@@ -1,0 +1,37 @@
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\bin\Release\TDP.resx
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\bin\Release\TDP.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\bin\Release\TDP.Designer.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\bin\Release\LWD_DataProcess.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\bin\Release\LWD_DataProcess.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\bin\Release\LWD_DataProcess.pdb
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.Form1.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.TDP.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.pdb
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\bin\Release\用户界面\子窗口\TDP.resx
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\bin\Release\用户界面\子窗口\TDP.cs
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\bin\Release\用户界面\子窗口\TDP.Designer.cs
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\bin\Release\LWD_DataProcess.exe.config
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\bin\Release\LWD_DataProcess.exe
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\bin\Release\LWD_DataProcess.pdb
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.Form1.resources
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.Properties.Resources.resources
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.TDP.resources
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.exe
+C:\Users\Administrator\Desktop\随钻测井资料预处理方法研究及软件研发\代码\LWD_DataProcess\LWD_DataProcess\obj\Release\LWD_DataProcess.pdb
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\bin\Release\用户界面\子窗口\TDP.resx
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\bin\Release\用户界面\子窗口\TDP.cs
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\bin\Release\用户界面\子窗口\TDP.Designer.cs
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\bin\Release\LWD_DataProcess.exe.config
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\bin\Release\LWD_DataProcess.exe
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\bin\Release\LWD_DataProcess.pdb
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\obj\Release\LWD_DataProcess.Form1.resources
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\obj\Release\LWD_DataProcess.Properties.Resources.resources
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\obj\Release\LWD_DataProcess.GammaCorrection.resources
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\obj\Release\LWD_DataProcess.TDP.resources
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\obj\Release\LWD_DataProcess.csproj.GenerateResource.Cache
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\obj\Release\LWD_DataProcess.exe
+F:\桌面\LWD_DataProcess12160830\LWD_DataProcess\obj\Release\LWD_DataProcess.pdb

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <node purpose="driller" 
+        deviceSN="00000001" 
+        netKey="00000002"
+        dbPath=""
+        dbPath_Well=""
+        dbPath_CorrectionChart="">
+    display
+  </node>
+</Settings>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <config>
+    <FoldBrowserPath>C:\Users\Administrator\Desktop\三参数练习\黄402\伽马双感应</FoldBrowserPath>
+    <DepthInterval>0</DepthInterval>
+    <CT>Linear</CT>
+    <FT>MidAvr</FT>
+    <IT>GDIR</IT>
+  </config>
+</config>

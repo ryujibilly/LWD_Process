@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{7294FFA8-5F82-4FEC-8070-9D26357A0A48}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>LWD_DataProcess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\LWD_DataProcess.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>LWD_DataProcess</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LWD_DataProcess.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\LWD_DataProcess.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.102.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Properties\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="VIBlend.WinForms.Controls, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6feea38fef5ea0cf" />
+    <Reference Include="VIBlend.WinForms.Utilities, Version=10.1.0.0, Culture=neutral, PublicKeyToken=970a5af59bc48043" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="数据处理模块\DataProcess.cs" />
+    <Compile Include="数据处理模块\Decoder\Decoder.cs" />
+    <Compile Include="数据处理模块\Filter.cs" />
+    <Compile Include="数据处理模块\InterPolation.cs" />
+    <Compile Include="数据处理模块\KalmanFacade.cs" />
+    <Compile Include="数据处理模块\仪器\Gamma.cs" />
+    <Compile Include="数据处理模块\仪器\GDIR.cs" />
+    <Compile Include="数据处理模块\仪器\WPR.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\Complex.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\DataStruct.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\Enumeration.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\Integral.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\Matrix.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\Slot.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\SlotList.cs" />
+    <Compile Include="数据处理模块\通用类\CommonData.cs" />
+    <Compile Include="数据处理模块\通用类\Factory.cs" />
+    <Compile Include="数据处理模块\通用类\Funcs.cs" />
+    <Compile Include="数据处理模块\通用类\InterpolationHelper.cs" />
+    <Compile Include="数据处理模块\通用类\IProduct.cs" />
+    <Compile Include="数据处理模块\通用类\LEquations.cs" />
+    <Compile Include="数据处理模块\通用类\NLEquations.cs" />
+    <Compile Include="数据处理模块\通用类\SQLiteColumn.cs" />
+    <Compile Include="数据处理模块\通用类\SQLiteColumnList.cs" />
+    <Compile Include="数据处理模块\通用类\SQLiteDBHelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="数据处理模块\通用类\SQLiteDBHelper.Designer.cs">
+      <DependentUpon>SQLiteDBHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="数据处理模块\通用类\SQLiteTable.cs" />
+    <Compile Include="用户界面\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户界面\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户界面\子窗口\Curve_Compare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户界面\子窗口\Curve_Compare.Designer.cs">
+      <DependentUpon>Curve_Compare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户界面\子窗口\DBConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户界面\子窗口\DBConfig.Designer.cs">
+      <DependentUpon>DBConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户界面\子窗口\GammaCorrection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户界面\子窗口\GammaCorrection.Designer.cs">
+      <DependentUpon>GammaCorrection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户界面\子窗口\GDIR_Correction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户界面\子窗口\GDIR_Correction.Designer.cs">
+      <DependentUpon>GDIR_Correction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户界面\子窗口\TDP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户界面\子窗口\TDP.Designer.cs">
+      <DependentUpon>TDP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="用户界面\子窗口\WPR_Correction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="用户界面\子窗口\WPR_Correction.Designer.cs">
+      <DependentUpon>WPR_Correction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="配置文件\Config.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\CHRBW.ICO" />
+    <Content Include="Properties\CHRCOLOR.ICO" />
+    <Content Include="配置文件\NodeSettings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="数据处理模块\通用类\SQLiteDBHelper.resx">
+      <DependentUpon>SQLiteDBHelper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户界面\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户界面\子窗口\Curve_Compare.resx">
+      <DependentUpon>Curve_Compare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户界面\子窗口\DBConfig.resx">
+      <DependentUpon>DBConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户界面\子窗口\GammaCorrection.resx">
+      <DependentUpon>GammaCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户界面\子窗口\GDIR_Correction.resx">
+      <DependentUpon>GDIR_Correction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户界面\子窗口\TDP.resx">
+      <DependentUpon>TDP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="用户界面\子窗口\WPR_Correction.resx">
+      <DependentUpon>WPR_Correction.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="Properties\System.Data.SQLite.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

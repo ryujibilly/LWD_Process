@@ -1,0 +1,11 @@
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Release\LWD_DataProcess.exe.config
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Release\LWD_DataProcess.XML
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Release\LWD_DataProcess.exe
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\bin\Release\LWD_DataProcess.pdb
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Release\LWD_DataProcess.Properties.Resources.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Release\LWD_DataProcess.Form1.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Release\LWD_DataProcess.GammaCorrection.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Release\LWD_DataProcess.TDP.resources
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Release\LWD_DataProcess_GR.csproj.GenerateResource.Cache
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Release\LWD_DataProcess.exe
+E:\我的文档\Visual Studio 2015\Projects\LWD_DataProcess0725\LWD_DataProcess\obj\Release\LWD_DataProcess.pdb

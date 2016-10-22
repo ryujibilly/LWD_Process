@@ -1,0 +1,238 @@
+﻿“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\assembly\GAC_MSIL\Microsoft.VisualStudio.HostingProcess.Utilities\14.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.HostingProcess.Utilities.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\assembly\GAC_MSIL\Microsoft.VisualStudio.HostingProcess.Utilities.Sync\14.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.HostingProcess.Utilities.Sync.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\assembly\GAC_MSIL\Microsoft.VisualStudio.Debugger.Runtime\14.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.Debugger.Runtime.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“c:\users\administrator\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.vshost.exe”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.CSharp\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.CSharp.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Net.Http\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Net.Http.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\mscorlib.resources\v4.0_4.0.0.0_zh-Hans_b77a5c561934e089\mscorlib.resources.dll”。模块已生成，不包含符号。
+线程 0x6220 已退出，返回值为 0 (0x0)。
+线程 0x72b0 已退出，返回值为 0 (0x0)。
+线程 0x5e5c 已退出，返回值为 0 (0x0)。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“c:\users\administrator\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe”。已加载符号。
+“ConsoleApplication1.vshost.exe”(CLR v4.0.30319: ConsoleApplication1.vshost.exe): 已加载“C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll”。已跳过加载符号。模块进行了优化，并且调试器选项“仅我的代码”已启用。
+1	
+2	
+3	
+4	
+5	
+6	
+7	
+8	
+9	
+10	
+11	
+12	
+13	
+14	
+15	
+16	
+17	
+18	
+19	
+20	
+21	
+22	
+23	
+24	
+25	
+26	
+27	
+28	
+29	
+30	
+31	
+32	
+33	
+34	
+35	
+36	
+37	
+38	
+39	
+40	
+41	
+42	
+43	
+44	
+45	
+46	
+47	
+48	
+49	
+50	
+51	
+52	
+53	
+54	
+55	
+56	
+57	
+58	
+59	
+60	
+61	
+62	
+63	
+64	
+65	
+66	
+67	
+68	
+69	
+70	
+71	
+72	
+73	
+74	
+75	
+76	
+77	
+78	
+79	
+80	
+81	
+82	
+83	
+84	
+85	
+86	
+87	
+88	
+89	
+90	
+91	
+92	
+93	
+94	
+95	
+96	
+97	
+98	
+99	
+100	
+101	
+102	
+103	
+104	
+105	
+106	
+107	
+108	
+109	
+110	
+111	
+112	
+113	
+114	
+115	
+116	
+117	
+118	
+119	
+120	
+121	
+122	
+123	
+124	
+125	
+126	
+127	
+128	
+129	
+130	
+131	
+132	
+133	
+134	
+135	
+136	
+137	
+138	
+139	
+140	
+141	
+142	
+143	
+144	
+145	
+146	
+147	
+148	
+149	
+150	
+151	
+152	
+153	
+154	
+155	
+156	
+157	
+158	
+159	
+160	
+161	
+162	
+163	
+164	
+165	
+166	
+167	
+168	
+169	
+170	
+171	
+172	
+173	
+174	
+175	
+176	
+177	
+178	
+179	
+180	
+181	
+182	
+183	
+184	
+185	
+186	
+187	
+188	
+189	
+190	
+191	
+192	
+193	
+194	
+195	
+196	
+197	
+198	
+199	
+200	
+201	
+202	
+203	
+204	
+205	
+206	
+207	
+208	
+209	
+210	
+211	
+212	
+213	
+线程 0x6f3c 已退出，返回值为 0 (0x0)。
+线程 0x6cdc 已退出，返回值为 0 (0x0)。
+程序“[18708] ConsoleApplication1.vshost.exe: 程序跟踪”已退出，返回值为 0 (0x0)。
+程序“[18708] ConsoleApplication1.vshost.exe”已退出，返回值为 0 (0x0)。

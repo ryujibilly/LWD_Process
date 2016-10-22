@@ -1,0 +1,2669 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LWD_DataProcess</name>
+    </assembly>
+    <members>
+        <member name="M:LWD_DataProcess.Program.Main">
+            <summary>
+            应用程序的主入口点。
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.DataProcess">
+            <summary>
+            数据预处理类
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataProcess.load_Thread_U">
+            <summary>
+            加载文件线程
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataProcess.load_Thread_C">
+            <summary>
+            加载文件线程
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataProcess.load_Thread_O">
+            <summary>
+            加载文件线程
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.match_Thread">
+            <summary>
+            时深匹配线程：参数初处理，时深匹配。（1钻进状态判断 2地面系统记录深度异常判断并补齐)
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.depthInter_Thread">
+            <summary>
+            处理线程1：全井段等间隔插值进程
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.waveFilter_Thread">
+            <summary>
+            处理线程2: 剔除超差、异常数据并滤波
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.IPolation">
+            <summary>
+            插值算法对象
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataProcess.UntitledPath">
+            <summary>
+            三个文件的地址
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataProcess.CalPath">
+            <summary>
+            三个文件的地址
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataProcess.OriPath">
+            <summary>
+            三个文件的地址
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.No_Compared">
+            <summary>
+            钻进数据的条数
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.tempSlot">
+             <summary>
+            单例模式 当前读取Slot单元（减少new操作 提高时深匹配线程性能）
+             </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.InsType">
+            <summary>
+            仪器类型
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.InterMethod">
+            <summary>
+            插值算法类型
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataProcess.FilterMethod">
+            <summary>
+            滤波算法类型
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.#ctor(System.String,System.String,System.String)">
+            <summary>
+            生成数据处理类
+            </summary>
+            <param name="UPath">Untitled.dtf文件地址</param>
+            <param name="CPath">Cal.tmf.dtf文件地址</param>
+            <param name="OPath">Ori.txt文件地址</param>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.Process">
+            <summary>
+            Process按钮
+            </summary>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.Calculate(LWD_DataProcess.COI_Type,LWD_DataProcess.FA_Type,LWD_DataProcess.Ins_Type)">
+            <summary>
+            预处理按钮
+            </summary>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.load_Thread_U_Function">
+            <summary>
+            加载Untitled.dtf文件线程函数
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.load_Thread_C_Function">
+            <summary>
+            加载Cal.tmd文件线程函数
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.load_Thread_O_Function">
+            <summary>
+            加载Ori.txt文件线程函数
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.Match">
+            <summary>
+            时深匹配处理线程函数
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.InterPolate">
+            <summary>
+            插值处理线程
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.waveFilter">
+            <summary>
+            滤波线程
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.Start">
+            <summary>
+            （3个文件的）预处理线程启动
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.Stop">
+            <summary>
+            预处理线程中止
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.setSlot(System.String,System.String,System.Double[],LWD_DataProcess.DrillStatus)">
+            <summary>
+            给tempSlot赋值
+            </summary>
+            <param name="datetime">1.日期/时间</param>
+            <param name="welldepth">2.井深</param>
+            <param name="paras">3.参数数组</param>
+            <param name="drillstatus">4.钻进状态</param>
+        </member>
+        <member name="M:LWD_DataProcess.DataProcess.getParas(System.String[])">
+            <summary>
+            重置tempSlot
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.Decoder.Decoder">
+            <summary>
+            解码器类-Singleton
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Filter.MidAvr(LWD_DataProcess.SlotList{LWD_DataProcess.Slot},LWD_DataProcess.SlotList{LWD_DataProcess.Slot},System.Int32)">
+            <summary>
+            中位值平均滤波法
+            </summary>
+            <param name="slist">输入列表</param>
+            <param name="flist">输出列表</param>
+            <returns>滤波成功</returns>
+        </member>
+        <member name="M:LWD_DataProcess.Filter.MediumAverage(System.Double[])">
+            <summary>
+            求中位平均值
+            </summary>
+            <param name="colomn">求和参数数组</param>
+            <returns>返回中位平均值</returns>
+        </member>
+        <member name="T:LWD_DataProcess.InterPolation">
+            <summary>
+            插值算法类
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.InterPolation.keyMax">
+            <summary>
+            最小键值
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.InterPolation.keyMin">
+            <summary>
+            最大键值
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.InterPolation.Interval">
+            <summary>
+            插值间隔
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.InterPolation.points">
+            <summary>
+            新插值点数
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.InterPolation.AIPKeys">
+            <summary>
+            AIP列表键值数组
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.InterPolation.ParaLength">
+            <summary>
+            测量值的参数列数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.InterPolation._InterPo">
+            <summary>
+            插值算法的单例模式
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.InterPolation.#ctor(System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            完整参数初始化
+            </summary>
+            <param name="minKey">最小深度</param>
+            <param name="maxKey">最大深度</param>
+            <param name="interval">插值深度间隔</param>
+            <param name="paraLength">测量值参数个数</param>
+        </member>
+        <member name="M:LWD_DataProcess.InterPolation.LinearInterPolation(LWD_DataProcess.SlotList{LWD_DataProcess.Slot},LWD_DataProcess.SlotList{LWD_DataProcess.Slot})">
+            <summary>
+            线性插值算法(拉格朗日插值法原型，已知参考点为2个点时)
+            </summary>
+            <param name="slist">带入赋值后的SlotList列表</param>
+            <param name="aiplist">带入未赋值的AIPList列表，运算中赋值</param>
+            <returns>是否完成插值</returns>
+        </member>
+        <member name="M:LWD_DataProcess.InterPolation.Lagrange(System.Double,System.Double,System.Double,System.Double[],System.Double[])">
+            <summary>
+            拉格朗日（在N=1时为线性）插值多项式
+            </summary>
+            <param name="x0">键i</param>
+            <param name="x1">键i+1</param>
+            <param name="x">插值点键j</param>
+            <param name="para0">值i</param>
+            <param name="para1">值i+1</param>
+            <returns>插值点j</returns>
+        </member>
+        <member name="M:LWD_DataProcess.InterPolation.CreateAIPKeys">
+            <summary>
+            键值数组初始化
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.Gamma">
+            <summary>
+            伽马校正类-Singleton
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.Gamma._Gamma">
+            <summary>
+            单例模式
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.Gamma.CPS">
+            <summary>
+            CPS参数
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.Gamma.API">
+            <summary>
+            API参数
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.Gamma.count">
+            <summary>
+            计数率
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Gamma.cal_CircleInterval(LWD_DataProcess.GammaUnit)">
+            <summary>
+            环空间隙校正
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Gamma.cal_MudDensity(LWD_DataProcess.GammaUnit)">
+            <summary>
+            泥浆密度校正
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.Complex">
+            ²Ù×÷¸´ÊýµÄÀàComplex
+            @version 1.0
+        </member>
+        <member name="P:LWD_DataProcess.Complex.Real">
+            ÊôÐÔ: Êµ²¿
+        </member>
+        <member name="P:LWD_DataProcess.Complex.Imaginary">
+            ÊôÐÔ: Ðé²¿
+        </member>
+        <member name="P:LWD_DataProcess.Complex.Eps">
+            ÊôÐÔ: Eps
+        </member>
+        <member name="M:LWD_DataProcess.Complex.#ctor">
+            »ù±¾¹¹Ôìº¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.Complex.#ctor(System.Double,System.Double)">
+            Ö¸¶¨Öµ¹¹Ôìº¯Êý
+            
+            @param dblX - Ö¸¶¨µÄÊµ²¿
+            @param dblY - Ö¸¶¨µÄÐé²¿
+        </member>
+        <member name="M:LWD_DataProcess.Complex.#ctor(LWD_DataProcess.Complex)">
+            ¿½±´¹¹Ôìº¯Êý
+            
+            @param other - Ô´¸´Êý
+        </member>
+        <member name="M:LWD_DataProcess.Complex.#ctor(System.String,System.String)">
+            ¸ù¾Ý"a,b"ÐÎÊ½µÄ×Ö·û´®À´¹¹Ôì¸´Êý£¬ÒÔaÎª¸´ÊýµÄÊµ²¿£¬bÎª¸´ÊýµÄÐé²¿
+            
+            @param s - "a,b"ÐÎÊ½µÄ×Ö·û´®£¬aÎª¸´ÊýµÄÊµ²¿£¬bÎª¸´ÊýµÄÐé²¿
+            @param sDelim - a, bÖ®¼äµÄ·Ö¸ô·û
+        </member>
+        <member name="M:LWD_DataProcess.Complex.SetEps(System.Double)">
+            ÉèÖÃ¸´ÊýÔËËãµÄ¾«¶È
+            
+            @param newEps - ÐÂµÄ¾«¶ÈÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.GetEps">
+            È¡¸´ÊýµÄ¾«¶ÈÖµ
+            
+            @return doubleÐÍ£¬¸´ÊýµÄ¾«¶ÈÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.SetReal(System.Double)">
+            Ö¸¶¨¸´ÊýµÄÊµ²¿
+            
+            @param dblX - ¸´ÊýµÄÊµ²¿
+        </member>
+        <member name="M:LWD_DataProcess.Complex.SetImag(System.Double)">
+            Ö¸¶¨¸´ÊýµÄÐé²¿
+            
+            @param dblY - ¸´ÊýµÄÐé²¿
+        </member>
+        <member name="M:LWD_DataProcess.Complex.GetReal">
+            È¡¸´ÊýµÄÊµ²¿
+            
+            @return double ÐÍ£¬¸´ÊýµÄÊµ²¿
+        </member>
+        <member name="M:LWD_DataProcess.Complex.GetImag">
+            È¡¸´ÊýµÄÐé²¿
+            
+            @return double ÐÍ£¬¸´ÊýµÄÐé²¿
+        </member>
+        <member name="M:LWD_DataProcess.Complex.SetValue(System.Double,System.Double)">
+            Ö¸¶¨¸´ÊýµÄÊµ²¿ºÍÐé²¿Öµ
+            
+            @param real - Ö¸¶¨µÄÊµ²¿
+            @param imag - Ö¸¶¨µÄÐé²¿
+        </member>
+        <member name="M:LWD_DataProcess.Complex.SetValue(System.String,System.String)">
+            ½«"a,b"ÐÎÊ½µÄ×Ö·û´®×ª»¯Îª¸´Êý£¬ÒÔaÎª¸´ÊýµÄÊµ²¿£¬bÎª¸´ÊýµÄÐé²¿
+            
+            @param s - "a,b"ÐÎÊ½µÄ×Ö·û´®£¬aÎª¸´ÊýµÄÊµ²¿£¬bÎª¸´ÊýµÄÐé²¿
+            @param sDelim - a, bÖ®¼äµÄ·Ö¸ô·û
+        </member>
+        <member name="M:LWD_DataProcess.Complex.op_Addition(LWD_DataProcess.Complex,LWD_DataProcess.Complex)">
+            ÖØÔØ + ÔËËã·û
+            
+            @return Complex¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Complex.op_Subtraction(LWD_DataProcess.Complex,LWD_DataProcess.Complex)">
+            ÖØÔØ - ÔËËã·û
+            
+            @return Complex¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Complex.op_Multiply(LWD_DataProcess.Complex,LWD_DataProcess.Complex)">
+            ÖØÔØ * ÔËËã·û
+            
+            @return Complex¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Complex.op_Division(LWD_DataProcess.Complex,LWD_DataProcess.Complex)">
+            ÖØÔØ / ÔËËã·û
+            
+            @return Complex¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Complex.op_Implicit(LWD_DataProcess.Complex)~System.Double">
+            ÖØÔØ double ÔËËã·û
+            
+            @return doubleÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.ToString">
+            ½«¸´Êý×ª»¯Îª"a+bj"ÐÎÊ½µÄ×Ö·û´®
+            
+            @return string ÐÍ£¬"a+bj"ÐÎÊ½µÄ×Ö·û´®
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Equals(System.Object)">
+            ±È½ÏÁ½¸ö¸´ÊýÊÇ·ñÏàµÈ
+            
+            @param other - ÓÃÓÚ±È½ÏµÄ¸´Êý
+            @return boolÐÍ£¬ÏàµÈÔòÎªtrue£¬·ñÔòÎªfalse
+        </member>
+        <member name="M:LWD_DataProcess.Complex.GetHashCode">
+            ÒòÎªÖØÐ´ÁËEquals£¬Òò´Ë±ØÐëÖØÐ´GetHashCode
+            
+            @return intÐÍ£¬·µ»Ø¸´Êý¶ÔÏóÉ¢ÁÐÂë
+        </member>
+        <member name="M:LWD_DataProcess.Complex.SetValue(LWD_DataProcess.Complex)">
+            ¸ø¸´Êý¸³Öµ
+            
+            @param cpxX - ÓÃÓÚ¸ø¸´Êý¸³ÖµµÄÔ´¸´Êý
+            @return ComplexÐÍ£¬ÓëcpxXÏàµÈµÄ¸´Êý
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Add(LWD_DataProcess.Complex)">
+            ÊµÏÖ¸´ÊýµÄ¼Ó·¨
+            
+            @param cpxX - ÓëÖ¸¶¨¸´ÊýÏà¼ÓµÄ¸´Êý
+            @return ComplexÐÍ£¬Ö¸¶¨¸´ÊýÓëcpxXÏà¼ÓÖ®ºÍ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Subtract(LWD_DataProcess.Complex)">
+            ÊµÏÖ¸´ÊýµÄ¼õ·¨
+            
+            @param cpxX - ÓëÖ¸¶¨¸´ÊýÏà¼õµÄ¸´Êý
+            @return ComplexÐÍ£¬Ö¸¶¨¸´Êý¼õÈ¥cpxXÖ®²î
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Multiply(LWD_DataProcess.Complex)">
+            ÊµÏÖ¸´ÊýµÄ³Ë·¨
+            
+            @param cpxX - ÓëÖ¸¶¨¸´ÊýÏà³ËµÄ¸´Êý
+            @return ComplexÐÍ£¬Ö¸¶¨¸´ÊýÓëcpxXÏà³ËÖ®»ý
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Divide(LWD_DataProcess.Complex)">
+            ÊµÏÖ¸´ÊýµÄ³ý·¨
+            
+            @param cpxX - ÓëÖ¸¶¨¸´ÊýÏà³ýµÄ¸´Êý
+            @return ComplexÐÍ£¬Ö¸¶¨¸´Êý³ýÓëcpxXÖ®ÉÌ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Abs">
+            ¼ÆËã¸´ÊýµÄÄ£
+            
+            @return doubleÐÍ£¬Ö¸¶¨¸´ÊýµÄÄ£
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Root(System.Int32,LWD_DataProcess.Complex[])">
+            ¼ÆËã¸´ÊýµÄ¸ù
+            
+            @param n - ´ýÇó¸ùµÄ¸ù´Î
+            @param cpxR - ComplexÐÍÊý×é£¬³¤¶ÈÎªn£¬·µ»Ø¸´ÊýµÄËùÓÐ¸ù
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Pow(System.Double)">
+            ¼ÆËã¸´ÊýµÄÊµÃÝÖ¸Êý
+            
+            @param dblW - ´ýÇóÊµÃÝÖ¸ÊýµÄÃÝ´Î
+            @return ComplexÐÍ£¬¸´ÊýµÄÊµÃÝÖ¸ÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Pow(LWD_DataProcess.Complex,System.Int32)">
+            ¼ÆËã¸´ÊýµÄ¸´ÃÝÖ¸Êý
+            
+            @param cpxW - ´ýÇó¸´ÃÝÖ¸ÊýµÄÃÝ´Î
+            @param n - ¿ØÖÆ²ÎÊý£¬Ä¬ÈÏÖµÎª0¡£µ±n=0Ê±£¬ÇóµÃµÄ½á¹ûÎª¸´ÃÝÖ¸ÊýµÄÖ÷Öµ
+            @return ComplexÐÍ£¬¸´ÊýµÄ¸´ÃÝÖ¸ÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Log">
+            ¼ÆËã¸´ÊýµÄ×ÔÈ»¶ÔÊý
+            
+            @return ComplexÐÍ£¬¸´ÊýµÄ×ÔÈ»¶ÔÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Sin">
+            ¼ÆËã¸´ÊýµÄÕýÏÒ
+            
+            @return ComplexÐÍ£¬¸´ÊýµÄÕýÏÒÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Cos">
+            ¼ÆËã¸´ÊýµÄÓàÏÒ
+            
+            @return ComplexÐÍ£¬¸´ÊýµÄÓàÏÒÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Complex.Tan">
+            ¼ÆËã¸´ÊýµÄÕýÇÐ
+            
+            @return ComplexÐÍ£¬¸´ÊýµÄÕýÇÐÖµ
+        </member>
+        <member name="T:LWD_DataProcess.DataStruct">
+            <summary>
+            扩展数据结构-Singleton
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.seperator">
+            <summary>
+            分隔符集合
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DataStruct.Interval">
+            <summary>
+            深度插值间隔
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.Len_Untitled">
+            <summary>
+            原始文件-行数: 1,Untitled   2,Cal   3,Ori-1 4，钻进
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.Len_Cal">
+            <summary>
+            原始文件-行数: 1,Untitled   2,Cal   3,Ori-1 4，钻进
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.Len_Ori">
+            <summary>
+            原始文件-行数: 1,Untitled   2,Cal   3,Ori-1 4，钻进
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.No_Untitled">
+            <summary>
+            Untitled文件参数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.DateTime_Untitled">
+            <summary>
+            Untitled文件参数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.BitDepth">
+            <summary>
+            Untitled文件参数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.WellDepth">
+            <summary>
+            Untitled文件参数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.HookPos">
+            <summary>
+            Untitled文件参数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.HookLoad">
+            <summary>
+            Untitled文件参数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.No_Cal">
+            <summary>
+            Cal文件参数
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.No_Ori">
+            <summary>
+            Ori文件参数(只需提取 0序列,1日期/时间，2日期，3时间)
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.DateTime_Ori">
+            <summary>
+            Ori文件参数(只需提取 0序列,1日期/时间，2日期，3时间)
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.Date_Ori">
+            <summary>
+            Ori文件参数(只需提取 0序列,1日期/时间，2日期，3时间)
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.TimeOri">
+            <summary>
+            Ori文件参数(只需提取 0序列,1日期/时间，2日期，3时间)
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.No_Compared">
+            <summary>
+            预处理后整合文件Compared
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.DateTime_Compared">
+            <summary>
+            预处理后整合文件Compared
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.DataStruct.Depth_Compared">
+            <summary>
+            预处理后整合文件Compared
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DataStruct.CreateUData">
+            <summary>
+            创建Untitled.dtf转储数组-2
+            </summary>
+            <returns>创建是否成功</returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataStruct.CreateCData">
+            <summary>
+            创建Cal.tmf转储数组-2
+            </summary>
+            <returns>创建是否成功</returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataStruct.CreateOData">
+            <summary>
+            创建Ori-1.txt转储数组
+            </summary>
+            <returns>创建是否成功</returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataStruct.CreateData(System.Int32)">
+            <summary>
+            创建用于时深匹配的compared转储数组
+            </summary>
+            <returns>创建是否成功</returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataStruct.convertScienceNumber(System.String)">
+            <summary>
+            科学计数法转换成小数点计数法
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.DataStruct.MClone">
+            <summary>
+            创建浅表副本
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.Ins_Type">
+            <summary>
+            仪器类型
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.COI_Type">
+            <summary>
+            插值计算类型
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.FA_Type">
+            <summary>
+            滤波算法类型 Filter Algorithm1.中位值平均滤波2.卡尔曼滤波3.加权递推平均滤波4.限幅平均滤波
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.DrillStatus">
+            <summary>
+            钻进状态
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.PipeSize">
+            <summary>
+            从原始数据文件中分离出的数据类型
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.GammaUnit">
+            <summary>
+            计数率单位
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.LogMethod">
+            <summary>
+            测井方式:随钻测井,钻后测
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.ColType">
+            <summary>
+            列类型
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.Integral">
+             ¼ÆËãÊýÖµ»ý·ÖµÄÀà Integral
+            
+             @version 1.0
+        </member>
+        <member name="M:LWD_DataProcess.Integral.Func(System.Double)">
+            ³éÏóº¯Êý£º¼ÆËã»ý·Öº¯ÊýÖµ£¬±ØÐëÔÚÅÉÉúÀàÖÐ¸²¸Ç¸Ãº¯Êý
+            
+            @param x - º¯Êý±äÁ¿
+            @return doubleÐÍ£¬¶ÔÓ¦µÄº¯ÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.#ctor">
+            »ù±¾¹¹Ôìº¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValueTrapezia(System.Double,System.Double,System.Double)">
+            ±ä²½³¤ÌÝÐÎÇó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param a - »ý·ÖÏÂÏÞ
+            @param b - »ý·ÖÉÏÏÞ£¬ÒªÇób>a
+            @param eps - »ý·Ö¾«¶ÈÒªÇó
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValueSimpson(System.Double,System.Double,System.Double)">
+            ±ä²½³¤ÐÁ²·ÉúÇó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param a - »ý·ÖÏÂÏÞ
+            @param b - »ý·ÖÉÏÏÞ£¬ÒªÇób>a
+            @param eps - »ý·Ö¾«¶ÈÒªÇó
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValueATrapezia(System.Double,System.Double,System.Double,System.Double)">
+            ×ÔÊÊÓ¦ÌÝÐÎÇó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param a - »ý·ÖÏÂÏÞ
+            @param b - »ý·ÖÉÏÏÞ£¬ÒªÇób>a
+            @param d - ¶Ô»ý·ÖÇø¼ä½øÐÐ·Ö¸îµÄ×îÐ¡²½³¤£¬µ±×ÓÇø¼äµÄ¿í¶È
+                       Ð¡ÓÚdÊ±£¬¼´Ê¹Ã»ÓÐÂú×ã¾«¶ÈÒªÇó£¬Ò²²»ÔÙÍùÏÂ½øÐÐ·Ö¸î
+            @param eps - »ý·Ö¾«¶ÈÒªÇó
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.ppp(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double[])">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValueRomberg(System.Double,System.Double,System.Double)">
+            Áú±´¸ñÇó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param a - »ý·ÖÏÂÏÞ
+            @param b - »ý·ÖÉÏÏÞ£¬ÒªÇób>a
+            @param eps - »ý·Ö¾«¶ÈÒªÇó
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValuePq(System.Double,System.Double,System.Double)">
+            ¼ÆËãÒ»Î¬»ý·ÖµÄÁ¬·ÖÊ½·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param a - »ý·ÖÏÂÏÞ
+            @param b - »ý·ÖÉÏÏÞ£¬ÒªÇób>a
+            @param eps - »ý·Ö¾«¶ÈÒªÇó
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValuePart(System.Double,System.Double,System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])">
+            ¸ßÕñµ´º¯ÊýÇó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param a - »ý·ÖÏÂÏÞ
+            @param b - »ý·ÖÉÏÏÞ£¬ÒªÇób>a
+            @param m - ±»»ýº¯ÊýÖÐÕñµ´º¯ÊýµÄ½ÇÆµÂÊ
+            @param n - ¸ø¶¨»ý·ÖÇø¼äÁ½¶ËµãÉÏµÄµ¼Êý×î¸ß½×Êý£«1
+            @param fa - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Åf(x)ÔÚ»ý·ÖÇø¼ä¶Ëµãx=a´¦µÄ¸÷½×µ¼ÊýÖµ
+            @param fb - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Åf(x)ÔÚ»ý·ÖÇø¼ä¶Ëµãx=b´¦µÄ¸÷½×µ¼ÊýÖµ
+            @param s - Ò»Î¬Êý×é£¬³¤¶ÈÎª2£¬ÆäÖÐs(1)·µ»Øf(x)cos(mx)ÔÚ»ý·ÖÇø¼äµÄ»ý·ÖÖµ£¬
+                       s(2) ·µ»Øf(x)sin(mx)ÔÚ»ý·ÖÇø¼äµÄ»ý·ÖÖµ
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValueLegdGauss(System.Double,System.Double,System.Double)">
+            ÀÕÈÃµÂ£­¸ßË¹Çó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param a - »ý·ÖÏÂÏÞ
+            @param b - »ý·ÖÉÏÏÞ£¬ÒªÇób>a
+            @param eps - »ý·Ö¾«¶ÈÒªÇó
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValueLgreGauss">
+            À­¸Ç¶û£­¸ßË¹Çó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Integral.GetValueHermiteGauss">
+            °£¶ûÃ×ÌØ£­¸ßË¹Çó»ý·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËãº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @return double ÐÍ£¬»ý·ÖÖµ
+        </member>
+        <member name="T:LWD_DataProcess.Matrix">
+            ²Ù×÷¾ØÕóµÄÀà Matrix
+            @version 1.0
+        </member>
+        <member name="P:LWD_DataProcess.Matrix.Columns">
+            ÊôÐÔ: ¾ØÕóÁÐÊý
+        </member>
+        <member name="P:LWD_DataProcess.Matrix.Rows">
+            ÊôÐÔ: ¾ØÕóÐÐÊý
+        </member>
+        <member name="P:LWD_DataProcess.Matrix.Item(System.Int32,System.Int32)">
+            Ë÷ÒýÆ÷: ·ÃÎÊ¾ØÕóÔªËØ
+            @param row - ÔªËØµÄÐÐ
+            @param col - ÔªËØµÄÁÐ
+        </member>
+        <member name="P:LWD_DataProcess.Matrix.Eps">
+            ÊôÐÔ: Eps
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.#ctor">
+            »ù±¾¹¹Ôìº¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.#ctor(System.Int32,System.Int32)">
+            Ö¸¶¨ÐÐÁÐ¹¹Ôìº¯Êý
+            
+            @param nRows - Ö¸¶¨µÄ¾ØÕóÐÐÊý
+            @param nCols - Ö¸¶¨µÄ¾ØÕóÁÐÊý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.#ctor(System.Double[0:,0:])">
+            Ö¸¶¨Öµ¹¹Ôìº¯Êý
+            
+            @param value - ¶þÎ¬Êý×é£¬´æ´¢¾ØÕó¸÷ÔªËØµÄÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.#ctor(System.Int32,System.Int32,System.Double[])">
+            Ö¸¶¨Öµ¹¹Ôìº¯Êý
+            
+            @param nRows - Ö¸¶¨µÄ¾ØÕóÐÐÊý
+            @param nCols - Ö¸¶¨µÄ¾ØÕóÁÐÊý
+            @param value - Ò»Î¬Êý×é£¬³¤¶ÈÎªnRows*nCols£¬´æ´¢¾ØÕó¸÷ÔªËØµÄÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.#ctor(System.Int32)">
+            ·½Õó¹¹Ôìº¯Êý
+            
+            @param nSize - ·½ÕóÐÐÁÐÊý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.#ctor(System.Int32,System.Double[])">
+            ·½Õó¹¹Ôìº¯Êý
+            
+            @param nSize - ·½ÕóÐÐÁÐÊý
+            @param value - Ò»Î¬Êý×é£¬³¤¶ÈÎªnRows*nRows£¬´æ´¢·½Õó¸÷ÔªËØµÄÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.#ctor(LWD_DataProcess.Matrix)">
+            ¿½±´¹¹Ôìº¯Êý
+            
+            @param other - Ô´¾ØÕó
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Init(System.Int32,System.Int32)">
+            ³õÊ¼»¯º¯Êý
+            
+            @param nRows - Ö¸¶¨µÄ¾ØÕóÐÐÊý
+            @param nCols - Ö¸¶¨µÄ¾ØÕóÁÐÊý
+            @return bool, ³É¹¦·µ»Øtrue, ·ñÔò·µ»Øfalse
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SetEps(System.Double)">
+            ÉèÖÃ¾ØÕóÔËËãµÄ¾«¶È
+            
+            @param newEps - ÐÂµÄ¾«¶ÈÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetEps">
+            È¡¾ØÕóµÄ¾«¶ÈÖµ
+            
+            @return doubleÐÍ£¬¾ØÕóµÄ¾«¶ÈÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.op_Addition(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ÖØÔØ + ÔËËã·û
+            
+            @return Matrix¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.op_Subtraction(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ÖØÔØ - ÔËËã·û
+            
+            @return Matrix¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.op_Multiply(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ÖØÔØ * ÔËËã·û
+            
+            @return Matrix¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.op_Implicit(LWD_DataProcess.Matrix)~System.Double[]">
+            ÖØÔØ double[] ÔËËã·û
+            
+            @return double[]¶ÔÏó
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.MakeUnitMatrix(System.Int32)">
+            ½«·½Õó³õÊ¼»¯Îªµ¥Î»¾ØÕó
+            
+            @param nSize - ·½ÕóÐÐÁÐÊý
+            @return bool ÐÍ£¬³õÊ¼»¯ÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ToString">
+            ½«¾ØÕó¸÷ÔªËØµÄÖµ×ª»¯Îª×Ö·û´®, ÔªËØÖ®¼äµÄ·Ö¸ô·ûÎª",", ÐÐÓëÐÐÖ®¼äÓÐ»Ø³µ»»ÐÐ·û
+            @return string ÐÍ£¬×ª»»µÃµ½µÄ×Ö·û´®
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ToString(System.String,System.Boolean)">
+            ½«¾ØÕó¸÷ÔªËØµÄÖµ×ª»¯Îª×Ö·û´®
+            
+            @param sDelim - ÔªËØÖ®¼äµÄ·Ö¸ô·û
+            @param bLineBreak - ÐÐÓëÐÐÖ®¼äÊÇ·ñÓÐ»Ø³µ»»ÐÐ·û
+            @return string ÐÍ£¬×ª»»µÃµ½µÄ×Ö·û´®
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ToStringRow(System.Int32,System.String)">
+            ½«¾ØÕóÖ¸¶¨ÐÐÖÐ¸÷ÔªËØµÄÖµ×ª»¯Îª×Ö·û´®
+            
+            @param nRow - Ö¸¶¨µÄ¾ØÕóÐÐ£¬nRow = 0±íÊ¾µÚÒ»ÐÐ
+            @param sDelim - ÔªËØÖ®¼äµÄ·Ö¸ô·û
+            @return string ÐÍ£¬×ª»»µÃµ½µÄ×Ö·û´®
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ToStringCol(System.Int32,System.String)">
+            ½«¾ØÕóÖ¸¶¨ÁÐÖÐ¸÷ÔªËØµÄÖµ×ª»¯Îª×Ö·û´®
+            
+            @param nCol - Ö¸¶¨µÄ¾ØÕóÐÐ£¬nCol = 0±íÊ¾µÚÒ»ÁÐ
+            @param sDelim - ÔªËØÖ®¼äµÄ·Ö¸ô·û
+            @return string ÐÍ£¬×ª»»µÃµ½µÄ×Ö·û´®
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SetData(System.Double[])">
+             ÉèÖÃ¾ØÕó¸÷ÔªËØµÄÖµ
+             
+             @param value - Ò»Î¬Êý×é£¬³¤¶ÈÎªnumColumns*numRows£¬´æ´¢
+            	              ¾ØÕó¸÷ÔªËØµÄÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SetIdentity(System.Double)">
+             ÉèÖÃ¾ØÕó¸÷ÔªËØµÄÖµ
+             
+             @param value - Ò»Î¬Êý×é£¬³¤¶ÈÎªnumColumns*numRows£¬´æ´¢
+            	              ¾ØÕó¸÷ÔªËØµÄÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SetElement(System.Int32,System.Int32,System.Double)">
+            ÉèÖÃÖ¸¶¨ÔªËØµÄÖµ
+            
+            @param nRow - ÔªËØµÄÐÐ
+            @param nCol - ÔªËØµÄÁÐ
+            @param value - Ö¸¶¨ÔªËØµÄÖµ
+            @return bool ÐÍ£¬ËµÃ÷ÉèÖÃÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetElement(System.Int32,System.Int32)">
+            »ñÈ¡Ö¸¶¨ÔªËØµÄÖµ
+            
+            @param nRow - ÔªËØµÄÐÐ
+            @param nCol - ÔªËØµÄÁÐ
+            @return double ÐÍ£¬Ö¸¶¨ÔªËØµÄÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetNumColumns">
+            »ñÈ¡¾ØÕóµÄÁÐÊý
+            
+            @return int ÐÍ£¬¾ØÕóµÄÁÐÊý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetNumRows">
+            »ñÈ¡¾ØÕóµÄÐÐÊý
+            @return int ÐÍ£¬¾ØÕóµÄÐÐÊý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetData">
+            »ñÈ¡¾ØÕóµÄÊý¾Ý
+            
+            @return doubleÐÍÊý×é£¬Ö¸Ïò¾ØÕó¸÷ÔªËØµÄÊý¾Ý»º³åÇø
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetRowVector(System.Int32,System.Double[])">
+            »ñÈ¡Ö¸¶¨ÐÐµÄÏòÁ¿
+            
+            @param nRow - ÏòÁ¿ËùÔÚµÄÐÐ
+            @param pVector - Ö¸ÏòÏòÁ¿ÖÐ¸÷ÔªËØµÄ»º³åÇø
+            @return int ÐÍ£¬ÏòÁ¿ÖÐÔªËØµÄ¸öÊý£¬¼´¾ØÕóµÄÁÐÊý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetColVector(System.Int32,System.Double[])">
+            »ñÈ¡Ö¸¶¨ÁÐµÄÏòÁ¿
+            
+            @param nCol - ÏòÁ¿ËùÔÚµÄÁÐ
+            @param pVector - Ö¸ÏòÏòÁ¿ÖÐ¸÷ÔªËØµÄ»º³åÇø
+            @return int ÐÍ£¬ÏòÁ¿ÖÐÔªËØµÄ¸öÊý£¬¼´¾ØÕóµÄÐÐÊý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SetValue(LWD_DataProcess.Matrix)">
+            ¸ø¾ØÕó¸³Öµ
+            
+            @param other - ÓÃÓÚ¸ø¾ØÕó¸³ÖµµÄÔ´¾ØÕó
+            @return MatrixÐÍ£¬ÕóÓëotherÏàµÈ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Equals(System.Object)">
+            ÅÐ¶Ï¾ØÕó·ñÏàµÈ
+            
+            @param other - ÓÃÓÚ±È½ÏµÄ¾ØÕó
+            @return bool ÐÍ£¬Á½¸ö¾ØÕóÏàµÈÔòÎªtrue£¬·ñÔòÎªfalse
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.GetHashCode">
+            ÒòÎªÖØÐ´ÁËEquals£¬Òò´Ë±ØÐëÖØÐ´GetHashCode
+            
+            @return intÐÍ£¬·µ»Ø¸´Êý¶ÔÏóÉ¢ÁÐÂë
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Add(LWD_DataProcess.Matrix)">
+            ÊµÏÖ¾ØÕóµÄ¼Ó·¨
+            
+            @param other - ÓëÖ¸¶¨¾ØÕóÏà¼ÓµÄ¾ØÕó
+            @return MatrixÐÍ£¬Ö¸¶¨¾ØÕóÓëotherÏà¼ÓÖ®ºÍ
+            @Èç¹û¾ØÕóµÄÐÐ/ÁÐÊý²»Æ¥Åä£¬Ôò»áÅ×³öÒì³£
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Subtract(LWD_DataProcess.Matrix)">
+            ÊµÏÖ¾ØÕóµÄ¼õ·¨
+            
+            @param other - ÓëÖ¸¶¨¾ØÕóÏà¼õµÄ¾ØÕó
+            @return MatrixÐÍ£¬Ö¸¶¨¾ØÕóÓëotherÏà¼õÖ®²î
+            @Èç¹û¾ØÕóµÄÐÐ/ÁÐÊý²»Æ¥Åä£¬Ôò»áÅ×³öÒì³£
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Multiply(System.Double)">
+            ÊµÏÖ¾ØÕóµÄÊý³Ë
+            
+            @param value - ÓëÖ¸¶¨¾ØÕóÏà³ËµÄÊµÊý
+            @return MatrixÐÍ£¬Ö¸¶¨¾ØÕóÓëvalueÏà³ËÖ®»ý
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Multiply(LWD_DataProcess.Matrix)">
+            ÊµÏÖ¾ØÕóµÄ³Ë·¨
+            
+            @param other - ÓëÖ¸¶¨¾ØÕóÏà³ËµÄ¾ØÕó
+            @return MatrixÐÍ£¬Ö¸¶¨¾ØÕóÓëotherÏà³ËÖ®»ý
+            @Èç¹û¾ØÕóµÄÐÐ/ÁÐÊý²»Æ¥Åä£¬Ôò»áÅ×³öÒì³£
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Multiply(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ¸´¾ØÕóµÄ³Ë·¨
+            
+            @param AR - ×ó±ß¸´¾ØÕóµÄÊµ²¿¾ØÕó
+            @param AI - ×ó±ß¸´¾ØÕóµÄÐé²¿¾ØÕó
+            @param BR - ÓÒ±ß¸´¾ØÕóµÄÊµ²¿¾ØÕó
+            @param BI - ÓÒ±ß¸´¾ØÕóµÄÐé²¿¾ØÕó
+            @param CR - ³Ë»ý¸´¾ØÕóµÄÊµ²¿¾ØÕó
+            @param CI - ³Ë»ý¸´¾ØÕóµÄÐé²¿¾ØÕó
+            @return boolÐÍ£¬¸´¾ØÕó³Ë·¨ÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.Transpose">
+            ¾ØÕóµÄ×ªÖÃ
+            
+            @return MatrixÐÍ£¬Ö¸¶¨¾ØÕó×ªÖÃ¾ØÕó
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.InvertGaussJordan">
+            Êµ¾ØÕóÇóÄæµÄÈ«Ñ¡Ö÷Ôª¸ßË¹£­Ô¼µ±·¨
+            
+            @return boolÐÍ£¬ÇóÄæÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.InvertGaussJordan(LWD_DataProcess.Matrix)">
+            ¸´¾ØÕóÇóÄæµÄÈ«Ñ¡Ö÷Ôª¸ßË¹£­Ô¼µ±·¨
+            
+            @param mtxImag - ¸´¾ØÕóµÄÐé²¿¾ØÕó£¬µ±Ç°¾ØÕóÎª¸´¾ØÕóµÄÊµ²¿
+            @return boolÐÍ£¬ÇóÄæÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.InvertSsgj">
+            ¶Ô³ÆÕý¶¨¾ØÕóµÄÇóÄæ
+            
+            @return boolÐÍ£¬ÇóÄæÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.InvertTrench">
+            ÍÐ²®Àû×È¾ØÕóÇóÄæµÄ°£À¼ÌØ·½·¨
+            
+            @return boolÐÍ£¬ÇóÄæÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ComputeDetGauss">
+            ÇóÐÐÁÐÊ½ÖµµÄÈ«Ñ¡Ö÷Ôª¸ßË¹ÏûÈ¥·¨
+            
+            @return doubleÐÍ£¬ÐÐÁÐÊ½µÄÖµ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ComputeRankGauss">
+            Çó¾ØÕóÖÈµÄÈ«Ñ¡Ö÷Ôª¸ßË¹ÏûÈ¥·¨
+            
+            @return intÐÍ£¬¾ØÕóµÄÖÈ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ComputeDetCholesky(System.Double@)">
+            ¶Ô³ÆÕý¶¨¾ØÕóµÄÇÇÀïË¹»ù·Ö½âÓëÐÐÁÐÊ½µÄÇóÖµ
+            
+            @param realDetValue - ·µ»ØÐÐÁÐÊ½µÄÖµ
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SplitLU(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ¾ØÕóµÄÈý½Ç·Ö½â£¬·Ö½â³É¹¦ºó£¬Ô­¾ØÕó½«³ÉÎªQ¾ØÕó
+            
+            @param mtxL - ·µ»Ø·Ö½âºóµÄL¾ØÕó
+            @param mtxU - ·µ»Ø·Ö½âºóµÄU¾ØÕó
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SplitQR(LWD_DataProcess.Matrix)">
+            Ò»°ãÊµ¾ØÕóµÄQR·Ö½â£¬·Ö½â³É¹¦ºó£¬Ô­¾ØÕó½«³ÉÎªR¾ØÕó
+            
+            @param mtxQ - ·µ»Ø·Ö½âºóµÄQ¾ØÕó
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.SplitUV(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,System.Double)">
+            Ò»°ãÊµ¾ØÕóµÄÆæÒìÖµ·Ö½â£¬·Ö½â³É¹¦ºó£¬Ô­¾ØÕó¶Ô½ÇÏßÔªËØ¾ÍÊÇ¾ØÕóµÄÆæÒìÖµ
+            
+            @param mtxU - ·µ»Ø·Ö½âºóµÄU¾ØÕó
+            @param mtxV - ·µ»Ø·Ö½âºóµÄV¾ØÕó
+            @param eps - ¼ÆËã¾«¶È
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ppp(System.Double[],System.Double[],System.Double[],System.Double[],System.Int32,System.Int32)">
+            ÄÚ²¿º¯Êý£¬ÓÉSplitUVº¯Êýµ÷ÓÃ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.sss(System.Double[],System.Double[])">
+            ÄÚ²¿º¯Êý£¬ÓÉSplitUVº¯Êýµ÷ÓÃ
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.InvertUV(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,System.Double)">
+            Çó¹ãÒåÄæµÄÆæÒìÖµ·Ö½â·¨£¬·Ö½â³É¹¦ºó£¬Ô­¾ØÕó¶Ô½ÇÏßÔªËØ¾ÍÊÇ¾ØÕóµÄÆæÒìÖµ
+            
+            @param mtxAP - ·µ»ØÔ­¾ØÕóµÄ¹ãÒåÄæ¾ØÕó
+            @param mtxU - ·µ»Ø·Ö½âºóµÄU¾ØÕó
+            @param mtxV - ·µ»Ø·Ö½âºóµÄV¾ØÕó
+            @param eps - ¼ÆËã¾«¶È
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.MakeSymTri(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,System.Double[],System.Double[])">
+            Ô¼»¯¶Ô³Æ¾ØÕóÎª¶Ô³ÆÈý¶Ô½ÇÕóµÄºÀË¹ºÉ¶ûµÂ±ä»»·¨
+            
+            @param mtxQ - ·µ»ØºÀË¹ºÉ¶ûµÂ±ä»»µÄ³Ë»ý¾ØÕóQ
+            @param mtxT - ·µ»ØÇóµÃµÄ¶Ô³ÆÈý¶Ô½ÇÕó
+            @param dblB - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬·µ»Ø¶Ô³ÆÈý¶Ô½ÇÕóµÄÖ÷¶Ô½ÇÏßÔªËØ
+            @param dblC - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬Ç°n-1¸öÔªËØ·µ»Ø¶Ô³ÆÈý¶Ô½ÇÕóµÄ
+                          ´Î¶Ô½ÇÏßÔªËØ
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ComputeEvSymTri(System.Double[],System.Double[],LWD_DataProcess.Matrix,System.Int32,System.Double)">
+             Êµ¶Ô³ÆÈý¶Ô½ÇÕóµÄÈ«²¿ÌØÕ÷ÖµÓëÌØÕ÷ÏòÁ¿µÄ¼ÆËã
+             
+             @param dblB - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬´«Èë¶Ô³ÆÈý¶Ô½ÇÕóµÄÖ÷¶Ô½ÇÏßÔªËØ£»
+            			     ·µ»ØÊ±´æ·ÅÈ«²¿ÌØÕ÷Öµ¡£
+             @param dblC - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬Ç°n-1¸öÔªËØ´«Èë¶Ô³ÆÈý¶Ô½ÇÕóµÄ
+                           ´Î¶Ô½ÇÏßÔªËØ
+             @param mtxQ - Èç¹û´«Èëµ¥Î»¾ØÕó£¬Ôò·µ»ØÊµ¶Ô³ÆÈý¶Ô½ÇÕóµÄÌØÕ÷ÖµÏòÁ¿¾ØÕó£»
+            			     Èç¹û´«ÈëMakeSymTriº¯ÊýÇóµÃµÄ¾ØÕóAµÄºÀË¹ºÉ¶ûµÂ±ä»»µÄ³Ë»ý
+                           ¾ØÕóQ£¬Ôò·µ»Ø¾ØÕóAµÄÌØÕ÷ÖµÏòÁ¿¾ØÕó¡£ÆäÖÐµÚiÁÐÎªÓëÊý×édblB
+                           ÖÐµÚj¸öÌØÕ÷Öµ¶ÔÓ¦µÄÌØÕ÷ÏòÁ¿¡£
+             @param nMaxIt - µü´ú´ÎÊý
+             @param eps - ¼ÆËã¾«¶È
+             @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.MakeHberg">
+            Ô¼»¯Ò»°ãÊµ¾ØÕóÎªºÕÉê²®¸ñ¾ØÕóµÄ³õµÈÏàËÆ±ä»»·¨
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ComputeEvHBerg(System.Double[],System.Double[],System.Int32,System.Double)">
+            ÇóºÕÉê²®¸ñ¾ØÕóÈ«²¿ÌØÕ÷ÖµµÄQR·½·¨
+            
+            @param dblU - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬·µ»ØÊ±´æ·ÅÌØÕ÷ÖµµÄÊµ²¿
+            @param dblV - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬·µ»ØÊ±´æ·ÅÌØÕ÷ÖµµÄÐé²¿
+            @param nMaxIt - µü´ú´ÎÊý
+            @param eps - ¼ÆËã¾«¶È
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ComputeEvJacobi(System.Double[],LWD_DataProcess.Matrix,System.Int32,System.Double)">
+            ÇóÊµ¶Ô³Æ¾ØÕóÌØÕ÷ÖµÓëÌØÕ÷ÏòÁ¿µÄÑÅ¿É±È·¨
+            
+            @param dblEigenValue - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬·µ»ØÊ±´æ·ÅÌØÕ÷Öµ
+            @param mtxEigenVector - ·µ»ØÊ±´æ·ÅÌØÕ÷ÏòÁ¿¾ØÕó£¬ÆäÖÐµÚiÁÐÎªÓëÊý×é
+                                    dblEigenValueÖÐµÚj¸öÌØÕ÷Öµ¶ÔÓ¦µÄÌØÕ÷ÏòÁ¿
+            @param nMaxIt - µü´ú´ÎÊý
+            @param eps - ¼ÆËã¾«¶È
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.Matrix.ComputeEvJacobi(System.Double[],LWD_DataProcess.Matrix,System.Double)">
+            ÇóÊµ¶Ô³Æ¾ØÕóÌØÕ÷ÖµÓëÌØÕ÷ÏòÁ¿µÄÑÅ¿É±È¹ý¹Ø·¨
+            
+            @param dblEigenValue - Ò»Î¬Êý×é£¬³¤¶ÈÎª¾ØÕóµÄ½×Êý£¬·µ»ØÊ±´æ·ÅÌØÕ÷Öµ
+            @param mtxEigenVector - ·µ»ØÊ±´æ·ÅÌØÕ÷ÏòÁ¿¾ØÕó£¬ÆäÖÐµÚiÁÐÎªÓëÊý×é
+                                    dblEigenValueÖÐµÚj¸öÌØÕ÷Öµ¶ÔÓ¦µÄÌØÕ÷ÏòÁ¿
+            @param eps - ¼ÆËã¾«¶È
+            @return boolÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="T:LWD_DataProcess.Slot">
+            <summary>
+            SLOT数据类型：中间数据(“深度”为Key值，且唯一)
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Slot.#ctor">
+            <summary>
+            空初始化
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Slot.#ctor(System.String,System.String,System.Double[],LWD_DataProcess.DrillStatus)">
+            <summary>
+            初始化1:完全初始化(平行化)
+            </summary>
+            <param name="datetime">日期/时间</param>
+            <param name="welldepth">Key值，井深</param>
+            <param name="parameters">参数数组</param>
+            <param name="drillstatus">钻进状态</param>
+        </member>
+        <member name="M:LWD_DataProcess.Slot.#ctor(System.String,System.Double[])">
+            <summary>
+            初始化2：深度-测量值(Key-Value模式)
+            </summary>
+            <param name="welldepth">Key值，井深</param>
+            <param name="parameters">参数数组</param>
+        </member>
+        <member name="T:LWD_DataProcess.SlotList`1">
+            <summary>
+            重载SortedList可排序列表类
+            </summary>
+            <typeparam name="Slot">中间数据结构体</typeparam>
+        </member>
+        <member name="M:LWD_DataProcess.SlotList`1.getValue(System.Double)">
+            <summary>
+            获取相应Key的Value
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LWD_DataProcess.CommonData">
+            <summary>
+            单例模式
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.CommonData._CD">
+            <summary>
+            静态CommonData单例
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.CommonData.SMinDep">
+            <summary>
+            原始队列最小深度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.CommonData.SMaxDep">
+            <summary>
+            原始队列最大深度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.CommonData.SDInterval">
+            <summary>
+            Slist深度差
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.CommonData.AMinDep">
+            <summary>
+            插值队列最小深度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.CommonData.AMaxDep">
+            <summary>
+            插值队列的最大深度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.CommonData.AInterval">
+            <summary>
+            AIPList深度差
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.CommonData.SList">
+            <summary>
+            时深匹配后的原始数据列表
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.CommonData.AIPList">
+            <summary>
+            等间隔插值后的数据列表
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.CommonData.FSList">
+            <summary>
+            滤波后的数据列表
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.CommonData.SListObj">
+            <summary>
+            同步锁
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.CommonData.GetSListItem(LWD_DataProcess.SlotList{LWD_DataProcess.Slot},System.Double)">
+            <summary>
+            获取列表中的一个深度为dep的元素
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.CommonData.SaveList(LWD_DataProcess.SlotList{LWD_DataProcess.Slot},LWD_DataProcess.Slot)">
+            <summary>
+            向列表添加元素
+            </summary>
+            <param name="list">列表</param>
+            <param name="item">元素</param>
+            <returns>是否添加成功(同步操作可能等待)</returns>
+        </member>
+        <member name="T:LWD_DataProcess.Funcs">
+            <summary>
+            扩展基础操作-Singleton
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.print(System.String[])">
+            <summary>
+            字符串数组打印
+            </summary>
+            <param name="receive">要打印的字符串数组</param>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.print(System.Int32,System.String[])">
+            <summary>
+            二维字符串数组打印
+            </summary>
+            <param name="receive">要打印的字符串数组</param>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.print(System.String)">
+            <summary>
+            字符串打印
+            </summary>
+            <param name="receive">要打印的字符串</param>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.HexStringToByteArray(System.String)">
+            <summary>
+            HexString 转 byte[]
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.ByteArrayToHexString(System.Byte[])">
+            <summary>
+            byte[] 转 HexString
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.IsChineseStr(System.String)">
+            <summary>
+            是否中文字符
+            </summary>
+            <param name="str">字符串</param>
+            <returns>boolean</returns>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.IsEnglishStr(System.String)">
+            <summary>
+            是否由26个英文字母组成
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.Funcs.IsParameterExpresion(System.String)">
+            <summary>
+            是否参数表达式（含"="）
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LWD_DataProcess.InterpolationHelper">
+            ½øÐÐ²åÖµµÄÀàInterpolation
+            @version 1.0
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueLagrange(System.Int32,System.Double,System.Double,System.Double[],System.Double)">
+            Ò»ÔªÈ«Çø¼äµÈ¾à²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x0 - ´æ·ÅµÈ¾àn¸ö½áµãÖÐµÚÒ»¸ö½áµãµÄÖµ
+            @param xStep - µÈ¾à½áµãµÄ²½³¤
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueLagrange3(System.Int32,System.Double[],System.Double[],System.Double)">
+            Ò»ÔªÈýµã²»µÈ¾à²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄÖµx(i)
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueLagrange3(System.Int32,System.Double,System.Double,System.Double[],System.Double)">
+            Ò»ÔªÈýµãµÈ¾à²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x0 - ´æ·ÅµÈ¾àn¸ö½áµãÖÐµÚÒ»¸ö½áµãµÄÖµ
+            @param xStep - µÈ¾à½áµãµÄ²½³¤
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValuePqs(System.Int32,System.Double[],System.Double[],System.Double)">
+            Á¬·ÖÊ½²»µÈ¾à²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄÖµx(i)
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValuePqs(System.Int32,System.Double,System.Double,System.Double[],System.Double)">
+            Á¬·ÖÊ½µÈ¾à²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x0 - ´æ·ÅµÈ¾àn¸ö½áµãÖÐµÚÒ»¸ö½áµãµÄÖµ
+            @param xStep - µÈ¾à½áµãµÄ²½³¤
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueHermite(System.Int32,System.Double[],System.Double[],System.Double[],System.Double)">
+            °£¶ûÃ×ÌØ²»µÈ¾à²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄÖµx(i)
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param dy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯Êýµ¼ÊýÖµy'(i)£¬
+                        y'(i) = f'(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueHermite(System.Int32,System.Double,System.Double,System.Double[],System.Double[],System.Double)">
+            °£¶ûÃ×ÌØµÈ¾à²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x0 - ´æ·ÅµÈ¾àn¸ö½áµãÖÐµÚÒ»¸ö½áµãµÄÖµ
+            @param xStep - µÈ¾à½áµãµÄ²½³¤
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param dy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯Êýµ¼ÊýÖµy'(i)£¬
+                        y'(i) = f'(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueAitken(System.Int32,System.Double[],System.Double[],System.Double,System.Double)">
+            °£ÌØ½ð²»µÈ¾àÖð²½²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄÖµx(i)
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @param eps - ¿ØÖÆ¾«¶È²ÎÊý
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueAitken(System.Int32,System.Double,System.Double,System.Double[],System.Double,System.Double)">
+            °£ÌØ½ðµÈ¾àÖð²½²åÖµ
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x0 - ´æ·ÅµÈ¾àn¸ö½áµãÖÐµÚÒ»¸ö½áµãµÄÖµ
+            @param xStep - µÈ¾à½áµãµÄ²½³¤
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param t - ´æ·ÅÖ¸¶¨µÄ²åÖµµãµÄÖµ
+            @param eps - ¿ØÖÆ¾«¶È²ÎÊý
+            @return double ÐÍ£¬Ö¸¶¨µÄ²éÖ¸µãtµÄº¯Êý½üËÆÖµf(t)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueSpline1(System.Int32,System.Double[],System.Double[],System.Double[],System.Double[],System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])">
+            µÚÒ»ÖÖ±ß½çÌõ¼þµÄÈý´ÎÑùÌõº¯Êý²åÖµ¡¢Î¢ÉÌÓë»ý·Ö
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄÖµx(i)
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param dy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬µ÷ÓÃÊ±£¬dy(0)´æ·Å¸ø¶¨Çø¼äµÄ×ó¶Ëµã´¦µÄÒ»½×µ¼ÊýÖµ£¬
+                        dy(n-1)´æ·Å¸ø¶¨Çø¼äµÄÓÒ¶Ëµã´¦µÄÒ»½×µ¼ÊýÖµ¡£·µ»ØÊ±£¬´æ·Ån¸ö¸ø¶¨µã´¦µÄ
+                        Ò»½×µ¼ÊýÖµy'(i)£¬i=0,1,...,n-1
+            @param ddy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»ØÊ±£¬´æ·Ån¸ö¸ø¶¨µã´¦µÄ¶þ½×µ¼ÊýÖµy''(i)£¬
+                         i=0,1,...,n-1
+            @param m - Ö¸¶¨²åÖµµãµÄ¸öÊý
+            @param t - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµãµÄÖµ¡£
+            @param z - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄº¯ÊýÖµ
+            @param dz - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄÒ»½×µ¼ÊýÖµ
+            @param ddz - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄ¶þ½×µ¼ÊýÖµ
+            @return double ÐÍ£¬Ö¸¶¨º¯ÊýµÄx(0)µ½x(n-1)µÄ¶¨»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueSpline2(System.Int32,System.Double[],System.Double[],System.Double[],System.Double[],System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])">
+            µÚ¶þÖÖ±ß½çÌõ¼þµÄÈý´ÎÑùÌõº¯Êý²åÖµ¡¢Î¢ÉÌÓë»ý·Ö
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄÖµx(i)
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param dy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬µ÷ÓÃÊ±£¬dy(0)´æ·Å¸ø¶¨Çø¼äµÄ×ó¶Ëµã´¦µÄÒ»½×µ¼ÊýÖµ£¬
+                        dy(n-1)´æ·Å¸ø¶¨Çø¼äµÄÓÒ¶Ëµã´¦µÄÒ»½×µ¼ÊýÖµ¡£·µ»ØÊ±£¬´æ·Ån¸ö¸ø¶¨µã´¦µÄ
+                        Ò»½×µ¼ÊýÖµy'(i)£¬i=0,1,...,n-1
+            @param ddy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»ØÊ±£¬´æ·Ån¸ö¸ø¶¨µã´¦µÄ¶þ½×µ¼ÊýÖµy''(i)£¬
+                         i=0,1,...,n-1
+            @param m - Ö¸¶¨²åÖµµãµÄ¸öÊý
+            @param t - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµãµÄÖµ¡£
+            @param z - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄº¯ÊýÖµ
+            @param dz - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄÒ»½×µ¼ÊýÖµ
+            @param ddz - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄ¶þ½×µ¼ÊýÖµ
+            @return double ÐÍ£¬Ö¸¶¨º¯ÊýµÄx(0)µ½x(n-1)µÄ¶¨»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueSpline3(System.Int32,System.Double[],System.Double[],System.Double[],System.Double[],System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])">
+            µÚÈýÖÖ±ß½çÌõ¼þµÄÈý´ÎÑùÌõº¯Êý²åÖµ¡¢Î¢ÉÌÓë»ý·Ö
+            
+            @param n - ½áµãµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄÖµx(i)
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨µÄn¸ö½áµãµÄº¯ÊýÖµy(i)£¬
+                       y(i) = f(x(i)), i=0,1,...,n-1
+            @param dy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬µ÷ÓÃÊ±£¬dy(0)´æ·Å¸ø¶¨Çø¼äµÄ×ó¶Ëµã´¦µÄÒ»½×µ¼ÊýÖµ£¬
+                        dy(n-1)´æ·Å¸ø¶¨Çø¼äµÄÓÒ¶Ëµã´¦µÄÒ»½×µ¼ÊýÖµ¡£·µ»ØÊ±£¬´æ·Ån¸ö¸ø¶¨µã´¦µÄ
+                        Ò»½×µ¼ÊýÖµy'(i)£¬i=0,1,...,n-1
+            @param ddy - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»ØÊ±£¬´æ·Ån¸ö¸ø¶¨µã´¦µÄ¶þ½×µ¼ÊýÖµy''(i)£¬
+                         i=0,1,...,n-1
+            @param m - Ö¸¶¨²åÖµµãµÄ¸öÊý
+            @param t - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµãµÄÖµ¡£
+            @param z - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄº¯ÊýÖµ
+            @param dz - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄÒ»½×µ¼ÊýÖµ
+            @param ddz - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Åm¸öÖ¸¶¨µÄ²åÖµµã´¦µÄ¶þ½×µ¼ÊýÖµ
+            @return double ÐÍ£¬Ö¸¶¨º¯ÊýµÄx(0)µ½x(n-1)µÄ¶¨»ý·ÖÖµ
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueTqip(System.Int32,System.Double[],System.Int32,System.Double[],System.Double[],System.Double,System.Double)">
+            ¶þÔªÈýµã²åÖµ
+            
+            @param n - x·½ÏòÉÏ¸ø¶¨½áµãµÄµãÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨n x m ¸ö½áµãx·½ÏòÉÏµÄn¸öÖµx(i)
+            @param m - y·½ÏòÉÏ¸ø¶¨½áµãµÄµãÊý
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Å¸ø¶¨n x m ¸ö½áµãy·½ÏòÉÏµÄm¸öÖµy(i)
+            @param z - Ò»Î¬Êý×é£¬³¤¶ÈÎªn x m£¬´æ·Å¸ø¶¨µÄn x m¸ö½áµãµÄº¯ÊýÖµz(i,j)£¬
+                       z(i,j) = f(x(i), y(j)), i=0,1,...,n-1, j=0,1,...,m-1
+            @param u - ´æ·Å²åÖµµãx×ø±ê
+            @param v - ´æ·Å²åÖµµãy×ø±ê
+            @return double ÐÍ£¬Ö¸¶¨º¯ÊýÖµf(u, v)
+        </member>
+        <member name="M:LWD_DataProcess.InterpolationHelper.GetValueLagrange2(System.Int32,System.Double[],System.Int32,System.Double[],System.Double[],System.Double,System.Double)">
+            ¶þÔªÈ«Çø¼ä²åÖµ
+            
+            @param n - x·½ÏòÉÏ¸ø¶¨½áµãµÄµãÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·Å¸ø¶¨n x m ¸ö½áµãx·½ÏòÉÏµÄn¸öÖµx(i)
+            @param m - y·½ÏòÉÏ¸ø¶¨½áµãµÄµãÊý
+            @param y - Ò»Î¬Êý×é£¬³¤¶ÈÎªm£¬´æ·Å¸ø¶¨n x m ¸ö½áµãy·½ÏòÉÏµÄm¸öÖµy(i)
+            @param z - Ò»Î¬Êý×é£¬³¤¶ÈÎªn x m£¬´æ·Å¸ø¶¨µÄn x m¸ö½áµãµÄº¯ÊýÖµz(i,j)£¬
+                       z(i,j) = f(x(i), y(j)), i=0,1,...,n-1, j=0,1,...,m-1
+            @param u - ´æ·Å²åÖµµãx×ø±ê
+            @param v - ´æ·Å²åÖµµãy×ø±ê
+            @return double ÐÍ£¬Ö¸¶¨º¯ÊýÖµf(u, v)
+        </member>
+        <member name="T:LWD_DataProcess.LEquations">
+            Çó½âÏßÐÔ·½³Ì×éµÄÀà LEquations
+            @version 1.0
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.#ctor">
+            »ù±¾¹¹Ôìº¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.#ctor(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            Ö¸¶¨ÏµÊýºÍ³£Êý¹¹Ôìº¯Êý
+            
+            @param mtxCoef - Ö¸¶¨µÄÏµÊý¾ØÕó
+            @param mtxConst - Ö¸¶¨µÄ³£Êý¾ØÕó
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.Init(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ³õÊ¼»¯º¯Êý
+            
+            @param mtxCoef - Ö¸¶¨µÄÏµÊý¾ØÕó
+            @param mtxConst - Ö¸¶¨µÄ³£Êý¾ØÕó
+            @return bool ÐÍ£¬³õÊ¼»¯ÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetCoefMatrix">
+            »ñÈ¡ÏµÊý¾ØÕó
+            
+            @return Matrix ÐÍ£¬·µ»ØÏµÊý¾ØÕó
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetConstMatrix">
+            »ñÈ¡³£Êý¾ØÕó
+            
+            @return Matrix ÐÍ£¬·µ»ØÏµÊý¾ØÕó
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetNumEquations">
+            »ñÈ¡·½³Ì¸öÊý
+            
+            @return int ÐÍ£¬·µ»Ø·½³Ì×é·½³ÌµÄ¸öÊý
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetNumUnknowns">
+            »ñÈ¡Î´ÖªÊý¸öÊý
+            
+            @return int ÐÍ£¬·µ»Ø·½³Ì×éÎ´ÖªÊýµÄ¸öÊý
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGauss(LWD_DataProcess.Matrix)">
+            È«Ñ¡Ö÷Ôª¸ßË¹ÏûÈ¥·¨
+            
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×éµÄ½â
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGaussJordan(LWD_DataProcess.Matrix)">
+            È«Ñ¡Ö÷Ôª¸ßË¹£­Ô¼µ±ÏûÈ¥·¨
+            
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×éµÄ½â
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGauss(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ¸´ÏµÊý·½³Ì×éµÄÈ«Ñ¡Ö÷Ôª¸ßË¹ÏûÈ¥·¨
+            
+            @param mtxCoefImag - ÏµÊý¾ØÕóµÄÐé²¿¾ØÕó
+            @param mtxConstImag - ³£Êý¾ØÕóµÄÐé²¿¾ØÕó
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕóµÄÊµ²¿¾ØÕó
+            @param mtxResultImag - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕóµÄÐé²¿¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGaussJordan(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            ¸´ÏµÊý·½³Ì×éµÄÈ«Ñ¡Ö÷Ôª¸ßË¹£­Ô¼µ±ÏûÈ¥·¨
+            
+            @param mtxCoefImag - ÏµÊý¾ØÕóµÄÐé²¿¾ØÕó
+            @param mtxConstImag - ³£Êý¾ØÕóµÄÐé²¿¾ØÕó
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕóµÄÊµ²¿¾ØÕó
+            @param mtxResultImag - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕóµÄÐé²¿¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetTriDiagonal(LWD_DataProcess.Matrix)">
+            Çó½âÈý¶Ô½ÇÏß·½³Ì×éµÄ×·¸Ï·¨
+            
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetBand(System.Int32,LWD_DataProcess.Matrix)">
+            Ò»°ã´øÐÍ·½³Ì×éµÄÇó½â
+            
+            @param nBandWidth - ´ø¿í
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetDjn(LWD_DataProcess.Matrix)">
+            Çó½â¶Ô³Æ·½³Ì×éµÄ·Ö½â·¨
+            
+            @param mtxResult - CMatrixÒýÓÃ¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetCholesky(LWD_DataProcess.Matrix)">
+            Çó½â¶Ô³ÆÕý¶¨·½³Ì×éµÄÆ½·½¸ù·¨
+            
+            @param mtxResult - CMatrixÒýÓÃ¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGgje(LWD_DataProcess.Matrix)">
+            Çó½â´óÐÍÏ¡Êè·½³Ì×éµÄÈ«Ñ¡Ö÷Ôª¸ßË¹£­Ô¼È¥ÏûÈ¥·¨
+            
+            @param mtxResult - CMatrixÒýÓÃ¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetTlvs(LWD_DataProcess.Matrix)">
+            Çó½âÍÐ²®Àû×È·½³Ì×éµÄÁÐÎÄÑ··½·¨
+            
+            @param mtxResult - CMatrixÒýÓÃ¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGaussSeidel(LWD_DataProcess.Matrix,System.Double)">
+            ¸ßË¹£­ÈüµÂ¶ûµü´ú·¨
+             
+            @param mtxResult - CMatrixÒýÓÃ¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @param eps - ¿ØÖÆ¾«¶È
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGrad(LWD_DataProcess.Matrix,System.Double)">
+            Çó½â¶Ô³ÆÕý¶¨·½³Ì×éµÄ¹²éîÌÝ¶È·¨
+            
+            @param mtxResult - CMatrixÒýÓÃ¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @param eps - ¿ØÖÆ¾«¶È
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetMqr(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix)">
+            Çó½âÏßÐÔ×îÐ¡¶þ³ËÎÊÌâµÄºÀË¹ºÉ¶ûµÂ±ä»»·¨
+            
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @param mtxQ - Matrix¶ÔÏó£¬·µ»ØºÀË¹ºÉ¶ûµÂ±ä»»µÄQ¾ØÕó
+            @param mtxR - Matrix¶ÔÏó£¬·µ»ØºÀË¹ºÉ¶ûµÂ±ä»»µÄR¾ØÕó
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetGinv(LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,LWD_DataProcess.Matrix,System.Double)">
+            Çó½âÏßÐÔ×îÐ¡¶þ³ËÎÊÌâµÄ¹ãÒåÄæ·¨
+            
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @param mtxAP - Matrix¶ÔÏó£¬·µ»ØÏµÊý¾ØÕóµÄ¹ãÒåÄæ¾ØÕó
+            @param mtxU - Matrix¶ÔÏó£¬·µ»ØU¾ØÕó
+            @param mtxV - Matrix¶ÔÏó£¬·µ»ØV¾ØÕó
+            @param eps - ¿ØÖÆ¾«¶È
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.LEquations.GetRootsetMorbid(LWD_DataProcess.Matrix,System.Int32,System.Double)">
+            
+            @param mtxResult - Matrix¶ÔÏó£¬·µ»Ø·½³Ì×é½â¾ØÕó
+            @param nMaxIt - µþ¼Ó´ÎÊý
+            @param eps - ¿ØÖÆ¾«¶È
+            @return bool ÐÍ£¬·½³Ì×éÇó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="T:LWD_DataProcess.NLEquations">
+             Çó½â·ÇÏßÐÔ·½³Ì×éµÄÀà NLEquations
+            
+             @version 1.0
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.Func(System.Double)">
+            Ðéº¯Êý£º¼ÆËã·½³Ì×ó¶Ëº¯ÊýÖµ£¬±ØÐëÔÚÒýÉêÀàÖÐ¸²¸Ç¸ÃÀàº¯Êý
+            
+            @param x - ±äÁ¿
+            @return º¯ÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.Func(System.Double[])">
+            Ðéº¯Êý£º¼ÆËã·½³Ì×ó¶Ëº¯ÊýÖµ£¬±ØÐëÔÚÒýÉêÀàÖÐ¸²¸Ç¸ÃÀàº¯Êý
+            
+            @param x - ±äÁ¿ÖµÊý×é
+            @return º¯ÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.Func(System.Double,System.Double[])">
+            Ðéº¯Êý£º¼ÆËã·½³Ì×ó¶Ëº¯ÊýÖµ£¬±ØÐëÔÚÒýÉêÀàÖÐ¸²¸Ç¸ÃÀàº¯Êý
+            
+            @param x - ±äÁ¿
+            @param y - º¯ÊýÖµÊý×é
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.Func(System.Double,System.Double)">
+            Ðéº¯Êý£º¼ÆËã·½³Ì×ó¶Ëº¯ÊýÖµ£¬±ØÐëÔÚÒýÉêÀàÖÐ¸²¸Ç¸ÃÀàº¯Êý
+            
+            @param x - ¶þÔªº¯ÊýµÄ±äÁ¿
+            @param y - ¶þÔªº¯ÊýµÄ±äÁ¿
+            @return º¯ÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.Func(System.Double[],System.Double[])">
+            Ðéº¯Êý£º¼ÆËã·½³Ì×ó¶Ëº¯ÊýÖµ£¬±ØÐëÔÚÒýÉêÀàÖÐ¸²¸Ç¸ÃÀàº¯Êý
+            
+            @param x - ¶þÔªº¯ÊýµÄ±äÁ¿ÖµÊý×é
+            @param y - ¶þÔªº¯ÊýµÄ±äÁ¿ÖµÊý×é
+            @return º¯ÊýÖµ
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.FuncMJ(System.Double[],System.Double[])">
+            Ðéº¯Êý£º¼ÆËã·½³Ì×ó¶Ëº¯ÊýÖµ£¬±ØÐëÔÚÒýÉêÀàÖÐ¸²¸Ç¸ÃÀàº¯Êý
+            
+            @param x - ÒÑÖª±äÁ¿ÖµÊý×é
+            @param p - ÒÑÖªº¯ÊýÖµÊý×é
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.#ctor">
+            »ù±¾¹¹Ôìº¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootBisect(System.Int32,System.Double[],System.Double,System.Double,System.Double,System.Double)">
+            Çó·ÇÏßÐÔ·½³ÌÊµ¸ùµÄ¶Ô·Ö·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯Êýf(x)ÖµµÄÐéº¯Êý
+                   double Func(double x)
+            
+            @param nNumRoots - ÔÚ[xStart, xEnd]ÄÚÊµ¸ù¸öÊýµÄÔ¤¹ÀÖµ
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªm¡£·µ»ØÔÚÇø¼ä[xStart, xEnd]ÄÚËÑË÷µ½µÄÊµ¸ù£¬
+                       Êµ¸ù¸öÊýÓÉº¯ÊýÖµ·µ»Ø
+            @param xStart - Çó¸ùÇø¼äµÄ×ó¶Ëµã
+            @param xEnd - Çó¸ùÇø¼äµÄÓÒ¶Ëµã
+            @param dblStep - ËÑË÷Çó¸ùÊ±²ÉÓÃµÄ²½³¤
+            @param eps - ¾«¶È¿ØÖÆ²ÎÊý
+            @return int ÐÍ£¬ÇóµÃµÄÊµ¸ùµÄÊýÄ¿
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootNewton(System.Double@,System.Int32,System.Double)">
+            Çó·ÇÏßÐÔ·½³ÌÒ»¸öÊµ¸ùµÄÅ£¶Ù·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯Êýf(x)¼°ÆäÒ»½×µ¼Êýf'(x)ÖµµÄÐéº¯Êý:
+            	void Func(double x, double[] y)
+            	y(0) ·µ»Øf(x)µÄÖµ
+            	y(1) ·µ»Øf'(x)µÄÖµ
+            
+            @param x - ´«Èëµü´ú³õÖµ£¨²Â²â½â£©£¬·µ»ØÔÚÇø¼äÇóµÃµÄÒ»¸öÊµ¸ù
+            @param nMaxIt - µÝ¹é´ÎÊý
+            @param eps - ¾«¶È¿ØÖÆ²ÎÊý
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootAitken(System.Double@,System.Int32,System.Double)">
+            Çó·ÇÏßÐÔ·½³ÌÒ»¸öÊµ¸ùµÄ°£ÌØ½ðµü´ú·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯Êýf(x)ÖµµÄÐéº¯Êý
+                  double Func(double x)
+            
+            @param x - ´«Èëµü´ú³õÖµ£¨²Â²â½â£©£¬·µ»ØÔÚÇø¼äÇóµÃµÄÒ»¸öÊµ¸ù
+            @param nMaxIt - µÝ¹é´ÎÊý
+            @param eps - ¾«¶È¿ØÖÆ²ÎÊý
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootPq(System.Double@,System.Double)">
+            Çó·ÇÏßÐÔ·½³ÌÒ»¸öÊµ¸ùµÄÁ¬·ÖÊ½½â·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯Êýf(x)ÖµµÄÐéº¯Êý
+                  double Func(double x)
+            
+            @param x - ´«Èëµü´ú³õÖµ£¨²Â²â½â£©£¬·µ»ØÔÚÇø¼äÇóµÃµÄÒ»¸öÊµ¸ù
+            @param eps - ¾«¶È¿ØÖÆ²ÎÊý
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootQr(System.Int32,System.Double[],System.Double[],System.Double[],System.Int32,System.Double)">
+            ÇóÊµÏµÊý´úÊý·½³ÌÈ«²¿¸ùµÄQR·½·¨
+            
+            @param n - ¶àÏîÊ½·½³ÌµÄ´ÎÊý
+            @param dblCoef - Ò»Î¬Êý×é£¬³¤¶ÈÎªn+1£¬°´½µÃÝ´ÎÐòÒÀ´Î´æ·Ån´Î¶àÏîÊ½·½³ÌµÄ
+                             n+1¸öÏµÊý
+            @param xr - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»Øn¸ö¸ùµÄÊµ²¿
+            @param xi - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»Øn¸ö¸ùµÄÐé²¿
+            @param nMaxIt - µü´ú´ÎÊý
+            @param eps - ¾«¶È¿ØÖÆ²ÎÊý
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootNewtonDownHill(System.Int32,System.Double[],System.Double[],System.Double[])">
+            ÇóÊµÏµÊý´úÊý·½³ÌÈ«²¿¸ùµÄÅ£¶ÙÏÂÉ½·¨
+            
+            @param n - ¶àÏîÊ½·½³ÌµÄ´ÎÊý
+            @param dblCoef - Ò»Î¬Êý×é£¬³¤¶ÈÎªn+1£¬°´½µÃÝ´ÎÐòÒÀ´Î´æ·Ån´Î¶àÏîÊ½·½³ÌµÄ
+                             n+1¸öÏµÊý
+            @param xr - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»Øn¸ö¸ùµÄÊµ²¿
+            @param xi - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»Øn¸ö¸ùµÄÐé²¿
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.g60(System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Int32@,System.Int32@)">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.g90(System.Double[],System.Double[],System.Double[],System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Int32@)">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.g65(System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Int32@,System.Int32@,System.Int32@)">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootNewtonDownHill(System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])">
+            Çó¸´ÏµÊý´úÊý·½³ÌÈ«²¿¸ùµÄÅ£¶ÙÏÂÉ½·¨
+            
+            @param n - ¶àÏîÊ½·½³ÌµÄ´ÎÊý
+            @param ar - Ò»Î¬Êý×é£¬³¤¶ÈÎªn+1£¬°´½µÃÝ´ÎÐòÒÀ´Î´æ·Ån´Î¶àÏîÊ½·½³ÌµÄ
+                        n+1¸öÏµÊýµÄÊµ²¿
+            @param ai - Ò»Î¬Êý×é£¬³¤¶ÈÎªn+1£¬°´½µÃÝ´ÎÐòÒÀ´Î´æ·Ån´Î¶àÏîÊ½·½³ÌµÄ
+                        n+1¸öÏµÊýµÄÐé²¿
+            @param xr - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»Øn¸ö¸ùµÄÊµ²¿
+            @param xi - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬·µ»Øn¸ö¸ùµÄÐé²¿
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.g60c(System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Int32@,System.Int32@)">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.g90c(System.Double[],System.Double[],System.Double[],System.Double[],System.Double@,System.Double@,System.Double@,System.Double@,System.Int32@)">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.g65c(System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Int32@,System.Int32@,System.Int32@)">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootMonteCarlo(System.Double@,System.Double,System.Int32,System.Double)">
+            Çó·ÇÏßÐÔ·½³ÌÒ»¸öÊµ¸ùµÄÃÉÌØ¿¨Âå·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯Êýf(x)ÖµµÄÐéº¯Êýdouble Func(double x)
+            
+            @param x - ´«Èë³õÖµ£¨²Â²â½â£©£¬·µ»ØÇóµÃµÄÊµ¸ù
+            @param xStart - ¾ùÔÈ·Ö²¼µÄ¶Ëµã³õÖµ
+            @param nControlB - ¿ØÖÆ²ÎÊý
+            @param eps - ¿ØÖÆ¾«¶È
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.rnd(System.Double@)">
+            ÄÚ²¿º¯Êý
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootMonteCarlo(System.Double@,System.Double@,System.Double,System.Int32,System.Double)">
+            ÇóÊµº¯Êý»ò¸´º¯Êý·½³ÌÒ»¸ö¸´¸ùµÄÃÉÌØ¿¨Âå·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯ÊýµÄÄ£Öµ||f(x, y)||µÄÐéº¯Êý
+                     double Func(double x, double y)
+            
+            @param x - ´«Èë³õÖµ£¨²Â²â½â£©µÄÊµ²¿£¬·µ»ØÇóµÃµÄ¸ùµÄÊµ²¿
+            @param y - ´«Èë³õÖµ£¨²Â²â½â£©µÄÐé²¿£¬·µ»ØÇóµÃµÄ¸ùµÄÐé²¿
+            @param xStart - ¾ùÔÈ·Ö²¼µÄ¶Ëµã³õÖµ
+            @param nControlB - ¿ØÖÆ²ÎÊý
+            @param eps - ¿ØÖÆ¾«¶È
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootsetGrad(System.Int32,System.Double[],System.Int32,System.Double)">
+            Çó·ÇÏßÐÔ·½³Ì×éÒ»×éÊµ¸ùµÄÌÝ¶È·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯Êýf(x)Öµ¼°ÆäÆ«µ¼ÊýÖµµÄÐéº¯Êý
+                     double Func(double x[], double[] y)
+            
+            @param n - ·½³ÌµÄ¸öÊý£¬Ò²ÊÇÎ´ÖªÊýµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·ÅÒ»×é³õÖµx0, x1, ¡­, xn-1£¬
+                       ·µ»ØÊ±´æ·Å·½³Ì×éµÄÒ»×éÊµ¸ù
+            @param nMaxIt - µü´ú´ÎÊý
+            @param eps - ¿ØÖÆ¾«¶È
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootsetGinv(System.Int32,System.Int32,System.Double[],System.Double,System.Double)">
+            Çó·ÇÏßÐÔ·½³Ì×é×îÐ¡¶þ³Ë½âµÄ¹ãÒåÄæ·¨
+            
+            µ÷ÓÃÊ±£¬1. Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶Ëº¯Êýf(x)Öµ¼°ÆäÆ«µ¼ÊýÖµµÄÐéº¯Êý
+                         double Func(double[] x, double[] y)
+                   2. Ðë¸²¸Ç¼ÆËãÑÅ¿É±È¾ØÕóº¯ÊýµÄÐéº¯Êý
+                         double FuncMJ(double[] x, double[] y)
+            
+            @param m - ·½³ÌµÄ¸öÊý
+            @param n - Î´ÖªÊýµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·ÅÒ»×é³õÖµx0, x1, ¡­, xn-1£¬ÒªÇó²»È«Îª0£¬
+            			·µ»ØÊ±´æ·Å·½³Ì×éµÄ×îÐ¡¶þ³Ë½â£¬µ±m=nÊ±£¬¼´ÊÇ·ÇÏßÐÔ·½³Ì×éµÄ½â
+            @param eps1 - ×îÐ¡¶þ³Ë½âµÄ¾«¶È¿ØÖÆ¾«¶È
+            @param eps2 - ÆæÒìÖµ·Ö½âµÄ¾«¶È¿ØÖÆ¾«¶È
+            @return bool ÐÍ£¬Çó½âÊÇ·ñ³É¹¦
+        </member>
+        <member name="M:LWD_DataProcess.NLEquations.GetRootsetMonteCarlo(System.Int32,System.Double[],System.Double,System.Int32,System.Double)">
+            Çó·ÇÏßÐÔ·½³Ì×éÒ»×éÊµ¸ùµÄÃÉÌØ¿¨Âå·¨
+            
+            µ÷ÓÃÊ±£¬Ðë¸²¸Ç¼ÆËã·½³Ì×ó¶ËÄ£º¯ÊýÖµ||F||µÄÐéº¯Êý
+                     double Func(int n, double[] x)
+            Æä·µ»ØÖµÎªSqr(f1*f1 + f2*f2 + ¡­ + fn*fn)
+            
+            @param n - ·½³ÌµÄ¸öÊý£¬Ò²ÊÇÎ´ÖªÊýµÄ¸öÊý
+            @param x - Ò»Î¬Êý×é£¬³¤¶ÈÎªn£¬´æ·ÅÒ»×é³õÖµx0, x1, ¡­, xn-1£¬
+                       ·µ»ØÊ±´æ·Å·½³Ì×éµÄÒ»×éÊµ¸ù
+            @param xStart - ¾ùÔÈ·Ö²¼µÄ¶Ëµã³õÖµ
+            @param nControlB - ¿ØÖÆ²ÎÊý
+            @param eps - ¿ØÖÆ¾«¶È
+        </member>
+        <member name="T:LWD_DataProcess.SQLiteDBHelper">
+            <summary> 
+            说明：这是一个针对System.Data.SQLite的数据库常规操作封装的通用类。 
+            huangjie add 2014-10-31
+            </summary>    
+        </member>
+        <member name="P:LWD_DataProcess.SQLiteDBHelper.dbPath">
+            <summary>
+            数据库文件路径
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.SQLiteDBHelper._sqliteHelper">
+            <summary>
+            单例模式对象
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.SQLiteDBHelper.DbConnection">
+            <summary>
+            数据库连接
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.SQLiteDBHelper.DbCommand">
+            <summary>
+            命令
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.SQLiteDBHelper.DbDataAdapter">
+            <summary>
+            数据库适配器
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.SQLiteDBHelper.ConnectionString">
+            <summary>
+            数据库连接
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.SQLiteDBHelper.InTransaction">
+            <summary>
+            是否已采用事务
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.SQLiteDBHelper.AutoOpenClose">
+            <summary>
+            默认打开关闭数据库选项（默认为否）
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.#ctor">
+            <summary> 
+            构造函数 
+            </summary> 
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.Open">
+            <summary>
+            这时主要的获取数据库连接的方法
+            </summary>
+            <returns>数据库连接</returns>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.Open(System.String)">
+            <summary>
+            获得新的数据库连接
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <returns>数据库连接</returns>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.CreateDB">
+            <summary> 
+            创建SQLite数据库文件 
+            </summary> 
+            <param name="dbPath">要创建的SQLite数据库文件路径</param> 
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.IsExistTable(System.String)">
+            <summary>
+            判断表是否存在
+            true:存在；false:不存在
+            </summary>
+            <param name="tableName">表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.ExecuteNonQuery(System.String)">
+            <summary>
+            执行查询
+            </summary>
+            <param name="commandText">sql查询</param>
+            <returns>影响行数</returns>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.ExecuteNonQuery(System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary> 
+            对SQLite数据库执行增删改操作，返回受影响的行数。 
+            </summary> 
+            <param name="commandText">要执行的增删改的SQL语句</param> 
+            <param name="parameters">执行增删改语句所需要的参数，参数必须以它们在SQL语句中的顺序为准</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.ExecuteReader(System.String)">
+            <summary>
+            执行一个查询语句，返回一个关联的SQLiteDataReader实例 
+            </summary>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.ExecuteReader(System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary> 
+            执行一个查询语句，返回一个关联的SQLiteDataReader实例 
+            </summary> 
+            <param name="commandText">要执行的查询语句</param> 
+            <param name="dbParameters">执行SQL查询语句所需要的参数，参数必须以它们在SQL语句中的顺序为准</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.ExecuteDataTable(System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary> 
+            执行一个查询语句，返回一个包含查询结果的DataTable 
+            </summary> 
+            <param name="sql">要执行的查询语句</param> 
+            <param name="parameters">执行SQL查询语句所需要的参数，参数必须以它们在SQL语句中的顺序为准</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.ExecuteScalar(System.String)">
+            <summary>
+            执行一个查询语句，返回查询结果的第一行第一列 
+            </summary>
+            <param name="commandText"></param>
+            <param name="dbParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.ExecuteScalar(System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary> 
+            执行一个查询语句，返回查询结果的第一行第一列 
+            </summary> 
+            <param name="sql">要执行的查询语句</param> 
+            <param name="dbParameters">执行SQL查询语句所需要的参数，参数必须以它们在SQL语句中的顺序为准</param> 
+            <returns></returns> 
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.BeginTransaction">
+            <summary>
+            事务开始
+            </summary>
+            <returns>事务</returns>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.CommitTransaction">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.RollbackTransaction">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.Close">
+            <summary>
+            关闭数据库连接
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.Dispose">
+            <summary>
+            内存回收
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.SQLiteDBHelper.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:LWD_DataProcess.SQLiteDBHelper.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.Form1.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Form1.Dispose(System.Boolean)">
+            <summary>
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:LWD_DataProcess.Form1.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.Curve_Compare.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Curve_Compare.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LWD_DataProcess.Curve_Compare.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DBConfig.FoldBrowserPath">
+            <summary>
+            文件夹路径
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DBConfig.WellDBPath">
+            <summary>
+            井信息数据库文件路径
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.DBConfig.ChartDBPath">
+            <summary>
+            校正图版数据库文件路径
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DBConfig.button2_Click(System.Object,System.EventArgs)">
+            <summary>
+            确定并保存数据库路径
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LWD_DataProcess.DBConfig.button3_Click(System.Object,System.EventArgs)">
+            <summary>
+            退出并恢复原配置
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:LWD_DataProcess.DBConfig.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.DBConfig.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LWD_DataProcess.DBConfig.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.GammaCorrection.dt">
+            <summary>
+            数据表
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.GammaCorrection.ds">
+            <summary>
+            数据集
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.WellName">
+            <summary>
+            井名
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.threadOn">
+            <summary>
+            校正线程是否运行
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.FileName">
+            <summary>
+            选择打开的文件名
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.ParaType">
+            <summary>
+            API/CPS计数率方式
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.NRow">
+            <summary>
+            Temp StreamReader Rows
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.Lines">
+            <summary>
+            当前记录行
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.SN">
+            <summary>
+            需要校正的参数索引
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.Num">
+            <summary>
+            文件行长度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.RecordNum">
+            <summary>
+            数据行的长度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.RawData">
+            <summary>
+            校正前的原始数据列
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.RawDatas">
+            <summary>
+            原始数据队列
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.OriQueue">
+            <summary>
+            原始数据的字符串数组队列       
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.ACQueue">
+            <summary>
+            校正合并后的字符串数组队列
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.OutData">
+            <summary>
+            校正后的数据队列
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection._GammaColumns">
+            <summary>
+            校正值的DataTable列
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection._ParaRow">
+            <summary>
+            数据行
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.columnsNumber">
+            <summary>
+            列的个数
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.saveSource">
+            <summary>
+            >是否使用源目录
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.gU">
+            <summary>
+            伽马计数率单位 API/CPS
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.StartDepth">
+            <summary>
+            校正起始深度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.EndDepth">
+            <summary>
+            校正终止深度
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.GammaCorrection.Curve_AC">
+            <summary>
+            校正后曲线名称
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.OpenFile">
+            <summary>
+            打开文件，线程托管
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.Load_Click(System.Object,System.EventArgs)">
+            <summary>
+            载入原始数据
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.button_Correct_Click(System.Object,System.EventArgs)">
+            <summary>
+            环境校正按钮
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.Correction">
+            <summary>
+            校正线程
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.checkBox_AllDepth_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            全井段处理
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.Fill_DGV(System.Windows.Forms.DataGridView,System.Data.DataTable)">
+            <summary>
+            填充DGV
+            </summary>
+            <param name="DGV">DataGridView</param>
+            <param name="DT">DataTable</param>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.Merge_DGV(System.Windows.Forms.DataGridView,System.Data.DataTable,System.Data.DataTable)">
+            <summary>
+            合并DataTable
+            </summary>
+            <param name="DGV">DataGridView</param>
+            <param name="DTAC">被合并的DataTable After Correction</param>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.PrePrint">
+            <summary>
+            打印文件头
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.dataRow_Init(System.Data.DataRow,System.Data.DataTable)">
+            <summary>
+            初始化指定的DataRow
+            </summary>
+            <param name="datarow">指定的DataRow</param>
+            <param name="datatable">所属DataTable</param>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.dataColumn_Init(System.String,System.Data.DataTable)">
+            <summary>
+            初始化指定DataColumn
+            </summary>
+            <param name="datacolumn">指定的DataColumn</param>
+            <param name="datatable">列所属的DataTable</param>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.DataTable_Init(System.String,System.Data.DataTable,System.Data.DataColumn[])">
+            <summary>
+            初始化dataTable，插入指定的DataColumns
+            </summary>
+            <param name="tablename">-DataTable.TableName</param>
+            <param name="datatable">-DataTable</param>
+            <param name="columnlist">-DataColumn 集合</param>
+        </member>
+        <member name="F:LWD_DataProcess.GammaCorrection.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LWD_DataProcess.GammaCorrection.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.GDIR_Correction.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.GDIR_Correction.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LWD_DataProcess.GDIR_Correction.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.DP">
+            <summary>
+            数据处理类对象
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.FoldBrowserPath">
+            <summary>
+            文件夹路径
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.DepthInterval">
+            <summary>
+            深度间隔
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.Ins">
+            <summary>
+            仪器类型
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.COI">
+            <summary>
+            插值算法
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.FA">
+            <summary>
+            滤波算法
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.LM">
+            <summary>
+            测井方式
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.Readed">
+            <summary>
+            按钮标记--是否已读取文件。
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.Loaded">
+            <summary>
+            按钮标记--是否已加载数据
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.TDP.Calculated">
+            <summary>
+            预处理标记--是否已预处理数据
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.TDP_Load(System.Object,System.EventArgs)">
+            <summary>
+            窗体加载
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.Button_pathBrowser_Click(System.Object,System.EventArgs)">
+            <summary>
+            选择数据文件夹，读取目录下的*.tdf,*.tmf文件，并保存处理后文件
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.button_Confirm_Click(System.Object,System.EventArgs)">
+            <summary>
+            确认按钮操作： 1确认数据处理流程 2同时更新XML配置 3载入原始数据
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.button_Start_Click(System.Object,System.EventArgs)">
+            <summary>
+            加载按钮操作： 开始文件预处理
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.button_Inv_Click(System.Object,System.EventArgs)">
+            <summary>
+            预处理按钮，选定预处理方案，开始数据预处理
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.button_Exit_Click(System.Object,System.EventArgs)">
+            <summary>
+            退出窗体
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.timer_Tick(System.Object,System.EventArgs)">
+            <summary>
+            定时器：控制进度条
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.fileExist">
+            <summary>
+            数据文件载入验证
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.getFileName">
+            <summary>
+            从文件夹目录获取参数文件名
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.SaveConfig">
+            <summary>
+            XML文件保存配置信息
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.comboBox_Inter_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            选择插值算法
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.comboBox_Filter_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            选择滤波算法
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:LWD_DataProcess.TDP.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LWD_DataProcess.TDP.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.SQLConPool">
+            <summary>
+            静态SQLiteConnectionPool接口实例
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.WPR_Correction.seperator">
+            <summary>
+            断词符号集
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.FileName_WellData">
+            <summary>
+            测量值文件名
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.tempNode">
+            <summary>
+            当前操作节点
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.WellHelper">
+            <summary>
+            SQLite基础操作帮助类对象-井信息
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.ChartHelper">
+            <summary>
+            SQLite基础操作帮助类对象-图版信息
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.Lines_Chart">
+            <summary>
+            当前OpenFileDialog_Chart 的记录行
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.Lines_Data">
+            <summary>
+            当前OpenFileDialog_Data 的记录行
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.WPR_Correction.curLine">
+            <summary>
+            ReadLine断句数组
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.toolStripMenuItem_BindChart_Click(System.Object,System.EventArgs)">
+            <summary>
+            图版关联
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.txtSplitter">
+            <summary>
+            图版导出txt文件的字符串截取流处理操作
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.BindChart">
+            <summary>
+            图版索引匹配
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.OpenChart">
+            <summary>
+            打开文件，线程托管
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.toolStripMenuItem_CancelBind_Click(System.Object,System.EventArgs)">
+            <summary>
+            取消关联按钮
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.BindCancel">
+            <summary>
+            取消关联操作
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.WPR_Correction.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LWD_DataProcess.WPR_Correction.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.ConfigInfo">
+            <summary>
+            配置的信息类
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.FoldBrowserPath">
+            <summary>
+            默认文件夹路径
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.DepthInterval">
+            <summary>
+            深度间隔
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.CT">
+            <summary>
+            插值算法
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.FT">
+            <summary>
+            滤波算法
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.IT">
+            <summary>
+            仪器类型
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.ConfigInfo.DeviceSN">
+            <summary>
+            设备序列号
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.ConfigInfo.NetKey">
+            <summary>
+            网络密钥
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.ConfigInfo.IsValue">
+            <summary>
+            配置信息是否有效
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.DB_PATH">
+            <summary>
+            单个数据库文件路径
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.DBPath_Well">
+            <summary>
+            井信息数据库文件路径
+            </summary>
+        </member>
+        <member name="P:LWD_DataProcess.ConfigInfo.DBPath_CorrectionChart">
+            <summary>
+            图版配置数据库文件路径
+            </summary>
+        </member>
+        <member name="T:LWD_DataProcess.Config">
+            <summary>
+            配置类
+            </summary>
+        </member>
+        <member name="F:LWD_DataProcess.Config.CfgInfo">
+            <summary>
+            全局配置信息-单例模式
+            </summary>
+        </member>
+        <member name="M:LWD_DataProcess.Config.SaveConfig">
+            <summary>
+            保存配置信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.Config.GetConfig">
+            <summary>
+            获取配置信息 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LWD_DataProcess.Config.ToFA_Type(System.String)">
+                        1.中位值平均滤波
+                        2.卡尔曼滤波
+                        3.加权递推平均滤波
+                        4.限幅滤波
+        </member>
+    </members>
+</doc>

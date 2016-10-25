@@ -64,43 +64,11 @@ namespace LWD_DataProcess
         {
             //读取NodeSettings.xml配置
             Config.GetConfig();
-
             Properties.Settings.Default.DB_Well_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_WellInfo;
-            Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_ChartInfo;
+            Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" +Properties.Settings.Default.DBPath_ChartInfo;
             WellHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
             ChartHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
         }
-
-        #region 井眼校正
-
-        #endregion
-
-        #region 树形结构
-
-        #endregion
-        #region 介电常数
-        #endregion
-        #region 围岩校正
-        #endregion
-        #region 侵入校正
-        #endregion
-        #region 各向异性
-        #endregion
-        #region 控件定义
-        private void radioButton_Borehole1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton_Borehole1.Checked)
-                numericUpDown_Borehole.Enabled = true;
-            else numericUpDown_Borehole.Enabled = false;
-        }
-
-        private void radioButton_Borehole2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton_Borehole2.Checked)
-                button_LoadBorehole.Enabled = true;
-            else button_LoadBorehole.Enabled = false;
-        }
-        #endregion
 
 
 
@@ -128,32 +96,13 @@ namespace LWD_DataProcess
             {
                 Properties.Settings.Default.ChartFolderPath=openFile_BindChart.FileName;//XML的节点赋值
                 openFile_BindChart.InitialDirectory = Properties.Settings.Default.ChartFolderPath;//默认路径赋值
-
                 OpenChart();//打开图版文件
-
                 Thread.Sleep(100);
             }
             BindChart();
             //Properties.Settings.Default.SettingsKey. treeView_WPR.SelectedNode.FullPath;
         }
 
-
-
-        /// <summary>
-        /// 图版索引匹配
-        /// </summary>
-        private void BindChart()
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
         private delegate void OpenDelegate();
         /// <summary>
         /// 打开文件，线程托管
@@ -173,20 +122,28 @@ namespace LWD_DataProcess
 
         void openChart()
         {
-            FileStream fs = new FileStream(openFile_BindChart.FileName, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs);
-            sr.BaseStream.Seek(0, SeekOrigin.Begin);
-            //ChartIndex = openFile_BindChart.FileName.Split(seperator,StringSplitOptions.RemoveEmptyEntries);//提取图版索引关键字
-            while ((Lines_Chart = sr.ReadLine()) != null)
+            try
             {
-                curLine = Lines_Chart.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
-                if (curLine.Length > 0)
-                    txtSplitter();
+                FileStream fs = new FileStream(openFile_BindChart.FileName, FileMode.Open, FileAccess.Read);
+                StreamReader sr = new StreamReader(fs);
+                sr.BaseStream.Seek(0, SeekOrigin.Begin);
+                //ChartIndex = openFile_BindChart.FileName.Split(seperator,StringSplitOptions.RemoveEmptyEntries);//提取图版索引关键字
+                while ((Lines_Chart = sr.ReadLine()) != null)
+                {
+                    curLine = Lines_Chart.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                    if (curLine.Length > 0)
+                        txtSplitter();
+                }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
         }
 
         /// <summary>
-        /// 图版导出txt文件的字符串截取流处理操作
+        /// 图版导出txt文件的字符串截取流批处理操作
         /// </summary>
         private void txtSplitter()
         {
@@ -199,17 +156,50 @@ namespace LWD_DataProcess
                 }
                 if (Funcs.IsScienceNumber(curLine[0])&& Funcs.IsScienceNumber(curLine[1]))//科学记数法-表达式
                 {
-                    CommonData.Xvalue.Enqueue(curLine[0]);
-                    CommonData.Yvalue.Enqueue(curLine[1]);
+                    CommonData.XValue.Enqueue(Funcs.convertScienceNumber(curLine[0]));//科学计数法转换浮点字符串
+                    CommonData.YValue.Enqueue(Funcs.convertScienceNumber(curLine[1]));
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Debug.WriteLine(ex.Message);
             }
         }
 
+        /// <summary>
+        /// 图版绑定:1.建立索引=>2.导入数据库
+        /// </summary>
+        private void BindChart()
+        {
+                            SQLiteConnection conn=WellHelper.DbConnection;
+                SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
+                SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令  
+                cmd.Transaction = tran;
+            try
+            {
+                WellHelper.Open();
+
+                for (int i = 0; i < CommonData.XValue.Count; i++)
+                {
+                    //设置带参SQL语句 
+                    cmd.CommandText = "insert into ChartData values(@ParameterName, @ParameterValue, @XValue,@YValue)"; 
+                    cmd.Parameters.AddRange(new[] {//添加参数  
+                        new SQLiteParameter("@ParameterName", CommonData._CD.Dequeue_ChartPara()),  
+                        new SQLiteParameter("@ParameterValue", "中国人"),  
+                        new SQLiteParameter("@XValue", "男"),
+                        new SQLiteParameter("@YValue", "男") 
+                    });
+                    cmd.ExecuteNonQuery();//执行查询  
+                }
+                tran.Commit();//提交  
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+                tran.Rollback();//事务回滚
+            }
+        }
         /// <summary>
         /// 取消关联按钮
         /// </summary>
@@ -234,6 +224,36 @@ namespace LWD_DataProcess
                 throw;
             }
         }
+        #region 井眼校正
+
+        #endregion
+        #region 树形结构
+
+        #endregion
+        #region 介电常数
+        #endregion
+        #region 围岩校正
+        #endregion
+        #region 侵入校正
+        #endregion
+        #region 各向异性
+        #endregion
+        #region 控件定义
+        private void radioButton_Borehole1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_Borehole1.Checked)
+                numericUpDown_Borehole.Enabled = true;
+            else numericUpDown_Borehole.Enabled = false;
+        }
+
+        private void radioButton_Borehole2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_Borehole2.Checked)
+                button_LoadBorehole.Enabled = true;
+            else button_LoadBorehole.Enabled = false;
+        }
+        #endregion
+
 
         private void contextMenuStrip_ChartInfo_Opening(object sender, CancelEventArgs e)
         {

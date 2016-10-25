@@ -75,11 +75,11 @@ namespace LWD_DataProcess
         /// <summary>
         /// X坐标字符串
         /// </summary>
-        public static ConcurrentQueue<String> Xvalue { get; set; }
+        public static ConcurrentQueue<String> XValue { get; set; }
         /// <summary>
         /// Y坐标字符串
         /// </summary>
-        public static ConcurrentQueue<String> Yvalue { get; set; }
+        public static ConcurrentQueue<String> YValue { get; set; }
         /// <summary>
         /// 同步锁
         /// </summary>
@@ -92,8 +92,8 @@ namespace LWD_DataProcess
             ChartParaExpression = new ConcurrentQueue<string>();
             ChartPara = new ConcurrentQueue<string>();
             ParaValue = new ConcurrentQueue<string>();
-            Xvalue = new ConcurrentQueue<string>();
-            Yvalue = new ConcurrentQueue<string>();
+            XValue = new ConcurrentQueue<string>();
+            YValue = new ConcurrentQueue<string>();
         }
 
         /// <summary>
@@ -197,6 +197,82 @@ namespace LWD_DataProcess
                 Debug.WriteLine("获取参数表达式"+para_value[0]+"="+para_value[1]);
             }
 
+        }
+        /// <summary>
+        /// ChartPara出队函数
+        /// </summary>
+        /// <returns>返回出队值</returns>
+        public String Dequeue_ChartPara()
+        {
+            try
+            {
+                String result="";
+                if (ChartPara.TryDequeue(out result))
+                    return result;
+                else return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        /// <summary>
+        /// ParaValue出队函数
+        /// </summary>
+        /// <returns>返回出队值</returns>
+        public String Dequeue_ParaValue()
+        {
+            try
+            {
+                String result = "";
+                if (ParaValue.TryDequeue(out result))
+                    return result;
+                else return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        /// <summary>
+        /// XValue出队函数
+        /// </summary>
+        /// <returns>返回出队值</returns>
+        public String Dequeue_XValue()
+        {
+            try
+            {
+                String result = "";
+                if (XValue.TryDequeue(out result))
+                    return result;
+                else return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        /// <summary>
+        /// YValue出队函数
+        /// </summary>
+        /// <returns>返回出队值</returns>
+        public String Dequeue_YValue()
+        {
+            try
+            {
+                String result = "";
+                if (YValue.TryDequeue(out result))
+                    return result;
+                else return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

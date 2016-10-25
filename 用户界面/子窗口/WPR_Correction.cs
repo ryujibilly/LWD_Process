@@ -195,6 +195,7 @@ namespace LWD_DataProcess
                 if (Funcs.IsParameterExpression(curLine[0]))//参数-表达式
                 {
                     CommonData.ChartParaExpression.Enqueue(curLine[0]);
+                    CommonData.getParaValue(curLine[0]);//分解表达式
                 }
                 if (Funcs.IsScienceNumber(curLine[0])&& Funcs.IsScienceNumber(curLine[1]))//科学记数法-表达式
                 {

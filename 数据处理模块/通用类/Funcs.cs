@@ -163,17 +163,17 @@ namespace LWD_DataProcess
         /// </summary>
         /// <param name="str">字符串</param>
         /// <returns>是/否</returns>
-        //public static Boolean IsScienceNumber(String str)
-        //{
-        //    String pattern = @"[+-]?(?!0\d)\d+(\.\d+)?(e-?\d+)?";
-        //    return Regex.IsMatch(str, pattern);
-        //}
         public static Boolean IsScienceNumber(String str)
         {
-            if (str.Contains("e+")|| str.Contains("e-"))
-                return true;
-            else return false;
+            String pattern = @"\d+\.\d+([Ee]-?\d+)?";
+            return Regex.IsMatch(str, pattern);
         }
+        //public static Boolean IsScienceNumber(String str)
+        //{
+        //    if (str.Contains("e+")|| str.Contains("e-"))
+        //        return true;
+        //    else return false;
+        //}
         /// <summary>
         /// 科学计数法转换成小数点计数法
         /// </summary>

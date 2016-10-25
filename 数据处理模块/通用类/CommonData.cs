@@ -149,7 +149,7 @@ namespace LWD_DataProcess
                 System.Diagnostics.Trace.WriteLine(ex.Message);
             }
         }
-        public Boolean getChartParaExpresion()
+        public static Boolean getChartParaExpresion()
         {
             try
             {
@@ -160,7 +160,7 @@ namespace LWD_DataProcess
                 return false;
             }
         }
-        public Boolean getXValue()
+        public static Boolean getXValue()
         {
             try
             {
@@ -171,7 +171,7 @@ namespace LWD_DataProcess
                 return false;
             }
         }
-        public Boolean getYValue()
+        public static Boolean getYValue()
         {
             try
             {
@@ -183,7 +183,7 @@ namespace LWD_DataProcess
             }
 
         }
-        public void getParaValue(String paraExpresion)
+        public static void getParaValue(String paraExpresion)
         {
             String[] para_value = new String[2];
             try

@@ -22,7 +22,7 @@ namespace LWD_DataProcess
         /// <summary>
         /// 断词符号集
         /// </summary>
-        public static readonly String[] seperator = { "\t", " ", "  ", "      ", "       ", "\\", "/", "_" };
+        public readonly String[] seperator = { "\t", " ", "  ", "      ", "       ", "\\", "/", "_" };
         /// <summary>
         /// 测量值文件名
         /// </summary>
@@ -51,7 +51,18 @@ namespace LWD_DataProcess
         /// ReadLine断句数组
         /// </summary>
         private String[] curLine { get; set; }
-
+        /// <summary>
+        /// 当前ChartData的TableName
+        /// </summary>
+        private String curTableName { get; set;}
+        /// <summary>
+        /// 缺省索引集合
+        /// </summary>
+        private String[] DefaultIndexs = {"4.75","400K","36","1","0","介电常数","",null,null};
+        /// <summary>
+        /// 当前索引集合
+        /// </summary>
+        private String[] ChartIndexs { get; set; }
 
         public WPR_Correction()
         {
@@ -66,7 +77,7 @@ namespace LWD_DataProcess
             Properties.Settings.Default.DB_Well_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_WellInfo;
             Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" +Properties.Settings.Default.DBPath_ChartInfo;
             WellHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
-            ChartHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
+            ChartHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
         }
 
 
@@ -93,13 +104,55 @@ namespace LWD_DataProcess
             
             if (openFile_BindChart.ShowDialog(Owner) == DialogResult.OK)
             {
+                ChartIndexs = DefaultIndexs;//清空索引集合
                 Properties.Settings.Default.ChartFolderPath=openFile_BindChart.FileName;//XML的节点赋值
                 openFile_BindChart.InitialDirectory = Properties.Settings.Default.ChartFolderPath;//默认路径赋值
+                //当前绑定图版 ChartData的TableName
+                curTableName = openFile_BindChart.SafeFileName.Trim(".txt".ToCharArray());
+                //创建索引集合
+                CreateIndexs();
                 OpenChart();//打开图版文件
                 Thread.Sleep(100);
             }
             BindChart();
             //Properties.Settings.Default.SettingsKey. treeView_WPR.SelectedNode.FullPath;
+        }
+        /// <summary>
+        /// 生成索引集合
+        /// </summary>
+        private void CreateIndexs()
+        {
+            try
+            {
+                curTableName.Split(this.seperator, StringSplitOptions.RemoveEmptyEntries).CopyTo(ChartIndexs, 0);
+                //ParameterValue
+                if (ChartIndexs[4] != "")
+                    ChartIndexs[6] = ChartIndexs[4];
+                //CorrectionMethod
+                ChartIndexs[5] = ChartIndexs[3];
+                //Distance
+                if (curTableName.Contains("36"))
+                {
+                    ChartIndexs[2] = "36";
+                }
+                else ChartIndexs[2] = "22.5";
+                //AmplitudeRatio\PhaseDifference
+                if (curTableName.Contains("A"))
+                {
+                    ChartIndexs[3] = "1";
+                    ChartIndexs[4] = "0";
+                }
+                else
+                {
+                    ChartIndexs[3] = "0";
+                    ChartIndexs[4] = "1";
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            } 
+
         }
 
         private delegate void OpenDelegate();
@@ -126,7 +179,7 @@ namespace LWD_DataProcess
                 FileStream fs = new FileStream(openFile_BindChart.FileName, FileMode.Open, FileAccess.Read);
                 StreamReader sr = new StreamReader(fs);
                 sr.BaseStream.Seek(0, SeekOrigin.Begin);
-                //ChartIndex = openFile_BindChart.FileName.Split(seperator,StringSplitOptions.RemoveEmptyEntries);//提取图版索引关键字
+                //提取图版索引关键字
                 while ((Lines_Chart = sr.ReadLine()) != null)
                 {
                     curLine = Lines_Chart.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
@@ -164,33 +217,66 @@ namespace LWD_DataProcess
                 Debug.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+        /// 填充ChartInfo表
+        /// </summary>
+        /// <param name="indexs">索引集合</param>
+        public void FillChartInfo(String[] indexs)
+        {
+            SQLiteConnection conn = ChartHelper.DbConnection;
+            SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
+            SQLiteCommand cmd = new SQLiteCommand(conn);
+            cmd.Transaction = tran;
+            try
+            {
+                ChartHelper.Open();
+                cmd.CommandText= "insert into ChartInfo values(@ChartName,@ToolSize,@Frequency,@Distance,@AmplitudeRatio,@PhaseDifference,@CorrectionMethod,@ParameterName)";
+                cmd.Parameters.AddRange(new[] {//添加参数
+                    new SQLiteParameter("@ChartName",curTableName),
+                    new SQLiteParameter("@ToolSize",ChartIndexs[0]),
+                    new SQLiteParameter("@Frequency",ChartIndexs[1]),
+                    new SQLiteParameter("@Distance",ChartIndexs[2]),
+                    new SQLiteParameter("@AmplitudeRatio",ChartIndexs[3]),
+                    new SQLiteParameter("@PhaseDifference",ChartIndexs[4]),
+                    new SQLiteParameter("@CorrectionMethod",ChartIndexs[5]),
+                    new SQLiteParameter("@ParameterName",ChartIndexs[6])
+                });
+                cmd.ExecuteNonQuery();//执行插入
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+                tran.Rollback();//事务回滚
+            }
+        }
 
         /// <summary>
         /// 图版绑定:1.建立索引=>2.导入数据库
         /// </summary>
         private void BindChart()
         {
-                            SQLiteConnection conn=WellHelper.DbConnection;
-                SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
-                SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令  
-                cmd.Transaction = tran;
+            SQLiteConnection conn= ChartHelper.DbConnection;
+            ChartHelper.Create_ChartTable(conn, curTableName);//创建与图版同名的图版表
+            SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
+            SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
+            cmd.Transaction = tran;
             try
             {
-                WellHelper.Open();
-
+                ChartHelper.Open();
                 for (int i = 0; i < CommonData.XValue.Count; i++)
                 {
                     //设置带参SQL语句 
-                    cmd.CommandText = "insert into ChartData values(@ParameterName, @ParameterValue, @XValue,@YValue)"; 
+                    cmd.CommandText = "insert into "+curTableName+" values(@ParameterName, @ParameterValue, @XValue,@YValue)";
                     cmd.Parameters.AddRange(new[] {//添加参数  
-                        new SQLiteParameter("@ParameterName", CommonData._CD.Dequeue_ChartPara()),  
-                        new SQLiteParameter("@ParameterValue", "中国人"),  
-                        new SQLiteParameter("@XValue", "男"),
-                        new SQLiteParameter("@YValue", "男") 
+                        new SQLiteParameter("@ParameterName",CommonData._CD.Dequeue_ChartPara()),
+                        new SQLiteParameter("@ParameterValue",CommonData._CD.Dequeue_ParaValue()),
+                        new SQLiteParameter("@XValue", CommonData._CD.Dequeue_XValue()),
+                        new SQLiteParameter("@YValue",CommonData._CD.Dequeue_XValue())
                     });
-                    cmd.ExecuteNonQuery();//执行查询  
+                    cmd.ExecuteNonQuery();//执行插入
                 }
-                tran.Commit();//提交  
+                tran.Commit();//提交
             }
             catch (Exception ex)
             {

@@ -7,6 +7,7 @@ using System.Data.Common;
 using System.Data.SQLite;
 using System.IO;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace LWD_DataProcess
 {
@@ -194,7 +195,7 @@ namespace LWD_DataProcess
         /// <param name="dbPath">要创建的SQLite数据库文件路径</param> 
         public void CreateDB()
         {
-            if (!System.IO.File.Exists(dbPath))
+            if (!File.Exists(dbPath))
             {
                 // 自动打开
                 if (this.DbConnection == null)
@@ -212,6 +213,35 @@ namespace LWD_DataProcess
                 this.dbCommand.CommandText = "DROP TABLE Demo";
                 this.dbCommand.ExecuteNonQuery();
             }
+        }
+
+        /// <summary>
+        /// 创建SQLite数据库表 
+        /// </summary>
+        /// <param name="con">数据库连接</param>
+        /// <param name="tableName">表名</param>
+        public void Create_ChartTable(SQLiteConnection con,String tableName)
+        {
+            try
+            {
+                // 自动打开
+                if (con == null)
+                {
+                    con.Open();
+                }
+                else if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                this.dbCommand = con.CreateCommand();
+                this.dbCommand.CommandText = "CREATE TABLE" + tableName + "(ID INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL UNIQUE, ParameterName VARCHAR( 30 )  NOT NULL DEFAULT ( '' ), ParameterValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ), XValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ), YValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ) )";
+                this.dbCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
         }
 
         #endregion

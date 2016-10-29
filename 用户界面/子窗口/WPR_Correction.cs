@@ -231,7 +231,7 @@ namespace LWD_DataProcess
             try
             {
                 ChartHelper.Open();
-                cmd.CommandText= "insert into ChartInfo values(@ChartName,@ToolSize,@Frequency,@Distance,@AmplitudeRatio,@PhaseDifference,@CorrectionMethod,@ParameterName,@Spare1,@Spare2)";
+                cmd.CommandText= "insert into ChartInfo values(@ChartName,@ParameterName,@ToolSize,@Frequency,@Distance,@AmplitudeRatio,@PhaseDifference,@CorrectionMethod,@Spare1,@Spare2)";
                 cmd.Parameters.AddRange(new[] {//添加参数
                     new SQLiteParameter("@ChartName",curTableName),
                     new SQLiteParameter("@ParameterName",ChartIndexs[6]),

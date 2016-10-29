@@ -45,7 +45,6 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-            Config.GetConfig();
             Close();
         }
 
@@ -76,6 +75,13 @@ namespace LWD_DataProcess
         private void openFileDialog_WellInfo_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void DBConfig_Load(object sender, EventArgs e)
+        {
+            Config.GetConfig();
+            textBox_Chart.Text = Config.CfgInfo.DBPath_CorrectionChart;
+            textBox_Well.Text = Config.CfgInfo.DBPath_Well;
         }
     }
 }

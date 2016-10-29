@@ -74,6 +74,7 @@ namespace LWD_DataProcess
         {
             //读取NodeSettings.xml配置
             Config.GetConfig();
+
             Properties.Settings.Default.DB_Well_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_WellInfo;
             Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" +Properties.Settings.Default.DBPath_ChartInfo;
             WellHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
@@ -221,7 +222,7 @@ namespace LWD_DataProcess
         /// 填充ChartInfo表
         /// </summary>
         /// <param name="indexs">索引集合</param>
-        public void FillChartInfo(String[] indexs)
+        public void FillChartInfo()
         {
             SQLiteConnection conn = ChartHelper.DbConnection;
             SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
@@ -230,18 +231,21 @@ namespace LWD_DataProcess
             try
             {
                 ChartHelper.Open();
-                cmd.CommandText= "insert into ChartInfo values(@ChartName,@ToolSize,@Frequency,@Distance,@AmplitudeRatio,@PhaseDifference,@CorrectionMethod,@ParameterName)";
+                cmd.CommandText= "insert into ChartInfo values(@ChartName,@ToolSize,@Frequency,@Distance,@AmplitudeRatio,@PhaseDifference,@CorrectionMethod,@ParameterName,@Spare1,@Spare2)";
                 cmd.Parameters.AddRange(new[] {//添加参数
                     new SQLiteParameter("@ChartName",curTableName),
+                    new SQLiteParameter("@ParameterName",ChartIndexs[6]),
                     new SQLiteParameter("@ToolSize",ChartIndexs[0]),
                     new SQLiteParameter("@Frequency",ChartIndexs[1]),
                     new SQLiteParameter("@Distance",ChartIndexs[2]),
                     new SQLiteParameter("@AmplitudeRatio",ChartIndexs[3]),
                     new SQLiteParameter("@PhaseDifference",ChartIndexs[4]),
                     new SQLiteParameter("@CorrectionMethod",ChartIndexs[5]),
-                    new SQLiteParameter("@ParameterName",ChartIndexs[6])
+                    new SQLiteParameter("@Spare1",null),
+                    new SQLiteParameter("@Spare2", null)
                 });
                 cmd.ExecuteNonQuery();//执行插入
+                tran.Commit();
             }
             catch (Exception ex)
             {
@@ -256,19 +260,22 @@ namespace LWD_DataProcess
         /// </summary>
         private void BindChart()
         {
+            FillChartInfo();
             SQLiteConnection conn= ChartHelper.DbConnection;
-            ChartHelper.Create_ChartTable(conn, curTableName);//创建与图版同名的图版表
+            if (!ChartHelper.IsExistTable(curTableName))//创建与图版同名的图版表
+                ChartHelper.Create_ChartTable(conn, curTableName);
             SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
             SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
             cmd.Transaction = tran;
             try
             {
                 ChartHelper.Open();
-                for (int i = 0; i < CommonData.XValue.Count; i++)
+                for (int i = 0; i < CommonData.XValue.Count; i++)//count?
                 {
                     //设置带参SQL语句 
-                    cmd.CommandText = "insert into "+curTableName+" values(@ParameterName, @ParameterValue, @XValue,@YValue)";
-                    cmd.Parameters.AddRange(new[] {//添加参数  
+                    cmd.CommandText = "insert into ["+curTableName+"] values(@ID,@ParameterName, @ParameterValue, @XValue,@YValue)";
+                    cmd.Parameters.AddRange(new[] {//添加参数
+                        new SQLiteParameter("@ID",i),
                         new SQLiteParameter("@ParameterName",CommonData._CD.Dequeue_ChartPara()),
                         new SQLiteParameter("@ParameterValue",CommonData._CD.Dequeue_ParaValue()),
                         new SQLiteParameter("@XValue", CommonData._CD.Dequeue_XValue()),

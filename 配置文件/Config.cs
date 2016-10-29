@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -43,10 +44,10 @@ namespace LWD_DataProcess
         /// 配置信息是否有效
         /// </summary>
         public bool IsValue = false;
-        /// <summary>
-        /// 单个数据库文件路径
-        /// </summary>
-        public String DB_PATH { get; set; }
+        ///// <summary>
+        ///// 单个数据库文件路径
+        ///// </summary>
+        //public String DB_PATH { get; set; }
         /// <summary>
         /// 井信息数据库文件路径
         /// </summary>
@@ -100,9 +101,9 @@ namespace LWD_DataProcess
                 XmlElement eleIT = doc.CreateElement("IT");
                 XmlText txtIT = doc.CreateTextNode(CfgInfo.IT.ToString());
 
-                //数据库文件地址
-                XmlElement eleDB_PATH = doc.CreateElement("DB_PATH");
-                XmlText txtDB_PATH = doc.CreateTextNode(CfgInfo.DB_PATH.ToString());
+                ////数据库文件地址
+                //XmlElement eleDB_PATH = doc.CreateElement("DB_PATH");
+                //XmlText txtDB_PATH = doc.CreateTextNode(CfgInfo.DB_PATH.ToString());
 
                 //测井存档数据库文件地址
                 XmlElement eleDBPath_Well = doc.CreateElement("DBPath_Well");
@@ -129,8 +130,8 @@ namespace LWD_DataProcess
                 newElem.AppendChild(eleIT);
                 newElem.LastChild.AppendChild(txtIT);
 
-                newElem.AppendChild(eleDB_PATH);
-                newElem.LastChild.AppendChild(txtDB_PATH);
+                //newElem.AppendChild(eleDB_PATH);
+                //newElem.LastChild.AppendChild(txtDB_PATH);
 
                 newElem.AppendChild(eleDBPath_Well);
                 newElem.LastChild.AppendChild(txtDBPath_Well);
@@ -146,8 +147,9 @@ namespace LWD_DataProcess
 
                 bIsSave = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 bIsSave = false;
             }
             return bIsSave;
@@ -170,7 +172,7 @@ namespace LWD_DataProcess
                 CfgInfo.IT = ToIns_Type(doc.SelectSingleNode("//IT").InnerText);
                 CfgInfo.CT = ToCOI_Type(doc.SelectSingleNode("//CT").InnerText);
                 CfgInfo.FT = ToFA_Type(doc.SelectSingleNode("//FT").InnerText);
-                CfgInfo.DB_PATH = doc.SelectSingleNode("//DB_PATH").InnerText;
+                //CfgInfo.DB_PATH = doc.SelectSingleNode("//DB_PATH").InnerText;
                 CfgInfo.DBPath_Well = doc.SelectSingleNode("//DBPath_Well").InnerText;
                 CfgInfo.DBPath_CorrectionChart = doc.SelectSingleNode("//DBPath_CorrectionChart").InnerText;
 
@@ -181,22 +183,21 @@ namespace LWD_DataProcess
                     XmlNodeList xmlnode = xmldoc.SelectSingleNode("Settings").ChildNodes;
                     foreach (XmlElement element in xmlnode)
                     {
-                        if (element.Attributes["purpose"].Value == "driller")
-                        {
-                            //
-                            CfgInfo.DeviceSN = element.Attributes["deviceSN"].Value;
-                            CfgInfo.NetKey = element.Attributes["netKey"].Value;
-                            CfgInfo.DB_PATH = element.Attributes["dbPath"].Value;
-                            CfgInfo.DB_PATH = element.Attributes["dbPath_Well"].Value;
-                            CfgInfo.DB_PATH = element.Attributes["dbPath_CorrectionChart"].Value;
-                            break;
-                        }
+                        CfgInfo.DeviceSN = element.Attributes["deviceSN"].Value;
+                        CfgInfo.NetKey = element.Attributes["netKey"].Value;
+                        //CfgInfo.DB_PATH = element.Attributes["dbPath"].Value;
+                        CfgInfo.DBPath_Well = element.Attributes["dbPath_Well"].Value;
+                        CfgInfo.DBPath_CorrectionChart = element.Attributes["dbPath_CorrectionChart"].Value;
+                        Properties.Settings.Default.DBPath_ChartInfo = CfgInfo.DBPath_CorrectionChart;
+                        Properties.Settings.Default.DBPath_WellInfo = CfgInfo.DBPath_Well;
+                        break;
                     }
                 }
                 bIsGet = true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 bIsGet = false;          
             }
             return bIsGet;

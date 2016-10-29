@@ -233,9 +233,9 @@ namespace LWD_DataProcess
                 {
                     con.Open();
                 }
-                this.dbCommand = con.CreateCommand();
-                this.dbCommand.CommandText = "CREATE TABLE" + tableName + "(ID INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL UNIQUE, ParameterName VARCHAR( 30 )  NOT NULL DEFAULT ( '' ), ParameterValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ), XValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ), YValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ) )";
-                this.dbCommand.ExecuteNonQuery();
+                dbCommand = con.CreateCommand();
+                dbCommand.CommandText = "CREATE TABLE [" + tableName + "] (ID INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL UNIQUE, ParameterName VARCHAR( 30 )  NOT NULL DEFAULT ( '' ), ParameterValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ), XValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ), YValue REAL( 15 ) NOT NULL DEFAULT ( -999.25 ) )";
+                dbCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

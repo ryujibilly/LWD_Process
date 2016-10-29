@@ -120,6 +120,7 @@
             this.Controls.Add(this.button_WellInfoDB);
             this.Name = "DBConfig";
             this.Text = "数据库配置";
+            this.Load += new System.EventHandler(this.DBConfig_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

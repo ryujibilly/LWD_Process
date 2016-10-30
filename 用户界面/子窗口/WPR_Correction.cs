@@ -15,6 +15,7 @@ namespace LWD_DataProcess
 {
     public partial class WPR_Correction : Form
     {
+        private String[] EmptyString6 = new String[6];
         /// <summary>
         /// 静态SQLiteConnectionPool接口实例
         /// </summary>
@@ -212,6 +213,10 @@ namespace LWD_DataProcess
                         txtSplitter();
                 }
                 ChartLength = CommonData.XValue.Count;
+
+                fs.Flush();
+                sr.Close();
+                fs.Close();
             }
             catch (Exception ex)
             {
@@ -351,7 +356,6 @@ namespace LWD_DataProcess
         private void button_Load_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
-            Properties.Settings.Default.ToolSize = comboBox_ToolSize.SelectedText.Trim();
             comboBox_ToolSize.Enabled = false;
             textBox_WellName.Enabled = false;
             textBox_Folder.Enabled = false;
@@ -388,6 +392,9 @@ namespace LWD_DataProcess
                     if (curRawLine.Length > 0)
                         RawSplitter(i++);
                 }
+                fs.Flush();
+                sr.Close();
+                fs.Close();
             }
             catch (Exception ex)
             {
@@ -400,13 +407,26 @@ namespace LWD_DataProcess
         private void RawSplitter(int count)
         {
             if (count == 1)
-                RawCurveNames = curRawLine;
+                RawCurveNames = curRawLine;//列名集合
             if(count>1&&curRawLine.Length>9)
             {
-
+                String[] temp = EmptyString6;
+                //日期时间（年月日/时分秒）
+                temp = curRawLine[0].Split(new String[] { "-",":", " " }, StringSplitOptions.RemoveEmptyEntries);
+                CommonData.Date_Time.Enqueue(temp[0] + temp[1] + temp[2] + "\\" + temp[3] + temp[4] + temp[5]);
+                //深度
+                CommonData.Depth.Enqueue(curRawLine[1]);
+                //8条电阻率曲线
+                get8ResCurve();
             }
         }
+        /// <summary>
+        /// 获得八条电阻率曲线
+        /// </summary>
+        void get8ResCurve()
+        {
 
+        }
         #endregion
 
         #region 井眼校正
@@ -506,6 +526,7 @@ namespace LWD_DataProcess
         private void comboBox_ToolSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             ToolSize = comboBox_ToolSize.Text.Trim();
+            Properties.Settings.Default.ToolSize = ToolSize;
         }
     }
 }

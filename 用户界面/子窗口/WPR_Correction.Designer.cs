@@ -463,7 +463,6 @@
             this.button_Load = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button_SelectFolder = new System.Windows.Forms.Button();
-            this.comboBox_ToolSize = new System.Windows.Forms.ComboBox();
             this.checkBox_Save2Root = new System.Windows.Forms.CheckBox();
             this.label_ToolSize = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -518,11 +517,13 @@
             this.contextMenuStrip_Tree = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_Expand = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Collapse = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog_WPR = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label13 = new System.Windows.Forms.Label();
             this.textBox_WellName = new System.Windows.Forms.TextBox();
+            this.comboBox_ToolSize = new System.Windows.Forms.ComboBox();
             this.textBox_Folder = new System.Windows.Forms.TextBox();
+            this.openFileDialog_WPR = new System.Windows.Forms.OpenFileDialog();
             this.openFile_BindChart = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStrip_ChartInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -587,6 +588,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.textBox_WellName);
             this.groupBox1.Controls.Add(this.button_Load);
             this.groupBox1.Controls.Add(this.label3);
@@ -631,18 +633,6 @@
             this.button_SelectFolder.Text = "选择原始数据文件";
             this.button_SelectFolder.UseVisualStyleBackColor = true;
             this.button_SelectFolder.Click += new System.EventHandler(this.button_SelectFolder_Click);
-            // 
-            // comboBox_ToolSize
-            // 
-            this.comboBox_ToolSize.FormattingEnabled = true;
-            this.comboBox_ToolSize.Items.AddRange(new object[] {
-            "6.75inch",
-            "4.75inch"});
-            this.comboBox_ToolSize.Location = new System.Drawing.Point(93, 98);
-            this.comboBox_ToolSize.Name = "comboBox_ToolSize";
-            this.comboBox_ToolSize.Size = new System.Drawing.Size(152, 21);
-            this.comboBox_ToolSize.TabIndex = 3;
-            this.comboBox_ToolSize.Text = "6.75inch";
             // 
             // checkBox_Save2Root
             // 
@@ -1863,11 +1853,14 @@
             this.toolStripMenuItem_Collapse.Text = "全部折叠";
             this.toolStripMenuItem_Collapse.Click += new System.EventHandler(this.toolStripMenuItem_Collapse_Click);
             // 
-            // openFileDialog_WPR
+            // label13
             // 
-            this.openFileDialog_WPR.FileName = global::LWD_DataProcess.Properties.Settings.Default.RawFile;
-            this.openFileDialog_WPR.Filter = "测量值文件(*.tmf)|*.tmf|文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";
-            this.openFileDialog_WPR.Title = "选择WPR测量值文件";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(195, 101);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "inch";
             // 
             // textBox_WellName
             // 
@@ -1879,6 +1872,20 @@
             this.textBox_WellName.Text = global::LWD_DataProcess.Properties.Settings.Default.WellName;
             this.textBox_WellName.TextChanged += new System.EventHandler(this.textBox_WellName_TextChanged);
             // 
+            // comboBox_ToolSize
+            // 
+            this.comboBox_ToolSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "ToolSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBox_ToolSize.FormattingEnabled = true;
+            this.comboBox_ToolSize.Items.AddRange(new object[] {
+            "6.75",
+            "4.75"});
+            this.comboBox_ToolSize.Location = new System.Drawing.Point(93, 98);
+            this.comboBox_ToolSize.Name = "comboBox_ToolSize";
+            this.comboBox_ToolSize.Size = new System.Drawing.Size(78, 21);
+            this.comboBox_ToolSize.TabIndex = 3;
+            this.comboBox_ToolSize.Text = global::LWD_DataProcess.Properties.Settings.Default.ToolSize;
+            this.comboBox_ToolSize.SelectedIndexChanged += new System.EventHandler(this.comboBox_ToolSize_SelectedIndexChanged);
+            // 
             // textBox_Folder
             // 
             this.textBox_Folder.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "RawFile", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1888,6 +1895,12 @@
             this.textBox_Folder.Size = new System.Drawing.Size(380, 22);
             this.textBox_Folder.TabIndex = 1;
             this.textBox_Folder.Text = global::LWD_DataProcess.Properties.Settings.Default.RawFile;
+            // 
+            // openFileDialog_WPR
+            // 
+            this.openFileDialog_WPR.FileName = global::LWD_DataProcess.Properties.Settings.Default.RawFile;
+            this.openFileDialog_WPR.Filter = "测量值文件(*.tmf)|*.tmf|文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";
+            this.openFileDialog_WPR.Title = "选择WPR测量值文件";
             // 
             // openFile_BindChart
             // 
@@ -2012,5 +2025,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.BindingSource bindingSource;
+        private System.Windows.Forms.Label label13;
     }
 }

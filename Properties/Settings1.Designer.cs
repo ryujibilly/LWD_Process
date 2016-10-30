@@ -106,5 +106,17 @@ namespace LWD_DataProcess.Properties {
                 this["WellName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6.75")]
+        public string ToolSize {
+            get {
+                return ((string)(this["ToolSize"]));
+            }
+            set {
+                this["ToolSize"] = value;
+            }
+        }
     }
 }

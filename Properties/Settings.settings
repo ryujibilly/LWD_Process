@@ -23,5 +23,8 @@
     <Setting Name="WellName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ToolSize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">6.75</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

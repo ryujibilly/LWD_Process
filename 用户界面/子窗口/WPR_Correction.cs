@@ -79,7 +79,11 @@ namespace LWD_DataProcess
         /// <summary>
         /// 井名
         /// </summary>
-        private String WellName { get; set; }
+        public String WellName { get; set; }
+        /// <summary>
+        /// 钻铤尺寸
+        /// </summary>
+        public String ToolSize { get; set; }
 
         public WPR_Correction()
         {
@@ -347,6 +351,11 @@ namespace LWD_DataProcess
         private void button_Load_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
+            Properties.Settings.Default.ToolSize = comboBox_ToolSize.SelectedText.Trim();
+            comboBox_ToolSize.Enabled = false;
+            textBox_WellName.Enabled = false;
+            textBox_Folder.Enabled = false;
+            OpenRaw();
         }
         /// <summary>
         /// 打开文件，线程托管
@@ -394,8 +403,8 @@ namespace LWD_DataProcess
                 RawCurveNames = curRawLine;
             if(count>1&&curRawLine.Length>9)
             {
-            }
 
+            }
         }
 
         #endregion
@@ -492,6 +501,11 @@ namespace LWD_DataProcess
         private void textBox_WellName_TextChanged(object sender, EventArgs e)
         {
             WellName = textBox_WellName.Text.Trim();
+        }
+
+        private void comboBox_ToolSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToolSize = comboBox_ToolSize.Text.Trim();
         }
     }
 }

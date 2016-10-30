@@ -94,5 +94,17 @@ namespace LWD_DataProcess.Properties {
                 this["DB_Chart_ConnectionString"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WellName {
+            get {
+                return ((string)(this["WellName"]));
+            }
+            set {
+                this["WellName"] = value;
+            }
+        }
     }
 }

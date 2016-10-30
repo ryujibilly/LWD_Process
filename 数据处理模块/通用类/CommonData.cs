@@ -63,13 +63,21 @@ namespace LWD_DataProcess
         /// <summary>
         /// 参数表达式字符串
         /// </summary>
-        public static ConcurrentQueue<String> ChartParaExpression { get; set; }
+        public static String ChartParaExpression { get; set; }
         /// <summary>
-        /// 图版参数名称
+        /// 当前图版参数名称
+        /// </summary>
+        public static String curPara { get; set; }
+        /// <summary>
+        /// 图版参数名队列
         /// </summary>
         public static ConcurrentQueue<String> ChartPara { get; set; }
         /// <summary>
-        /// 图版参数数值
+        /// 当前图版参数数值
+        /// </summary>
+        public static String curValue { get; set; }
+        /// <summary>
+        /// 图版参数值队列
         /// </summary>
         public static ConcurrentQueue<String> ParaValue { get; set; }
         /// <summary>
@@ -80,6 +88,11 @@ namespace LWD_DataProcess
         /// Y坐标字符串
         /// </summary>
         public static ConcurrentQueue<String> YValue { get; set; }
+
+        public static ConcurrentQueue<String> DateTime { get; set; }
+        public static ConcurrentQueue<String> Depth { get; set; }
+
+        public static String[] para_value = {null,null };
         /// <summary>
         /// 同步锁
         /// </summary>
@@ -89,7 +102,9 @@ namespace LWD_DataProcess
 
         private CommonData()
         {
-            ChartParaExpression = new ConcurrentQueue<string>();
+            ChartParaExpression = "";
+            curPara = "";
+            curValue = "";
             ChartPara = new ConcurrentQueue<string>();
             ParaValue = new ConcurrentQueue<string>();
             XValue = new ConcurrentQueue<string>();
@@ -183,20 +198,22 @@ namespace LWD_DataProcess
             }
 
         }
+        /// <summary>
+        /// 分解参数表达式
+        /// </summary>
+        /// <param name="paraExpresion"></param>
         public static void getParaValue(String paraExpresion)
         {
-            String[] para_value = new String[2];
             try
             {
-                para_value=paraExpresion.Split(sep, StringSplitOptions.RemoveEmptyEntries);
-                ChartPara.Enqueue(para_value[0]);
-                ChartPara.Enqueue(para_value[1]);
+                para_value = paraExpresion.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+                curPara=para_value[0];
+                curValue=para_value[1];
             }
             catch (Exception)
             {
-                Debug.WriteLine("获取参数表达式"+para_value[0]+"="+para_value[1]);
+                Debug.WriteLine("获取参数表达式:" + para_value[0] + "=" + para_value[1]);
             }
-
         }
         /// <summary>
         /// ChartPara出队函数
@@ -206,15 +223,15 @@ namespace LWD_DataProcess
         {
             try
             {
-                String result="";
+                String result = "";
                 if (ChartPara.TryDequeue(out result))
                     return result;
-                else return null;
+                else return "";
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return null;
+                return "";
             }
         }
         /// <summary>
@@ -228,12 +245,12 @@ namespace LWD_DataProcess
                 String result = "";
                 if (ParaValue.TryDequeue(out result))
                     return result;
-                else return null;
+                else return "";
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return null;
+                return "";
             }
         }
         /// <summary>
@@ -247,12 +264,12 @@ namespace LWD_DataProcess
                 String result = "";
                 if (XValue.TryDequeue(out result))
                     return result;
-                else return null;
+                else return "";
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return null;
+                return "";
             }
         }
         /// <summary>
@@ -266,12 +283,12 @@ namespace LWD_DataProcess
                 String result = "";
                 if (YValue.TryDequeue(out result))
                     return result;
-                else return null;
+                else return "";
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return null;
+                return "";
             }
         }
     }

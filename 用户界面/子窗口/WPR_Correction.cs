@@ -48,9 +48,18 @@ namespace LWD_DataProcess
         /// </summary>
         private String Lines_Data { get; set; }
         /// <summary>
-        /// ReadLine断句数组
+        /// OpenChart()的ReadLine断句数组
         /// </summary>
         private String[] curLine { get; set; }
+        /// <summary>
+        /// OpenRaw() 的ReadLine断句数组
+        /// </summary>
+        private String[] curRawLine { get; set; }
+        /// <summary>
+        /// 原始数据曲线名称集合
+        /// </summary>
+
+        private String[] RawCurveNames { get; set; }
         /// <summary>
         /// 当前ChartData的TableName
         /// </summary>
@@ -63,6 +72,14 @@ namespace LWD_DataProcess
         /// 当前索引集合
         /// </summary>
         private String[] ChartIndexs { get; set; }
+        /// <summary>
+        /// 图版文件行数
+        /// </summary>
+        private int ChartLength { get; set; }
+        /// <summary>
+        /// 井名
+        /// </summary>
+        private String WellName { get; set; }
 
         public WPR_Correction()
         {
@@ -74,7 +91,6 @@ namespace LWD_DataProcess
         {
             //读取NodeSettings.xml配置
             Config.GetConfig();
-
             Properties.Settings.Default.DB_Well_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_WellInfo;
             Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" +Properties.Settings.Default.DBPath_ChartInfo;
             WellHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
@@ -82,7 +98,11 @@ namespace LWD_DataProcess
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_SelectFolder_Click(object sender, EventArgs e)
         {
             openFileDialog_WPR.Filter = "测量值文件(*.tmf)|*.tmf|文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";
@@ -90,6 +110,7 @@ namespace LWD_DataProcess
             {
                 FileName_WellData = openFileDialog_WPR.FileName;
                 textBox_Folder.Text = FileName_WellData;
+                Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
             }
             Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
         }
@@ -114,9 +135,8 @@ namespace LWD_DataProcess
                 CreateIndexs();
                 OpenChart();//打开图版文件
                 Thread.Sleep(100);
+                BindChart();
             }
-            BindChart();
-            //Properties.Settings.Default.SettingsKey. treeView_WPR.SelectedNode.FullPath;
         }
         /// <summary>
         /// 生成索引集合
@@ -183,16 +203,16 @@ namespace LWD_DataProcess
                 //提取图版索引关键字
                 while ((Lines_Chart = sr.ReadLine()) != null)
                 {
-                    curLine = Lines_Chart.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                    curLine = Lines_Chart.Split(this.seperator, StringSplitOptions.RemoveEmptyEntries);
                     if (curLine.Length > 0)
                         txtSplitter();
                 }
+                ChartLength = CommonData.XValue.Count;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
-
         }
 
         /// <summary>
@@ -204,11 +224,13 @@ namespace LWD_DataProcess
             {
                 if (Funcs.IsParameterExpression(curLine[0]))//参数-表达式
                 {
-                    CommonData.ChartParaExpression.Enqueue(curLine[0]);
+                    CommonData.ChartParaExpression=curLine[0];
                     CommonData.getParaValue(curLine[0]);//分解表达式
                 }
                 if (Funcs.IsScienceNumber(curLine[0])&& Funcs.IsScienceNumber(curLine[1]))//科学记数法-表达式
                 {
+                    CommonData.ChartPara.Enqueue(CommonData.curPara);//保证参数列和数据列等长
+                    CommonData.ParaValue.Enqueue(CommonData.curValue);
                     CommonData.XValue.Enqueue(Funcs.convertScienceNumber(curLine[0]));//科学计数法转换浮点字符串
                     CommonData.YValue.Enqueue(Funcs.convertScienceNumber(curLine[1]));
                 }
@@ -225,14 +247,14 @@ namespace LWD_DataProcess
         public void FillChartInfo()
         {
             SQLiteConnection conn = ChartHelper.DbConnection;
-            SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
-            SQLiteCommand cmd = new SQLiteCommand(conn);
-            cmd.Transaction = tran;
+            SQLiteTransaction tran1 = conn.BeginTransaction();//实例化事务  
+            SQLiteCommand cmd1 = new SQLiteCommand(conn);
+            cmd1.Transaction = tran1;
             try
             {
                 ChartHelper.Open();
-                cmd.CommandText= "insert into ChartInfo values(@ChartName,@ParameterName,@ToolSize,@Frequency,@Distance,@AmplitudeRatio,@PhaseDifference,@CorrectionMethod,@Spare1,@Spare2)";
-                cmd.Parameters.AddRange(new[] {//添加参数
+                cmd1.CommandText= "insert into ChartInfo values(@ChartName,@ParameterName,@ToolSize,@Frequency,@Distance,@AmplitudeRatio,@PhaseDifference,@CorrectionMethod,@Spare1,@Spare2)";
+                cmd1.Parameters.AddRange(new[] {//添加参数
                     new SQLiteParameter("@ChartName",curTableName),
                     new SQLiteParameter("@ParameterName",ChartIndexs[6]),
                     new SQLiteParameter("@ToolSize",ChartIndexs[0]),
@@ -244,14 +266,14 @@ namespace LWD_DataProcess
                     new SQLiteParameter("@Spare1",null),
                     new SQLiteParameter("@Spare2", null)
                 });
-                cmd.ExecuteNonQuery();//执行插入
-                tran.Commit();
+                cmd1.ExecuteNonQuery();//执行插入
+                tran1.Commit();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                MessageBox.Show(ex.Message);
-                tran.Rollback();//事务回滚
+                MessageBox.Show("该图版已关联！");
+                tran1.Rollback();//事务回滚
             }
         }
 
@@ -264,32 +286,32 @@ namespace LWD_DataProcess
             SQLiteConnection conn= ChartHelper.DbConnection;
             if (!ChartHelper.IsExistTable(curTableName))//创建与图版同名的图版表
                 ChartHelper.Create_ChartTable(conn, curTableName);
-            SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
-            SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
-            cmd.Transaction = tran;
+            SQLiteTransaction tran2 = conn.BeginTransaction();//实例化事务  
+            SQLiteCommand cmd2 = new SQLiteCommand(conn);//实例化SQL命令
+            cmd2.Transaction = tran2;
             try
             {
                 ChartHelper.Open();
-                for (int i = 0; i < CommonData.XValue.Count; i++)//count?
+                for (int i = 0; i <ChartLength; i++)//
                 {
                     //设置带参SQL语句 
-                    cmd.CommandText = "insert into ["+curTableName+"] values(@ID,@ParameterName, @ParameterValue, @XValue,@YValue)";
-                    cmd.Parameters.AddRange(new[] {//添加参数
+                    cmd2.CommandText = "insert into ["+curTableName+"] values(@ID,@ParameterName, @ParameterValue, @XValue,@YValue)";
+                    cmd2.Parameters.AddRange(new[] {//添加参数
                         new SQLiteParameter("@ID",i),
                         new SQLiteParameter("@ParameterName",CommonData._CD.Dequeue_ChartPara()),
-                        new SQLiteParameter("@ParameterValue",CommonData._CD.Dequeue_ParaValue()),
-                        new SQLiteParameter("@XValue", CommonData._CD.Dequeue_XValue()),
-                        new SQLiteParameter("@YValue",CommonData._CD.Dequeue_XValue())
+                        new SQLiteParameter("@ParameterValue", Double.Parse(CommonData._CD.Dequeue_ParaValue())),
+                        new SQLiteParameter("@XValue", Double.Parse(CommonData._CD.Dequeue_XValue())),
+                        new SQLiteParameter("@YValue",Double.Parse(CommonData._CD.Dequeue_YValue()))
                     });
-                    cmd.ExecuteNonQuery();//执行插入
+                    cmd2.ExecuteNonQuery();//执行插入
                 }
-                tran.Commit();//提交
+                tran2.Commit();//提交
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 MessageBox.Show(ex.Message);
-                tran.Rollback();//事务回滚
+                tran2.Rollback();//事务回滚
             }
         }
         /// <summary>
@@ -316,6 +338,68 @@ namespace LWD_DataProcess
                 throw;
             }
         }
+        #region 载入原始数据
+        /// <summary>
+        /// 加载原始数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_Load_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
+        }
+        /// <summary>
+        /// 打开文件，线程托管
+        /// </summary>
+        private void OpenRaw()
+        {
+            if (this.InvokeRequired)
+            {
+                OpenDelegate openRaw = new OpenDelegate(OpenRaw);
+                this.BeginInvoke(openRaw);
+            }
+            else
+            {
+                openRaw();
+            }
+        }
+
+        void openRaw()
+        {
+            try
+            {
+                FileStream fs = new FileStream(openFileDialog_WPR.FileName, FileMode.Open, FileAccess.Read);
+                StreamReader sr = new StreamReader(fs);
+                sr.BaseStream.Seek(0, SeekOrigin.Begin);
+                int i = 0;
+                //提取图版索引关键字
+                while ((Lines_Data = sr.ReadLine()) != null)
+                {
+                    curRawLine = Lines_Data.Split(new String[]{ "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (curRawLine.Length > 0)
+                        RawSplitter(i++);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+        /// <summary>
+        /// 原始数据字符串截取流处理
+        /// </summary>
+        private void RawSplitter(int count)
+        {
+            if (count == 1)
+                RawCurveNames = curRawLine;
+            if(count>1&&curRawLine.Length>9)
+            {
+            }
+
+        }
+
+        #endregion
+
         #region 井眼校正
 
         #endregion
@@ -402,5 +486,12 @@ namespace LWD_DataProcess
             Properties.Settings.Default.Reload();
         }
         #endregion
+
+
+
+        private void textBox_WellName_TextChanged(object sender, EventArgs e)
+        {
+            WellName = textBox_WellName.Text.Trim();
+        }
     }
 }

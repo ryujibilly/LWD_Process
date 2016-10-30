@@ -460,7 +460,6 @@
             this.ToolStripMenuItem_ExpandNode = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_CollapseNode = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button_Load = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button_SelectFolder = new System.Windows.Forms.Button();
@@ -522,6 +521,7 @@
             this.openFileDialog_WPR = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox_WellName = new System.Windows.Forms.TextBox();
             this.textBox_Folder = new System.Windows.Forms.TextBox();
             this.openFile_BindChart = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStrip_ChartInfo.SuspendLayout();
@@ -587,7 +587,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox_WellName);
             this.groupBox1.Controls.Add(this.button_Load);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.button_SelectFolder);
@@ -603,13 +603,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "工程设置";
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(93, 70);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(152, 22);
-            this.textBox3.TabIndex = 5;
-            // 
             // button_Load
             // 
             this.button_Load.Location = new System.Drawing.Point(276, 83);
@@ -618,6 +611,7 @@
             this.button_Load.TabIndex = 4;
             this.button_Load.Text = "加  载";
             this.button_Load.UseVisualStyleBackColor = true;
+            this.button_Load.Click += new System.EventHandler(this.button_Load_Click);
             // 
             // label3
             // 
@@ -634,7 +628,7 @@
             this.button_SelectFolder.Name = "button_SelectFolder";
             this.button_SelectFolder.Size = new System.Drawing.Size(160, 21);
             this.button_SelectFolder.TabIndex = 3;
-            this.button_SelectFolder.Text = "选择测井原始数据文件";
+            this.button_SelectFolder.Text = "选择原始数据文件";
             this.button_SelectFolder.UseVisualStyleBackColor = true;
             this.button_SelectFolder.Click += new System.EventHandler(this.button_SelectFolder_Click);
             // 
@@ -1871,9 +1865,19 @@
             // 
             // openFileDialog_WPR
             // 
-            this.openFileDialog_WPR.FileName = "FileName_WPR";
+            this.openFileDialog_WPR.FileName = global::LWD_DataProcess.Properties.Settings.Default.RawFile;
             this.openFileDialog_WPR.Filter = "测量值文件(*.tmf)|*.tmf|文本文件(*.txt)|*.txt|所有文件(*.*)|*.*";
             this.openFileDialog_WPR.Title = "选择WPR测量值文件";
+            // 
+            // textBox_WellName
+            // 
+            this.textBox_WellName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "WellName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox_WellName.Location = new System.Drawing.Point(93, 70);
+            this.textBox_WellName.Name = "textBox_WellName";
+            this.textBox_WellName.Size = new System.Drawing.Size(152, 22);
+            this.textBox_WellName.TabIndex = 5;
+            this.textBox_WellName.Text = global::LWD_DataProcess.Properties.Settings.Default.WellName;
+            this.textBox_WellName.TextChanged += new System.EventHandler(this.textBox_WellName_TextChanged);
             // 
             // textBox_Folder
             // 
@@ -1982,7 +1986,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_CancelBind;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_WellName;
         private System.Windows.Forms.OpenFileDialog openFile_BindChart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Tree;

@@ -111,6 +111,7 @@ namespace LWD_DataProcess
             YValue = new ConcurrentQueue<string>();
         }
 
+        #region 预处理操作
         /// <summary>
         /// 获取列表中的一个深度为dep的元素
         /// </summary>
@@ -164,6 +165,9 @@ namespace LWD_DataProcess
                 System.Diagnostics.Trace.WriteLine(ex.Message);
             }
         }
+        #endregion 
+
+        #region WPR关联图版操作
         public static Boolean getChartParaExpresion()
         {
             try
@@ -291,5 +295,45 @@ namespace LWD_DataProcess
                 return "";
             }
         }
+        #endregion
+
+        #region WPR原始数据存储操作
+        /// <summary>
+        /// 创建井信息
+        /// </summary>
+        /// <returns></returns>
+        private Boolean CreateWellInfo()
+        {
+            try
+            {
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        /// <summary>
+        /// 填充井信息
+        /// </summary>
+        /// <returns></returns>
+        private Boolean FillWellInfo()
+        {
+            try
+            {
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        #endregion
+
+        #region WPR环境校正操作
+        #endregion
     }
 }

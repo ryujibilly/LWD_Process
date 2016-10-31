@@ -347,6 +347,10 @@ namespace LWD_DataProcess
                 throw;
             }
         }
+
+        #endregion
+
+
         #region 载入原始数据
         /// <summary>
         /// 加载原始数据
@@ -410,6 +414,8 @@ namespace LWD_DataProcess
                 RawCurveNames = curRawLine;//列名集合
             if(count>1&&curRawLine.Length>9)
             {
+
+                //1时间，2深度，3八条电阻率曲线
                 String[] temp = EmptyString6;
                 //日期时间（年月日/时分秒）
                 temp = curRawLine[0].Split(new String[] { "-",":", " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -427,6 +433,25 @@ namespace LWD_DataProcess
         {
 
         }
+
+        /// <summary>
+        /// 存储原始数据
+        /// </summary>
+        /// <returns></returns>
+        private Boolean SaveRawData()
+        {
+            try
+            {
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+                    
         #endregion
 
         #region 井眼校正
@@ -457,8 +482,6 @@ namespace LWD_DataProcess
                 button_LoadBorehole.Enabled = true;
             else button_LoadBorehole.Enabled = false;
         }
-        #endregion
-
 
         private void contextMenuStrip_ChartInfo_Opening(object sender, CancelEventArgs e)
         {
@@ -514,9 +537,6 @@ namespace LWD_DataProcess
         {
             Properties.Settings.Default.Reload();
         }
-        #endregion
-
-
 
         private void textBox_WellName_TextChanged(object sender, EventArgs e)
         {
@@ -528,5 +548,6 @@ namespace LWD_DataProcess
             ToolSize = comboBox_ToolSize.Text.Trim();
             Properties.Settings.Default.ToolSize = ToolSize;
         }
+        #endregion
     }
 }

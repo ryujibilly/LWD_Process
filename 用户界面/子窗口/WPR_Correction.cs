@@ -366,7 +366,7 @@ namespace LWD_DataProcess
             OpenRaw();
         }
         /// <summary>
-        /// 打开文件，线程托管
+        /// 打开原始数据，线程托管
         /// </summary>
         private void OpenRaw()
         {

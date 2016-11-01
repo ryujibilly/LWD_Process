@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Data.SQLite;
 
 namespace LWD_DataProcess
 {
@@ -299,35 +299,34 @@ namespace LWD_DataProcess
 
         #region WPR原始数据存储操作
         /// <summary>
-        /// 创建井信息
+        /// 创建并填充井信息
         /// </summary>
         /// <returns></returns>
-        private Boolean CreateWellInfo()
+        public static Boolean FillWellInfo(SQLiteDBHelper helper,String wellinfo)
         {
+            SQLiteConnection conn = helper.DbConnection;
+            SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
+            SQLiteCommand cmd = new SQLiteCommand(conn);
+            cmd.Transaction = tran;
             try
             {
-
+                helper.Open();
+                cmd.CommandText = "insert into WellInfo values(@WellName,@RawData,@CorrectionData,@ToolSize,@Remark)";
+                cmd.Parameters.AddRange(new[] {//添加参数
+                    new SQLiteParameter("@WellName",wellinfo[0]),
+                    new SQLiteParameter("@RawData",wellinfo[1]),
+                    new SQLiteParameter("@CorrectionData",wellinfo[2]),
+                    new SQLiteParameter("@ToolSize",wellinfo[3]),
+                    new SQLiteParameter("@Remark",wellinfo[4])
+                });
+                cmd.ExecuteNonQuery();//执行插入
+                tran.Commit();
                 return true;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return false;
-            }
-        }
-        /// <summary>
-        /// 填充井信息
-        /// </summary>
-        /// <returns></returns>
-        private Boolean FillWellInfo()
-        {
-            try
-            {
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
+                tran.Rollback();
                 return false;
             }
         }

@@ -128,7 +128,6 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void toolStripMenuItem_BindChart_Click(object sender, EventArgs e)
         {
-            
             if (openFile_BindChart.ShowDialog(Owner) == DialogResult.OK)
             {
                 ChartIndexs = DefaultIndexs;//清空索引集合
@@ -137,7 +136,7 @@ namespace LWD_DataProcess
                 //当前绑定图版 ChartData的TableName
                 curTableName = openFile_BindChart.SafeFileName.Trim(".txt".ToCharArray());
                 //创建索引集合
-                CreateIndexs();
+                CreateIndexs();//生成索引集合
                 OpenChart();//打开图版文件
                 Thread.Sleep(100);
                 BindChart();
@@ -178,12 +177,11 @@ namespace LWD_DataProcess
             {
                 Debug.WriteLine(ex.Message);
             } 
-
         }
 
         private delegate void OpenDelegate();
         /// <summary>
-        /// 打开文件，线程托管
+        ///线程托管
         /// </summary>
         private void OpenChart()
         {
@@ -197,7 +195,9 @@ namespace LWD_DataProcess
                 openChart();
             }
         }
-
+        /// <summary>
+        /// 打开图版导出文件
+        /// </summary>
         void openChart()
         {
             try
@@ -236,7 +236,7 @@ namespace LWD_DataProcess
                     CommonData.ChartParaExpression=curLine[0];
                     CommonData.getParaValue(curLine[0]);//分解表达式
                 }
-                if (Funcs.IsScienceNumber(curLine[0])&& Funcs.IsScienceNumber(curLine[1]))//科学记数法-表达式
+                if (Funcs.IsScienceNumber(curLine[0])&& Funcs.IsScienceNumber(curLine[1]))//验证科学记数法-表达式
                 {
                     CommonData.ChartPara.Enqueue(CommonData.curPara);//保证参数列和数据列等长
                     CommonData.ParaValue.Enqueue(CommonData.curValue);
@@ -548,6 +548,26 @@ namespace LWD_DataProcess
             ToolSize = comboBox_ToolSize.Text.Trim();
             Properties.Settings.Default.ToolSize = ToolSize;
         }
+
+        /// <summary>
+        /// 环境校正
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_Correct_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 输出校正结果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_Output_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
+
     }
 }

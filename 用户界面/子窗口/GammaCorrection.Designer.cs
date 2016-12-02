@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -147,7 +147,7 @@
             // 
             // textBox_WellName
             // 
-            this.textBox_WellName.Location = new System.Drawing.Point(433, 20);
+            this.textBox_WellName.Location = new System.Drawing.Point(432, 19);
             this.textBox_WellName.Name = "textBox_WellName";
             this.textBox_WellName.Size = new System.Drawing.Size(100, 21);
             this.textBox_WellName.TabIndex = 30;
@@ -163,7 +163,7 @@
             // 
             // button_Load
             // 
-            this.button_Load.Location = new System.Drawing.Point(539, 18);
+            this.button_Load.Location = new System.Drawing.Point(538, 17);
             this.button_Load.Name = "button_Load";
             this.button_Load.Size = new System.Drawing.Size(45, 23);
             this.button_Load.TabIndex = 28;
@@ -174,7 +174,7 @@
             // checkBox_WellDiameter
             // 
             this.checkBox_WellDiameter.AutoSize = true;
-            this.checkBox_WellDiameter.Location = new System.Drawing.Point(509, 108);
+            this.checkBox_WellDiameter.Location = new System.Drawing.Point(510, 95);
             this.checkBox_WellDiameter.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox_WellDiameter.Name = "checkBox_WellDiameter";
             this.checkBox_WellDiameter.Size = new System.Drawing.Size(96, 16);
@@ -186,7 +186,7 @@
             // checkBox_Save2Source
             // 
             this.checkBox_Save2Source.AutoSize = true;
-            this.checkBox_Save2Source.Location = new System.Drawing.Point(590, 22);
+            this.checkBox_Save2Source.Location = new System.Drawing.Point(589, 21);
             this.checkBox_Save2Source.Name = "checkBox_Save2Source";
             this.checkBox_Save2Source.Size = new System.Drawing.Size(96, 16);
             this.checkBox_Save2Source.TabIndex = 27;
@@ -203,7 +203,7 @@
             0,
             0,
             65536});
-            this.numericUpDown_WellDiameter.Location = new System.Drawing.Point(626, 106);
+            this.numericUpDown_WellDiameter.Location = new System.Drawing.Point(627, 93);
             this.numericUpDown_WellDiameter.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_WellDiameter.Maximum = new decimal(new int[] {
             300,
@@ -297,7 +297,7 @@
             0,
             0,
             131072});
-            this.numericUpDown_CircleInterval.Location = new System.Drawing.Point(600, 71);
+            this.numericUpDown_CircleInterval.Location = new System.Drawing.Point(600, 58);
             this.numericUpDown_CircleInterval.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_CircleInterval.Maximum = new decimal(new int[] {
             1000,
@@ -322,7 +322,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(507, 74);
+            this.label18.Location = new System.Drawing.Point(507, 61);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(77, 12);
@@ -471,16 +471,16 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(6, 6);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(669, 400);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "曲线对比图";

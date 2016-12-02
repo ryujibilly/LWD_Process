@@ -148,7 +148,7 @@ namespace LWD_DataProcess
             return Regex.IsMatch(str, pattern);
         }
         /// <summary>
-        /// 是否参数表达式（含"="）
+        /// 验证参数表达式（含"="）
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>

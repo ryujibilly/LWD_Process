@@ -41,5 +41,9 @@ namespace LWD_DataProcess
             example = textBox2.Text;
         }
 
+        private void Test_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -233,10 +233,24 @@ namespace LWD_DataProcess
             ACQueue = new ConcurrentQueue<string[]>();
             CorrectionThread = new Thread(new ThreadStart(Correction));
             PrintThread = new Thread(new ThreadStart(EndPrint));
+            Gamma._Gamma.gu = GammaUnit.API;
+            button_Load.Enabled = false;
+            checkBox_Collar.CheckState = CheckState.Unchecked;
+            checkBox_Annulus.CheckState = CheckState.Unchecked;
         }
         private void GammaCorrection_Load(object sender, EventArgs e)
         {
-            button_Load.Enabled = false;
+            if (checkBox_Collar.CheckState.Equals(CheckState.Unchecked))
+            {
+                numericUpDown_PipeWallSize.Enabled = false;
+                Gamma._Gamma.Factor_pws = 1;
+            }
+            if (checkBox_Annulus.CheckState.Equals(CheckState.Unchecked))
+            {
+                numericUpDown_CircleInterval.Enabled = false;
+                Gamma._Gamma.Factor_ci = 1;
+            }
+            Gamma._Gamma.MudDensity = (double)numericUpDown_MudDensity.Value;
         }
         /// <summary>
         /// 载入原始数据
@@ -259,6 +273,7 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void button_Correct_Click(object sender, EventArgs e)
         {
+            Gamma._Gamma.getFactors();
             _GammaColumns = new DataColumn();
             Curve_AC = CurveName_AC.Text.Trim();
             try
@@ -295,9 +310,8 @@ namespace LWD_DataProcess
                 //dataRow_Init(_MergeRow, dt_Merge);
                 while ((RawDatas.Count > 0) && (threadOn == true))
                 {
-
                     if (RawDatas.TryDequeue(out result))
-                        Gamma._Gamma.Start(double.Parse(result));
+                        Gamma._Gamma.Start(double.Parse(result));//开始校正
                     OutData.Enqueue(Gamma._Gamma.count.ToString());
                     if (RawDatas.Count == 0)
                         break;
@@ -732,6 +746,18 @@ namespace LWD_DataProcess
         private void CreateTable()
         {
 
+        }
+
+        private void checkBox_Collar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Collar.CheckState.Equals(CheckState.Checked))
+                numericUpDown_PipeWallSize.Enabled = true;
+        }
+
+        private void checkBox_Annulus_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Annulus.CheckState.Equals(CheckState.Checked))
+                numericUpDown_CircleInterval.Enabled = true;
         }
     }
 }

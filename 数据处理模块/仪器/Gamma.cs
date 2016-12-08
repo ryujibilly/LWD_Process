@@ -37,8 +37,26 @@ namespace LWD_DataProcess
         /// 计数率
         /// </summary>
         public double count { get; set; }
+        /// <summary>
+        /// 伽马单位
+        /// </summary>
         public GammaUnit gu;
+        /// <summary>
+        /// 井眼尺寸/钻铤尺寸
+        /// </summary>
         public PipeSize DrillPipeSize;
+        /// <summary>
+        /// 钻铤壁厚校正因子
+        /// </summary>
+        public double Factor_pws= 0.0d;
+        /// <summary>
+        /// 环空间隔校正因子
+        /// </summary>
+        public double Factor_ci = 0.0d;
+        /// <summary>
+        /// 泥浆密度校正因子
+        /// </summary>
+        public double Factor_md = 0.0d;
         ///// <summary>
         ///// 钻铤尺寸
         ///// </summary>
@@ -106,16 +124,30 @@ namespace LWD_DataProcess
         //}
 
 
+        internal void getFactors()
+        {
+            //cal_DrillPipeSize(gu);
+            //cal_CircleInterval(gu);
+            //cal_MudDensity(gu);
+            //if (UseWellDiameter)
+            //    cal_WellDiameter(gu);
+            if (Factor_pws != 1)
+                cal_DrillPipeSize(gu);
+            else Factor_pws = 1;
+            if (Factor_ci != 1)
+                cal_CircleInterval(gu);
+            else Factor_ci = 1;
+            cal_MudDensity(gu);
+        }
 
         internal void Start(double ct)
         {
-            _Gamma.count =ct;
-            cal_DrillPipeSize(gu);
-            cal_CircleInterval(gu);
-            cal_MudDensity(gu);
-            if (UseWellDiameter)
-                cal_WellDiameter(gu);
+            _Gamma.count = ct/(Factor_pws * Factor_md * Factor_ci) ;//乘因子
         }
+        /// <summary>
+        /// 钻铤壁厚（内径）
+        /// </summary>
+        /// <param name="gu"></param>
         internal void cal_DrillPipeSize(GammaUnit gu)
         {
             switch (DrillPipeSize)
@@ -124,27 +156,27 @@ namespace LWD_DataProcess
                 case PipeSize.inch475:
                     {
                         if(gu.Equals(GammaUnit.CPS))
-                            _Gamma.count += -1.1429 * PipeWallSize + 65.3166;
+                            _Gamma.Factor_pws = -1.1429 * PipeWallSize + 65.3166;
                         else if(gu.Equals(GammaUnit.API)) 
-                            _Gamma.count+= -5.72052 * PipeWallSize + 326.9277;
+                            _Gamma.Factor_pws = 0.01507 * PipeWallSize +0.1387;
                     }
                     break;
                 //6.75英寸
                 case PipeSize.inch675:
                     {
                         if(gu.Equals(GammaUnit.CPS))
-                            _Gamma.count += -0.97318 * PipeWallSize + 156.93415;
+                            _Gamma.Factor_pws = -0.97318 * PipeWallSize + 156.93415;
                         else if(gu.Equals(GammaUnit.API))
-                            _Gamma.count += -4.87106 * PipeWallSize + 785.50581;
+                            _Gamma.Factor_pws = 0.01283 * PipeWallSize - 1.06928;
                     }
                     break;
                 //默认4.75英寸
                 default:
                     {
                         if (gu.Equals(GammaUnit.CPS))
-                            _Gamma.count += -1.1429 * PipeWallSize + 65.3166;
+                            _Gamma.Factor_pws = -1.1429 * PipeWallSize + 65.3166;
                         else if (gu.Equals(GammaUnit.API))
-                            _Gamma.count += -5.72052 * PipeWallSize + 326.9277;
+                            _Gamma.Factor_pws = 0.01507 * PipeWallSize + 0.1387;
                     }
                     break;
             }
@@ -157,16 +189,16 @@ namespace LWD_DataProcess
             if (DrillPipeSize  == PipeSize.inch475)
             {
                 if (gu.Equals(GammaUnit.CPS))
-                    _Gamma.count += -0.63498 * CircleInterval + 0.68865;
+                    _Gamma.Factor_ci = -0.63498 * CircleInterval + 0.68865;
                 else if (gu.Equals(GammaUnit.API))
-                    _Gamma.count += -3.17829 * CircleInterval + 3.4469;
+                    _Gamma.Factor_ci = 0.00794 * CircleInterval + 0.98826;
             }
             if (DrillPipeSize == PipeSize.inch675)
             {
                 if (gu.Equals(GammaUnit.CPS))
-                    _Gamma.count += -0.41234 * CircleInterval + 0.16211;
+                    _Gamma.Factor_ci = -0.41234 * CircleInterval + 0.16211;
                 else if (gu.Equals(GammaUnit.API))
-                    _Gamma.count += -2.06387 * CircleInterval + 0.81134;
+                    _Gamma.Factor_ci = 0.006 * CircleInterval + 1.00138;
             }
         }
         /// <summary>
@@ -179,16 +211,16 @@ namespace LWD_DataProcess
                 if (!BariteContainment)
                 {
                     if (gu.Equals(GammaUnit.CPS))
-                        _Gamma.count += 2.48586 * MudDensity - 2.54418;
+                        _Gamma.Factor_md = 2.48586 * MudDensity - 2.54418;
                     else if (gu.Equals(GammaUnit.API))
-                        _Gamma.count += 12.4425 * MudDensity - 12.73434;
+                        _Gamma.Factor_md = -0.03205 * MudDensity +1.03285;//
                 }
                 if (BariteContainment)
                 {
                     if (gu.Equals(GammaUnit.CPS))
-                        _Gamma.count += 11.73873 * MudDensity - 0.61853;
+                        _Gamma.Factor_md = 11.73873 * MudDensity - 0.61853;
                     else if (gu.Equals(GammaUnit.API))
-                        _Gamma.count += 18.87944 * MudDensity - 9.8961;
+                        _Gamma.Factor_md = -0.04933 * MudDensity + 1.02718;//
                 }
             }
             else if (DrillPipeSize == PipeSize.inch675)
@@ -196,16 +228,16 @@ namespace LWD_DataProcess
                 if (!BariteContainment)
                 {
                     if (gu.Equals(GammaUnit.CPS))
-                        _Gamma.count += 10.79281 * MudDensity - 11.19341;
+                        _Gamma.Factor_md = 10.79281 * MudDensity - 11.19341;
                     else if (gu.Equals(GammaUnit.API))
-                        _Gamma.count += 54.02138 * MudDensity - 56.0266;
+                        _Gamma.Factor_md = -0.16027 * MudDensity + 1.16554;//
                 }
                 if (BariteContainment)
                 {
                     if (gu.Equals(GammaUnit.CPS))
-                        _Gamma.count += 3.77184 * MudDensity - 1.97707;
+                        _Gamma.Factor_md = 3.77184 * MudDensity - 1.97707;
                     else if (gu.Equals(GammaUnit.API))
-                        _Gamma.count += 58.75599 * MudDensity - 3.09597;
+                        _Gamma.Factor_md = -0.15719 * MudDensity + 0.96335;//
                 }
             }
         }

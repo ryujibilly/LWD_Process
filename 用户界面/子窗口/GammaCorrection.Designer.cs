@@ -35,6 +35,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox_GammaSettings = new System.Windows.Forms.GroupBox();
+            this.checkBox_Annulus = new System.Windows.Forms.CheckBox();
+            this.checkBox_Collar = new System.Windows.Forms.CheckBox();
             this.textBox_WellName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button_Load = new System.Windows.Forms.Button();
@@ -46,9 +48,7 @@
             this.comboBox_BariteContainment = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.numericUpDown_CircleInterval = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
             this.numericUpDown_PipeWallSize = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox_DrillPipeSize = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -118,6 +118,8 @@
             // 
             // groupBox_GammaSettings
             // 
+            this.groupBox_GammaSettings.Controls.Add(this.checkBox_Annulus);
+            this.groupBox_GammaSettings.Controls.Add(this.checkBox_Collar);
             this.groupBox_GammaSettings.Controls.Add(this.textBox_WellName);
             this.groupBox_GammaSettings.Controls.Add(this.label8);
             this.groupBox_GammaSettings.Controls.Add(this.button_Load);
@@ -131,9 +133,7 @@
             this.groupBox_GammaSettings.Controls.Add(this.comboBox_BariteContainment);
             this.groupBox_GammaSettings.Controls.Add(this.label19);
             this.groupBox_GammaSettings.Controls.Add(this.numericUpDown_CircleInterval);
-            this.groupBox_GammaSettings.Controls.Add(this.label18);
             this.groupBox_GammaSettings.Controls.Add(this.numericUpDown_PipeWallSize);
-            this.groupBox_GammaSettings.Controls.Add(this.label5);
             this.groupBox_GammaSettings.Controls.Add(this.label4);
             this.groupBox_GammaSettings.Controls.Add(this.comboBox_DrillPipeSize);
             this.groupBox_GammaSettings.Location = new System.Drawing.Point(12, 11);
@@ -144,6 +144,28 @@
             this.groupBox_GammaSettings.TabIndex = 26;
             this.groupBox_GammaSettings.TabStop = false;
             this.groupBox_GammaSettings.Text = "环境参数设置";
+            // 
+            // checkBox_Annulus
+            // 
+            this.checkBox_Annulus.AutoSize = true;
+            this.checkBox_Annulus.Location = new System.Drawing.Point(495, 62);
+            this.checkBox_Annulus.Name = "checkBox_Annulus";
+            this.checkBox_Annulus.Size = new System.Drawing.Size(96, 16);
+            this.checkBox_Annulus.TabIndex = 32;
+            this.checkBox_Annulus.Text = "环空间隔(mm)";
+            this.checkBox_Annulus.UseVisualStyleBackColor = true;
+            this.checkBox_Annulus.CheckedChanged += new System.EventHandler(this.checkBox_Annulus_CheckedChanged);
+            // 
+            // checkBox_Collar
+            // 
+            this.checkBox_Collar.AutoSize = true;
+            this.checkBox_Collar.Location = new System.Drawing.Point(217, 62);
+            this.checkBox_Collar.Name = "checkBox_Collar";
+            this.checkBox_Collar.Size = new System.Drawing.Size(132, 16);
+            this.checkBox_Collar.TabIndex = 31;
+            this.checkBox_Collar.Text = "钻铤壁厚(内径)(mm)";
+            this.checkBox_Collar.UseVisualStyleBackColor = true;
+            this.checkBox_Collar.CheckedChanged += new System.EventHandler(this.checkBox_Collar_CheckedChanged);
             // 
             // textBox_WellName
             // 
@@ -174,7 +196,7 @@
             // checkBox_WellDiameter
             // 
             this.checkBox_WellDiameter.AutoSize = true;
-            this.checkBox_WellDiameter.Location = new System.Drawing.Point(510, 95);
+            this.checkBox_WellDiameter.Location = new System.Drawing.Point(495, 95);
             this.checkBox_WellDiameter.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox_WellDiameter.Name = "checkBox_WellDiameter";
             this.checkBox_WellDiameter.Size = new System.Drawing.Size(96, 16);
@@ -203,7 +225,7 @@
             0,
             0,
             65536});
-            this.numericUpDown_WellDiameter.Location = new System.Drawing.Point(627, 93);
+            this.numericUpDown_WellDiameter.Location = new System.Drawing.Point(600, 93);
             this.numericUpDown_WellDiameter.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_WellDiameter.Maximum = new decimal(new int[] {
             300,
@@ -216,7 +238,7 @@
             0,
             0});
             this.numericUpDown_WellDiameter.Name = "numericUpDown_WellDiameter";
-            this.numericUpDown_WellDiameter.Size = new System.Drawing.Size(70, 21);
+            this.numericUpDown_WellDiameter.Size = new System.Drawing.Size(96, 21);
             this.numericUpDown_WellDiameter.TabIndex = 11;
             this.numericUpDown_WellDiameter.Value = new decimal(new int[] {
             250,
@@ -246,7 +268,7 @@
             0,
             131072});
             this.numericUpDown_MudDensity.Name = "numericUpDown_MudDensity";
-            this.numericUpDown_MudDensity.Size = new System.Drawing.Size(74, 21);
+            this.numericUpDown_MudDensity.Size = new System.Drawing.Size(96, 21);
             this.numericUpDown_MudDensity.TabIndex = 9;
             this.numericUpDown_MudDensity.Value = new decimal(new int[] {
             120,
@@ -258,7 +280,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(248, 97);
+            this.label20.Location = new System.Drawing.Point(248, 96);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(101, 12);
@@ -319,16 +341,6 @@
             131072});
             this.numericUpDown_CircleInterval.ValueChanged += new System.EventHandler(this.numericUpDown_CircleInterval_ValueChanged);
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(507, 61);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(77, 12);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "环空间隔(mm)";
-            // 
             // numericUpDown_PipeWallSize
             // 
             this.numericUpDown_PipeWallSize.DecimalPlaces = 2;
@@ -337,7 +349,7 @@
             0,
             0,
             131072});
-            this.numericUpDown_PipeWallSize.Location = new System.Drawing.Point(343, 59);
+            this.numericUpDown_PipeWallSize.Location = new System.Drawing.Point(366, 59);
             this.numericUpDown_PipeWallSize.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_PipeWallSize.Maximum = new decimal(new int[] {
             200,
@@ -359,16 +371,6 @@
             0,
             131072});
             this.numericUpDown_PipeWallSize.ValueChanged += new System.EventHandler(this.numericUpDown_PipeWallSize_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(250, 62);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 12);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "钻铤壁厚(mm)";
             // 
             // label4
             // 
@@ -647,6 +649,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(21, 17);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(41, 16);
@@ -663,7 +666,6 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(41, 16);
             this.radioButton2.TabIndex = 5;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "CPS";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
@@ -749,9 +751,7 @@
         private System.Windows.Forms.ComboBox comboBox_BariteContainment;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.NumericUpDown numericUpDown_CircleInterval;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown numericUpDown_PipeWallSize;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox_DrillPipeSize;
         private System.Windows.Forms.CheckBox checkBox_Save2Source;
@@ -786,5 +786,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox_WellName;
+        private System.Windows.Forms.CheckBox checkBox_Collar;
+        private System.Windows.Forms.CheckBox checkBox_Annulus;
     }
 }

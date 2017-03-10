@@ -49,7 +49,7 @@ namespace LWD_DataProcess
         /// <param name="maxKey">最大深度</param>
         /// <param name="interval">插值深度间隔</param>
         /// <param name="paraLength">测量值参数个数</param>
-        public InterPolation(double minKey,double maxKey,double interval,int paraLength)
+        public InterPolation(double minKey, double maxKey, double interval, int paraLength)
         {
             ParaLength = paraLength;
             keyMin = minKey;
@@ -63,7 +63,7 @@ namespace LWD_DataProcess
         /// <param name="slist">带入赋值后的SlotList列表</param>
         /// <param name="aiplist">带入未赋值的AIPList列表，运算中赋值</param>
         /// <returns>是否完成插值</returns>
-        public bool LinearInterPolation(SlotList<Slot> slist,SlotList<Slot> aiplist)
+        public bool LinearInterPolation(SlotList<Slot> slist, SlotList<Slot> aiplist)
         {
             int i = 0, j = 0, k = 0;
             double tempKey = 0.0;
@@ -100,7 +100,7 @@ namespace LWD_DataProcess
                             Value.Paras = Lagrange(slist.Keys[i], slist.Keys[i + 1], AIPKeys[j + 1],
                                           slist.Values[i].Paras, slist.Values[i + 1].Paras);
                             aiplist.Add(AIPKeys[j + 1], Value);
-                            System.Diagnostics.Trace.WriteLine(++k+"\t :aiplist当前键::TKey->" + AIPKeys[j + 1].ToString());
+                            System.Diagnostics.Trace.WriteLine(++k + "\t :aiplist当前键::TKey->" + AIPKeys[j + 1].ToString());
 
                             j++;
                             continue;
@@ -126,10 +126,10 @@ namespace LWD_DataProcess
                     bRet = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Trace.WriteLine("\t :aiplist当前键::TKey->" + slist.Keys[i + 1].ToString() + "\r\n" + ex.ToString());
-                bRet=false;
+                bRet = false;
                 DataStruct.ReadyToPrint = false;
             }
             DataStruct.ReadyToPrint = true;
@@ -144,14 +144,14 @@ namespace LWD_DataProcess
         /// <param name="para0">值i</param>
         /// <param name="para1">值i+1</param>
         /// <returns>插值点j</returns>
-        private double[] Lagrange(double x0, double x1, double x, double[] para0, double[] para1)//,out double[] para
+        private double[] Lagrange(double x0, double x1, double x, double[] para0, double[] para1)//out double[] para
         {
             double[] para = new double[ParaLength];
             try
             {
                 for (int i = 0; i < ParaLength; i++)
                 {
-                    para[i] = Math.Round(para0[i] * ((x - x1) / (x0 - x1)) + para1[i] * ((x - x0) / (x1 - x0)),3);
+                    para[i] = Math.Round(para0[i] * ((x - x1) / (x0 - x1)) + para1[i] * ((x - x0) / (x1 - x0)), 3);
                 }
                 return para;
             }
@@ -170,7 +170,7 @@ namespace LWD_DataProcess
             AIPKeys = new double[points + 2];
             AIPKeys[0] = keyMin;
             for (int i = 0; i < points; i++)
-                AIPKeys[i + 1] =Math.Round(AIPKeys[i] + 0.1d,3);
+                AIPKeys[i + 1] = Math.Round(AIPKeys[i] + 0.1d, 3);
             AIPKeys[points + 1] = keyMax;
         }
         public bool Akima(SlotList<Slot> slist, SlotList<Slot> aiplist)
@@ -181,11 +181,51 @@ namespace LWD_DataProcess
         {
             return false;
         }
-        public bool Kriging(SlotList<Slot> slist,SlotList<Slot> aiplist)
+        public bool Kriging(SlotList<Slot> slist, SlotList<Slot> aiplist)
         {
             return false;
         }
-
-
+        /// <summary>
+        /// 查找图版上邻近的左侧点
+        /// </summary>
+        /// <param name="chart">图版点数组</param>
+        /// <param name="point">当前点</param>
+        /// <returns></returns>
+        public Coordinates FindLeft(Coordinates[] chart, Coordinates point)
+        {
+            float dif = 100.0f;//当前点与图版点的X坐标差值
+            int flag = 0;//最邻近点索引
+            for (int i = 0; i < chart.Length; i++)
+            {
+                if (chart[i].X < point.X)//筛选当前点左侧的图版点
+                    if (point.X - chart[i].X < dif)//比较X坐标差值
+                    {
+                        dif = point.X - chart[i].X;
+                        flag = i;//标记邻近点
+                    }
+            }
+            return chart[flag];
+        }
+        /// <summary>
+        /// 查找图版上邻近的右侧点
+        /// </summary>
+        /// <param name="chart">图版点数组</param>
+        /// <param name="point">当前点</param>
+        /// <returns></returns>
+        public Coordinates FindRight(Coordinates[] chart, Coordinates point)
+        {
+            float dif = 100.0f;//当前点与图版点的X坐标差值
+            int flag = 0;//最邻近点索引
+            for (int i = 0; i < chart.Length; i++)
+            {
+                if (chart[i].X >=point.X)//筛选当前点右侧的图版点
+                    if (chart[i].X-point.X< dif)//比较X坐标差值
+                    {
+                        dif = chart[i].X-point.X;
+                        flag = i;//标记邻近点
+                    }
+            }
+            return chart[flag];
+        }
     }
 }

@@ -15,7 +15,8 @@ namespace LWD_DataProcess
 {
     public partial class WPR_Correction : Form
     {
-        private String[] EmptyString6 = new String[6];
+        #region 全局变量
+        private String[] EmptyString8 = new String[8];
         /// <summary>
         /// 静态SQLiteConnectionPool接口实例
         /// </summary>
@@ -45,7 +46,7 @@ namespace LWD_DataProcess
         /// </summary>
         private String Lines_Chart { get; set; }
         /// <summary>
-        /// 当前OpenFileDialog_Data 的记录行
+        /// 当前OpenFileDialog_WPR 的记录行
         /// </summary>
         private String Lines_Data { get; set; }
         /// <summary>
@@ -86,6 +87,35 @@ namespace LWD_DataProcess
         /// </summary>
         public String ToolSize { get; set; }
 
+        /// <summary>
+        /// 原始数据的数据集
+        /// </summary>
+        private DataSet rawDataSet = new DataSet();
+        /// <summary>
+        /// 校后数据的数据集
+        /// </summary>
+        private DataSet corDataSet = new DataSet();
+        /// <summary>
+        /// 原始数据 数据表单
+        /// </summary>
+        private DataTable rawDataTable = new DataTable();
+        /// <summary>
+        /// 校后数据 数据表单
+        /// </summary>
+        private DataTable corDataTable = new DataTable();
+        /// <summary>
+        /// 校正线程
+        /// </summary>
+        Thread CorrectionThread { get; set; }
+        /// <summary>
+        /// 校正类型
+        /// </summary>
+        private WPR_CorMethod corMethod {get;set;}
+        String[] borehole675 = { "8.000", "9.000", "10.000", "12.000", "14.000", "16.000", "18.000" };
+        String[] borehole475 = { "5.625", "6.000", "6.500", "7.000", "8.000", "10.000", "12.000" };
+
+        #endregion
+
         public WPR_Correction()
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -100,6 +130,13 @@ namespace LWD_DataProcess
             Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" +Properties.Settings.Default.DBPath_ChartInfo;
             WellHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
             ChartHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
+            CorrectionThread = new Thread(new ThreadStart(Correction));
+            tabControl2.SelectedTab = tabPage3;
+            //初始化井眼尺寸、仪器尺寸
+            comboBox_ToolSize.Text = "6.75";
+            WPR._wpr.ToolSize = "6.75";
+            comboBox_BoreHole.Items.AddRange(borehole675);
+            comboBox_BoreHole.SelectedIndex = 0;
         }
 
 
@@ -360,10 +397,13 @@ namespace LWD_DataProcess
         private void button_Load_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
-            comboBox_ToolSize.Enabled = false;
-            textBox_WellName.Enabled = false;
-            textBox_Folder.Enabled = false;
+            groupBox1.Enabled = false;
+            //comboBox_ToolSize.Enabled = false;
+            //textBox_WellName.Enabled = false;
+            //textBox_Folder.Enabled = false;
             OpenRaw();
+            SaveRawData();
+            Fill_DGV(dataGridView1,rawDataTable);
         }
         /// <summary>
         /// 打开原始数据，线程托管
@@ -389,12 +429,15 @@ namespace LWD_DataProcess
                 StreamReader sr = new StreamReader(fs);
                 sr.BaseStream.Seek(0, SeekOrigin.Begin);
                 int i = 0;
-                //提取图版索引关键字
+                //提取原始数据：深度+8条曲线
                 while ((Lines_Data = sr.ReadLine()) != null)
                 {
-                    curRawLine = Lines_Data.Split(new String[]{ "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                    curRawLine = Lines_Data.Split(this.seperator, StringSplitOptions.RemoveEmptyEntries);
                     if (curRawLine.Length > 0)
-                        RawSplitter(i++);
+                    {
+                        RawSplitter(i);
+                        i++;
+                    }
                 }
                 fs.Flush();
                 sr.Close();
@@ -410,38 +453,78 @@ namespace LWD_DataProcess
         /// </summary>
         private void RawSplitter(int count)
         {
-            if (count == 1)
+            if (count == 0)
                 RawCurveNames = curRawLine;//列名集合
-            if(count>1&&curRawLine.Length>9)
+            if(count>0&&curRawLine.Length>=9)
             {
-
-                //1时间，2深度，3八条电阻率曲线
-                String[] temp = EmptyString6;
-                //日期时间（年月日/时分秒）
-                temp = curRawLine[0].Split(new String[] { "-",":", " " }, StringSplitOptions.RemoveEmptyEntries);
-                CommonData.Date_Time.Enqueue(temp[0] + temp[1] + temp[2] + "\\" + temp[3] + temp[4] + temp[5]);
-                //深度
-                CommonData.Depth.Enqueue(curRawLine[1]);
-                //8条电阻率曲线
-                get8ResCurve();
+                //1 深度,
+                WPR._wpr.Queue_DEPTH.Enqueue(float.Parse(curRawLine[0]));
+                //2 八条电阻率曲线.
+                get8ResCurve(curRawLine);
             }
         }
         /// <summary>
         /// 获得八条电阻率曲线
         /// </summary>
-        void get8ResCurve()
+        private void get8ResCurve(String[] rawline)
         {
-
+            for(int i=1;i<9;i++)
+            switch(RawCurveNames[i])
+                {
+                    case "RACECHM":
+                        WPR._wpr.Queue_RACECHM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    case "RACECLM":
+                        WPR._wpr.Queue_RACECLM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    case "RACECSHM":
+                        WPR._wpr.Queue_RACECSHM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    case "RACECSLM":
+                        WPR._wpr.Queue_RACECSLM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    case "RPCECHM":
+                        WPR._wpr.Queue_RPCECHM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    case "RPCECLM":
+                        WPR._wpr.Queue_RPCECLM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    case "RPCECSHM":
+                        WPR._wpr.Queue_RPCECSHM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    case "RPCECSLM":
+                        WPR._wpr.Queue_RPCECSLM.Enqueue(float.Parse(rawline[i]));
+                        break;
+                    default:break;
+                }
         }
 
         /// <summary>
-        /// 存储原始数据
+        /// 将指定的原始数据DataTable存储到DataSet
         /// </summary>
         /// <returns></returns>
         private Boolean SaveRawData()
         {
+            float[] temp = new float[9];
+            object[] ot = new object[9];
+            DataRow _MergeRow;
             try
             {
+                InitDT(rawDataTable,RawCurveNames);
+                InitChartPrefix(RawCurveNames);
+                //数据行
+                while ( WPR._wpr.Queue_DEPTH.Count>0)
+                {
+                    temp = FillRawTableRow();
+                    if (temp != null)
+                    {
+                        _MergeRow = rawDataTable.NewRow();
+                        for (int i = 0; i < 9; i++)
+                            ot[i] = (object)temp[i];
+                        _MergeRow.ItemArray = ot;
+                        rawDataTable.Rows.Add(_MergeRow);
+                    } 
+                }
                 return true;
             }
             catch (Exception ex)
@@ -451,29 +534,106 @@ namespace LWD_DataProcess
             }
         }
 
-                    
+        private void InitChartPrefix(string[] rawCurveNames)
+        {
+            
+        }
+
+        /// <summary>
+        /// 初始化DataTable
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="columnNames"></param>
+        private void InitDT(DataTable dt,String[] columnNames)
+        {
+            for (int i = 0; i < columnNames.Length; i++)
+            {
+                DataColumn _dataColumns = new DataColumn();
+                _dataColumns.DataType = System.Type.GetType("System.String");
+                _dataColumns.ColumnName = columnNames[i];
+                _dataColumns.AutoIncrement = false;
+                _dataColumns.Caption = columnNames[i];
+                _dataColumns.ReadOnly = true;
+                _dataColumns.Unique = false;
+                dt.Columns.Add(_dataColumns);
+            }
+        }
+
+        /// <summary>
+        /// 填充 rawDataTable的DataRow
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private float[] FillRawTableRow()
+        {
+            float[] temp = new float[9];
+            try
+            {
+                WPR._wpr.Queue_DEPTH.TryDequeue(out temp[0]);
+                WPR._wpr.Queue_RACECHM.TryDequeue(out temp[1]);
+                WPR._wpr.Queue_RACECLM.TryDequeue(out temp[2]);
+                WPR._wpr.Queue_RACECSHM.TryDequeue(out temp[3]);
+                WPR._wpr.Queue_RACECSLM.TryDequeue(out temp[4]);
+                WPR._wpr.Queue_RPCECHM.TryDequeue(out temp[5]);
+                WPR._wpr.Queue_RPCECLM.TryDequeue(out temp[6]);
+                WPR._wpr.Queue_RPCECSHM.TryDequeue(out temp[7]);
+                WPR._wpr.Queue_RPCECSLM.TryDequeue(out temp[8]);
+                return temp;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 用DataTable填充DGV
+        /// </summary>
+        /// <param name="DGV">DataGridView</param>
+        /// <param name="DT">DataTable</param>
+        private void Fill_DGV(DataGridView DGV, DataTable DT)
+        {
+            try
+            {
+                if (DT != null && DT.Rows.Count > 0)
+                {
+                    DGV.DataSource = DT;
+                    DGV.AutoGenerateColumns = false;
+                    for (int i = 0; i < DGV.Columns.Count; i++)
+                    {
+                        DGV.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    }
+                    DGV.Refresh();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
 
-        #region 井眼校正
+            #region 井眼校正
 
-        #endregion
-        #region 树形结构
+            #endregion
+            #region 树形结构
 
-        #endregion
-        #region 介电常数
-        #endregion
-        #region 围岩校正
-        #endregion
-        #region 侵入校正
-        #endregion
-        #region 各向异性
-        #endregion
-        #region 控件定义
+            #endregion
+            #region 介电常数
+            #endregion
+            #region 围岩校正
+            #endregion
+            #region 侵入校正
+            #endregion
+            #region 各向异性
+            #endregion
+            #region 控件定义
         private void radioButton_Borehole1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton_Borehole1.Checked)
-                numericUpDown_Borehole.Enabled = true;
-            else numericUpDown_Borehole.Enabled = false;
+                comboBox_BoreHole.Enabled = true;
+            else comboBox_BoreHole.Enabled = false;
         }
 
         private void radioButton_Borehole2_CheckedChanged(object sender, EventArgs e)
@@ -542,11 +702,28 @@ namespace LWD_DataProcess
         {
             WellName = textBox_WellName.Text.Trim();
         }
-
+        /// <summary>
+        /// 选择仪器尺寸，确定井眼尺寸范围。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox_ToolSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ToolSize = comboBox_ToolSize.Text.Trim();
+            if(comboBox_ToolSize.SelectedItem.ToString()=="6.75")
+            {
+                comboBox_BoreHole.Items.Clear();
+                comboBox_BoreHole.Items.AddRange(borehole675);
+                comboBox_BoreHole.SelectedIndex = 0;
+            }
+            else if(comboBox_ToolSize.SelectedItem.ToString() == "4.75")
+            {
+                comboBox_BoreHole.Items.Clear();
+                comboBox_BoreHole.Items.AddRange(borehole475);
+                comboBox_BoreHole.SelectedIndex = 0;
+            }
             Properties.Settings.Default.ToolSize = ToolSize;
+            ToolSize = comboBox_ToolSize.SelectedText.Trim();
+            WPR._wpr.ToolSize = comboBox_ToolSize.SelectedText.Trim();
         }
 
         /// <summary>
@@ -557,6 +734,14 @@ namespace LWD_DataProcess
         private void button_Correct_Click(object sender, EventArgs e)
         {
 
+            MatchChart();
+        }
+        /// <summary>
+        /// 匹配图版
+        /// </summary>
+        private void MatchChart()
+        {
+           
         }
         /// <summary>
         /// 输出校正结果
@@ -569,5 +754,108 @@ namespace LWD_DataProcess
         }
         #endregion
 
+        #region 校正线程
+        void Correction()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+        #endregion
+        /// <summary>
+        /// 校正类型选项卡
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabControl2_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 加入参数文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_LoadBorehole_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_BoreHole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            WPR._wpr.HD = float.Parse(comboBox_BoreHole.Text.Trim());
+        }
+
+        private void numericUpDown_MudResistivity_ValueChanged(object sender, EventArgs e)
+        {
+            WPR._wpr.Rm = float.Parse(numericUpDown_MudResistivity.Value.ToString());
+            WPR._wpr.getRmRange();
+        }
+
+        private void radioButton_ShoulderBedPara_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_ShoulderBedPara.Checked)
+            {
+                numericUpDown_SBR.Enabled = true;
+                numericUpDown_BedThickness.Enabled = true;
+                button_ShoulderBedFile.Enabled = false;
+            }
+            else
+            {
+                numericUpDown_SBR.Enabled = false;
+                numericUpDown_BedThickness.Enabled = false;
+            }
+        }
+
+        private void radioButton_ShoulderBedFile_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_ShoulderBedPara.Checked)
+            {
+                numericUpDown_SBR.Enabled = false;
+                numericUpDown_BedThickness.Enabled = false;
+                button_ShoulderBedFile.Enabled = true;
+            }
+            else
+            {
+                button_ShoulderBedFile.Enabled = false;
+            }
+        }
+
+        private void numericUpDown_SBR_ValueChanged(object sender, EventArgs e)
+        {
+            WPR._wpr.SBR = float.Parse(numericUpDown_SBR.Value.ToString());
+        }
+
+        private void numericUpDown_BedThickness_ValueChanged(object sender, EventArgs e)
+        {
+            WPR._wpr.Tb = float.Parse(numericUpDown_SBR.Value.ToString());
+        }
+        /// <summary>
+        /// 给WPR类的校正类型赋值
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabControl2_Selected(object sender, TabControlEventArgs e)
+        {
+            //选择井眼校正
+            if (tabControl2.SelectedTab == tabPage3)
+            {
+                corMethod = WPR_CorMethod.HoleDiameter;//井眼
+            }
+            if (tabControl2.SelectedTab == tabPage4)
+                corMethod = WPR_CorMethod.Dieletric;//介电
+            if (tabControl2.SelectedTab == tabPage5)
+                corMethod = WPR_CorMethod.ShoulderBed;//围岩
+            if (tabControl2.SelectedTab == tabPage6)
+                corMethod = WPR_CorMethod.Invasion;//侵入
+            if (tabControl2.SelectedTab == tabPage7)
+                corMethod = WPR_CorMethod.Antistropy;//各向异性
+            WPR._wpr.CorMethod = tabControl2.SelectedTab.Text;
+        }
     }
 }

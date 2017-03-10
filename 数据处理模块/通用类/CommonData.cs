@@ -90,7 +90,7 @@ namespace LWD_DataProcess
         public static ConcurrentQueue<String> YValue { get; set; }
 
         public static ConcurrentQueue<String> Date_Time { get; set; }
-        public static ConcurrentQueue<String> Depth { get; set; }
+        public static ConcurrentQueue<float> Depth { get; set; }
 
         public static String[] para_value = {null,null };
         /// <summary>

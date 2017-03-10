@@ -126,11 +126,6 @@ namespace LWD_DataProcess
 
         internal void getFactors()
         {
-            //cal_DrillPipeSize(gu);
-            //cal_CircleInterval(gu);
-            //cal_MudDensity(gu);
-            //if (UseWellDiameter)
-            //    cal_WellDiameter(gu);
             if (Factor_pws != 1)
                 cal_DrillPipeSize(gu);
             else Factor_pws = 1;

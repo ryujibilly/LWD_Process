@@ -37,4 +37,8 @@ namespace LWD_DataProcess
     /// 列类型
     /// </summary>
     public enum ColType { Text, Integer }
+    /// <summary>
+    /// 校正类型：井眼校正,围岩校正，介电常数，侵入校正，各向异性
+    /// </summary>
+    public enum WPR_CorMethod { HoleDiameter, ShoulderBed, Dieletric, Invasion, Antistropy }
 }

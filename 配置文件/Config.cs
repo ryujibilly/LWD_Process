@@ -143,7 +143,7 @@ namespace LWD_DataProcess
                 XmlElement root = doc.CreateElement("config");
                 root.AppendChild(newElem);
                 doc.AppendChild(root);
-                doc.Save("config.xml");
+                doc.Save("NodeSettings.xml");
 
                 bIsSave = true;
             }

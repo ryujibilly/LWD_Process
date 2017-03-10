@@ -36,6 +36,7 @@ namespace LWD_DataProcess
         private void button2_Click(object sender, EventArgs e)
         {
             Config.SaveConfig();// ConfigInfo "Data Source=" + FoldBrowserPath + "\\WPR_Config";
+            this.Hide();
         }
 
         /// <summary>

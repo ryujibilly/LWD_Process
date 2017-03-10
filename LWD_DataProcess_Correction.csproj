@@ -108,6 +108,9 @@
   <PropertyGroup>
     <ManifestKeyFile>LWD_DataProcess_Correction_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CHRCOLOR.ICO</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
@@ -160,6 +163,7 @@
     <Compile Include="数据处理模块\Filter.cs" />
     <Compile Include="数据处理模块\InterPolation.cs" />
     <Compile Include="数据处理模块\KalmanFacade.cs" />
+    <Compile Include="数据处理模块\仪器\Coordinates.cs" />
     <Compile Include="数据处理模块\仪器\Gamma.cs" />
     <Compile Include="数据处理模块\仪器\GDIR.cs" />
     <Compile Include="数据处理模块\仪器\WPR.cs" />
@@ -231,6 +235,7 @@
     <Compile Include="配置文件\Config.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CHRCOLOR.ICO" />
     <Content Include="Properties\CHRBW.ICO" />
     <Content Include="Properties\CHRCOLOR.ICO" />
     <Content Include="配置文件\NodeSettings.xml" />

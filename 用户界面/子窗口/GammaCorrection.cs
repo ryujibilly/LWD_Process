@@ -166,7 +166,7 @@ namespace LWD_DataProcess
             {
                 NRow = (k.ToString() + "/" + Lines).Split(seperator, StringSplitOptions.RemoveEmptyEntries);
                 //该行第二列为非数值，则该行为表头行
-                if (!IsNumStr(NRow[1]))
+                if (NRow.Length>1&&!IsNumStr(NRow[1]))
                 {
                     //创建ID列
                     for (int i = 0; i < NRow.Length; i++)
@@ -182,8 +182,6 @@ namespace LWD_DataProcess
                     //初始化非主键列DataColumn,并添加到DataTable中
                     for (int j = 0; j < comboBox1.Items.Count; j++)
                     {
-                        //if (comboBox1.Items[j] != "ID")
-                        //{
                             DataColumn _dataColumns = new DataColumn();
                             _dataColumns.DataType = System.Type.GetType("System.String");
                             _dataColumns.ColumnName = comboBox1.Items[j].ToString();
@@ -192,7 +190,6 @@ namespace LWD_DataProcess
                             _dataColumns.ReadOnly = true;
                             _dataColumns.Unique = false;
                             dt.Columns.Add(_dataColumns);
-                        //}
                     }
                     //设置ID列为主键列
                     DataColumn[] PrimaryKeyColumns = new DataColumn[1];
@@ -213,16 +210,11 @@ namespace LWD_DataProcess
                 RecordNum = k;
             }
             fs.Flush();
-            //fs1.Flush();
             sr.Close();
-            //sw.Close();
             fs.Close();
-            //fs1.Close();
             Fill_DGV(dataGridView1, dt);//填充数值并显示
         }
         #endregion
-
-
 
         public GammaCorrection()
         {
@@ -259,7 +251,8 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void Load_Click(object sender, EventArgs e)
         {
-            WellName = textBox_WellName.Text.Trim();
+            WellName = openFileDialog1.SafeFileName + "_校正";
+            textBox_WellName.Text= WellName ;
             DataStruct.DB_PATH.Insert(DataStruct.DB_PATH.Length,'/'+WellName + ".db");
             OpenFile();
             Thread.Sleep(100);
@@ -312,7 +305,7 @@ namespace LWD_DataProcess
                 {
                     if (RawDatas.TryDequeue(out result))
                         Gamma._Gamma.Start(double.Parse(result));//开始校正
-                    OutData.Enqueue(Gamma._Gamma.count.ToString());
+                    OutData.Enqueue( Math.Round(Gamma._Gamma.count,3).ToString());
                     if (RawDatas.Count == 0)
                         break;
                 }
@@ -368,7 +361,6 @@ namespace LWD_DataProcess
                 Num = GetRows(FileName);
                 String[] str = openFileDialog1.FileName.Split(openFileDialog1.SafeFileNames,StringSplitOptions.RemoveEmptyEntries);
                 String FilePath = str[0];
-                outputPath = FilePath+ "\\" + "Cal_AC"+ ".tmf";
                 openFileDialog1.InitialDirectory = FilePath;
             }
             button_Load.Enabled = true;
@@ -492,6 +484,8 @@ namespace LWD_DataProcess
             {
                 textBox_StartDep.Enabled = false;
                 textBox_EndDep.Enabled = false;
+                StartDepth = float.Parse(dataGridView1.Rows[0].Cells[1].Value.ToString());
+                EndDepth = float.Parse(dataGridView1.Rows[dataGridView1.Rows.Count-2].Cells[1].Value.ToString());
             }
             else if (!checkBox_AllDepth.Checked)
             {
@@ -501,7 +495,6 @@ namespace LWD_DataProcess
 
 
         }
-
         private void CurveName_AC_TextChanged(object sender, EventArgs e)
         {
             Curve_AC = CurveName_AC.Text.Trim();
@@ -568,7 +561,6 @@ namespace LWD_DataProcess
         /// <param name="DT">DataTable</param>
         private void Fill_DGV(DataGridView DGV, DataTable DT)
         {
-            //DGV.Rows.Clear();
             try
             {
                 if (DT != null && DT.Rows.Count > 0)
@@ -581,7 +573,6 @@ namespace LWD_DataProcess
                         DGV.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
                     DGV.Refresh();
-
                 }
             }
             catch (Exception)
@@ -619,6 +610,10 @@ namespace LWD_DataProcess
         {
             try
             {
+                if (saveSource)
+                    outputPath = openFileDialog1.InitialDirectory + WellName + ".tmf";
+                else
+                outputPath = openFileDialog1.FileName+ ".tmf";
                 fsOutPut = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
                 swOutPut = new StreamWriter(fsOutPut);
                 String ParaString = null;
@@ -628,10 +623,9 @@ namespace LWD_DataProcess
                 swOutPut.WriteLine("FORWARD_TEXT_FORMAT_1.0");
                 swOutPut.WriteLine("STDEP  = " + Math.Round(StartDepth, 3));
                 swOutPut.WriteLine("ENDEP  = " + Math.Round(EndDepth, 3));
-                swOutPut.WriteLine("RLEV   = ");
+                swOutPut.WriteLine("RLEV   = 0.1");
                 swOutPut.WriteLine("CURVENAME = " + Curve_AC);
                 swOutPut.WriteLine("END");
-                //swOutPut.WriteLine("#DEPTH\t" + ParaString);
                 swOutPut.WriteLine(ParaString);
             }
             catch (Exception ex)
@@ -641,24 +635,31 @@ namespace LWD_DataProcess
         }
         private void EndPrint()
         {
-            while (true)
+            try
             {
-                for (int i = 0; i < dataGridView2.Rows.Count-1; i++)
+                while (true)
                 {
-                    for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                    for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
                     {
-                        swOutPut.Write(dataGridView2.Rows[i].Cells[j].Value.ToString() + "\t");
+                        for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                        {
+                            swOutPut.Write(dataGridView2.Rows[i].Cells[j].Value.ToString() + "\t");
+                        }
+                        swOutPut.Write("\r\n");
                     }
-                    swOutPut.Write("\r\n");
+                    break;
                 }
-                break;
+                Application.DoEvents();
+                swOutPut.WriteLine("========================================================================");
+                swOutPut.Flush();
+                fsOutPut.Flush();
+                swOutPut.Close();
+                fsOutPut.Close();
             }
-            Application.DoEvents();
-            swOutPut.WriteLine("========================================================================");
-            swOutPut.Flush();
-            fsOutPut.Flush();
-            swOutPut.Close();
-            fsOutPut.Close();
+            catch (Exception)
+            {
+                throw;
+            }
         }
         /// <summary>
         /// 初始化指定的DataRow
@@ -731,7 +732,6 @@ namespace LWD_DataProcess
 
         }
 
-
         #endregion
 
         private void button2_Click(object sender, EventArgs e)
@@ -740,10 +740,6 @@ namespace LWD_DataProcess
         }
 
         private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void CreateTable()
         {
 
         }

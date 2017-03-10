@@ -29,431 +29,431 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("介电常数", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode17});
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode19,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode21});
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode23,
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode26,
-            treeNode27});
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode25,
-            treeNode28});
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("井眼校正", new System.Windows.Forms.TreeNode[] {
-            treeNode22,
-            treeNode29});
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode31,
-            treeNode32});
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode34,
-            treeNode35});
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode33,
-            treeNode36});
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode38,
-            treeNode39});
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode41,
-            treeNode42});
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode40,
-            treeNode43});
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("围岩校正", new System.Windows.Forms.TreeNode[] {
-            treeNode37,
-            treeNode44});
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode46,
-            treeNode47});
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode49,
-            treeNode50});
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode48,
-            treeNode51});
-            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode53,
-            treeNode54});
-            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode58 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode56,
-            treeNode57});
-            System.Windows.Forms.TreeNode treeNode59 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode55,
-            treeNode58});
-            System.Windows.Forms.TreeNode treeNode60 = new System.Windows.Forms.TreeNode("侵入校正", new System.Windows.Forms.TreeNode[] {
-            treeNode52,
-            treeNode59});
-            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode61,
-            treeNode62});
-            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode64,
-            treeNode65});
-            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode63,
-            treeNode66});
-            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode68,
-            treeNode69});
-            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode71,
-            treeNode72});
-            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode70,
-            treeNode73});
-            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("各向异性", new System.Windows.Forms.TreeNode[] {
-            treeNode67,
-            treeNode74});
-            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode76,
-            treeNode77});
-            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode81 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode79,
-            treeNode80});
-            System.Windows.Forms.TreeNode treeNode82 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode78,
-            treeNode81});
-            System.Windows.Forms.TreeNode treeNode83 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode84 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode85 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode83,
-            treeNode84});
-            System.Windows.Forms.TreeNode treeNode86 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode87 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode88 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode86,
-            treeNode87});
-            System.Windows.Forms.TreeNode treeNode89 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode85,
-            treeNode88});
-            System.Windows.Forms.TreeNode treeNode90 = new System.Windows.Forms.TreeNode("径向校正", new System.Windows.Forms.TreeNode[] {
-            treeNode82,
-            treeNode89});
-            System.Windows.Forms.TreeNode treeNode91 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode92 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode93 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode91,
-            treeNode92});
-            System.Windows.Forms.TreeNode treeNode94 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode95 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode96 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode94,
-            treeNode95});
-            System.Windows.Forms.TreeNode treeNode97 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode93,
-            treeNode96});
-            System.Windows.Forms.TreeNode treeNode98 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode99 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode100 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode98,
-            treeNode99});
-            System.Windows.Forms.TreeNode treeNode101 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode102 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode103 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode101,
-            treeNode102});
-            System.Windows.Forms.TreeNode treeNode104 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode100,
-            treeNode103});
-            System.Windows.Forms.TreeNode treeNode105 = new System.Windows.Forms.TreeNode("偏心校正", new System.Windows.Forms.TreeNode[] {
-            treeNode97,
-            treeNode104});
-            System.Windows.Forms.TreeNode treeNode106 = new System.Windows.Forms.TreeNode("6.75英寸", new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode30,
-            treeNode45,
-            treeNode60,
-            treeNode75,
-            treeNode90,
-            treeNode105});
-            System.Windows.Forms.TreeNode treeNode107 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode108 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode109 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode107,
-            treeNode108});
-            System.Windows.Forms.TreeNode treeNode110 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode111 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode112 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode110,
-            treeNode111});
-            System.Windows.Forms.TreeNode treeNode113 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode109,
-            treeNode112});
-            System.Windows.Forms.TreeNode treeNode114 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode115 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode116 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode114,
-            treeNode115});
-            System.Windows.Forms.TreeNode treeNode117 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode118 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode119 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode117,
-            treeNode118});
-            System.Windows.Forms.TreeNode treeNode120 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode116,
-            treeNode119});
-            System.Windows.Forms.TreeNode treeNode121 = new System.Windows.Forms.TreeNode("介电常数", new System.Windows.Forms.TreeNode[] {
-            treeNode113,
-            treeNode120});
-            System.Windows.Forms.TreeNode treeNode122 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode123 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode124 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode122,
-            treeNode123});
-            System.Windows.Forms.TreeNode treeNode125 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode126 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode127 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode125,
-            treeNode126});
-            System.Windows.Forms.TreeNode treeNode128 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode124,
-            treeNode127});
-            System.Windows.Forms.TreeNode treeNode129 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode130 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode131 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode129,
-            treeNode130});
-            System.Windows.Forms.TreeNode treeNode132 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode133 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode134 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode132,
-            treeNode133});
-            System.Windows.Forms.TreeNode treeNode135 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode131,
-            treeNode134});
-            System.Windows.Forms.TreeNode treeNode136 = new System.Windows.Forms.TreeNode("井眼校正", new System.Windows.Forms.TreeNode[] {
-            treeNode128,
-            treeNode135});
-            System.Windows.Forms.TreeNode treeNode137 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode138 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode139 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode137,
-            treeNode138});
-            System.Windows.Forms.TreeNode treeNode140 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode141 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode142 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode140,
-            treeNode141});
-            System.Windows.Forms.TreeNode treeNode143 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode139,
-            treeNode142});
-            System.Windows.Forms.TreeNode treeNode144 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode145 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode146 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode144,
-            treeNode145});
-            System.Windows.Forms.TreeNode treeNode147 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode148 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode149 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode147,
-            treeNode148});
-            System.Windows.Forms.TreeNode treeNode150 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode146,
-            treeNode149});
-            System.Windows.Forms.TreeNode treeNode151 = new System.Windows.Forms.TreeNode("围岩校正", new System.Windows.Forms.TreeNode[] {
-            treeNode143,
-            treeNode150});
-            System.Windows.Forms.TreeNode treeNode152 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode153 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode154 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode152,
-            treeNode153});
-            System.Windows.Forms.TreeNode treeNode155 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode156 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode157 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode155,
-            treeNode156});
-            System.Windows.Forms.TreeNode treeNode158 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode154,
-            treeNode157});
-            System.Windows.Forms.TreeNode treeNode159 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode160 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode161 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode159,
-            treeNode160});
-            System.Windows.Forms.TreeNode treeNode162 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode163 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode164 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode162,
-            treeNode163});
-            System.Windows.Forms.TreeNode treeNode165 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode161,
-            treeNode164});
-            System.Windows.Forms.TreeNode treeNode166 = new System.Windows.Forms.TreeNode("侵入校正", new System.Windows.Forms.TreeNode[] {
-            treeNode158,
-            treeNode165});
-            System.Windows.Forms.TreeNode treeNode167 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode168 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode169 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode167,
-            treeNode168});
-            System.Windows.Forms.TreeNode treeNode170 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode171 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode172 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode170,
-            treeNode171});
-            System.Windows.Forms.TreeNode treeNode173 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode169,
-            treeNode172});
-            System.Windows.Forms.TreeNode treeNode174 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode175 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode176 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode174,
-            treeNode175});
-            System.Windows.Forms.TreeNode treeNode177 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode178 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode179 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode177,
-            treeNode178});
-            System.Windows.Forms.TreeNode treeNode180 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode176,
-            treeNode179});
-            System.Windows.Forms.TreeNode treeNode181 = new System.Windows.Forms.TreeNode("各向异性", new System.Windows.Forms.TreeNode[] {
-            treeNode173,
-            treeNode180});
-            System.Windows.Forms.TreeNode treeNode182 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode183 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode184 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode182,
-            treeNode183});
-            System.Windows.Forms.TreeNode treeNode185 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode186 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode187 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode185,
-            treeNode186});
-            System.Windows.Forms.TreeNode treeNode188 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode184,
-            treeNode187});
-            System.Windows.Forms.TreeNode treeNode189 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode190 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode191 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode189,
-            treeNode190});
-            System.Windows.Forms.TreeNode treeNode192 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode193 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode194 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode192,
-            treeNode193});
-            System.Windows.Forms.TreeNode treeNode195 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode191,
-            treeNode194});
-            System.Windows.Forms.TreeNode treeNode196 = new System.Windows.Forms.TreeNode("径向校正", new System.Windows.Forms.TreeNode[] {
-            treeNode188,
-            treeNode195});
-            System.Windows.Forms.TreeNode treeNode197 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode198 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode199 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode197,
-            treeNode198});
-            System.Windows.Forms.TreeNode treeNode200 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode201 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode202 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode200,
-            treeNode201});
-            System.Windows.Forms.TreeNode treeNode203 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
-            treeNode199,
-            treeNode202});
-            System.Windows.Forms.TreeNode treeNode204 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode205 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode206 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
-            treeNode204,
-            treeNode205});
-            System.Windows.Forms.TreeNode treeNode207 = new System.Windows.Forms.TreeNode("A");
-            System.Windows.Forms.TreeNode treeNode208 = new System.Windows.Forms.TreeNode("P");
-            System.Windows.Forms.TreeNode treeNode209 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
-            treeNode207,
-            treeNode208});
-            System.Windows.Forms.TreeNode treeNode210 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
-            treeNode206,
-            treeNode209});
-            System.Windows.Forms.TreeNode treeNode211 = new System.Windows.Forms.TreeNode("偏心校正", new System.Windows.Forms.TreeNode[] {
-            treeNode203,
-            treeNode210});
-            System.Windows.Forms.TreeNode treeNode212 = new System.Windows.Forms.TreeNode("4.75英寸", new System.Windows.Forms.TreeNode[] {
-            treeNode121,
-            treeNode136,
-            treeNode151,
-            treeNode166,
-            treeNode181,
-            treeNode196,
-            treeNode211});
-            System.Windows.Forms.TreeNode treeNode213 = new System.Windows.Forms.TreeNode("WPR电磁波环境校正图版类型", new System.Windows.Forms.TreeNode[] {
-            treeNode106,
-            treeNode212});
+            System.Windows.Forms.TreeNode treeNode214 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode215 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode216 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode214,
+            treeNode215});
+            System.Windows.Forms.TreeNode treeNode217 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode218 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode219 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode217,
+            treeNode218});
+            System.Windows.Forms.TreeNode treeNode220 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode216,
+            treeNode219});
+            System.Windows.Forms.TreeNode treeNode221 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode222 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode223 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode221,
+            treeNode222});
+            System.Windows.Forms.TreeNode treeNode224 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode225 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode226 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode224,
+            treeNode225});
+            System.Windows.Forms.TreeNode treeNode227 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode223,
+            treeNode226});
+            System.Windows.Forms.TreeNode treeNode228 = new System.Windows.Forms.TreeNode("介电常数", new System.Windows.Forms.TreeNode[] {
+            treeNode220,
+            treeNode227});
+            System.Windows.Forms.TreeNode treeNode229 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode230 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode231 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode229,
+            treeNode230});
+            System.Windows.Forms.TreeNode treeNode232 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode233 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode234 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode232,
+            treeNode233});
+            System.Windows.Forms.TreeNode treeNode235 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode231,
+            treeNode234});
+            System.Windows.Forms.TreeNode treeNode236 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode237 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode238 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode236,
+            treeNode237});
+            System.Windows.Forms.TreeNode treeNode239 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode240 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode241 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode239,
+            treeNode240});
+            System.Windows.Forms.TreeNode treeNode242 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode238,
+            treeNode241});
+            System.Windows.Forms.TreeNode treeNode243 = new System.Windows.Forms.TreeNode("井眼校正", new System.Windows.Forms.TreeNode[] {
+            treeNode235,
+            treeNode242});
+            System.Windows.Forms.TreeNode treeNode244 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode245 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode246 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode244,
+            treeNode245});
+            System.Windows.Forms.TreeNode treeNode247 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode248 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode249 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode247,
+            treeNode248});
+            System.Windows.Forms.TreeNode treeNode250 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode246,
+            treeNode249});
+            System.Windows.Forms.TreeNode treeNode251 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode252 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode253 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode251,
+            treeNode252});
+            System.Windows.Forms.TreeNode treeNode254 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode255 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode256 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode254,
+            treeNode255});
+            System.Windows.Forms.TreeNode treeNode257 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode253,
+            treeNode256});
+            System.Windows.Forms.TreeNode treeNode258 = new System.Windows.Forms.TreeNode("围岩校正", new System.Windows.Forms.TreeNode[] {
+            treeNode250,
+            treeNode257});
+            System.Windows.Forms.TreeNode treeNode259 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode260 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode261 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode259,
+            treeNode260});
+            System.Windows.Forms.TreeNode treeNode262 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode263 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode264 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode262,
+            treeNode263});
+            System.Windows.Forms.TreeNode treeNode265 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode261,
+            treeNode264});
+            System.Windows.Forms.TreeNode treeNode266 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode267 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode268 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode266,
+            treeNode267});
+            System.Windows.Forms.TreeNode treeNode269 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode270 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode271 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode269,
+            treeNode270});
+            System.Windows.Forms.TreeNode treeNode272 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode268,
+            treeNode271});
+            System.Windows.Forms.TreeNode treeNode273 = new System.Windows.Forms.TreeNode("侵入校正", new System.Windows.Forms.TreeNode[] {
+            treeNode265,
+            treeNode272});
+            System.Windows.Forms.TreeNode treeNode274 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode275 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode276 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode274,
+            treeNode275});
+            System.Windows.Forms.TreeNode treeNode277 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode278 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode279 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode277,
+            treeNode278});
+            System.Windows.Forms.TreeNode treeNode280 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode276,
+            treeNode279});
+            System.Windows.Forms.TreeNode treeNode281 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode282 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode283 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode281,
+            treeNode282});
+            System.Windows.Forms.TreeNode treeNode284 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode285 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode286 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode284,
+            treeNode285});
+            System.Windows.Forms.TreeNode treeNode287 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode283,
+            treeNode286});
+            System.Windows.Forms.TreeNode treeNode288 = new System.Windows.Forms.TreeNode("各向异性", new System.Windows.Forms.TreeNode[] {
+            treeNode280,
+            treeNode287});
+            System.Windows.Forms.TreeNode treeNode289 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode290 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode291 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode289,
+            treeNode290});
+            System.Windows.Forms.TreeNode treeNode292 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode293 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode294 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode292,
+            treeNode293});
+            System.Windows.Forms.TreeNode treeNode295 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode291,
+            treeNode294});
+            System.Windows.Forms.TreeNode treeNode296 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode297 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode298 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode296,
+            treeNode297});
+            System.Windows.Forms.TreeNode treeNode299 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode300 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode301 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode299,
+            treeNode300});
+            System.Windows.Forms.TreeNode treeNode302 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode298,
+            treeNode301});
+            System.Windows.Forms.TreeNode treeNode303 = new System.Windows.Forms.TreeNode("径向校正", new System.Windows.Forms.TreeNode[] {
+            treeNode295,
+            treeNode302});
+            System.Windows.Forms.TreeNode treeNode304 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode305 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode306 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode304,
+            treeNode305});
+            System.Windows.Forms.TreeNode treeNode307 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode308 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode309 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode307,
+            treeNode308});
+            System.Windows.Forms.TreeNode treeNode310 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode306,
+            treeNode309});
+            System.Windows.Forms.TreeNode treeNode311 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode312 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode313 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode311,
+            treeNode312});
+            System.Windows.Forms.TreeNode treeNode314 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode315 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode316 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode314,
+            treeNode315});
+            System.Windows.Forms.TreeNode treeNode317 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode313,
+            treeNode316});
+            System.Windows.Forms.TreeNode treeNode318 = new System.Windows.Forms.TreeNode("偏心校正", new System.Windows.Forms.TreeNode[] {
+            treeNode310,
+            treeNode317});
+            System.Windows.Forms.TreeNode treeNode319 = new System.Windows.Forms.TreeNode("6.75英寸", new System.Windows.Forms.TreeNode[] {
+            treeNode228,
+            treeNode243,
+            treeNode258,
+            treeNode273,
+            treeNode288,
+            treeNode303,
+            treeNode318});
+            System.Windows.Forms.TreeNode treeNode320 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode321 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode322 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode320,
+            treeNode321});
+            System.Windows.Forms.TreeNode treeNode323 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode324 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode325 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode323,
+            treeNode324});
+            System.Windows.Forms.TreeNode treeNode326 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode322,
+            treeNode325});
+            System.Windows.Forms.TreeNode treeNode327 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode328 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode329 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode327,
+            treeNode328});
+            System.Windows.Forms.TreeNode treeNode330 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode331 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode332 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode330,
+            treeNode331});
+            System.Windows.Forms.TreeNode treeNode333 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode329,
+            treeNode332});
+            System.Windows.Forms.TreeNode treeNode334 = new System.Windows.Forms.TreeNode("介电常数", new System.Windows.Forms.TreeNode[] {
+            treeNode326,
+            treeNode333});
+            System.Windows.Forms.TreeNode treeNode335 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode336 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode337 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode335,
+            treeNode336});
+            System.Windows.Forms.TreeNode treeNode338 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode339 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode340 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode338,
+            treeNode339});
+            System.Windows.Forms.TreeNode treeNode341 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode337,
+            treeNode340});
+            System.Windows.Forms.TreeNode treeNode342 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode343 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode344 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode342,
+            treeNode343});
+            System.Windows.Forms.TreeNode treeNode345 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode346 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode347 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode345,
+            treeNode346});
+            System.Windows.Forms.TreeNode treeNode348 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode344,
+            treeNode347});
+            System.Windows.Forms.TreeNode treeNode349 = new System.Windows.Forms.TreeNode("井眼校正", new System.Windows.Forms.TreeNode[] {
+            treeNode341,
+            treeNode348});
+            System.Windows.Forms.TreeNode treeNode350 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode351 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode352 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode350,
+            treeNode351});
+            System.Windows.Forms.TreeNode treeNode353 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode354 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode355 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode353,
+            treeNode354});
+            System.Windows.Forms.TreeNode treeNode356 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode352,
+            treeNode355});
+            System.Windows.Forms.TreeNode treeNode357 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode358 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode359 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode357,
+            treeNode358});
+            System.Windows.Forms.TreeNode treeNode360 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode361 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode362 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode360,
+            treeNode361});
+            System.Windows.Forms.TreeNode treeNode363 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode359,
+            treeNode362});
+            System.Windows.Forms.TreeNode treeNode364 = new System.Windows.Forms.TreeNode("围岩校正", new System.Windows.Forms.TreeNode[] {
+            treeNode356,
+            treeNode363});
+            System.Windows.Forms.TreeNode treeNode365 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode366 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode367 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode365,
+            treeNode366});
+            System.Windows.Forms.TreeNode treeNode368 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode369 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode370 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode368,
+            treeNode369});
+            System.Windows.Forms.TreeNode treeNode371 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode367,
+            treeNode370});
+            System.Windows.Forms.TreeNode treeNode372 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode373 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode374 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode372,
+            treeNode373});
+            System.Windows.Forms.TreeNode treeNode375 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode376 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode377 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode375,
+            treeNode376});
+            System.Windows.Forms.TreeNode treeNode378 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode374,
+            treeNode377});
+            System.Windows.Forms.TreeNode treeNode379 = new System.Windows.Forms.TreeNode("侵入校正", new System.Windows.Forms.TreeNode[] {
+            treeNode371,
+            treeNode378});
+            System.Windows.Forms.TreeNode treeNode380 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode381 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode382 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode380,
+            treeNode381});
+            System.Windows.Forms.TreeNode treeNode383 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode384 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode385 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode383,
+            treeNode384});
+            System.Windows.Forms.TreeNode treeNode386 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode382,
+            treeNode385});
+            System.Windows.Forms.TreeNode treeNode387 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode388 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode389 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode387,
+            treeNode388});
+            System.Windows.Forms.TreeNode treeNode390 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode391 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode392 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode390,
+            treeNode391});
+            System.Windows.Forms.TreeNode treeNode393 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode389,
+            treeNode392});
+            System.Windows.Forms.TreeNode treeNode394 = new System.Windows.Forms.TreeNode("各向异性", new System.Windows.Forms.TreeNode[] {
+            treeNode386,
+            treeNode393});
+            System.Windows.Forms.TreeNode treeNode395 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode396 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode397 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode395,
+            treeNode396});
+            System.Windows.Forms.TreeNode treeNode398 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode399 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode400 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode398,
+            treeNode399});
+            System.Windows.Forms.TreeNode treeNode401 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode397,
+            treeNode400});
+            System.Windows.Forms.TreeNode treeNode402 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode403 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode404 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode402,
+            treeNode403});
+            System.Windows.Forms.TreeNode treeNode405 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode406 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode407 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode405,
+            treeNode406});
+            System.Windows.Forms.TreeNode treeNode408 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode404,
+            treeNode407});
+            System.Windows.Forms.TreeNode treeNode409 = new System.Windows.Forms.TreeNode("径向校正", new System.Windows.Forms.TreeNode[] {
+            treeNode401,
+            treeNode408});
+            System.Windows.Forms.TreeNode treeNode410 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode411 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode412 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode410,
+            treeNode411});
+            System.Windows.Forms.TreeNode treeNode413 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode414 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode415 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode413,
+            treeNode414});
+            System.Windows.Forms.TreeNode treeNode416 = new System.Windows.Forms.TreeNode("2Mhz高频", new System.Windows.Forms.TreeNode[] {
+            treeNode412,
+            treeNode415});
+            System.Windows.Forms.TreeNode treeNode417 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode418 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode419 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
+            treeNode417,
+            treeNode418});
+            System.Windows.Forms.TreeNode treeNode420 = new System.Windows.Forms.TreeNode("A");
+            System.Windows.Forms.TreeNode treeNode421 = new System.Windows.Forms.TreeNode("P");
+            System.Windows.Forms.TreeNode treeNode422 = new System.Windows.Forms.TreeNode("R22.5短源距", new System.Windows.Forms.TreeNode[] {
+            treeNode420,
+            treeNode421});
+            System.Windows.Forms.TreeNode treeNode423 = new System.Windows.Forms.TreeNode("400khz低频", new System.Windows.Forms.TreeNode[] {
+            treeNode419,
+            treeNode422});
+            System.Windows.Forms.TreeNode treeNode424 = new System.Windows.Forms.TreeNode("偏心校正", new System.Windows.Forms.TreeNode[] {
+            treeNode416,
+            treeNode423});
+            System.Windows.Forms.TreeNode treeNode425 = new System.Windows.Forms.TreeNode("4.75英寸", new System.Windows.Forms.TreeNode[] {
+            treeNode334,
+            treeNode349,
+            treeNode364,
+            treeNode379,
+            treeNode394,
+            treeNode409,
+            treeNode424});
+            System.Windows.Forms.TreeNode treeNode426 = new System.Windows.Forms.TreeNode("WPR电磁波环境校正图版类型", new System.Windows.Forms.TreeNode[] {
+            treeNode319,
+            treeNode425});
             this.contextMenuStrip_ChartInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_BindChart = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_CancelBind = new System.Windows.Forms.ToolStripMenuItem();
@@ -478,13 +478,11 @@
             this.button_LoadBorehole = new System.Windows.Forms.Button();
             this.radioButton_Borehole2 = new System.Windows.Forms.RadioButton();
             this.radioButton_Borehole1 = new System.Windows.Forms.RadioButton();
-            this.numericUpDown_Borehole = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button_DieletricFile = new System.Windows.Forms.Button();
             this.label_Dielectric = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button_ShoulderBed = new System.Windows.Forms.Button();
-            this.label_ShoulderBed = new System.Windows.Forms.Label();
+            this.button_ShoulderBedFile = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.button_Invasion = new System.Windows.Forms.Button();
             this.label_Invasion = new System.Windows.Forms.Label();
@@ -529,12 +527,19 @@
             this.button_Correct = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_Output = new System.Windows.Forms.Button();
+            this.numericUpDown_MudResistivity = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBox_BoreHole = new System.Windows.Forms.ComboBox();
+            this.radioButton_ShoulderBedFile = new System.Windows.Forms.RadioButton();
+            this.radioButton_ShoulderBedPara = new System.Windows.Forms.RadioButton();
+            this.label_BedThickness = new System.Windows.Forms.Label();
+            this.numericUpDown_SBR = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_BedThickness = new System.Windows.Forms.NumericUpDown();
             this.contextMenuStrip_ChartInfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Borehole)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -547,6 +552,9 @@
             this.contextMenuStrip_Tree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip_ChartInfo
@@ -613,7 +621,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(195, 101);
+            this.label13.Location = new System.Drawing.Point(163, 101);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 13);
             this.label13.TabIndex = 6;
@@ -622,9 +630,9 @@
             // textBox_WellName
             // 
             this.textBox_WellName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "WellName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox_WellName.Location = new System.Drawing.Point(93, 70);
+            this.textBox_WellName.Location = new System.Drawing.Point(79, 70);
             this.textBox_WellName.Name = "textBox_WellName";
-            this.textBox_WellName.Size = new System.Drawing.Size(152, 22);
+            this.textBox_WellName.Size = new System.Drawing.Size(173, 22);
             this.textBox_WellName.TabIndex = 5;
             this.textBox_WellName.Text = global::LWD_DataProcess.Properties.Settings.Default.WellName;
             this.textBox_WellName.TextChanged += new System.EventHandler(this.textBox_WellName_TextChanged);
@@ -632,9 +640,9 @@
             // button_Load
             // 
             this.button_Load.Font = new System.Drawing.Font("黑体", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Load.Location = new System.Drawing.Point(276, 83);
+            this.button_Load.Location = new System.Drawing.Point(276, 73);
             this.button_Load.Name = "button_Load";
-            this.button_Load.Size = new System.Drawing.Size(110, 41);
+            this.button_Load.Size = new System.Drawing.Size(110, 46);
             this.button_Load.TabIndex = 4;
             this.button_Load.Text = "加  载";
             this.button_Load.UseVisualStyleBackColor = true;
@@ -666,7 +674,7 @@
             this.comboBox_ToolSize.Items.AddRange(new object[] {
             "6.75",
             "4.75"});
-            this.comboBox_ToolSize.Location = new System.Drawing.Point(93, 98);
+            this.comboBox_ToolSize.Location = new System.Drawing.Point(79, 98);
             this.comboBox_ToolSize.Name = "comboBox_ToolSize";
             this.comboBox_ToolSize.Size = new System.Drawing.Size(78, 21);
             this.comboBox_ToolSize.TabIndex = 3;
@@ -733,7 +741,7 @@
             this.groupBox3.Font = new System.Drawing.Font("黑体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox3.Location = new System.Drawing.Point(436, 148);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(400, 127);
+            this.groupBox3.Size = new System.Drawing.Size(400, 151);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "环境校正列表";
@@ -748,36 +756,41 @@
             this.tabControl2.Location = new System.Drawing.Point(6, 20);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(390, 102);
+            this.tabControl2.Size = new System.Drawing.Size(390, 122);
             this.tabControl2.TabIndex = 13;
+            this.tabControl2.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl2_Selecting);
+            this.tabControl2.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl2_Selected);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.comboBox_BoreHole);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.numericUpDown_MudResistivity);
             this.tabPage3.Controls.Add(this.button_LoadBorehole);
             this.tabPage3.Controls.Add(this.radioButton_Borehole2);
             this.tabPage3.Controls.Add(this.radioButton_Borehole1);
-            this.tabPage3.Controls.Add(this.numericUpDown_Borehole);
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(382, 75);
+            this.tabPage3.Size = new System.Drawing.Size(382, 95);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "井眼校正";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // button_LoadBorehole
             // 
-            this.button_LoadBorehole.Location = new System.Drawing.Point(206, 44);
+            this.button_LoadBorehole.Location = new System.Drawing.Point(194, 67);
             this.button_LoadBorehole.Name = "button_LoadBorehole";
             this.button_LoadBorehole.Size = new System.Drawing.Size(120, 21);
             this.button_LoadBorehole.TabIndex = 11;
             this.button_LoadBorehole.Text = "载入井径文件";
             this.button_LoadBorehole.UseVisualStyleBackColor = true;
+            this.button_LoadBorehole.Click += new System.EventHandler(this.button_LoadBorehole_Click);
             // 
             // radioButton_Borehole2
             // 
             this.radioButton_Borehole2.AutoSize = true;
-            this.radioButton_Borehole2.Location = new System.Drawing.Point(21, 47);
+            this.radioButton_Borehole2.Location = new System.Drawing.Point(9, 69);
             this.radioButton_Borehole2.Name = "radioButton_Borehole2";
             this.radioButton_Borehole2.Size = new System.Drawing.Size(137, 17);
             this.radioButton_Borehole2.TabIndex = 9;
@@ -789,38 +802,14 @@
             // 
             this.radioButton_Borehole1.AutoSize = true;
             this.radioButton_Borehole1.Checked = true;
-            this.radioButton_Borehole1.Location = new System.Drawing.Point(21, 16);
+            this.radioButton_Borehole1.Location = new System.Drawing.Point(9, 11);
             this.radioButton_Borehole1.Name = "radioButton_Borehole1";
-            this.radioButton_Borehole1.Size = new System.Drawing.Size(179, 17);
+            this.radioButton_Borehole1.Size = new System.Drawing.Size(158, 17);
             this.radioButton_Borehole1.TabIndex = 8;
             this.radioButton_Borehole1.TabStop = true;
-            this.radioButton_Borehole1.Text = "使用固定井眼尺寸(inch)";
+            this.radioButton_Borehole1.Text = "井 眼 尺 寸(inch)：";
             this.radioButton_Borehole1.UseVisualStyleBackColor = true;
             this.radioButton_Borehole1.CheckedChanged += new System.EventHandler(this.radioButton_Borehole1_CheckedChanged);
-            // 
-            // numericUpDown_Borehole
-            // 
-            this.numericUpDown_Borehole.DecimalPlaces = 3;
-            this.numericUpDown_Borehole.Location = new System.Drawing.Point(206, 16);
-            this.numericUpDown_Borehole.Maximum = new decimal(new int[] {
-            18000,
-            0,
-            0,
-            196608});
-            this.numericUpDown_Borehole.Minimum = new decimal(new int[] {
-            8000,
-            0,
-            0,
-            196608});
-            this.numericUpDown_Borehole.Name = "numericUpDown_Borehole";
-            this.numericUpDown_Borehole.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown_Borehole.TabIndex = 7;
-            this.numericUpDown_Borehole.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_Borehole.Value = new decimal(new int[] {
-            8000,
-            0,
-            0,
-            196608});
             // 
             // tabPage4
             // 
@@ -829,7 +818,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 23);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(382, 75);
+            this.tabPage4.Size = new System.Drawing.Size(382, 95);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "介电常数";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -854,33 +843,28 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button_ShoulderBed);
-            this.tabPage5.Controls.Add(this.label_ShoulderBed);
+            this.tabPage5.Controls.Add(this.numericUpDown_BedThickness);
+            this.tabPage5.Controls.Add(this.numericUpDown_SBR);
+            this.tabPage5.Controls.Add(this.label_BedThickness);
+            this.tabPage5.Controls.Add(this.radioButton_ShoulderBedPara);
+            this.tabPage5.Controls.Add(this.radioButton_ShoulderBedFile);
+            this.tabPage5.Controls.Add(this.button_ShoulderBedFile);
             this.tabPage5.Location = new System.Drawing.Point(4, 23);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(382, 75);
+            this.tabPage5.Size = new System.Drawing.Size(382, 95);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "围岩校正";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button_ShoulderBed
+            // button_ShoulderBedFile
             // 
-            this.button_ShoulderBed.Location = new System.Drawing.Point(121, 26);
-            this.button_ShoulderBed.Name = "button_ShoulderBed";
-            this.button_ShoulderBed.Size = new System.Drawing.Size(146, 21);
-            this.button_ShoulderBed.TabIndex = 8;
-            this.button_ShoulderBed.Text = "载入围岩电阻率文件";
-            this.button_ShoulderBed.UseVisualStyleBackColor = true;
-            // 
-            // label_ShoulderBed
-            // 
-            this.label_ShoulderBed.AutoSize = true;
-            this.label_ShoulderBed.Location = new System.Drawing.Point(38, 30);
-            this.label_ShoulderBed.Name = "label_ShoulderBed";
-            this.label_ShoulderBed.Size = new System.Drawing.Size(77, 13);
-            this.label_ShoulderBed.TabIndex = 7;
-            this.label_ShoulderBed.Text = "围岩电阻率";
+            this.button_ShoulderBedFile.Location = new System.Drawing.Point(187, 66);
+            this.button_ShoulderBedFile.Name = "button_ShoulderBedFile";
+            this.button_ShoulderBedFile.Size = new System.Drawing.Size(139, 21);
+            this.button_ShoulderBedFile.TabIndex = 8;
+            this.button_ShoulderBedFile.Text = "载入围岩参数文件";
+            this.button_ShoulderBedFile.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
@@ -889,7 +873,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 23);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(382, 75);
+            this.tabPage6.Size = new System.Drawing.Size(382, 95);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "侵入校正";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -919,7 +903,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 23);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(382, 75);
+            this.tabPage7.Size = new System.Drawing.Size(382, 95);
             this.tabPage7.TabIndex = 4;
             this.tabPage7.Text = "各向异性";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -949,7 +933,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(829, 69);
+            this.dataGridView1.Size = new System.Drawing.Size(837, 456);
             this.dataGridView1.TabIndex = 2;
             // 
             // tabControl1
@@ -958,10 +942,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Font = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 539);
+            this.tabControl1.Location = new System.Drawing.Point(0, 564);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(843, 101);
+            this.tabControl1.Size = new System.Drawing.Size(851, 488);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 3;
             // 
@@ -971,7 +955,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(835, 75);
+            this.tabPage1.Size = new System.Drawing.Size(843, 462);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "数据预览";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -981,7 +965,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(835, 75);
+            this.tabPage2.Size = new System.Drawing.Size(843, 467);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "图版预览";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1011,9 +995,9 @@
             this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Controls.Add(this.textBox1);
             this.groupBox4.Font = new System.Drawing.Font("黑体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox4.Location = new System.Drawing.Point(436, 276);
+            this.groupBox4.Location = new System.Drawing.Point(436, 305);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(400, 195);
+            this.groupBox4.Size = new System.Drawing.Size(400, 181);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "曲线设置";
@@ -1214,14 +1198,14 @@
             this.groupBox5.Font = new System.Drawing.Font("黑体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox5.Location = new System.Drawing.Point(12, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(418, 521);
+            this.groupBox5.Size = new System.Drawing.Size(418, 546);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "图版配置";
             // 
             // button_CancelChart
             // 
-            this.button_CancelChart.Location = new System.Drawing.Point(256, 483);
+            this.button_CancelChart.Location = new System.Drawing.Point(253, 519);
             this.button_CancelChart.Name = "button_CancelChart";
             this.button_CancelChart.Size = new System.Drawing.Size(82, 21);
             this.button_CancelChart.TabIndex = 3;
@@ -1231,7 +1215,7 @@
             // 
             // button_ApplyChart
             // 
-            this.button_ApplyChart.Location = new System.Drawing.Point(88, 483);
+            this.button_ApplyChart.Location = new System.Drawing.Point(85, 519);
             this.button_ApplyChart.Name = "button_ApplyChart";
             this.button_ApplyChart.Size = new System.Drawing.Size(82, 21);
             this.button_ApplyChart.TabIndex = 1;
@@ -1246,655 +1230,655 @@
             this.treeView_WPR.Font = new System.Drawing.Font("黑体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.treeView_WPR.Location = new System.Drawing.Point(9, 29);
             this.treeView_WPR.Name = "treeView_WPR";
-            treeNode1.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode1.Name = "节点6";
-            treeNode1.Tag = "";
-            treeNode1.Text = "A";
-            treeNode2.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode2.Name = "节点7";
-            treeNode2.Text = "P";
-            treeNode3.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode3.Name = "长源距";
-            treeNode3.Tag = "R36";
-            treeNode3.Text = "R36长源距";
-            treeNode4.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode4.Name = "节点8";
-            treeNode4.Text = "A";
-            treeNode5.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode5.Name = "节点9";
-            treeNode5.Text = "P";
-            treeNode6.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode6.Name = "短源距";
-            treeNode6.Text = "R22.5短源距";
-            treeNode7.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode7.Name = "2M";
-            treeNode7.Tag = "2M";
-            treeNode7.Text = "2Mhz高频";
-            treeNode8.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode8.Name = "节点10";
-            treeNode8.Text = "A";
-            treeNode9.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode9.Name = "节点11";
-            treeNode9.Text = "P";
-            treeNode10.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode10.Name = "长源距";
-            treeNode10.Text = "R36长源距";
-            treeNode11.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode11.Name = "节点12";
-            treeNode11.Text = "A";
-            treeNode12.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode12.Name = "节点13";
-            treeNode12.Text = "P";
-            treeNode13.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode13.Name = "节点5";
-            treeNode13.Text = "R22.5短源距";
-            treeNode14.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode14.Name = "400k";
-            treeNode14.Text = "400khz低频";
-            treeNode15.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode15.Name = "Node_Dieletric";
-            treeNode15.Tag = "Dieletctric";
-            treeNode15.Text = "介电常数";
-            treeNode16.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode16.Name = "节点20";
-            treeNode16.Text = "A";
-            treeNode17.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode17.Name = "节点21";
-            treeNode17.Text = "P";
-            treeNode18.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode18.Name = "节点16";
-            treeNode18.Text = "R36长源距";
-            treeNode19.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode19.Name = "节点22";
-            treeNode19.Text = "A";
-            treeNode20.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode20.Name = "节点23";
-            treeNode20.Text = "P";
-            treeNode21.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode21.Name = "节点17";
-            treeNode21.Text = "R22.5短源距";
-            treeNode22.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode22.Name = "节点14";
-            treeNode22.Text = "2Mhz高频";
-            treeNode23.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode23.Name = "节点24";
-            treeNode23.Text = "A";
-            treeNode24.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode24.Name = "节点25";
-            treeNode24.Text = "P";
-            treeNode25.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode25.Name = "节点18";
-            treeNode25.Text = "R36长源距";
-            treeNode26.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode26.Name = "节点26";
-            treeNode26.Text = "A";
-            treeNode27.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode27.Name = "节点27";
-            treeNode27.Text = "P";
-            treeNode28.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode28.Name = "节点19";
-            treeNode28.Text = "R22.5短源距";
-            treeNode29.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode29.Name = "节点15";
-            treeNode29.Text = "400khz低频";
-            treeNode30.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode30.Name = "Node_DiameterHole";
-            treeNode30.Text = "井眼校正";
-            treeNode31.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode31.Name = "节点100";
-            treeNode31.Text = "A";
-            treeNode32.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode32.Name = "节点101";
-            treeNode32.Text = "P";
-            treeNode33.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode33.Name = "节点30";
-            treeNode33.Text = "R36长源距";
-            treeNode34.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode34.Name = "节点102";
-            treeNode34.Text = "A";
-            treeNode35.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode35.Name = "节点103";
-            treeNode35.Text = "P";
-            treeNode36.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode36.Name = "节点31";
-            treeNode36.Text = "R22.5短源距";
-            treeNode37.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode37.Name = "节点28";
-            treeNode37.Text = "2Mhz高频";
-            treeNode38.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode38.Name = "节点104";
-            treeNode38.Text = "A";
-            treeNode39.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode39.Name = "节点105";
-            treeNode39.Text = "P";
-            treeNode40.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode40.Name = "节点32";
-            treeNode40.Text = "R36长源距";
-            treeNode41.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode41.Name = "节点106";
-            treeNode41.Text = "A";
-            treeNode42.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode42.Name = "节点107";
-            treeNode42.Text = "P";
-            treeNode43.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode43.Name = "节点33";
-            treeNode43.Text = "R22.5短源距";
-            treeNode44.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode44.Name = "节点29";
-            treeNode44.Text = "400khz低频";
-            treeNode45.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode45.Name = "Node_ShoulderBed";
-            treeNode45.Text = "围岩校正";
-            treeNode46.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode46.Name = "节点108";
-            treeNode46.Text = "A";
-            treeNode47.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode47.Name = "节点109";
-            treeNode47.Text = "P";
-            treeNode48.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode48.Name = "节点56";
-            treeNode48.Text = "R36长源距";
-            treeNode49.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode49.Name = "节点110";
-            treeNode49.Text = "A";
-            treeNode50.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode50.Name = "节点111";
-            treeNode50.Text = "P";
-            treeNode51.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode51.Name = "节点57";
-            treeNode51.Text = "R22.5短源距";
-            treeNode52.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode52.Name = "节点34";
-            treeNode52.Text = "2Mhz高频";
-            treeNode53.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode53.Name = "节点112";
-            treeNode53.Text = "A";
-            treeNode54.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode54.Name = "节点113";
-            treeNode54.Text = "P";
-            treeNode55.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode55.Name = "节点58";
-            treeNode55.Text = "R36长源距";
-            treeNode56.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode56.Name = "节点114";
-            treeNode56.Text = "A";
-            treeNode57.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode57.Name = "节点115";
-            treeNode57.Text = "P";
-            treeNode58.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode58.Name = "节点59";
-            treeNode58.Text = "R22.5短源距";
-            treeNode59.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode59.Name = "节点35";
-            treeNode59.Text = "400khz低频";
-            treeNode60.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode60.Name = "Node_Invasion";
-            treeNode60.Text = "侵入校正";
-            treeNode61.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode61.Name = "节点116";
-            treeNode61.Text = "A";
-            treeNode62.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode62.Name = "节点117";
-            treeNode62.Text = "P";
-            treeNode63.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode63.Name = "节点60";
-            treeNode63.Text = "R36长源距";
-            treeNode64.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode64.Name = "节点192";
-            treeNode64.Text = "A";
-            treeNode65.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode65.Name = "节点193";
-            treeNode65.Text = "P";
-            treeNode66.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode66.Name = "节点61";
-            treeNode66.Text = "R22.5短源距";
-            treeNode67.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode67.Name = "节点36";
-            treeNode67.Text = "2Mhz高频";
-            treeNode68.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode68.Name = "节点118";
-            treeNode68.Text = "A";
-            treeNode69.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode69.Name = "节点119";
-            treeNode69.Text = "P";
-            treeNode70.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode70.Name = "节点62";
-            treeNode70.Text = "R36长源距";
-            treeNode71.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode71.Name = "节点120";
-            treeNode71.Text = "A";
-            treeNode72.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode72.Name = "节点121";
-            treeNode72.Text = "P";
-            treeNode73.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode73.Name = "节点63";
-            treeNode73.Text = "R22.5短源距";
-            treeNode74.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode74.Name = "节点37";
-            treeNode74.Text = "400khz低频";
-            treeNode75.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode75.Name = "Node_Anistropy";
-            treeNode75.Text = "各向异性";
-            treeNode76.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode76.Name = "节点122";
-            treeNode76.Text = "A";
-            treeNode77.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode77.Name = "节点123";
-            treeNode77.Text = "P";
-            treeNode78.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode78.Name = "节点64";
-            treeNode78.Text = "R36长源距";
-            treeNode79.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode79.Name = "节点124";
-            treeNode79.Text = "A";
-            treeNode80.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode80.Name = "节点125";
-            treeNode80.Text = "P";
-            treeNode81.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode81.Name = "节点65";
-            treeNode81.Text = "R22.5短源距";
-            treeNode82.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode82.Name = "节点38";
-            treeNode82.Text = "2Mhz高频";
-            treeNode83.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode83.Name = "节点126";
-            treeNode83.Text = "A";
-            treeNode84.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode84.Name = "节点127";
-            treeNode84.Text = "P";
-            treeNode85.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode85.Name = "节点66";
-            treeNode85.Text = "R36长源距";
-            treeNode86.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode86.Name = "节点128";
-            treeNode86.Text = "A";
-            treeNode87.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode87.Name = "节点129";
-            treeNode87.Text = "P";
-            treeNode88.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode88.Name = "节点67";
-            treeNode88.Text = "R22.5短源距";
-            treeNode89.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode89.Name = "节点39";
-            treeNode89.Text = "400khz低频";
-            treeNode90.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode90.Name = "Node_RadialResponse";
-            treeNode90.Text = "径向校正";
-            treeNode91.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode91.Name = "节点130";
-            treeNode91.Text = "A";
-            treeNode92.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode92.Name = "节点131";
-            treeNode92.Text = "P";
-            treeNode93.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode93.Name = "节点68";
-            treeNode93.Text = "R36长源距";
-            treeNode94.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode94.Name = "节点132";
-            treeNode94.Text = "A";
-            treeNode95.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode95.Name = "节点133";
-            treeNode95.Text = "P";
-            treeNode96.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode96.Name = "节点69";
-            treeNode96.Text = "R22.5短源距";
-            treeNode97.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode97.Name = "节点40";
-            treeNode97.Text = "2Mhz高频";
-            treeNode98.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode98.Name = "节点134";
-            treeNode98.Text = "A";
-            treeNode99.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode99.Name = "节点135";
-            treeNode99.Text = "P";
-            treeNode100.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode100.Name = "节点70";
-            treeNode100.Text = "R36长源距";
-            treeNode101.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode101.Name = "节点136";
-            treeNode101.Text = "A";
-            treeNode102.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode102.Name = "节点137";
-            treeNode102.Text = "P";
-            treeNode103.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode103.Name = "节点71";
-            treeNode103.Text = "R22.5短源距";
-            treeNode104.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode104.Name = "节点41";
-            treeNode104.Text = "400khz低频";
-            treeNode105.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode105.Name = "Node_Eccentricity";
-            treeNode105.Text = "偏心校正";
-            treeNode106.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode106.Name = "Node_675";
-            treeNode106.Tag = "6.75";
-            treeNode106.Text = "6.75英寸";
-            treeNode107.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode107.Name = "节点138";
-            treeNode107.Text = "A";
-            treeNode108.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode108.Name = "节点139";
-            treeNode108.Text = "P";
-            treeNode109.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode109.Name = "节点72";
-            treeNode109.Text = "R36长源距";
-            treeNode110.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode110.Name = "节点0";
-            treeNode110.Text = "A";
-            treeNode111.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode111.Name = "节点1";
-            treeNode111.Text = "P";
-            treeNode112.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode112.Name = "节点73";
-            treeNode112.Text = "R22.5短源距";
-            treeNode113.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode113.Name = "节点42";
-            treeNode113.Text = "2Mhz高频";
-            treeNode114.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode114.Name = "节点140";
-            treeNode114.Text = "A";
-            treeNode115.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode115.Name = "节点141";
-            treeNode115.Text = "P";
-            treeNode116.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode116.Name = "节点74";
-            treeNode116.Text = "R36长源距";
-            treeNode117.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode117.Name = "节点142";
-            treeNode117.Text = "A";
-            treeNode118.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode118.Name = "节点143";
-            treeNode118.Text = "P";
-            treeNode119.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode119.Name = "节点75";
-            treeNode119.Text = "R22.5短源距";
-            treeNode120.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode120.Name = "节点43";
-            treeNode120.Text = "400khz低频";
-            treeNode121.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode121.Name = "Node_Dieletric";
-            treeNode121.Text = "介电常数";
-            treeNode122.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode122.Name = "节点144";
-            treeNode122.Text = "A";
-            treeNode123.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode123.Name = "节点145";
-            treeNode123.Text = "P";
-            treeNode124.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode124.Name = "节点76";
-            treeNode124.Text = "R36长源距";
-            treeNode125.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode125.Name = "节点146";
-            treeNode125.Text = "A";
-            treeNode126.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode126.Name = "节点147";
-            treeNode126.Text = "P";
-            treeNode127.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode127.Name = "节点77";
-            treeNode127.Text = "R22.5短源距";
-            treeNode128.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode128.Name = "节点44";
-            treeNode128.Text = "2Mhz高频";
-            treeNode129.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode129.Name = "节点148";
-            treeNode129.Text = "A";
-            treeNode130.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode130.Name = "节点149";
-            treeNode130.Text = "P";
-            treeNode131.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode131.Name = "节点78";
-            treeNode131.Text = "R36长源距";
-            treeNode132.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode132.Name = "节点150";
-            treeNode132.Text = "A";
-            treeNode133.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode133.Name = "节点151";
-            treeNode133.Text = "P";
-            treeNode134.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode134.Name = "节点79";
-            treeNode134.Text = "R22.5短源距";
-            treeNode135.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode135.Name = "节点45";
-            treeNode135.Text = "400khz低频";
-            treeNode136.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode136.Name = "Node_DiameterHole";
-            treeNode136.Text = "井眼校正";
-            treeNode137.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode137.Name = "节点152";
-            treeNode137.Text = "A";
-            treeNode138.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode138.Name = "节点153";
-            treeNode138.Text = "P";
-            treeNode139.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode139.Name = "节点80";
-            treeNode139.Text = "R36长源距";
-            treeNode140.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode140.Name = "节点154";
-            treeNode140.Text = "A";
-            treeNode141.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode141.Name = "节点155";
-            treeNode141.Text = "P";
-            treeNode142.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode142.Name = "节点81";
-            treeNode142.Text = "R22.5短源距";
-            treeNode143.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode143.Name = "节点46";
-            treeNode143.Text = "2Mhz高频";
-            treeNode144.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode144.Name = "节点156";
-            treeNode144.Text = "A";
-            treeNode145.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode145.Name = "节点157";
-            treeNode145.Text = "P";
-            treeNode146.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode146.Name = "节点82";
-            treeNode146.Text = "R36长源距";
-            treeNode147.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode147.Name = "节点158";
-            treeNode147.Text = "A";
-            treeNode148.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode148.Name = "节点159";
-            treeNode148.Text = "P";
-            treeNode149.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode149.Name = "节点83";
-            treeNode149.Text = "R22.5短源距";
-            treeNode150.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode150.Name = "节点47";
-            treeNode150.Text = "400khz低频";
-            treeNode151.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode151.Name = "Node_ShoulderBed";
-            treeNode151.Text = "围岩校正";
-            treeNode152.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode152.Name = "节点160";
-            treeNode152.Text = "A";
-            treeNode153.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode153.Name = "节点161";
-            treeNode153.Text = "P";
-            treeNode154.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode154.Name = "节点84";
-            treeNode154.Text = "R36长源距";
-            treeNode155.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode155.Name = "节点162";
-            treeNode155.Text = "A";
-            treeNode156.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode156.Name = "节点163";
-            treeNode156.Text = "P";
-            treeNode157.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode157.Name = "节点85";
-            treeNode157.Text = "R22.5短源距";
-            treeNode158.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode158.Name = "节点48";
-            treeNode158.Text = "2Mhz高频";
-            treeNode159.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode159.Name = "节点164";
-            treeNode159.Text = "A";
-            treeNode160.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode160.Name = "节点165";
-            treeNode160.Text = "P";
-            treeNode161.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode161.Name = "节点86";
-            treeNode161.Text = "R36长源距";
-            treeNode162.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode162.Name = "节点166";
-            treeNode162.Text = "A";
-            treeNode163.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode163.Name = "节点167";
-            treeNode163.Text = "P";
-            treeNode164.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode164.Name = "节点87";
-            treeNode164.Text = "R22.5短源距";
-            treeNode165.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode165.Name = "节点49";
-            treeNode165.Text = "400khz低频";
-            treeNode166.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode166.Name = "Node_Invasion";
-            treeNode166.Text = "侵入校正";
-            treeNode167.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode167.Name = "节点168";
-            treeNode167.Text = "A";
-            treeNode168.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode168.Name = "节点169";
-            treeNode168.Text = "P";
-            treeNode169.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode169.Name = "节点88";
-            treeNode169.Text = "R36长源距";
-            treeNode170.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode170.Name = "节点170";
-            treeNode170.Text = "A";
-            treeNode171.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode171.Name = "节点171";
-            treeNode171.Text = "P";
-            treeNode172.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode172.Name = "节点89";
-            treeNode172.Text = "R22.5短源距";
-            treeNode173.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode173.Name = "节点50";
-            treeNode173.Text = "2Mhz高频";
-            treeNode174.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode174.Name = "节点172";
-            treeNode174.Text = "A";
-            treeNode175.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode175.Name = "节点173";
-            treeNode175.Text = "P";
-            treeNode176.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode176.Name = "节点90";
-            treeNode176.Text = "R36长源距";
-            treeNode177.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode177.Name = "节点174";
-            treeNode177.Text = "A";
-            treeNode178.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode178.Name = "节点175";
-            treeNode178.Text = "P";
-            treeNode179.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode179.Name = "节点91";
-            treeNode179.Text = "R22.5短源距";
-            treeNode180.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode180.Name = "节点51";
-            treeNode180.Text = "400khz低频";
-            treeNode181.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode181.Name = "Node_Anistropy";
-            treeNode181.Text = "各向异性";
-            treeNode182.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode182.Name = "节点176";
-            treeNode182.Text = "A";
-            treeNode183.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode183.Name = "节点177";
-            treeNode183.Text = "P";
-            treeNode184.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode184.Name = "节点92";
-            treeNode184.Text = "R36长源距";
-            treeNode185.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode185.Name = "节点178";
-            treeNode185.Text = "A";
-            treeNode186.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode186.Name = "节点179";
-            treeNode186.Text = "P";
-            treeNode187.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode187.Name = "节点93";
-            treeNode187.Text = "R22.5短源距";
-            treeNode188.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode188.Name = "节点52";
-            treeNode188.Text = "2Mhz高频";
-            treeNode189.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode189.Name = "节点180";
-            treeNode189.Text = "A";
-            treeNode190.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode190.Name = "节点181";
-            treeNode190.Text = "P";
-            treeNode191.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode191.Name = "节点94";
-            treeNode191.Text = "R36长源距";
-            treeNode192.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode192.Name = "节点182";
-            treeNode192.Text = "A";
-            treeNode193.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode193.Name = "节点183";
-            treeNode193.Text = "P";
-            treeNode194.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode194.Name = "节点95";
-            treeNode194.Text = "R22.5短源距";
-            treeNode195.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode195.Name = "节点53";
-            treeNode195.Text = "400khz低频";
-            treeNode196.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode196.Name = "Node_RadialResponse";
-            treeNode196.Text = "径向校正";
-            treeNode197.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode197.Name = "节点184";
-            treeNode197.Text = "A";
-            treeNode198.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode198.Name = "节点185";
-            treeNode198.Text = "P";
-            treeNode199.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode199.Name = "节点96";
-            treeNode199.Text = "R36长源距";
-            treeNode200.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode200.Name = "节点186";
-            treeNode200.Text = "A";
-            treeNode201.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode201.Name = "节点187";
-            treeNode201.Text = "P";
-            treeNode202.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode202.Name = "节点97";
-            treeNode202.Text = "R22.5短源距";
-            treeNode203.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode203.Name = "节点54";
-            treeNode203.Text = "2Mhz高频";
-            treeNode204.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode204.Name = "节点188";
-            treeNode204.Text = "A";
-            treeNode205.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode205.Name = "节点189";
-            treeNode205.Text = "P";
-            treeNode206.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode206.Name = "节点98";
-            treeNode206.Text = "R36长源距";
-            treeNode207.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode207.Name = "节点190";
-            treeNode207.Text = "A";
-            treeNode208.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode208.Name = "节点191";
-            treeNode208.Text = "P";
-            treeNode209.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode209.Name = "节点99";
-            treeNode209.Text = "R22.5短源距";
-            treeNode210.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode210.Name = "节点55";
-            treeNode210.Text = "400khz低频";
-            treeNode211.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode211.Name = "Node_Eccentricity";
-            treeNode211.Text = "偏心校正";
-            treeNode212.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode212.Name = "Node_475";
-            treeNode212.Text = "4.75英寸";
-            treeNode213.BackColor = System.Drawing.SystemColors.Control;
-            treeNode213.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
-            treeNode213.Name = "Node_WPR";
-            treeNode213.Tag = "WPR";
-            treeNode213.Text = "WPR电磁波环境校正图版类型";
+            treeNode214.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode214.Name = "节点6";
+            treeNode214.Tag = "";
+            treeNode214.Text = "A";
+            treeNode215.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode215.Name = "节点7";
+            treeNode215.Text = "P";
+            treeNode216.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode216.Name = "长源距";
+            treeNode216.Tag = "R36";
+            treeNode216.Text = "R36长源距";
+            treeNode217.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode217.Name = "节点8";
+            treeNode217.Text = "A";
+            treeNode218.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode218.Name = "节点9";
+            treeNode218.Text = "P";
+            treeNode219.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode219.Name = "短源距";
+            treeNode219.Text = "R22.5短源距";
+            treeNode220.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode220.Name = "2M";
+            treeNode220.Tag = "2M";
+            treeNode220.Text = "2Mhz高频";
+            treeNode221.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode221.Name = "节点10";
+            treeNode221.Text = "A";
+            treeNode222.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode222.Name = "节点11";
+            treeNode222.Text = "P";
+            treeNode223.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode223.Name = "长源距";
+            treeNode223.Text = "R36长源距";
+            treeNode224.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode224.Name = "节点12";
+            treeNode224.Text = "A";
+            treeNode225.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode225.Name = "节点13";
+            treeNode225.Text = "P";
+            treeNode226.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode226.Name = "节点5";
+            treeNode226.Text = "R22.5短源距";
+            treeNode227.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode227.Name = "400k";
+            treeNode227.Text = "400khz低频";
+            treeNode228.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode228.Name = "Node_Dieletric";
+            treeNode228.Tag = "Dieletctric";
+            treeNode228.Text = "介电常数";
+            treeNode229.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode229.Name = "节点20";
+            treeNode229.Text = "A";
+            treeNode230.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode230.Name = "节点21";
+            treeNode230.Text = "P";
+            treeNode231.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode231.Name = "节点16";
+            treeNode231.Text = "R36长源距";
+            treeNode232.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode232.Name = "节点22";
+            treeNode232.Text = "A";
+            treeNode233.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode233.Name = "节点23";
+            treeNode233.Text = "P";
+            treeNode234.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode234.Name = "节点17";
+            treeNode234.Text = "R22.5短源距";
+            treeNode235.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode235.Name = "节点14";
+            treeNode235.Text = "2Mhz高频";
+            treeNode236.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode236.Name = "节点24";
+            treeNode236.Text = "A";
+            treeNode237.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode237.Name = "节点25";
+            treeNode237.Text = "P";
+            treeNode238.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode238.Name = "节点18";
+            treeNode238.Text = "R36长源距";
+            treeNode239.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode239.Name = "节点26";
+            treeNode239.Text = "A";
+            treeNode240.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode240.Name = "节点27";
+            treeNode240.Text = "P";
+            treeNode241.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode241.Name = "节点19";
+            treeNode241.Text = "R22.5短源距";
+            treeNode242.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode242.Name = "节点15";
+            treeNode242.Text = "400khz低频";
+            treeNode243.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode243.Name = "Node_DiameterHole";
+            treeNode243.Text = "井眼校正";
+            treeNode244.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode244.Name = "节点100";
+            treeNode244.Text = "A";
+            treeNode245.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode245.Name = "节点101";
+            treeNode245.Text = "P";
+            treeNode246.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode246.Name = "节点30";
+            treeNode246.Text = "R36长源距";
+            treeNode247.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode247.Name = "节点102";
+            treeNode247.Text = "A";
+            treeNode248.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode248.Name = "节点103";
+            treeNode248.Text = "P";
+            treeNode249.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode249.Name = "节点31";
+            treeNode249.Text = "R22.5短源距";
+            treeNode250.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode250.Name = "节点28";
+            treeNode250.Text = "2Mhz高频";
+            treeNode251.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode251.Name = "节点104";
+            treeNode251.Text = "A";
+            treeNode252.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode252.Name = "节点105";
+            treeNode252.Text = "P";
+            treeNode253.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode253.Name = "节点32";
+            treeNode253.Text = "R36长源距";
+            treeNode254.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode254.Name = "节点106";
+            treeNode254.Text = "A";
+            treeNode255.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode255.Name = "节点107";
+            treeNode255.Text = "P";
+            treeNode256.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode256.Name = "节点33";
+            treeNode256.Text = "R22.5短源距";
+            treeNode257.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode257.Name = "节点29";
+            treeNode257.Text = "400khz低频";
+            treeNode258.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode258.Name = "Node_ShoulderBed";
+            treeNode258.Text = "围岩校正";
+            treeNode259.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode259.Name = "节点108";
+            treeNode259.Text = "A";
+            treeNode260.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode260.Name = "节点109";
+            treeNode260.Text = "P";
+            treeNode261.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode261.Name = "节点56";
+            treeNode261.Text = "R36长源距";
+            treeNode262.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode262.Name = "节点110";
+            treeNode262.Text = "A";
+            treeNode263.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode263.Name = "节点111";
+            treeNode263.Text = "P";
+            treeNode264.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode264.Name = "节点57";
+            treeNode264.Text = "R22.5短源距";
+            treeNode265.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode265.Name = "节点34";
+            treeNode265.Text = "2Mhz高频";
+            treeNode266.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode266.Name = "节点112";
+            treeNode266.Text = "A";
+            treeNode267.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode267.Name = "节点113";
+            treeNode267.Text = "P";
+            treeNode268.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode268.Name = "节点58";
+            treeNode268.Text = "R36长源距";
+            treeNode269.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode269.Name = "节点114";
+            treeNode269.Text = "A";
+            treeNode270.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode270.Name = "节点115";
+            treeNode270.Text = "P";
+            treeNode271.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode271.Name = "节点59";
+            treeNode271.Text = "R22.5短源距";
+            treeNode272.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode272.Name = "节点35";
+            treeNode272.Text = "400khz低频";
+            treeNode273.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode273.Name = "Node_Invasion";
+            treeNode273.Text = "侵入校正";
+            treeNode274.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode274.Name = "节点116";
+            treeNode274.Text = "A";
+            treeNode275.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode275.Name = "节点117";
+            treeNode275.Text = "P";
+            treeNode276.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode276.Name = "节点60";
+            treeNode276.Text = "R36长源距";
+            treeNode277.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode277.Name = "节点192";
+            treeNode277.Text = "A";
+            treeNode278.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode278.Name = "节点193";
+            treeNode278.Text = "P";
+            treeNode279.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode279.Name = "节点61";
+            treeNode279.Text = "R22.5短源距";
+            treeNode280.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode280.Name = "节点36";
+            treeNode280.Text = "2Mhz高频";
+            treeNode281.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode281.Name = "节点118";
+            treeNode281.Text = "A";
+            treeNode282.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode282.Name = "节点119";
+            treeNode282.Text = "P";
+            treeNode283.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode283.Name = "节点62";
+            treeNode283.Text = "R36长源距";
+            treeNode284.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode284.Name = "节点120";
+            treeNode284.Text = "A";
+            treeNode285.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode285.Name = "节点121";
+            treeNode285.Text = "P";
+            treeNode286.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode286.Name = "节点63";
+            treeNode286.Text = "R22.5短源距";
+            treeNode287.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode287.Name = "节点37";
+            treeNode287.Text = "400khz低频";
+            treeNode288.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode288.Name = "Node_Anistropy";
+            treeNode288.Text = "各向异性";
+            treeNode289.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode289.Name = "节点122";
+            treeNode289.Text = "A";
+            treeNode290.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode290.Name = "节点123";
+            treeNode290.Text = "P";
+            treeNode291.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode291.Name = "节点64";
+            treeNode291.Text = "R36长源距";
+            treeNode292.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode292.Name = "节点124";
+            treeNode292.Text = "A";
+            treeNode293.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode293.Name = "节点125";
+            treeNode293.Text = "P";
+            treeNode294.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode294.Name = "节点65";
+            treeNode294.Text = "R22.5短源距";
+            treeNode295.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode295.Name = "节点38";
+            treeNode295.Text = "2Mhz高频";
+            treeNode296.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode296.Name = "节点126";
+            treeNode296.Text = "A";
+            treeNode297.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode297.Name = "节点127";
+            treeNode297.Text = "P";
+            treeNode298.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode298.Name = "节点66";
+            treeNode298.Text = "R36长源距";
+            treeNode299.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode299.Name = "节点128";
+            treeNode299.Text = "A";
+            treeNode300.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode300.Name = "节点129";
+            treeNode300.Text = "P";
+            treeNode301.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode301.Name = "节点67";
+            treeNode301.Text = "R22.5短源距";
+            treeNode302.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode302.Name = "节点39";
+            treeNode302.Text = "400khz低频";
+            treeNode303.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode303.Name = "Node_RadialResponse";
+            treeNode303.Text = "径向校正";
+            treeNode304.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode304.Name = "节点130";
+            treeNode304.Text = "A";
+            treeNode305.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode305.Name = "节点131";
+            treeNode305.Text = "P";
+            treeNode306.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode306.Name = "节点68";
+            treeNode306.Text = "R36长源距";
+            treeNode307.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode307.Name = "节点132";
+            treeNode307.Text = "A";
+            treeNode308.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode308.Name = "节点133";
+            treeNode308.Text = "P";
+            treeNode309.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode309.Name = "节点69";
+            treeNode309.Text = "R22.5短源距";
+            treeNode310.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode310.Name = "节点40";
+            treeNode310.Text = "2Mhz高频";
+            treeNode311.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode311.Name = "节点134";
+            treeNode311.Text = "A";
+            treeNode312.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode312.Name = "节点135";
+            treeNode312.Text = "P";
+            treeNode313.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode313.Name = "节点70";
+            treeNode313.Text = "R36长源距";
+            treeNode314.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode314.Name = "节点136";
+            treeNode314.Text = "A";
+            treeNode315.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode315.Name = "节点137";
+            treeNode315.Text = "P";
+            treeNode316.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode316.Name = "节点71";
+            treeNode316.Text = "R22.5短源距";
+            treeNode317.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode317.Name = "节点41";
+            treeNode317.Text = "400khz低频";
+            treeNode318.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode318.Name = "Node_Eccentricity";
+            treeNode318.Text = "偏心校正";
+            treeNode319.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode319.Name = "Node_675";
+            treeNode319.Tag = "6.75";
+            treeNode319.Text = "6.75英寸";
+            treeNode320.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode320.Name = "节点138";
+            treeNode320.Text = "A";
+            treeNode321.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode321.Name = "节点139";
+            treeNode321.Text = "P";
+            treeNode322.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode322.Name = "节点72";
+            treeNode322.Text = "R36长源距";
+            treeNode323.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode323.Name = "节点0";
+            treeNode323.Text = "A";
+            treeNode324.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode324.Name = "节点1";
+            treeNode324.Text = "P";
+            treeNode325.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode325.Name = "节点73";
+            treeNode325.Text = "R22.5短源距";
+            treeNode326.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode326.Name = "节点42";
+            treeNode326.Text = "2Mhz高频";
+            treeNode327.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode327.Name = "节点140";
+            treeNode327.Text = "A";
+            treeNode328.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode328.Name = "节点141";
+            treeNode328.Text = "P";
+            treeNode329.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode329.Name = "节点74";
+            treeNode329.Text = "R36长源距";
+            treeNode330.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode330.Name = "节点142";
+            treeNode330.Text = "A";
+            treeNode331.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode331.Name = "节点143";
+            treeNode331.Text = "P";
+            treeNode332.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode332.Name = "节点75";
+            treeNode332.Text = "R22.5短源距";
+            treeNode333.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode333.Name = "节点43";
+            treeNode333.Text = "400khz低频";
+            treeNode334.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode334.Name = "Node_Dieletric";
+            treeNode334.Text = "介电常数";
+            treeNode335.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode335.Name = "节点144";
+            treeNode335.Text = "A";
+            treeNode336.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode336.Name = "节点145";
+            treeNode336.Text = "P";
+            treeNode337.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode337.Name = "节点76";
+            treeNode337.Text = "R36长源距";
+            treeNode338.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode338.Name = "节点146";
+            treeNode338.Text = "A";
+            treeNode339.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode339.Name = "节点147";
+            treeNode339.Text = "P";
+            treeNode340.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode340.Name = "节点77";
+            treeNode340.Text = "R22.5短源距";
+            treeNode341.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode341.Name = "节点44";
+            treeNode341.Text = "2Mhz高频";
+            treeNode342.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode342.Name = "节点148";
+            treeNode342.Text = "A";
+            treeNode343.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode343.Name = "节点149";
+            treeNode343.Text = "P";
+            treeNode344.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode344.Name = "节点78";
+            treeNode344.Text = "R36长源距";
+            treeNode345.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode345.Name = "节点150";
+            treeNode345.Text = "A";
+            treeNode346.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode346.Name = "节点151";
+            treeNode346.Text = "P";
+            treeNode347.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode347.Name = "节点79";
+            treeNode347.Text = "R22.5短源距";
+            treeNode348.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode348.Name = "节点45";
+            treeNode348.Text = "400khz低频";
+            treeNode349.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode349.Name = "Node_DiameterHole";
+            treeNode349.Text = "井眼校正";
+            treeNode350.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode350.Name = "节点152";
+            treeNode350.Text = "A";
+            treeNode351.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode351.Name = "节点153";
+            treeNode351.Text = "P";
+            treeNode352.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode352.Name = "节点80";
+            treeNode352.Text = "R36长源距";
+            treeNode353.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode353.Name = "节点154";
+            treeNode353.Text = "A";
+            treeNode354.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode354.Name = "节点155";
+            treeNode354.Text = "P";
+            treeNode355.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode355.Name = "节点81";
+            treeNode355.Text = "R22.5短源距";
+            treeNode356.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode356.Name = "节点46";
+            treeNode356.Text = "2Mhz高频";
+            treeNode357.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode357.Name = "节点156";
+            treeNode357.Text = "A";
+            treeNode358.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode358.Name = "节点157";
+            treeNode358.Text = "P";
+            treeNode359.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode359.Name = "节点82";
+            treeNode359.Text = "R36长源距";
+            treeNode360.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode360.Name = "节点158";
+            treeNode360.Text = "A";
+            treeNode361.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode361.Name = "节点159";
+            treeNode361.Text = "P";
+            treeNode362.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode362.Name = "节点83";
+            treeNode362.Text = "R22.5短源距";
+            treeNode363.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode363.Name = "节点47";
+            treeNode363.Text = "400khz低频";
+            treeNode364.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode364.Name = "Node_ShoulderBed";
+            treeNode364.Text = "围岩校正";
+            treeNode365.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode365.Name = "节点160";
+            treeNode365.Text = "A";
+            treeNode366.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode366.Name = "节点161";
+            treeNode366.Text = "P";
+            treeNode367.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode367.Name = "节点84";
+            treeNode367.Text = "R36长源距";
+            treeNode368.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode368.Name = "节点162";
+            treeNode368.Text = "A";
+            treeNode369.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode369.Name = "节点163";
+            treeNode369.Text = "P";
+            treeNode370.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode370.Name = "节点85";
+            treeNode370.Text = "R22.5短源距";
+            treeNode371.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode371.Name = "节点48";
+            treeNode371.Text = "2Mhz高频";
+            treeNode372.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode372.Name = "节点164";
+            treeNode372.Text = "A";
+            treeNode373.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode373.Name = "节点165";
+            treeNode373.Text = "P";
+            treeNode374.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode374.Name = "节点86";
+            treeNode374.Text = "R36长源距";
+            treeNode375.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode375.Name = "节点166";
+            treeNode375.Text = "A";
+            treeNode376.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode376.Name = "节点167";
+            treeNode376.Text = "P";
+            treeNode377.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode377.Name = "节点87";
+            treeNode377.Text = "R22.5短源距";
+            treeNode378.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode378.Name = "节点49";
+            treeNode378.Text = "400khz低频";
+            treeNode379.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode379.Name = "Node_Invasion";
+            treeNode379.Text = "侵入校正";
+            treeNode380.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode380.Name = "节点168";
+            treeNode380.Text = "A";
+            treeNode381.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode381.Name = "节点169";
+            treeNode381.Text = "P";
+            treeNode382.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode382.Name = "节点88";
+            treeNode382.Text = "R36长源距";
+            treeNode383.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode383.Name = "节点170";
+            treeNode383.Text = "A";
+            treeNode384.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode384.Name = "节点171";
+            treeNode384.Text = "P";
+            treeNode385.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode385.Name = "节点89";
+            treeNode385.Text = "R22.5短源距";
+            treeNode386.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode386.Name = "节点50";
+            treeNode386.Text = "2Mhz高频";
+            treeNode387.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode387.Name = "节点172";
+            treeNode387.Text = "A";
+            treeNode388.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode388.Name = "节点173";
+            treeNode388.Text = "P";
+            treeNode389.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode389.Name = "节点90";
+            treeNode389.Text = "R36长源距";
+            treeNode390.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode390.Name = "节点174";
+            treeNode390.Text = "A";
+            treeNode391.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode391.Name = "节点175";
+            treeNode391.Text = "P";
+            treeNode392.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode392.Name = "节点91";
+            treeNode392.Text = "R22.5短源距";
+            treeNode393.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode393.Name = "节点51";
+            treeNode393.Text = "400khz低频";
+            treeNode394.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode394.Name = "Node_Anistropy";
+            treeNode394.Text = "各向异性";
+            treeNode395.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode395.Name = "节点176";
+            treeNode395.Text = "A";
+            treeNode396.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode396.Name = "节点177";
+            treeNode396.Text = "P";
+            treeNode397.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode397.Name = "节点92";
+            treeNode397.Text = "R36长源距";
+            treeNode398.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode398.Name = "节点178";
+            treeNode398.Text = "A";
+            treeNode399.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode399.Name = "节点179";
+            treeNode399.Text = "P";
+            treeNode400.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode400.Name = "节点93";
+            treeNode400.Text = "R22.5短源距";
+            treeNode401.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode401.Name = "节点52";
+            treeNode401.Text = "2Mhz高频";
+            treeNode402.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode402.Name = "节点180";
+            treeNode402.Text = "A";
+            treeNode403.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode403.Name = "节点181";
+            treeNode403.Text = "P";
+            treeNode404.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode404.Name = "节点94";
+            treeNode404.Text = "R36长源距";
+            treeNode405.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode405.Name = "节点182";
+            treeNode405.Text = "A";
+            treeNode406.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode406.Name = "节点183";
+            treeNode406.Text = "P";
+            treeNode407.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode407.Name = "节点95";
+            treeNode407.Text = "R22.5短源距";
+            treeNode408.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode408.Name = "节点53";
+            treeNode408.Text = "400khz低频";
+            treeNode409.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode409.Name = "Node_RadialResponse";
+            treeNode409.Text = "径向校正";
+            treeNode410.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode410.Name = "节点184";
+            treeNode410.Text = "A";
+            treeNode411.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode411.Name = "节点185";
+            treeNode411.Text = "P";
+            treeNode412.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode412.Name = "节点96";
+            treeNode412.Text = "R36长源距";
+            treeNode413.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode413.Name = "节点186";
+            treeNode413.Text = "A";
+            treeNode414.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode414.Name = "节点187";
+            treeNode414.Text = "P";
+            treeNode415.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode415.Name = "节点97";
+            treeNode415.Text = "R22.5短源距";
+            treeNode416.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode416.Name = "节点54";
+            treeNode416.Text = "2Mhz高频";
+            treeNode417.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode417.Name = "节点188";
+            treeNode417.Text = "A";
+            treeNode418.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode418.Name = "节点189";
+            treeNode418.Text = "P";
+            treeNode419.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode419.Name = "节点98";
+            treeNode419.Text = "R36长源距";
+            treeNode420.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode420.Name = "节点190";
+            treeNode420.Text = "A";
+            treeNode421.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode421.Name = "节点191";
+            treeNode421.Text = "P";
+            treeNode422.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode422.Name = "节点99";
+            treeNode422.Text = "R22.5短源距";
+            treeNode423.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode423.Name = "节点55";
+            treeNode423.Text = "400khz低频";
+            treeNode424.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode424.Name = "Node_Eccentricity";
+            treeNode424.Text = "偏心校正";
+            treeNode425.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode425.Name = "Node_475";
+            treeNode425.Text = "4.75英寸";
+            treeNode426.BackColor = System.Drawing.SystemColors.Control;
+            treeNode426.ContextMenuStrip = this.contextMenuStrip_ChartInfo;
+            treeNode426.Name = "Node_WPR";
+            treeNode426.Tag = "WPR";
+            treeNode426.Text = "WPR电磁波环境校正图版类型";
             this.treeView_WPR.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode213});
-            this.treeView_WPR.Size = new System.Drawing.Size(403, 443);
+            treeNode426});
+            this.treeView_WPR.Size = new System.Drawing.Size(403, 484);
             this.treeView_WPR.TabIndex = 0;
             // 
             // contextMenuStrip_Tree
@@ -1939,9 +1923,9 @@
             // button_Correct
             // 
             this.button_Correct.Font = new System.Drawing.Font("黑体", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Correct.Location = new System.Drawing.Point(31, 16);
+            this.button_Correct.Location = new System.Drawing.Point(31, 21);
             this.button_Correct.Name = "button_Correct";
-            this.button_Correct.Size = new System.Drawing.Size(125, 32);
+            this.button_Correct.Size = new System.Drawing.Size(125, 27);
             this.button_Correct.TabIndex = 6;
             this.button_Correct.Text = "校  正";
             this.button_Correct.UseVisualStyleBackColor = true;
@@ -1952,9 +1936,9 @@
             this.groupBox2.Controls.Add(this.button_Output);
             this.groupBox2.Controls.Add(this.button_Correct);
             this.groupBox2.Font = new System.Drawing.Font("黑体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(436, 477);
+            this.groupBox2.Location = new System.Drawing.Point(436, 492);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(400, 56);
+            this.groupBox2.Size = new System.Drawing.Size(400, 66);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "校正输出";
@@ -1962,20 +1946,113 @@
             // button_Output
             // 
             this.button_Output.Font = new System.Drawing.Font("黑体", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Output.Location = new System.Drawing.Point(237, 16);
+            this.button_Output.Location = new System.Drawing.Point(237, 21);
             this.button_Output.Name = "button_Output";
-            this.button_Output.Size = new System.Drawing.Size(125, 32);
+            this.button_Output.Size = new System.Drawing.Size(125, 27);
             this.button_Output.TabIndex = 7;
             this.button_Output.Text = "输  出";
             this.button_Output.UseVisualStyleBackColor = true;
             this.button_Output.Click += new System.EventHandler(this.button_Output_Click);
+            // 
+            // numericUpDown_MudResistivity
+            // 
+            this.numericUpDown_MudResistivity.DecimalPlaces = 2;
+            this.numericUpDown_MudResistivity.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown_MudResistivity.Location = new System.Drawing.Point(194, 39);
+            this.numericUpDown_MudResistivity.Name = "numericUpDown_MudResistivity";
+            this.numericUpDown_MudResistivity.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_MudResistivity.TabIndex = 12;
+            this.numericUpDown_MudResistivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_MudResistivity.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            this.numericUpDown_MudResistivity.ValueChanged += new System.EventHandler(this.numericUpDown_MudResistivity_ValueChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 41);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(161, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "泥 浆 电 阻 率(Ω.m)：";
+            // 
+            // comboBox_BoreHole
+            // 
+            this.comboBox_BoreHole.FormatString = "N3";
+            this.comboBox_BoreHole.FormattingEnabled = true;
+            this.comboBox_BoreHole.Location = new System.Drawing.Point(194, 11);
+            this.comboBox_BoreHole.Name = "comboBox_BoreHole";
+            this.comboBox_BoreHole.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_BoreHole.TabIndex = 14;
+            this.comboBox_BoreHole.SelectedIndexChanged += new System.EventHandler(this.comboBox_BoreHole_SelectedIndexChanged);
+            // 
+            // radioButton_ShoulderBedFile
+            // 
+            this.radioButton_ShoulderBedFile.AutoSize = true;
+            this.radioButton_ShoulderBedFile.Location = new System.Drawing.Point(21, 68);
+            this.radioButton_ShoulderBedFile.Name = "radioButton_ShoulderBedFile";
+            this.radioButton_ShoulderBedFile.Size = new System.Drawing.Size(137, 17);
+            this.radioButton_ShoulderBedFile.TabIndex = 9;
+            this.radioButton_ShoulderBedFile.Text = "参  数  文  件：";
+            this.radioButton_ShoulderBedFile.UseVisualStyleBackColor = true;
+            this.radioButton_ShoulderBedFile.CheckedChanged += new System.EventHandler(this.radioButton_ShoulderBedFile_CheckedChanged);
+            // 
+            // radioButton_ShoulderBedPara
+            // 
+            this.radioButton_ShoulderBedPara.AutoSize = true;
+            this.radioButton_ShoulderBedPara.Checked = true;
+            this.radioButton_ShoulderBedPara.Location = new System.Drawing.Point(21, 7);
+            this.radioButton_ShoulderBedPara.Name = "radioButton_ShoulderBedPara";
+            this.radioButton_ShoulderBedPara.Size = new System.Drawing.Size(151, 17);
+            this.radioButton_ShoulderBedPara.TabIndex = 10;
+            this.radioButton_ShoulderBedPara.TabStop = true;
+            this.radioButton_ShoulderBedPara.Text = "围岩电阻率(Ω.m)：";
+            this.radioButton_ShoulderBedPara.UseVisualStyleBackColor = true;
+            this.radioButton_ShoulderBedPara.CheckedChanged += new System.EventHandler(this.radioButton_ShoulderBedPara_CheckedChanged);
+            // 
+            // label_BedThickness
+            // 
+            this.label_BedThickness.AutoSize = true;
+            this.label_BedThickness.Location = new System.Drawing.Point(39, 41);
+            this.label_BedThickness.Name = "label_BedThickness";
+            this.label_BedThickness.Size = new System.Drawing.Size(133, 13);
+            this.label_BedThickness.TabIndex = 11;
+            this.label_BedThickness.Text = "目的层厚度(feet)：";
+            // 
+            // numericUpDown_SBR
+            // 
+            this.numericUpDown_SBR.DecimalPlaces = 3;
+            this.numericUpDown_SBR.Location = new System.Drawing.Point(206, 6);
+            this.numericUpDown_SBR.Name = "numericUpDown_SBR";
+            this.numericUpDown_SBR.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_SBR.TabIndex = 12;
+            this.numericUpDown_SBR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_SBR.ValueChanged += new System.EventHandler(this.numericUpDown_SBR_ValueChanged);
+            // 
+            // numericUpDown_BedThickness
+            // 
+            this.numericUpDown_BedThickness.DecimalPlaces = 3;
+            this.numericUpDown_BedThickness.Location = new System.Drawing.Point(206, 37);
+            this.numericUpDown_BedThickness.Name = "numericUpDown_BedThickness";
+            this.numericUpDown_BedThickness.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_BedThickness.TabIndex = 13;
+            this.numericUpDown_BedThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_BedThickness.ValueChanged += new System.EventHandler(this.numericUpDown_BedThickness_ValueChanged);
             // 
             // WPR_Correction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(843, 640);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(851, 1052);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -1992,7 +2069,6 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Borehole)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -2010,6 +2086,9 @@
             this.contextMenuStrip_Tree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2027,8 +2106,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label_Dielectric;
         private System.Windows.Forms.Button button_DieletricFile;
-        private System.Windows.Forms.Label label_ShoulderBed;
-        private System.Windows.Forms.Button button_ShoulderBed;
+        private System.Windows.Forms.Button button_ShoulderBedFile;
         private System.Windows.Forms.Button button_Invasion;
         private System.Windows.Forms.Label label_Invasion;
         private System.Windows.Forms.Button button_Anistropy;
@@ -2046,7 +2124,6 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Borehole;
         private System.Windows.Forms.RadioButton radioButton_Borehole2;
         private System.Windows.Forms.RadioButton radioButton_Borehole1;
         private System.Windows.Forms.Button button_LoadBorehole;
@@ -2091,5 +2168,13 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button_Output;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_MudResistivity;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBox_BoreHole;
+        private System.Windows.Forms.RadioButton radioButton_ShoulderBedFile;
+        private System.Windows.Forms.RadioButton radioButton_ShoulderBedPara;
+        private System.Windows.Forms.Label label_BedThickness;
+        private System.Windows.Forms.NumericUpDown numericUpDown_SBR;
+        private System.Windows.Forms.NumericUpDown numericUpDown_BedThickness;
     }
 }

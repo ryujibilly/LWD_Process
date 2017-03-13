@@ -144,7 +144,6 @@ namespace LWD_DataProcess
                 root.AppendChild(newElem);
                 doc.AppendChild(root);
                 doc.Save("NodeSettings.xml");
-
                 bIsSave = true;
             }
             catch (Exception ex)

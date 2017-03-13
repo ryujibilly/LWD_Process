@@ -9,10 +9,15 @@ namespace LWD_DataProcess
     /// <summary>
     /// WPR环境校正类
     /// </summary>
-    public sealed class WPR
+    public class WPR
     {
-        public static WPR _wpr = new WPR();
+        private WPR() { }
+        /// <summary>
+        /// 单例模式对象
+        /// </summary>
+        public readonly static WPR _wpr = new WPR();
         //DEPTH   RACECHM   RACECLM   RACECSHM    RACECSLM    RPCECHM   RPCECLM   RPCECSHM    RPCECSLM
+        #region 字段
         private float depth=0.0f;
         private float racechm = 0.0f;
         private float raceclm=0.0f;
@@ -32,20 +37,47 @@ namespace LWD_DataProcess
         private float bedthickness = 0.0f;
         private String corMethod = "";
         private String chartPara = "";
-        
+        private String[] chartnameleft = new String[8];
+        private String[] chartnameright = new String[8];
+        private String[] chartnamemid = new String[8];
+        private Boolean paraOnChart = false;
+        private float xleft = -999.25f;
+        private float xright = -999.25f;
+        private float xmid = -999.25f;
+        /// <summary>
+        /// 左参数 字符串
+        /// </summary>
+        private String LeftParaString = "";
+        /// <summary>
+        /// 右参数 字符串
+        /// </summary>
+        private String RightParaString = "";
+        /// <summary>
+        /// 参数 字符串
+        /// </summary>
+        private String MidParaString = "";
+        /// <summary>
+        /// 当前校正类型对应的左边界图版名集
+        /// </summary>
+        private String[] CurChartLeft = new String[8];
+        /// <summary>
+        /// 当前校正类型对应的右边界图版名集
+        /// </summary>
+        private String[] CurChartRight = new String[8];
+        /// <summary>
+        /// 当前校正类型对应的唯一界图版名集
+        /// </summary>
+        private String[] CurChartMid = new String[8];
+
         /// <summary>
         /// 8条曲线，对应的图版名前缀数组，长度为8
         /// </summary>
         private String[] ChartPrefix = new String[8];
 
         /// <summary>
-        /// 8条曲线，对应的图版名后缀数组，长度为8
+        /// 8条曲线，对应的图版名后缀，后缀名相同
         /// </summary>
-        private String[] ChartPostfix = new String[8];
-        ///// <summary>
-        ///// 8条曲线对应的图版全名数组
-        ///// </summary>
-        //private String[] ChartName = new String[8];
+        private String ChartPostfix = "";
         /// <summary>
         /// 泥浆电阻率左边界
         /// </summary>
@@ -70,6 +102,78 @@ namespace LWD_DataProcess
         /// 围岩电阻率右边界
         /// </summary>
         private float SBRRight = 0.0f;
+
+        #endregion
+
+        #region 属性
+        /// <summary>
+        /// 视电阻率左侧X坐标
+        /// </summary>
+        public float XLeft
+        {
+            get { return xleft; }
+            set { xleft = value; }
+        }
+        /// <summary>
+        /// 视电阻率X坐标
+        /// </summary>
+        public float XMid
+        {
+            get { return xmid; }
+            set { xmid = value; }
+        }
+        /// <summary>
+        /// 视电阻率左侧X坐标
+        /// </summary>
+        public float XRight
+        {
+            get { return xright; }
+            set { xright = value; }
+        }
+
+        private float factor = 0.0f;
+        /// <summary>
+        /// 校正系数
+        /// </summary>
+        public float Factor
+        {
+            get { return factor; }
+            set { factor = value; }
+        }
+
+        /// <summary>
+        /// 图版参数是否在图版边界上
+        /// </summary>
+        public Boolean ParaOnChart
+        {
+            get { return paraOnChart; }
+            set { paraOnChart = value; }
+        }
+        /// <summary>
+        /// 左边界图版名集合数组：长度为8。
+        /// </summary>
+        public String[] ChartNameLeft
+        {
+            get { return chartnameleft; }
+            set { chartnameleft = value; }
+        }
+        /// <summary>
+        /// 右边界图版名集合数组：长度为8。
+        /// </summary>
+        public String[] ChartNameRight
+        {
+            get { return chartnameright; }
+            set { chartnameright = value; }
+        }
+        /// <summary>
+        /// 图版名集合数组：长度为8。
+        /// </summary>
+        public String[] ChartNameMid
+        {
+            get { return chartnamemid; }
+            set { chartnamemid = value; }
+        }
+
         /// <summary>
         /// 泥浆电阻率 Ω.m
         /// </summary>
@@ -111,7 +215,7 @@ namespace LWD_DataProcess
             set { chartPara = value; }
         }
         /// <summary>
-        /// 围岩电阻率Ω.m
+        /// 围岩电阻率(Ω.m)
         /// </summary>
         public float SBR
         {
@@ -198,6 +302,9 @@ namespace LWD_DataProcess
             get { return rpcecslm; }
             set { rpcecslm = value; }
         }
+        #endregion 
+
+        #region 队列Queue 和 列表List
         /// <summary>
         /// 深度队列
         /// </summary>
@@ -234,12 +341,62 @@ namespace LWD_DataProcess
         /// RPCECSLM队列
         /// </summary>
         public  ConcurrentQueue<float> Queue_RPCECSLM = new ConcurrentQueue<float>();
+        /// <summary>
+        /// 深度表
+        /// </summary>
+        public List<float> List_DEPTH = new List<float>();
+        /// <summary>
+        /// RACECHM表
+        /// </summary>
+        public List<float> List_RACECHM = new List<float>();
+        /// <summary>
+        /// RACECLM表
+        /// </summary>
+        public List<float> List_RACECLM = new List<float>();
+        /// <summary>
+        /// RACECSHM表
+        /// </summary>
+        public List<float> List_RACECSHM = new List<float>();
+        /// <summary>
+        /// RACECSLM表
+        /// </summary>
+        public List<float> List_RACECSLM = new List<float>();
+        /// <summary>
+        /// PCECHM表
+        /// </summary>
+        public List<float> List_RPCECHM = new List<float>();
+        /// <summary>
+        /// RPCECLM表
+        /// </summary>
+        public List<float> List_RPCECLM = new List<float>();
+        /// <summary>
+        /// RPCECSHM表
+        /// </summary>
+        public List<float> List_RPCECSHM = new List<float>();
+        /// <summary>
+        /// RPCECSLM表
+        /// </summary>
+        public List<float> List_RPCECSLM = new List<float>();
 
         /// <summary>
         /// 坐标List
         /// </summary>
         public List<Coordinates> co=new List<Coordinates>();
 
+        #endregion 
+
+        public void QueueToArray()
+        {
+            List_DEPTH = Queue_DEPTH.ToList<float>();
+            List_RACECHM = Queue_RACECHM.ToList<float>();
+            List_RACECLM = Queue_RACECLM.ToList<float>();
+            List_RACECSHM = Queue_RACECSHM.ToList<float>();
+            List_RACECSLM = Queue_RACECSLM.ToList<float>();
+            List_RPCECHM = Queue_RPCECHM.ToList<float>();
+            List_RPCECLM = Queue_RPCECLM.ToList<float>();
+            List_RPCECSHM = Queue_RPCECSHM.ToList<float>();
+            List_RPCECSLM = Queue_RPCECSLM.ToList<float>();
+        }
 
 
         /// <summary>
@@ -281,58 +438,168 @@ namespace LWD_DataProcess
         /// <summary>
         /// 生成图版名后缀
         /// </summary>
-        public void SetChartPostfix()
+        /// <param name="para">图版参数</param>
+        public void SetChartPostfix(float para)
         {
-
-        }
-
-        public String[] GetChartName(String[] chartname)
-        {
-            for (int i = 0; i < 8; i++)
-                chartname[i] = ChartPrefix[i] + ChartPostfix[i];
-            return chartname;
+            //该参数恰好在图版上
+            if(para!=-999.25f)
+            {
+                for (int i = 0; i < 8; i++)
+                    ChartNameMid[i] = ChartPrefix[i] + this.CorMethod + MidParaString;
+                ParaOnChart = true;
+            }
+            //该参数有左右边界,前8个位左边界图版，后8个位右边界图版
+            else if(para==-999.25f)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    ChartNameLeft[i] = ChartPrefix[i] + this.CorMethod + LeftParaString;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    ChartNameRight[i] = ChartPrefix[i] + this.CorMethod + RightParaString;
+                }
+                ParaOnChart = false;
+            }
         }
         /// <summary>
         /// 获取泥浆电阻率左右边界
         /// </summary>
         /// <param name="mudRes"></param>
-        public void getRmRange()
+        public void getRmBounder()
         {
             for (int i = 0; i < RmRange.Length-1; i++)
             {
-                if (RmRange[i] < Rm && RmRange[i + 1] > Rm)
+                if ((RmRange[i] < Rm && RmRange[i + 1] > Rm) ||
+                    (RmRange[i] < Rm && RmRange[i + 1] < Rm) ||
+                    (RmRange[i] > Rm && RmRange[i + 1] > Rm))
                 {
                     RmLeft = RmRange[i];
+                    LeftParaString = "Rm=" + RmLeft.ToString();
                     RmRight = RmRange[i + 1];
+                    RightParaString = "Rm=" + RmRight.ToString();
                 }
                 else if (Rm == RmRange[i])
+                {
                     RmMid = Rm;
+                    MidParaString = "Rm=" + RmMid.ToString();
+                }
                 else if (Rm == RmRange[i + 1])
+                {
                     RmMid = Rm;
+                    MidParaString = "Rm=" + RmMid.ToString();
+                }
             }
         }
         /// <summary>
-        /// 获取围岩电阻率左右边界
+        /// 获取围岩电阻率左右边界:给SBRLeft\SBRRight\SBRMid赋值；给ParaString赋值
+        /// 1.参数在中间，左右边界即左右边界；
+        /// 2.参数在边界外，左右边界代表反向延长线左右前后两点
         /// </summary>
-        public void getSbrRange()
+        public void getSbrBounder()
         {
             for(int i=0;i<sbrRange.Length-1;i++)
             {
-                if (sbrRange[i] < SBR && sbrRange[i + 1] > SBR)
+                if ((sbrRange[i] < SBR && sbrRange[i + 1] > SBR) ||
+                    (sbrRange[i] < SBR && sbrRange[i + 1] < SBR) ||
+                    (sbrRange[i] > SBR && sbrRange[i + 1] > SBR))
                 {
                     SBRLeft = sbrRange[i];
+                    LeftParaString = "SBR=" + SBRLeft.ToString();
                     SBRRight = sbrRange[i + 1];
+                    RightParaString = "SBR=" + SBRRight.ToString();
                 }
                 else if (SBR == sbrRange[i])
+                {
                     SBRMid = SBR;
+                    MidParaString = "SBR=" + RmMid.ToString();
+                }
                 else if (SBR == sbrRange[i + 1])
+                {
                     SBRMid = SBR;
+                    MidParaString = "SBR=" + RmMid.ToString();
+                }
             }
         }
         /// <summary>
-        /// 剔除超差
+        /// 获取电阻率左右点X坐标:
+        /// 1.视电阻率在图版内，左右X坐标代表插值左右X坐标；
+        /// 2.视电阻率在图版外，左右边界代表反向延长线左右前后两点
         /// </summary>
-        public void FiltOverproof()
+        public void getXBounder()
+        {
+            for (int i = 0; i < sbrRange.Length - 1; i++)
+            {
+                if ((sbrRange[i] < SBR && sbrRange[i + 1] > SBR) ||
+                    (sbrRange[i] < SBR && sbrRange[i + 1] < SBR) ||
+                    (sbrRange[i] > SBR && sbrRange[i + 1] > SBR))
+                {
+                    SBRLeft = sbrRange[i];
+                    LeftParaString = "SBR=" + SBRLeft.ToString();
+                    SBRRight = sbrRange[i + 1];
+                    RightParaString = "SBR=" + SBRRight.ToString();
+                }
+                else if (SBR == sbrRange[i])
+                {
+                    SBRMid = SBR;
+                    MidParaString = "SBR=" + RmMid.ToString();
+                }
+                else if (SBR == sbrRange[i + 1])
+                {
+                    SBRMid = SBR;
+                    MidParaString = "SBR=" + RmMid.ToString();
+                }
+            }
+        }
+        /// <summary>
+        /// 剔除超差(min~max)
+        /// </summary>
+        public float FiltOverproof(float min, float max, float value)
+        {
+            if (value <= min)
+                return min;
+            else if (value >= max)
+                return max;
+            else return value;
+        }
+        /// <summary>
+        /// 获取图版上的校正系数
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public float GetFactor(float value)
+        {
+            return factor;
+        }
+        /// <summary>
+        /// 匹配图版
+        /// </summary>
+        /// <param name="rawcurvenames">曲线名称数组</param>
+        public void MatchChart(String[] rawcurvenames)
+        {
+            float paramid = -999.25f;
+            switch(CorMethod)
+            {
+                case "介电常数": 
+                    break;
+                case "井眼校正": getRmBounder();paramid = RmMid;
+                    break;
+                case "围岩校正": getSbrBounder();paramid = SBRMid;
+                    break;
+                case "侵入校正": 
+                    break;
+                case "各向异性":
+                    break;
+                default:
+                    break;
+            }
+            SetChartPrefix(rawcurvenames);
+            SetChartPostfix(paramid);
+        }
+        /// <summary>
+        /// 定位电阻率测量值所在图版位置：
+        /// </summary>
+        public void PositionXValue(float XValue)
         {
 
         }

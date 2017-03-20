@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -161,6 +162,29 @@ namespace LWD_DataProcess
                 return null;
             }
         }
+
+        /// <summary>
+        /// 两点不等距插值
+        /// </summary>
+        /// <param name="x1">左插值点x</param>
+        /// <param name="x2">右插值点x</param>
+        /// <param name="x">目标点x</param>
+        /// <param name="y1">左插值y</param>
+        /// <param name="y2">左插值y</param>
+        /// <returns>目标点y</returns>
+        public float LagLinerInter(float x1,float x2,float x,float y1,float y2)
+        {
+            try
+            {
+                float y = y1 * (x - x2) / (x1 - x2) + y2 * (x - x1) / (x2 - x1);
+                return float.Parse(Math.Round(Double.Parse(y.ToString("F3")), 3).ToString("F3"));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return -999.999f;
+            }
+        }
         /// <summary>
         /// 键值数组初始化
         /// </summary>
@@ -185,47 +209,47 @@ namespace LWD_DataProcess
         {
             return false;
         }
-        /// <summary>
-        /// 查找图版上邻近的左侧点
-        /// </summary>
-        /// <param name="chart">图版点数组</param>
-        /// <param name="point">当前点</param>
-        /// <returns></returns>
-        public Coordinates FindLeft(Coordinates[] chart, Coordinates point)
-        {
-            float dif = 100.0f;//当前点与图版点的X坐标差值
-            int flag = 0;//最邻近点索引
-            for (int i = 0; i < chart.Length; i++)
-            {
-                if (chart[i].X < point.X)//筛选当前点左侧的图版点
-                    if (point.X - chart[i].X < dif)//比较X坐标差值
-                    {
-                        dif = point.X - chart[i].X;
-                        flag = i;//标记邻近点
-                    }
-            }
-            return chart[flag];
-        }
-        /// <summary>
-        /// 查找图版上邻近的右侧点
-        /// </summary>
-        /// <param name="chart">图版点数组</param>
-        /// <param name="point">当前点</param>
-        /// <returns></returns>
-        public Coordinates FindRight(Coordinates[] chart, Coordinates point)
-        {
-            float dif = 100.0f;//当前点与图版点的X坐标差值
-            int flag = 0;//最邻近点索引
-            for (int i = 0; i < chart.Length; i++)
-            {
-                if (chart[i].X >=point.X)//筛选当前点右侧的图版点
-                    if (chart[i].X-point.X< dif)//比较X坐标差值
-                    {
-                        dif = chart[i].X-point.X;
-                        flag = i;//标记邻近点
-                    }
-            }
-            return chart[flag];
-        }
+        ///// <summary>
+        ///// 查找图版上邻近的左侧点
+        ///// </summary>
+        ///// <param name="chart">图版点数组</param>
+        ///// <param name="point">当前点</param>
+        ///// <returns></returns>
+        //public Coordinates FindLeft(Coordinates[] chart, Coordinates point)
+        //{
+        //    float dif = 100.0f;//当前点与图版点的X坐标差值
+        //    int flag = 0;//最邻近点索引
+        //    for (int i = 0; i < chart.Length; i++)
+        //    {
+        //        if (chart[i].X < point.X)//筛选当前点左侧的图版点
+        //            if (point.X - chart[i].X < dif)//比较X坐标差值
+        //            {
+        //                dif = point.X - chart[i].X;
+        //                flag = i;//标记邻近点
+        //            }
+        //    }
+        //    return chart[flag];
+        //}
+        ///// <summary>
+        ///// 查找图版上邻近的右侧点
+        ///// </summary>
+        ///// <param name="chart">图版点数组</param>
+        ///// <param name="point">当前点</param>
+        ///// <returns></returns>
+        //public Coordinates FindRight(Coordinates[] chart, Coordinates point)
+        //{
+        //    float dif = 100.0f;//当前点与图版点的X坐标差值
+        //    int flag = 0;//最邻近点索引
+        //    for (int i = 0; i < chart.Length; i++)
+        //    {
+        //        if (chart[i].X >=point.X)//筛选当前点右侧的图版点
+        //            if (chart[i].X-point.X< dif)//比较X坐标差值
+        //            {
+        //                dif = chart[i].X-point.X;
+        //                flag = i;//标记邻近点
+        //            }
+        //    }
+        //    return chart[flag];
+        //}
     }
 }

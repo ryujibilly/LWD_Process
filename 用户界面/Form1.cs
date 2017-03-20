@@ -20,7 +20,8 @@ namespace LWD_DataProcess
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            DBConfig dbc = new DBConfig();
+            dbc.ShowDialog();
         }
 
         private void TDP_ToolStripMenuItem_Click(object sender, EventArgs e)

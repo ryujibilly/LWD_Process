@@ -163,7 +163,7 @@
     <Compile Include="数据处理模块\Filter.cs" />
     <Compile Include="数据处理模块\InterPolation.cs" />
     <Compile Include="数据处理模块\KalmanFacade.cs" />
-    <Compile Include="数据处理模块\仪器\Coordinates.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\Coordinates.cs" />
     <Compile Include="数据处理模块\仪器\Gamma.cs" />
     <Compile Include="数据处理模块\仪器\GDIR.cs" />
     <Compile Include="数据处理模块\仪器\WPR.cs" />
@@ -190,6 +190,7 @@
       <DependentUpon>SQLiteDBHelper.cs</DependentUpon>
     </Compile>
     <Compile Include="数据处理模块\通用类\SQLiteTable.cs" />
+    <Compile Include="数据处理模块\通用类\数据类型\XYValue.cs" />
     <Compile Include="用户界面\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -124,13 +124,15 @@ namespace LWD_DataProcess
 
         private void WPR_Correction_Load(object sender, EventArgs e)
         {
-            //读取NodeSettings.xml配置
             Config.GetConfig();
+            Config.SaveConfig();
+            //读取NodeSettings.xml配置
             Properties.Settings.Default.DB_Well_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_WellInfo;
             Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" +Properties.Settings.Default.DBPath_ChartInfo;
             WellHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
             ChartHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
-            CorrectionThread = new Thread(new ThreadStart(Correction));
+            WPR._wpr.DBHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
+            CorrectionThread = new Thread(new ThreadStart(Correct));
             tabControl2.SelectedTab = tabPage3;
             //初始化井眼尺寸、仪器尺寸
             comboBox_ToolSize.Text = "6.75";
@@ -435,6 +437,8 @@ namespace LWD_DataProcess
                         i++;
                     }
                 }
+                //测量值永久化保存到List中
+                WPR._wpr.QueueToArray();
                 fs.Flush();
                 sr.Close();
                 fs.Close();
@@ -458,8 +462,7 @@ namespace LWD_DataProcess
                 //WPR._wpr.Queue_DEPTH.ToArray();
                 //2 八条电阻率曲线. 暂存到Queue中
                 get8ResCurve(curRawLine);
-                //3.永久化保存到List中
-                WPR._wpr.QueueToArray();
+
             }
         }
         /// <summary>
@@ -777,9 +780,9 @@ namespace LWD_DataProcess
                 comboBox_BoreHole.Items.AddRange(borehole475);
                 comboBox_BoreHole.SelectedIndex = 0;
             }
+            ToolSize = comboBox_ToolSize.SelectedItem.ToString().Trim();
             Properties.Settings.Default.ToolSize = ToolSize;
-            ToolSize = comboBox_ToolSize.SelectedText.Trim();
-            WPR._wpr.ToolSize = comboBox_ToolSize.SelectedText.Trim();
+            WPR._wpr.ToolSize = comboBox_ToolSize.SelectedItem.ToString().Trim();
         }
 
         /// <summary>
@@ -791,7 +794,7 @@ namespace LWD_DataProcess
         {
             SelectCorMethod();
             WPR._wpr.MatchChart(RawCurveNames);
-            
+            WPR._wpr.CorrectFlow(WPR._wpr.CorMethod);
         }
         /// <summary>
         /// 选择校正类型
@@ -853,7 +856,7 @@ namespace LWD_DataProcess
         #endregion
 
         #region 校正线程
-        void Correction()
+        void Correct()
         {
             try
             {

@@ -28,10 +28,8 @@ namespace LWD_DataProcess
 		{ 
 			int i,j,k,m;
 			double z,s;
-
 			// 初值
-			z=0.0;
-	    
+			z=0.0;	    
 			// 特例处理
 			if (n<1) 
 				return(z);
@@ -39,14 +37,12 @@ namespace LWD_DataProcess
 			{ 
 				z=y[0];
 				return(z);
-			}
-	    
+			}	    
 			if (n==2)
 			{ 
 				z=(y[0]*(t-x[1])-y[1]*(t-x[0]))/(x[0]-x[1]);
 				return(z);
-			}
-	    
+			}	    
 			// 开始插值
 			i=0;
 			while ((x[i]<t)&&(i<n)) 
@@ -68,10 +64,8 @@ namespace LWD_DataProcess
 						// 拉格朗日插值公式
 						s=s*(t-x[j])/(x[i]-x[j]);
 				}
-
 				z=z+s*y[i];
-			}
-	    
+			}	    
 			return(z);
 		}
 

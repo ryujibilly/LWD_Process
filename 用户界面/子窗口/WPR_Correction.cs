@@ -129,6 +129,8 @@ namespace LWD_DataProcess
             //读取NodeSettings.xml配置
             Properties.Settings.Default.DB_Well_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_WellInfo;
             Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" +Properties.Settings.Default.DBPath_ChartInfo;
+            numericUpDown_SBR.Value = Properties.Settings.Default.SBR;
+            numericUpDown_BedThickness.Value = Properties.Settings.Default.Tb;
             WellHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_WellInfo);//XML的节点赋值
             ChartHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
             WPR._wpr.DBHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
@@ -139,6 +141,7 @@ namespace LWD_DataProcess
             WPR._wpr.ToolSize = "6.75";
             comboBox_BoreHole.Items.AddRange(borehole675);
             comboBox_BoreHole.SelectedIndex = 0;
+            button_Load.Enabled = false;
         }
 
         /// <summary>
@@ -154,6 +157,7 @@ namespace LWD_DataProcess
                 FileName_WellData = openFileDialog_WPR.FileName;
                 textBox_Folder.Text = FileName_WellData;
                 Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
+                button_Load.Enabled = true;
             }
             Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
         }
@@ -679,13 +683,28 @@ namespace LWD_DataProcess
 
         private void numericUpDown_BedThickness_ValueChanged(object sender, EventArgs e)
         {
-            WPR._wpr.Tb = float.Parse(numericUpDown_SBR.Value.ToString());
+            WPR._wpr.Tb = float.Parse(numericUpDown_BedThickness.Value.ToString());
         }
 
         #endregion
         #region 侵入校正
         #endregion
         #region 各向异性
+        #endregion
+
+
+        #region 校正线程
+        void Correct()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
         #endregion
         #region 控件定义
         private void radioButton_Borehole1_CheckedChanged(object sender, EventArgs e)
@@ -768,13 +787,13 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void comboBox_ToolSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox_ToolSize.SelectedItem.ToString()=="6.75")
+            if (comboBox_ToolSize.SelectedItem.ToString() == "6.75")
             {
                 comboBox_BoreHole.Items.Clear();
                 comboBox_BoreHole.Items.AddRange(borehole675);
                 comboBox_BoreHole.SelectedIndex = 0;
             }
-            else if(comboBox_ToolSize.SelectedItem.ToString() == "4.75")
+            else if (comboBox_ToolSize.SelectedItem.ToString() == "4.75")
             {
                 comboBox_BoreHole.Items.Clear();
                 comboBox_BoreHole.Items.AddRange(borehole475);
@@ -801,7 +820,7 @@ namespace LWD_DataProcess
         /// </summary>
         private void SelectCorMethod()
         {
-           switch(this.corMethod)
+            switch (this.corMethod)
             {
                 case WPR_CorMethod.Dieletric:
                     WPR._wpr.CorMethod = "介电常数";
@@ -818,7 +837,8 @@ namespace LWD_DataProcess
                 case WPR_CorMethod.Antistropy:
                     WPR._wpr.CorMethod = "各向异性";
                     break;
-                default:WPR._wpr.CorMethod = tabControl2.SelectedTab.Text;
+                default:
+                    WPR._wpr.CorMethod = tabControl2.SelectedTab.Text;
                     break;
             }
         }
@@ -854,20 +874,5 @@ namespace LWD_DataProcess
             WPR._wpr.CorMethod = tabControl2.SelectedTab.Text;
         }
         #endregion
-
-        #region 校正线程
-        void Correct()
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-        }
-        #endregion
-
     }
 }

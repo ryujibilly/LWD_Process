@@ -97,7 +97,7 @@ namespace LWD_DataProcess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Test")]
         public string WellName {
             get {
                 return ((string)(this["WellName"]));
@@ -116,6 +116,27 @@ namespace LWD_DataProcess.Properties {
             }
             set {
                 this["ToolSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3.7")]
+        public decimal SBR {
+            get {
+                return ((decimal)(this["SBR"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7.3")]
+        public decimal Tb {
+            get {
+                return ((decimal)(this["Tb"]));
+            }
+            set {
+                this["Tb"] = value;
             }
         }
     }

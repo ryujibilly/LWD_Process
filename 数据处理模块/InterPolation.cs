@@ -186,6 +186,29 @@ namespace LWD_DataProcess
             }
         }
         /// <summary>
+        /// 两点不等间距插值
+        /// </summary>
+        /// <param name="targetx">目标点X</param>
+        /// <param name="leftpoint">左插值点</param>
+        /// <param name="rightpoint">右插值点</param>
+        /// <returns>目标点</returns>
+        public XYValue LagLinerInter(float targetx, XYValue leftpoint,XYValue rightpoint)
+        {
+            XYValue result;
+            try
+            {
+                float y= leftpoint.YValue * (targetx - rightpoint.XValue) / (leftpoint.XValue - rightpoint.XValue) + 
+                    rightpoint.XValue * (targetx - leftpoint.XValue) / (rightpoint.XValue - leftpoint.XValue);
+                result = new XYValue(targetx, y);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return null;
+            }
+        }
+        /// <summary>
         /// 键值数组初始化
         /// </summary>
         public void CreateAIPKeys()

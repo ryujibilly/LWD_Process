@@ -60,11 +60,6 @@ namespace LWD_DataProcess
         ///// <summary>
         ///// 钻铤尺寸
         ///// </summary>
-        //public PipeSize DrillPipeSize
-        //{
-        //    get { return drillPipeSize; }
-        //    set { DrillPipeSize = value; }
-        //}
 
         public double PipeWallSize;
         ///// <summary>

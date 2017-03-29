@@ -33,7 +33,7 @@ namespace LWD_DataProcess
         private String toolsize = "6.75";
         private float[] RmRange = { 0.05f, 0.1f, 0.2f, 0.5f, 1.0f, 2.0f };
         private float[] sbrRange = { 0.2f, 0.5f, 1.0f, 2.0f, 5.0f, 10.0f };
-        private float[] tbRange = { 0.5f, 1, 2, 4, 6, 8, 10, 15, 20, 30, 40, 50 };
+        private float[] resRange = { 0.5f, 1.0f, 2.0f, 4.0f, 6.0f, 8.0f, 10.0f, 15.0f, 20.0f, 30.0f, 40.0f, 50.0f };
         private float sbr = -999.25f;
         private float tb = -999.25f;
         private String corMethod = "";
@@ -60,10 +60,15 @@ namespace LWD_DataProcess
         private float paraLeft = -999.25f;
         private float paraRight = -999.25f;
         private float paraMid = -999.25f;
-        private float curveParaLeft = -999.25f;
-        private float curveParaRight = -999.25f;
-        private float curveParaMid = -999.25f;
-
+        //private List<XYValue> curveLeft =new List<XYValue>() ;
+        //private List<XYValue> curveRight = new List<XYValue>();
+        //private List<XYValue> curveMid = new List<XYValue>();
+        private List<float> tbleft = new List<float>();
+        private List<float> tbright = new List<float>();
+        private List<float> tbmid = new List<float>();
+        private List<XYValue> chartLeftcurve = new List<XYValue>();
+        private List<XYValue> chartRightcurve = new List<XYValue>();
+        private List<XYValue> chartMidcurve = new List<XYValue>();
         /// <summary>
         /// 左参数 字符串
         /// </summary>
@@ -77,27 +82,10 @@ namespace LWD_DataProcess
         /// </summary>
         private String MidParaString = "";
         /// <summary>
-        /// 当前校正类型对应的左边界图版名集
-        /// </summary>
-        private String[] CurChartLeft = new String[8];
-        /// <summary>
-        /// 当前校正类型对应的右边界图版名集
-        /// </summary>
-        private String[] CurChartRight = new String[8];
-        /// <summary>
-        /// 当前校正类型对应的唯一界图版名集
-        /// </summary>
-        private String[] CurChartMid = new String[8];
-
-        /// <summary>
         /// 8条曲线，对应的图版名前缀数组，长度为8
         /// </summary>
         private String[] ChartPrefix = new String[8];
 
-        /// <summary>
-        /// 8条曲线，对应的图版名后缀，后缀名相同
-        /// </summary>
-        private String ChartPostfix = "";
         /// <summary>
         /// 泥浆电阻率左边界
         /// </summary>
@@ -124,17 +112,17 @@ namespace LWD_DataProcess
         private float SBRRight = 0.0f;
 
         /// <summary>
-        /// 围岩层厚左边界
+        /// 目的层电阻率测量值左边界
         /// </summary>
-        private float TbLeft = 0.0f;
+        private float ResLeft = 0.0f;
         /// <summary>
-        /// 围岩层厚刚好在图版上
+        /// 目的层电阻率测量值刚好在图版上
         /// </summary>
-        private float TbMid = -999.25f;
+        private float ResMid = -999.25f;
         /// <summary>
-        /// 围岩层厚右边界
+        /// 目的层电阻率测量值右边界
         /// </summary>
-        private float TbRight = 0.0f;
+        private float ResRight = 0.0f;
 
         #endregion
 
@@ -210,16 +198,6 @@ namespace LWD_DataProcess
         {
             get { return xright; }
             set { xright = value; }
-        }
-
-        private float factor = 0.0f;
-        /// <summary>
-        /// 校正系数
-        /// </summary>
-        public float Factor
-        {
-            get { return factor; }
-            set { factor = value; }
         }
 
         /// <summary>
@@ -429,21 +407,6 @@ namespace LWD_DataProcess
             }
         }
         /// <summary>
-        /// 插值处理后的校正系数
-        /// </summary>
-        public List<float> InterY
-        {
-            get
-            {
-                return intery;
-            }
-
-            set
-            {
-                intery = value;
-            }
-        }
-        /// <summary>
         /// 测量值是否在曲线上
         /// </summary>
         public bool ValueOnChart
@@ -504,62 +467,107 @@ namespace LWD_DataProcess
                 paraMid = value;
             }
         }
-
-        public float[] TbRange
+        /// <summary>
+        /// 图版电阻率的预设范围
+        /// </summary>
+        public float[] ResRange
         {
             get
             {
-                return tbRange;
+                return resRange;
             }
 
             set
             {
-                tbRange = value;
+                resRange = value;
+            }
+        }
+        ///// <summary>
+        ///// 左边界曲线
+        ///// </summary>
+        //public List<XYValue> CurveLeft
+        //{
+        //    get
+        //    {
+        //        return curveLeft;
+        //    }
+        //    set
+        //    {
+        //        curveLeft = value;
+        //    }
+        //}
+        ///// <summary>
+        ///// 曲线
+        ///// </summary>
+        //public List<XYValue> CurveMid
+        //{
+        //    get
+        //    {
+        //        return curveMid;
+        //    }
+        //    set
+        //    {
+        //        curveMid = value;
+        //    }
+        //}
+        ///// <summary>
+        ///// 右边界曲线
+        ///// </summary>
+        //public List<XYValue> CurveRight
+        //{
+        //    get
+        //    {
+        //        return curveRight;
+        //    }
+
+        //    set
+        //    {
+        //        curveRight = value;
+        //    }
+        //}
+        /// <summary>
+        /// 目的层厚左边界
+        /// </summary>
+        public List<float> TbLeft
+        {
+            get
+            {
+                return tbleft;
+            }
+
+            set
+            {
+                tbleft = value;
             }
         }
         /// <summary>
-        /// 左曲线参数
+        /// 目的层厚右边界
         /// </summary>
-        public float CurveParaLeft
+        public List<float> TbRight
         {
             get
             {
-                return curveParaLeft;
+                return tbright;
             }
 
             set
             {
-                curveParaLeft = value;
+                tbright = value;
             }
         }
         /// <summary>
-        /// 曲线参数
+        /// 目的层厚
         /// </summary>
-        public float CurveParaMid
+        public List<float> TbMid
         {
             get
             {
-                return curveParaMid;
+                return tbmid;
             }
 
             set
             {
-                curveParaMid = value;
-            }
-        }
-        /// <summary>
-        /// 右曲线参数
-        /// </summary>
-        public float CurveParaRight
-        {
-            get
-            {
-                return curveParaRight;
-            }
-
-            set
-            {
-                curveParaRight = value;
+                tbmid = value;
             }
         }
 
@@ -671,6 +679,8 @@ namespace LWD_DataProcess
         /// 校正后RPCECSLM表                                          
         /// </summary>                                          
         public List<float> List_RPCECSLM_AC = new List<float>();
+
+        public List<DataTable> ChartDataTable = new List<DataTable>();
 
 
         /// <summary>
@@ -789,15 +799,8 @@ namespace LWD_DataProcess
                     ParaMid = RmMid;
                     break;
                 }
-                else if(RmRange[i] < Rm && RmRange[i + 1] < Rm)
-                {
-                    RmLeft = RmRange[i];
-                    ParaLeft = RmLeft;
-                    LeftParaString = "Rm=" + RmLeft.ToString();
-                    RmRight = RmRange[i + 1];
-                    ParaRight = RmRight;
-                    RightParaString = "Rm=" + RmRight.ToString();
-                }
+                else if (RmRange[i] < Rm && RmRange[i + 1] < Rm)
+                    continue;
                 else if (RmRange[i] > Rm && RmRange[i + 1] > Rm)
                 {
                     RmLeft = RmRange[i];
@@ -817,7 +820,7 @@ namespace LWD_DataProcess
         /// </summary>
         public void getSbrBounder()
         {
-            for(int i=0;i<sbrRange.Length-2;i++)
+            for (int i = 0; i < sbrRange.Length - 2; i++)
             {
                 if ((sbrRange[i] < SBR && sbrRange[i + 1] > SBR))
                 {
@@ -843,15 +846,16 @@ namespace LWD_DataProcess
                     ParaMid = SBRMid;
                     break;
                 }
-                else if(SBR>sbrRange[i]&&SBR>sbrRange[i+1])
-                {
-                    SBRLeft = sbrRange[i];
-                    ParaLeft = SBRLeft;
-                    LeftParaString = "SBR=" + SBRLeft.ToString("F1");
-                    SBRRight = sbrRange[i + 1];
-                    ParaRight = SBRRight;
-                    RightParaString = "SBR=" + SBRRight.ToString("F1");
-                }
+                else if (SBR > sbrRange[i] && SBR > sbrRange[i + 1])
+                    continue;
+                //{
+                //    SBRLeft = sbrRange[i];
+                //    ParaLeft = SBRLeft;
+                //    LeftParaString = "SBR=" + SBRLeft.ToString("F1");
+                //    SBRRight = sbrRange[i + 1];
+                //    ParaRight = SBRRight;
+                //    RightParaString = "SBR=" + SBRRight.ToString("F1");
+                //}
                 else if (SBR < sbrRange[i] && SBR < sbrRange[i + 1])
                 {
                     SBRLeft = sbrRange[i];
@@ -866,51 +870,161 @@ namespace LWD_DataProcess
         }
 
         /// <summary>
-        /// 获取围岩层厚左右边界:给TbLeft\TbRight\TbMid赋值
-        /// 1.参数在中间，左右边界即左右边界；
-        /// 2.参数在边界外，左右边界代表反向延长线左右前后两点
+        /// 获取目的层电阻率左右边界曲线 
         /// </summary>
-        public void getTbBounder()
+        /// <param name="res">电阻率测量值</param>
+        /// <param name="curveleft">左曲线</param>
+        /// <param name="curveright">右曲线</param>
+        /// <param name="curvemid">恰好所在的曲线</param>
+        public void getResBounder(List<float> res,out List<XYValue> curveleft,out List<XYValue> curveright, out List<XYValue> curvemid)
         {
-            for (int i = 0; i < TbRange.Length - 2; i++)
-            {
-                if ((TbRange[i] < Tb && TbRange[i + 1] > Tb))
+            curveleft = new List<XYValue>();
+            curveright = new List<XYValue>();
+            curvemid = new List<XYValue>();
+
+            List<XYValue> left = new List<XYValue>();
+            List<XYValue> right = new List<XYValue>();
+            List<XYValue> mid = new List<XYValue>();
+            //填充曲线边界参数
+            for (int j = 0; j < List_DEPTH.Count; j++)
+                for (int i = 0; i < ResRange.Length - 1; i++)
                 {
-                    TbLeft = TbRange[i];
-                    CurveParaLeft = TbLeft;
-                    TbRight = TbRange[i + 1];
-                    CurveParaRight = TbRight;
-                    break;
+                    if ((ResRange[i] < res[j] && res[j] < ResRange[i + 1]))
+                    {
+                        left.Add(new XYValue(Tb, -999.25f, ResRange[i]));
+                        right.Add(new XYValue(Tb, -999.25f, ResRange[i + 1]));
+                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
+                        break;
+                    }
+                    else if (res[j] == ResRange[i])
+                    {
+                        left.Add(new XYValue(Tb, -999.25f, res[j]));
+                        right.Add(new XYValue(Tb, -999.25f, res[j]));
+                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
+                        break;
+                    }
+                    else if (res[j] == ResRange[i + 1])
+                    {
+                        left.Add(new XYValue(Tb, -999.25f, res[j]));
+                        right.Add(new XYValue(Tb, -999.25f, res[j]));
+                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
+                        break;
+                    }
+                    else if (res[j] < ResRange[i] && res[j] < ResRange[i + 1])
+                    {
+                        left.Add(new XYValue(Tb, -999.25f, ResRange[i]));
+                        right.Add(new XYValue(Tb, -999.25f, ResRange[i + 1]));
+                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
+                        break;
+                    }
+                    else if (res[j] > ResRange[ResRange.Length-2] && res[j] > ResRange[ResRange.Length-1])
+                    {
+                        left.Add(new XYValue(Tb, 1, res[j]));
+                        right.Add(new XYValue(Tb, 1, res[j]));
+                        mid.Add(new XYValue(Tb, 1, res[j]));
+                        break;
+                    }
                 }
-                else if (Tb == TbRange[i])
-                {
-                    TbMid = Tb;
-                    CurveParaMid = TbMid;
-                    break;
-                }
-                else if (Tb == TbRange[i + 1])
-                {
-                    TbMid = Tb;
-                    CurveParaMid = TbMid;
-                    break;
-                }
-                else if (Tb > TbRange[i] && Tb > TbRange[i + 1])
-                {
-                    TbLeft = TbRange[i];
-                    CurveParaLeft = TbLeft;
-                    TbRight = TbRange[i + 1];
-                    CurveParaRight = TbRight;
-                }
-                else if (Tb < TbRange[i] && Tb < TbRange[i + 1])
-                {
-                    TbLeft = TbRange[i];
-                    CurveParaLeft = TbLeft;
-                    TbRight = TbRange[i + 1];
-                    CurveParaRight = TbRight;
-                    break;
-                }
-            }
+            curveleft.AddRange(left);
+            curveright.AddRange(right);
+            curvemid.AddRange(mid);
         }
+
+        /// <summary>
+        /// 获取左、右某一个图版上测量点的乘系数列表
+        /// 1.层厚在曲线上；
+        /// 2.层厚曲线外，获取最近的2个目的层厚
+        /// </summary>
+        /// <param name="res">8条电阻率曲线之一</param>
+        /// <param name="curveLeft">左曲线数据</param>
+        /// <param name="curveReft">右曲线数据</param>
+        /// <param name="chartlist">图版</param>
+        public List<float> getOneCorrectList(int chartindex, List<float> res,List<XYValue> curveLeft,List<XYValue> curveRight, List<List<XYValue>> chartlist)
+        {
+            XYValue pointOnLeftChart = new XYValue();
+            XYValue pointOnRightChart = new XYValue();
+            List<float> List_Factor = new List<float>();
+            for (int j = 0; j < List_DEPTH.Count; j++)
+            {
+                curveLeft[j].YValue = getChartPoint(chartindex, curveLeft[j].ParaValue, chartlist).YValue;
+                curveRight[j].YValue = getChartPoint(chartindex, curveRight[j].ParaValue, chartlist).YValue;
+                List_Factor.Add(InterPolation._InterPo.LagLinerInter(curveLeft[j].ParaValue, curveRight[j].ParaValue,
+                    res[j], curveLeft[j].YValue, curveRight[j].YValue));
+            }
+            return List_Factor;
+        }
+        //for (int i = 0; i < tbRange.Count - 2; i++)
+        //{
+        //    if ((tbRange[i].XValue < Tb && tbRange[i + 1].XValue > Tb))
+        //    {
+        //        TbLeft.Add(tbRange[i].XValue);
+        //        TbRight.Add(tbRange[i + 1].XValue);
+        //        TbMid.Add(-999.25f);
+        //        break;
+        //    }
+        //    else if (Tb == tbRange[i].XValue)
+        //    {
+        //        TbLeft.Add(-999.25f);
+        //        TbRight.Add(-999.25f);
+        //        TbMid.Add(Tb);
+        //        break;
+        //    }
+        //    else if (Tb == tbRange[i + 1].XValue)
+        //    {
+        //        TbLeft.Add(-999.25f);
+        //        TbRight.Add(-999.25f);
+        //        TbMid.Add(Tb);
+        //        break;
+        //    }
+        //    else if (Tb > tbRange[i].XValue && Tb > tbRange[i + 1].XValue)
+        //        continue;
+        //    else if (Tb < tbRange[i].XValue && Tb < tbRange[i + 1].XValue)
+        //    {
+        //        TbLeft.Add(tbRange[i].XValue);
+        //        TbRight.Add(tbRange[i + 1].XValue);
+        //        TbMid.Add(-999.25f);
+        //        break;
+        //    }
+        //}
+
+
+        /// <summary>
+        /// 通过某图版左、右曲线上的临近点，获得插值后目的层厚在左、右曲线上的点.
+        /// </summary>
+        /// <param name="Index">测量值电阻率曲线对应的校正图版索引</param>
+        /// <param name="resBounder">电阻率左、右边界</param>
+        /// <param name="chartlist">图版</param>
+        /// <returns>目的层厚上的XYValue</returns>
+        private XYValue getChartPoint(int Index, float resBounder, List<List<XYValue>> chartlist)
+        {
+            XYValue result;
+            List<XYValue> curve = new List<XYValue>();//曲线
+            XYValue LeftPoint = new XYValue();//曲线上的左点
+            XYValue RightPoint = new XYValue();//曲线上的右点
+            for (int j=0;j< chartlist[Index].Count;j++)
+            {
+                if (chartlist[Index].ElementAt(j).ParaValue == resBounder)
+                    curve.Add(chartlist[Index].ElementAt(j));
+            }
+            //Debug：打印曲线数据
+            //ChartDataPrint(curve);
+            Nearest2Point(curve, Tb, out LeftPoint, out RightPoint);
+            result=InterPolation._InterPo.LagLinerInter(Tb, LeftPoint, RightPoint);
+            curve.Clear();
+            result.ParaValue = resBounder;
+            return result;
+        }
+        /// <summary>
+        /// 打印图版曲线数据
+        /// </summary>
+        /// <param name="chartdata">图版曲线List<XYValue></param>
+        private void ChartDataPrint(List<XYValue> chartdata)
+        {
+            Debug.WriteLine("ParaValue\t" + "XValue\t" + "YValue\t");
+            for(int i=0;i<chartdata.Count;i++)
+                Debug.WriteLine(chartdata[i].ParaValue.ToString() + "\t\t" + chartdata[i].XValue.ToString() + "\t\t" + chartdata[i].YValue.ToString() + "\t\t");
+        }
+
         /// <summary>
         /// 剔除超差(min~max)
         /// </summary>
@@ -933,9 +1047,15 @@ namespace LWD_DataProcess
             {
                 case "介电常数": 
                     break;
-                case "井眼校正": getRmBounder();ParaMid = RmMid;
+                case "井眼校正":
+                    ClearXY();
+                    getRmBounder();
+                    ParaMid = RmMid;
                     break;
-                case "围岩校正": getSbrBounder();getTbBounder(); ParaMid = SBRMid;
+                case "围岩校正":
+                    ClearXY();
+                    getSbrBounder();
+                    ParaMid = SBRMid;
                     break;
                 case "侵入校正": 
                     break;
@@ -946,7 +1066,6 @@ namespace LWD_DataProcess
             }
             SetChartPrefix(rawcurvenames); 
             SetChartPostfix(ParaMid);
-
         }
 
         public void CorrectFlow(String method)
@@ -959,7 +1078,7 @@ namespace LWD_DataProcess
                     GetChartXYValueList(RmLeft, RmRight, RmMid);
                     break;
                 case "围岩校正":
-                    GetChartXYValueList(TbLeft, TbRight, TbMid);
+                    GetChartXYValueList(ResRange,SBRLeft,SBRRight,SBRMid);
                     break;
                 case "侵入校正":
                     break;
@@ -972,61 +1091,31 @@ namespace LWD_DataProcess
             //获取测量值在对应图版上临近的两个点Xleft和Xright,校正系数Yleft,YRigth
         }
 
-
-
         /// <summary>
-        /// 查询图版X Y 值，存为键值对List
+        /// 获取图版的曲线XY值列表之列表：参数在曲线上获取一条；在两条曲线之间获取两条
         /// </summary>
-        /// <param name="ChartNames">图版名集合</param>
-        /// <param name="pv">图版内参数</param>
-        public List<XYValue> GetXYList(String ChartName,float pv)
-        {
-            SQLiteConnection conn = DBHelper.DbConnection;
-            SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
-            try
-            {
-                List<XYValue> templistxy = new List<XYValue>();
-                XYValue tempxy = new XYValue();
-                dbhelper.Open();
-                //带参SQL语句 查询ChartName图版，返回XValue,YValue，按照XValue 升序排列
-                cmd.CommandText = "SELECT XValue,YValue FROM [" + ChartName + "] WHERE ParameterValue=@paravalue ORDER BY XValue ASC ";
-                cmd.Parameters.Add(new SQLiteParameter("@paravalue", pv));
-                //清空Adapter和DataSet
-                DataAdapter = new SQLiteDataAdapter();
-                ds_xylist.Clear();
-                DataAdapter.SelectCommand = cmd;
-                cmd.ExecuteNonQuery();//执行查询
-                DataAdapter.Fill(ds_xylist);
-                DataTable dt = ds_xylist.Tables[0];
-                for(int i=0;i<dt.Rows.Count;i++)
-                {
-                    tempxy.XValue = float.Parse(dt.Rows[i].ItemArray[0].ToString());
-                    tempxy.YValue = float.Parse(dt.Rows[i].ItemArray[1].ToString());
-                    templistxy.Add(tempxy);
-                }
-                DataAdapter.Dispose();
-                return templistxy;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        /// <summary>
-        /// 获取图版XY值列表之列表
-        /// </summary>
-        public void GetChartXYValueList(float pvleft,float pvright,float pvmid)
+        /// <param name="pvleft">左曲线参数</param>
+        /// <param name="pvright">右曲线参数</param>
+        /// <param name="pvmid">曲线参数</param>
+        public void GetChartXYValueList(float pvleft, float pvright, float pvmid)
         {
             try
             {
                 if (!ParaOnChart)//参数不在图版上
                     for (int i = 0; i < 8; i++)
                     {
+                        List<XYValue> templ = new List<XYValue>();
+                        List<XYValue> tempr = new List<XYValue>();
                         //左边界 
-                        ListLeft.Add(GetXYList(ChartNameLeft[i], pvleft));
+                        templ.AddRange(GetXYList(ChartNameLeft[i], pvleft));
+                        templ.AddRange(GetXYList(ChartNameLeft[i], pvright));
+                        ListLeft.Add(templ);
+                        templ.Clear();
                         //右边界
-                        ListRight.Add(GetXYList(ChartNameRight[i], pvright));
+                        tempr.AddRange(GetXYList(ChartNameRight[i], pvleft));
+                        tempr.AddRange(GetXYList(ChartNameRight[i], pvright));
+                        ListRight.Add(tempr);
+                        tempr.Clear();
                     }
                 if (ParaOnChart)
                     for (int i = 0; i < 8; i++)
@@ -1042,309 +1131,187 @@ namespace LWD_DataProcess
         }
 
         /// <summary>
+        /// 获取图版全部曲线XY值列表之列表
+        /// </summary>
+        /// <param name="range">曲线参数数组</param>
+        public void GetChartXYValueList(float[] range,float cpvleft,float cpvright,float cpvmid)
+        {
+            try
+            {
+                if (!ParaOnChart)//参数不在图版上
+                    for (int i = 0; i < 8; i++)
+                    {
+                        //左边界 
+                        ListLeft.Add(GetXYList(ChartNameLeft[i], range, cpvleft));
+                        //右边界
+                        ListRight.Add(GetXYList(ChartNameRight[i], range, cpvright));
+                    }
+                if (ParaOnChart)
+                    for (int i = 0; i < 8; i++)
+                    {
+                        //参数在图版上
+                        ListMid.Add(GetXYList(ChartNameMid[i], range,cpvmid));
+                    }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 查询图版X Y 值，存为键值对List
+        /// </summary>
+        /// <param name="ChartNames">图版名集合</param>
+        /// <param name="pv">图版内参数</param>
+        public List<XYValue> GetXYList(String ChartName,float pv)
+        {
+            SQLiteConnection conn = DBHelper.DbConnection;
+            SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
+            try
+            {
+                List<XYValue> templistxy = new List<XYValue>();
+                dbhelper.Open();
+                //带参SQL语句 查询ChartName图版，返回XValue,YValue，按照XValue 升序排列
+                cmd.CommandText = "SELECT XValue,YValue FROM [" + ChartName + "] WHERE ParameterValue=@paravalue ORDER BY XValue ASC ";
+                cmd.Parameters.Add(new SQLiteParameter("@paravalue", pv));
+                //清空Adapter和DataSet
+                DataAdapter = new SQLiteDataAdapter();
+                ds_xylist.Clear();
+                DataAdapter.SelectCommand = cmd;
+                cmd.ExecuteNonQuery();//执行查询
+                DataAdapter.Fill(ds_xylist);
+                DataTable dt = ds_xylist.Tables[0];
+                for(int i=0;i<dt.Rows.Count;i++)
+                {
+                    XYValue tempxy = new XYValue(float.Parse(dt.Rows[i].ItemArray[0].ToString()), float.Parse(dt.Rows[i].ItemArray[1].ToString()));
+                    templistxy.Add(tempxy);
+                }
+                DataAdapter.Dispose();
+                return templistxy;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 查询图版X Y 值，存为键值对List
+        /// </summary>
+        /// <param name="ChartNames">图版名集合</param>
+        /// <param name="pv">图版内参数数组</param>
+        /// <param name="cpv">图版外参数</param>
+        public List<XYValue> GetXYList(String ChartName, float[] pv,float cpv)
+        {
+            SQLiteConnection conn = DBHelper.DbConnection;
+            SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
+            List<XYValue> templistxy = new List<XYValue>();
+            try
+            {
+                dbhelper.Open();
+                for (int i = 0; i < pv.Length; i++)
+                {
+                    //清空Adapter和DataSet
+                    DataAdapter = new SQLiteDataAdapter();
+                    ds_xylist = new DataSet();
+                    //带参SQL语句 查询ChartName图版，返回XValue,YValue，按照XValue 升序排列
+                    cmd.CommandText = "SELECT XValue,YValue FROM [" + ChartName + "] WHERE ParameterValue=@paravalue ORDER BY XValue ASC ";
+                    cmd.Parameters.Add(new SQLiteParameter("@paravalue", pv[i]));
+                    DataAdapter.SelectCommand = cmd;
+                    cmd.ExecuteNonQuery();//执行查询
+                    DataAdapter.Fill(ds_xylist);
+                    ds_xylist.Tables[0].TableName = "pv="+pv[i].ToString("F1")+"_cpv="+cpv.ToString("F1");
+                    ChartDataTable.Add(ds_xylist.Tables[0]);
+                }
+                templistxy.Clear();
+                for (int j = 0; j < ChartDataTable.Count; j++)
+                {
+                    for (int i = 0; i < ChartDataTable[j].Rows.Count; i++)
+                    {
+                        XYValue tempxy = new XYValue(float.Parse(ChartDataTable[j].Rows[i].ItemArray[0].ToString()),
+                            float.Parse(ChartDataTable[j].Rows[i].ItemArray[1].ToString()),pv[j]);
+                        templistxy.Add(tempxy);
+                    }
+                }
+                DataAdapter.Dispose();
+                ChartDataTable.Clear();
+                return templistxy;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        /// <summary>
         /// 获取测量值 插值处理后的校正数据 List_RACECHM=>List_RACECHM_AC...
         /// </summary>
         private void GetACValue()
         {
+            for(int i=0;i<8;i++)
+            {
+                switch(i)
+                {
+                    case 0:
+                        GetOneResValue(List_RACECHM, i);
+                        break;
+                    case 1:
+                        GetOneResValue(List_RACECLM, i);
+                        break;
+                    case 2:
+                        GetOneResValue(List_RACECSHM, i);
+                        break;
+                    case 3:
+                        GetOneResValue(List_RACECSLM, i);
+                        break;
+                    case 4:
+                        GetOneResValue(List_RPCECHM, i);
+                        break;
+                    case 5:
+                        GetOneResValue(List_RPCECLM, i);
+                        break;
+                    case 6:
+                        GetOneResValue(List_RPCECSHM, i);
+                        break;
+                    case 7:
+                        GetOneResValue(List_RPCECSLM, i);
+                        break;
+                }
+            }
+        }
+        /// <summary>
+        /// 获取某一个电阻率曲线的校正值列表
+        /// </summary>
+        /// <param name="OneRes"></param>
+        private void GetOneResValue(List<float> OneRes,int chartindex)
+        {
+            //左曲线
+            List<XYValue> left = new List<XYValue>();
+            //右曲线
+            List<XYValue> right = new List<XYValue>();
+            //中曲线
+            List<XYValue> mid = new List<XYValue>();
+            //左图版上的乘因子列表
+            List<float> LeftChartFactors = new List<float>();
+            //右图版上的乘因子列表
+            List<float> RightChartFactors = new List<float>();
             try
             {
-                float[] leftValue = new float[List_DEPTH.Count];
-                float[] rightValue = new float[List_DEPTH.Count];
-                //外循环 8条曲线 : j
-                for (int j = 0; j < 8; j++)
-                {
-                    switch (j)
-                    {
-                        case 0://RACECHM
-                            Nearest2Point(ListLeft[j], List_RACECHM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RACECHM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RACECHM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RACECHM[i], leftValue[i], rightValue[i]));
-                            break;
-                        case 1://RACECLM
-                            Nearest2Point(ListLeft[j], List_RACECLM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RACECLM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RACECLM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RACECLM[i], leftValue[i], rightValue[i]));
-                            break;
-                        case 2://RACECSHM
-                            Nearest2Point(ListLeft[j], List_RACECSHM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECSHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECSHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECSHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RACECSHM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECSHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECSHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECSHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RACECSHM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RACECSHM[i], leftValue[i], rightValue[i]));
-                            break;
-                        case 3://RACECSLM
-                            Nearest2Point(ListLeft[j], List_RACECSLM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECSLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RACECSLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECSLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RACECSLM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECSLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RACECSLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RACECSLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RACECSLM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RACECSLM[i], leftValue[i], rightValue[i]));
-                            break;
-                        case 4://RPCECHM
-                            Nearest2Point(ListLeft[j], List_RPCECHM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RPCECHM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RPCECHM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RPCECHM[i], leftValue[i], rightValue[i]));
-                            break;
-                        case 5://RPCECLM
-                            Nearest2Point(ListLeft[j], List_RPCECLM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RPCECLM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RPCECLM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RPCECLM[i], leftValue[i], rightValue[i]));
-                            break;
-                        case 6://RPCECSHM
-                            Nearest2Point(ListLeft[j], List_RPCECSHM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECSHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECSHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECSHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RPCECSHM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECSHM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECSHM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECSHM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RPCECSHM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RPCECSHM[i], leftValue[i], rightValue[i]));
-                            break;
-                        case 7://RPCECSLM
-                            Nearest2Point(ListLeft[j], List_RPCECSLM);//左图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECSLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListLeft[j].ElementAt(i).ValueOnChart)
-                                {
-                                    leftValue[i] = List_RPCECSLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECSLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            Nearest2Point(ListRight[j], List_RPCECSLM);//右图版
-                            //内循环 记录条数 : i
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                            {
-                                //测量值在图版曲线上 
-                                if (ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECSLM[i] * YMid[i];
-                                }
-                                //测量值部在图版曲线上 
-                                else if (!ListRight[j].ElementAt(i).ValueOnChart)
-                                {
-                                    rightValue[i] = List_RPCECSLM[i] *
-                                        InterPolation._InterPo.LagLinerInter(XLeft[i], XRight[i], List_RPCECSLM[i], YLeft[i], YRight[i]);
-                                }
-                            }
-                            for (int i = 0; i < List_DEPTH.Count; i++)
-                                List_RPCECSLM_AC.Add(InterPolation._InterPo.LagLinerInter(ParaLeft, ParaRight, List_RPCECSLM[i], leftValue[i], rightValue[i]));
-                            break;
-                    }
-                }
+                getResBounder(OneRes, out left, out right, out mid);
+                LeftChartFactors = getOneCorrectList(chartindex,OneRes, left, right, ListLeft);
+                left.Clear();
+                right.Clear();
+                mid.Clear();
+                getResBounder(OneRes, out left, out right, out mid);
+                RightChartFactors = getOneCorrectList(chartindex,OneRes, left, right, ListRight);
+                left.Clear();
+                right.Clear();
+                mid.Clear();
+                for (int i = 0; i < List_DEPTH.Count; i++)
+                    List_RACECHM_AC.Add(OneRes[i]*InterPolation._InterPo.LagLinerInter
+                        (SBRLeft, SBRRight, SBR, LeftChartFactors[i], RightChartFactors[i]));
             }
             catch (Exception ex)
             {
@@ -1378,18 +1345,18 @@ namespace LWD_DataProcess
                 while (left < right)
                 {
                     mid = left + (right - left) / 2;
-                    if (range[mid].XValue == target[i])
+                    if (range[mid].ParaValue == target[i])
                     {
                         XMid[i] = range[mid].XValue;
                         YMid[i] = range[mid].YValue;
                         range[mid].ValueOnChart = true;
                         break;
                     }
-                    else if (range[mid].XValue > target[i])
+                    else if (range[mid].ParaValue > target[i])
                     {
                         if ((right != mid) || (left != mid))
                             right = mid;
-                        else
+                        if(range[right-1]==range[left])
                         {
                             XLeft[i] = range[left].XValue;
                             XRight[i] = range[right].XValue;
@@ -1398,11 +1365,11 @@ namespace LWD_DataProcess
                             break;
                         }
                     }
-                    else if (range[mid].XValue < target[i])
+                    else if (range[mid].ParaValue < target[i])
                     {
                         if ((right != mid) || (left != mid))
                             left = mid;
-                        else
+                        if (range[right - 1] == range[left])
                         {
                             XLeft[i] = range[left].XValue;
                             XRight[i] = range[right].XValue;
@@ -1413,6 +1380,61 @@ namespace LWD_DataProcess
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 二分查找法索引图版曲线上最临近的两个点<XYValue>:Xleft和Xright 输出到LeftPoint,RightPoint
+        /// </summary>
+        /// <param name="range">索引范围</param>
+        /// <param name="target">测量值</param>
+        /// <param name="leftpoint">曲线左点</param>
+        /// <param name="rightpoint">曲线右点</param>
+        private void Nearest2Point(List<XYValue> range, float target,out XYValue LeftPoint,out XYValue RightPoint)
+        {
+            int left = 0;
+            int right = range.Count - 1;
+            int mid = 0;
+            while (left < right)
+            {
+                mid = left + (right - left) / 2;
+                if (range[mid].XValue == target)
+                {
+                    LeftPoint = range[mid];
+                    RightPoint = range[mid];
+                    range[mid].ValueOnChart = true;
+                    break;
+                }
+                else if (range[mid].XValue > target)
+                {
+                    if ((right != mid) || (left != mid))
+                        right = mid;
+                    if (range[right - 1] == range[left])
+                    {
+                        break;
+                    }
+                }
+                else if (range[mid].XValue < target)
+                {
+                    if ((right != mid) || (left != mid))
+                        left = mid;
+                    if (range[right - 1] == range[left])
+                    {
+                        break;
+                    }
+                }
+                else if(target <range[1].XValue&&target<range[0].XValue)
+                {
+                    left = 0;
+                    right = 1;
+                }
+                else if(target > range[0].XValue && target > range[1].XValue)
+                {
+                    left = range.Count - 2;
+                    right = range.Count - 1;
+                }
+            }
+            LeftPoint = range[left];
+            RightPoint = range[right];
         }
     }
 }

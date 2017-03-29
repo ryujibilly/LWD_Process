@@ -13,7 +13,6 @@ using System.Threading;
 using System.Globalization;
 using System.Data.SQLite;
 
-
 namespace LWD_DataProcess
 {
     public partial class  GammaCorrection : Form
@@ -118,7 +117,7 @@ namespace LWD_DataProcess
 
         #region 环境校正参数设置
         /// <summary>
-        /// >是否使用源目录
+        /// 是否使用源目录
         /// </summary>
         Boolean saveSource { get; set; }
         /// <summary>
@@ -232,6 +231,9 @@ namespace LWD_DataProcess
         }
         private void GammaCorrection_Load(object sender, EventArgs e)
         {
+            Gamma._Gamma.DrillPipeSize = PipeSize.inch475;
+            Gamma._Gamma.BariteContainment = true;
+            Gamma._Gamma.MudDensity = (double)numericUpDown_MudDensity.Value;
             if (checkBox_Collar.CheckState.Equals(CheckState.Unchecked))
             {
                 numericUpDown_PipeWallSize.Enabled = false;
@@ -251,8 +253,8 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void Load_Click(object sender, EventArgs e)
         {
-            WellName = openFileDialog1.SafeFileName + "_校正";
-            textBox_WellName.Text= WellName ;
+            WellName = openFileDialog1.SafeFileName.Split('.')[0] + "_校正";
+            textBox_WellName.Text= WellName;
             DataStruct.DB_PATH.Insert(DataStruct.DB_PATH.Length,'/'+WellName + ".db");
             OpenFile();
             Thread.Sleep(100);
@@ -353,7 +355,7 @@ namespace LWD_DataProcess
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "测量值文件(*.tmf)|*.tmf|所有文件(*.*)|*.*";
+            openFileDialog1.Filter = "所有文件(*.*)|*.*|测量值文件(*.tmf)|*.tmf|Las文件(*.las)|*.*";
             if (openFileDialog1.ShowDialog(this.Owner) == DialogResult.OK)
             {
                 FileName = openFileDialog1.FileName;
@@ -382,9 +384,10 @@ namespace LWD_DataProcess
 
         private void checkBox_Save2Source_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_Save2Source.Checked.Equals(CheckState.Checked))
+            if (checkBox_Save2Source.CheckState==CheckState.Checked)
                 saveSource = true;
-            else saveSource = false;
+            else if(checkBox_Save2Source.CheckState == CheckState.Unchecked)
+                saveSource = false;
         }
 
 
@@ -611,14 +614,14 @@ namespace LWD_DataProcess
             try
             {
                 if (saveSource)
-                    outputPath = openFileDialog1.InitialDirectory + WellName + ".tmf";
+                    outputPath = openFileDialog1.InitialDirectory + WellName + ".las";
                 else
-                outputPath = openFileDialog1.FileName+ ".tmf";
+                outputPath = openFileDialog1.FileName+ ".las";
                 fsOutPut = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
                 swOutPut = new StreamWriter(fsOutPut);
                 String ParaString = null;
                 for (int i = 0; i < comboBox1.Items.Count; i++)
-                    ParaString += comboBox1.Items[i] + "\t,";
+                    ParaString += comboBox1.Items[i] + "\t\t";
                 ParaString += Curve_AC + "\t\r\n";
                 swOutPut.WriteLine("FORWARD_TEXT_FORMAT_1.0");
                 swOutPut.WriteLine("STDEP  = " + Math.Round(StartDepth, 3));
@@ -650,7 +653,7 @@ namespace LWD_DataProcess
                     break;
                 }
                 Application.DoEvents();
-                swOutPut.WriteLine("========================================================================");
+                swOutPut.WriteLine("========\t========\t========\t========\t");
                 swOutPut.Flush();
                 fsOutPut.Flush();
                 swOutPut.Close();
@@ -754,6 +757,11 @@ namespace LWD_DataProcess
         {
             if (checkBox_Annulus.CheckState.Equals(CheckState.Checked))
                 numericUpDown_CircleInterval.Enabled = true;
+        }
+
+        private void textBox_WellName_TextChanged(object sender, EventArgs e)
+        {
+            WellName = textBox_WellName.Text.Trim();
         }
     }
 }

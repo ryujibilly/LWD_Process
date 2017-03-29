@@ -7,13 +7,20 @@ namespace LWD_DataProcess
 {
     public class XYValue
     {
-        private float xvalue;
-        private float yvalue;
+        private float xvalue=-999.25f;
+        private float yvalue=-999.25f;
+        private float paraValue=-999.25f;
+        /// <summary>
+        /// X坐标
+        /// </summary>
         public float XValue
         {
             get { return xvalue; }
-            set { yvalue = value; }
+            set { xvalue = value; }
         }
+        /// <summary>
+        /// Y坐标
+        /// </summary>
         public float YValue
         {
             get { return yvalue; }
@@ -23,8 +30,21 @@ namespace LWD_DataProcess
         public XYValue() { }
         public XYValue(float x,float y)
         {
-            xvalue = x;
-            yvalue = y;
+            XValue = x;
+            YValue = y;
+        }
+        public XYValue(float x,float y,float pv)
+        {
+            XValue = x;
+            YValue = y;
+            ParaValue = pv;
+        }
+        public XYValue(float x,float y,float pv,Boolean voc)
+        {
+            XValue = x;
+            YValue = y;
+            ParaValue = pv;
+            ValueOnChart = voc;
         }
         /// <summary>
         /// 测量值是否在校正图版曲线上
@@ -42,6 +62,20 @@ namespace LWD_DataProcess
                 valueOnChart = value;
             }
         }
+        /// <summary>
+        /// 曲线参数
+        /// </summary>
+        public float ParaValue
+        {
+            get
+            {
+                return paraValue;
+            }
 
+            set
+            {
+                paraValue = value;
+            }
+        }
     }
 }

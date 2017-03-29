@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -159,11 +159,11 @@
             // checkBox_Collar
             // 
             this.checkBox_Collar.AutoSize = true;
-            this.checkBox_Collar.Location = new System.Drawing.Point(217, 62);
+            this.checkBox_Collar.Location = new System.Drawing.Point(240, 61);
             this.checkBox_Collar.Name = "checkBox_Collar";
-            this.checkBox_Collar.Size = new System.Drawing.Size(132, 16);
+            this.checkBox_Collar.Size = new System.Drawing.Size(96, 16);
             this.checkBox_Collar.TabIndex = 31;
-            this.checkBox_Collar.Text = "钻铤壁厚(内径)(mm)";
+            this.checkBox_Collar.Text = "钻铤壁厚(mm)";
             this.checkBox_Collar.UseVisualStyleBackColor = true;
             this.checkBox_Collar.CheckedChanged += new System.EventHandler(this.checkBox_Collar_CheckedChanged);
             // 
@@ -173,6 +173,7 @@
             this.textBox_WellName.Name = "textBox_WellName";
             this.textBox_WellName.Size = new System.Drawing.Size(100, 21);
             this.textBox_WellName.TabIndex = 30;
+            this.textBox_WellName.TextChanged += new System.EventHandler(this.textBox_WellName_TextChanged);
             // 
             // label8
             // 
@@ -255,7 +256,7 @@
             0,
             0,
             131072});
-            this.numericUpDown_MudDensity.Location = new System.Drawing.Point(366, 94);
+            this.numericUpDown_MudDensity.Location = new System.Drawing.Point(356, 94);
             this.numericUpDown_MudDensity.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_MudDensity.Maximum = new decimal(new int[] {
             500,
@@ -280,12 +281,12 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(248, 96);
+            this.label20.Location = new System.Drawing.Point(238, 96);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(101, 12);
             this.label20.TabIndex = 8;
-            this.label20.Text = "泥浆密度(g/cm^2)";
+            this.label20.Text = "泥浆密度(g/cm^3)";
             // 
             // comboBox_BariteContainment
             // 
@@ -349,7 +350,7 @@
             0,
             0,
             131072});
-            this.numericUpDown_PipeWallSize.Location = new System.Drawing.Point(366, 59);
+            this.numericUpDown_PipeWallSize.Location = new System.Drawing.Point(356, 59);
             this.numericUpDown_PipeWallSize.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown_PipeWallSize.Maximum = new decimal(new int[] {
             200,
@@ -473,16 +474,16 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(6, 6);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(669, 400);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "曲线对比图";

@@ -119,7 +119,7 @@ namespace LWD_DataProcess
         //}
 
 
-        internal void getFactors()
+        internal double getFactors()
         {
             if (Factor_pws != 1)
                 cal_DrillPipeSize(gu);
@@ -128,6 +128,7 @@ namespace LWD_DataProcess
                 cal_CircleInterval(gu);
             else Factor_ci = 1;
             cal_MudDensity(gu);
+            return 1 / (Factor_pws * Factor_md * Factor_ci);
         }
 
         internal void Start(double ct)

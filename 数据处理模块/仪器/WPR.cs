@@ -1009,7 +1009,9 @@ namespace LWD_DataProcess
             //Debug：打印曲线数据
             //ChartDataPrint(curve);
             Nearest2Point(curve, Tb, out LeftPoint, out RightPoint);
-            result=InterPolation._InterPo.LagLinerInter(Tb, LeftPoint, RightPoint);
+            if (LeftPoint.XValue != RightPoint.XValue)
+                result = InterPolation._InterPo.LagLinerInter(Tb, LeftPoint, RightPoint);
+            else result = LeftPoint;
             curve.Clear();
             result.ParaValue = resBounder;
             return result;
@@ -1425,11 +1427,11 @@ namespace LWD_DataProcess
                 else if(target <range[1].XValue&&target<range[0].XValue)
                 {
                     left = 0;
-                    right = 1;
+                    right = 0;
                 }
                 else if(target > range[0].XValue && target > range[1].XValue)
                 {
-                    left = range.Count - 2;
+                    left = range.Count - 1;
                     right = range.Count - 1;
                 }
             }

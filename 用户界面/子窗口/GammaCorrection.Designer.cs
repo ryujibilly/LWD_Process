@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -79,6 +79,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_Factor = new System.Windows.Forms.TextBox();
             this.groupBox_GammaSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_WellDiameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudDensity)).BeginInit();
@@ -474,16 +476,16 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(6, 6);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(669, 400);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "曲线对比图";
@@ -491,6 +493,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox_Factor);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.groupBox5);
@@ -508,9 +512,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(612, 59);
+            this.button2.Location = new System.Drawing.Point(625, 13);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 31);
+            this.button2.Size = new System.Drawing.Size(70, 29);
             this.button2.TabIndex = 35;
             this.button2.Text = "曲线对比";
             this.button2.UseVisualStyleBackColor = true;
@@ -525,7 +529,7 @@
             this.groupBox6.Controls.Add(this.textBox_StartDep);
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Controls.Add(this.label3);
-            this.groupBox6.Location = new System.Drawing.Point(339, 20);
+            this.groupBox6.Location = new System.Drawing.Point(288, 20);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(267, 61);
             this.groupBox6.TabIndex = 34;
@@ -535,7 +539,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(155, 16);
+            this.label7.Location = new System.Drawing.Point(154, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 36;
@@ -555,7 +559,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(190, 13);
+            this.comboBox2.Location = new System.Drawing.Point(189, 11);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(70, 20);
             this.comboBox2.TabIndex = 35;
@@ -601,7 +605,7 @@
             // 
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.CurveName_AC);
-            this.groupBox5.Location = new System.Drawing.Point(226, 20);
+            this.groupBox5.Location = new System.Drawing.Point(175, 20);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(107, 61);
             this.groupBox5.TabIndex = 33;
@@ -628,9 +632,9 @@
             // 
             // button_Correct
             // 
-            this.button_Correct.Location = new System.Drawing.Point(612, 22);
+            this.button_Correct.Location = new System.Drawing.Point(561, 13);
             this.button_Correct.Name = "button_Correct";
-            this.button_Correct.Size = new System.Drawing.Size(83, 31);
+            this.button_Correct.Size = new System.Drawing.Size(62, 29);
             this.button_Correct.TabIndex = 30;
             this.button_Correct.Text = "校  正";
             this.button_Correct.UseVisualStyleBackColor = true;
@@ -640,9 +644,9 @@
             // 
             this.groupBox4.Controls.Add(this.radioButton1);
             this.groupBox4.Controls.Add(this.radioButton2);
-            this.groupBox4.Location = new System.Drawing.Point(137, 20);
+            this.groupBox4.Location = new System.Drawing.Point(109, 20);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(83, 61);
+            this.groupBox4.Size = new System.Drawing.Size(60, 61);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "单位";
@@ -651,7 +655,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(21, 17);
+            this.radioButton1.Location = new System.Drawing.Point(11, 17);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(41, 16);
             this.radioButton1.TabIndex = 4;
@@ -663,7 +667,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(21, 39);
+            this.radioButton2.Location = new System.Drawing.Point(11, 39);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(41, 16);
             this.radioButton2.TabIndex = 5;
@@ -677,7 +681,7 @@
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Location = new System.Drawing.Point(12, 20);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(117, 61);
+            this.groupBox3.Size = new System.Drawing.Size(92, 61);
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "待校曲线";
@@ -696,9 +700,26 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(6, 35);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(93, 20);
+            this.comboBox1.Size = new System.Drawing.Size(75, 20);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(561, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "校正因子";
+            // 
+            // textBox_Factor
+            // 
+            this.textBox_Factor.Enabled = false;
+            this.textBox_Factor.Location = new System.Drawing.Point(620, 58);
+            this.textBox_Factor.Name = "textBox_Factor";
+            this.textBox_Factor.Size = new System.Drawing.Size(75, 21);
+            this.textBox_Factor.TabIndex = 37;
             // 
             // GammaCorrection
             // 
@@ -727,6 +748,7 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -789,5 +811,7 @@
         private System.Windows.Forms.TextBox textBox_WellName;
         private System.Windows.Forms.CheckBox checkBox_Collar;
         private System.Windows.Forms.CheckBox checkBox_Annulus;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox_Factor;
     }
 }

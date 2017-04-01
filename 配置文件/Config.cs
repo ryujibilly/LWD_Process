@@ -56,6 +56,14 @@ namespace LWD_DataProcess
         /// 图版配置数据库文件路径
         /// </summary>
         public String DBPath_CorrectionChart { get; set; }
+        /// <summary>
+        /// WPR校正围岩电阻率
+        /// </summary>
+        public float WPR_SBR { get; set; }
+        /// <summary>
+        /// WPR校正目的层厚
+        /// </summary>
+        public float WPR_Tb { get; set; }
     }
 
     /// <summary>
@@ -112,6 +120,13 @@ namespace LWD_DataProcess
                 //环境校正图版数据库文件地址
                 XmlElement eleDBPath_CorrectionChart = doc.CreateElement("DBPath_CorrectionChart");
                 XmlText txtDBPath_CorrectionChart = doc.CreateTextNode(CfgInfo.DBPath_CorrectionChart.ToString());
+                //围岩电阻率
+                XmlElement eleWPR_SBR = doc.CreateElement("WPR_SBR");
+                XmlText txtWPR_SBR = doc.CreateTextNode(CfgInfo.WPR_SBR.ToString("F3"));
+
+                //目的层厚
+                XmlElement eleWPR_Tb = doc.CreateElement("WPR_Tb");
+                XmlText txtWPR_Tb = doc.CreateTextNode(CfgInfo.WPR_Tb.ToString("F3"));
 
                 XmlNode newElem = doc.CreateNode("element", "config", "");
 
@@ -130,14 +145,17 @@ namespace LWD_DataProcess
                 newElem.AppendChild(eleIT);
                 newElem.LastChild.AppendChild(txtIT);
 
-                //newElem.AppendChild(eleDB_PATH);
-                //newElem.LastChild.AppendChild(txtDB_PATH);
-
                 newElem.AppendChild(eleDBPath_Well);
                 newElem.LastChild.AppendChild(txtDBPath_Well);
 
                 newElem.AppendChild(eleDBPath_CorrectionChart);
                 newElem.LastChild.AppendChild(txtDBPath_CorrectionChart);
+
+                newElem.AppendChild(eleWPR_SBR);
+                newElem.LastChild.AppendChild(txtWPR_SBR);
+
+                newElem.AppendChild(eleWPR_Tb);
+                newElem.LastChild.AppendChild(txtWPR_Tb);
 
 
                 XmlElement root = doc.CreateElement("config");
@@ -174,6 +192,8 @@ namespace LWD_DataProcess
                 //CfgInfo.DB_PATH = doc.SelectSingleNode("//DB_PATH").InnerText;
                 CfgInfo.DBPath_Well = doc.SelectSingleNode("//DBPath_Well").InnerText;
                 CfgInfo.DBPath_CorrectionChart = doc.SelectSingleNode("//DBPath_CorrectionChart").InnerText;
+                CfgInfo.WPR_SBR = float.Parse( doc.SelectSingleNode("//WPR_SBR").InnerText);
+                CfgInfo.WPR_Tb = float.Parse(doc.SelectSingleNode("//WPR_Tb").InnerText);
 
                 XmlDocument xmldoc = new XmlDocument();
                 if (File.Exists("NodeSettings.xml"))
@@ -189,6 +209,8 @@ namespace LWD_DataProcess
                         CfgInfo.DBPath_CorrectionChart = element.Attributes["dbPath_CorrectionChart"].Value;
                         Properties.Settings.Default.DBPath_ChartInfo = CfgInfo.DBPath_CorrectionChart;
                         Properties.Settings.Default.DBPath_WellInfo = CfgInfo.DBPath_Well;
+                        Properties.Settings.Default.SBR = (decimal)CfgInfo.WPR_SBR;
+                        Properties.Settings.Default.Tb = (decimal)CfgInfo.WPR_Tb;
                         break;
                     }
                 }

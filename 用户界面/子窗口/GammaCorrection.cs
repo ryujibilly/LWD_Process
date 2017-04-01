@@ -268,7 +268,7 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void button_Correct_Click(object sender, EventArgs e)
         {
-            Gamma._Gamma.getFactors();
+            textBox_Factor.Text= Gamma._Gamma.getFactors().ToString("F3");
             _GammaColumns = new DataColumn();
             Curve_AC = CurveName_AC.Text.Trim();
             try

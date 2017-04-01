@@ -485,7 +485,6 @@
             this.button_DieletricFile = new System.Windows.Forms.Button();
             this.label_Dielectric = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.numericUpDown_BedThickness = new System.Windows.Forms.NumericUpDown();
             this.label_BedThickness = new System.Windows.Forms.Label();
             this.radioButton_ShoulderBedPara = new System.Windows.Forms.RadioButton();
             this.radioButton_ShoulderBedFile = new System.Windows.Forms.RadioButton();
@@ -533,6 +532,7 @@
             this.button_Correct = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_Output = new System.Windows.Forms.Button();
+            this.numericUpDown_BedThickness = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_SBR = new System.Windows.Forms.NumericUpDown();
             this.textBox_WellName = new System.Windows.Forms.TextBox();
             this.comboBox_ToolSize = new System.Windows.Forms.ComboBox();
@@ -547,7 +547,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -560,6 +559,7 @@
             this.contextMenuStrip_Tree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).BeginInit();
             this.SuspendLayout();
             // 
@@ -866,33 +866,6 @@
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "围岩校正";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown_BedThickness
-            // 
-            this.numericUpDown_BedThickness.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "Tb", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown_BedThickness.DecimalPlaces = 3;
-            this.numericUpDown_BedThickness.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown_BedThickness.Location = new System.Drawing.Point(206, 37);
-            this.numericUpDown_BedThickness.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDown_BedThickness.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown_BedThickness.Name = "numericUpDown_BedThickness";
-            this.numericUpDown_BedThickness.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown_BedThickness.TabIndex = 13;
-            this.numericUpDown_BedThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_BedThickness.Value = global::LWD_DataProcess.Properties.Settings.Default.Tb;
-            this.numericUpDown_BedThickness.ValueChanged += new System.EventHandler(this.numericUpDown_BedThickness_ValueChanged);
             // 
             // label_BedThickness
             // 
@@ -2026,6 +1999,33 @@
             this.button_Output.UseVisualStyleBackColor = true;
             this.button_Output.Click += new System.EventHandler(this.button_Output_Click);
             // 
+            // numericUpDown_BedThickness
+            // 
+            this.numericUpDown_BedThickness.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "Tb", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown_BedThickness.DecimalPlaces = 3;
+            this.numericUpDown_BedThickness.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown_BedThickness.Location = new System.Drawing.Point(206, 37);
+            this.numericUpDown_BedThickness.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericUpDown_BedThickness.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown_BedThickness.Name = "numericUpDown_BedThickness";
+            this.numericUpDown_BedThickness.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_BedThickness.TabIndex = 13;
+            this.numericUpDown_BedThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_BedThickness.Value = global::LWD_DataProcess.Properties.Settings.Default.Tb;
+            this.numericUpDown_BedThickness.ValueChanged += new System.EventHandler(this.numericUpDown_BedThickness_ValueChanged);
+            // 
             // numericUpDown_SBR
             // 
             this.numericUpDown_SBR.DecimalPlaces = 3;
@@ -2115,7 +2115,8 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "WPR_Correction";
-            this.Text = "WPR-环境校正";
+            this.Text = "WPR电磁波电阻率环境校正";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WPR_Correction_FormClosed);
             this.Load += new System.EventHandler(this.WPR_Correction_Load);
             this.contextMenuStrip_ChartInfo.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -2129,7 +2130,6 @@
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
@@ -2145,6 +2145,7 @@
             this.contextMenuStrip_Tree.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).EndInit();
             this.ResumeLayout(false);
 

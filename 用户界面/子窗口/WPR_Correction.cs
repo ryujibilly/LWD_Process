@@ -679,11 +679,15 @@ namespace LWD_DataProcess
         private void numericUpDown_SBR_ValueChanged(object sender, EventArgs e)
         {
             WPR._wpr.SBR = float.Parse(numericUpDown_SBR.Value.ToString());
+            Config.CfgInfo.WPR_SBR = WPR._wpr.SBR;
+            Properties.Settings.Default.SBR = (decimal)Config.CfgInfo.WPR_SBR;
         }
 
         private void numericUpDown_BedThickness_ValueChanged(object sender, EventArgs e)
         {
             WPR._wpr.Tb = float.Parse(numericUpDown_BedThickness.Value.ToString());
+            Config.CfgInfo.WPR_Tb = WPR._wpr.Tb;
+            Properties.Settings.Default.Tb = (decimal)Config.CfgInfo.WPR_Tb;
         }
 
         #endregion
@@ -811,6 +815,7 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void button_Correct_Click(object sender, EventArgs e)
         {
+            Config.SaveConfig();
             SelectCorMethod();
             WPR._wpr.MatchChart(RawCurveNames);
             WPR._wpr.CorrectFlow(WPR._wpr.CorMethod);
@@ -874,5 +879,10 @@ namespace LWD_DataProcess
             WPR._wpr.CorMethod = tabControl2.SelectedTab.Text;
         }
         #endregion
+
+        private void WPR_Correction_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Config.SaveConfig();
+        }
     }
 }

@@ -119,12 +119,15 @@ namespace LWD_DataProcess.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3.7")]
         public decimal SBR {
             get {
                 return ((decimal)(this["SBR"]));
+            }
+            set {
+                this["SBR"] = value;
             }
         }
         

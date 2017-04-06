@@ -634,11 +634,15 @@ namespace LWD_DataProcess
         private void comboBox_BoreHole_SelectedIndexChanged(object sender, EventArgs e)
         {
             WPR._wpr.HD = float.Parse(comboBox_BoreHole.Text.Trim());
+            Config.CfgInfo.WPR_Borehole = WPR._wpr.HD;
+            Properties.Settings.Default.WPR_Borehole= WPR._wpr.HD.ToString("F3");
         }
 
         private void numericUpDown_MudResistivity_ValueChanged(object sender, EventArgs e)
         {
             WPR._wpr.Rm = float.Parse(numericUpDown_MudResistivity.Value.ToString());
+            Config.CfgInfo.WPR_MudRes = WPR._wpr.Rm;
+            Properties.Settings.Default.WPR_MudRes= (decimal)WPR._wpr.Rm;
         }
         #endregion
         #region 介电常数
@@ -819,6 +823,10 @@ namespace LWD_DataProcess
             SelectCorMethod();
             WPR._wpr.MatchChart(RawCurveNames);
             WPR._wpr.CorrectFlow(WPR._wpr.CorMethod);
+            DataTable dt = new DataTable();
+            dt = WPR._wpr.getCorDataTable();
+            if (dt != null)
+                Fill_DGV(dataGridView2, dt);
         }
         /// <summary>
         /// 选择校正类型

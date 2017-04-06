@@ -209,11 +209,11 @@
     <Compile Include="用户界面\子窗口\DBConfig.Designer.cs">
       <DependentUpon>DBConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="用户界面\子窗口\GammaCorrection.cs">
+    <Compile Include="用户界面\子窗口\Gamma_Correction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="用户界面\子窗口\GammaCorrection.Designer.cs">
-      <DependentUpon>GammaCorrection.cs</DependentUpon>
+    <Compile Include="用户界面\子窗口\Gamma_Correction.Designer.cs">
+      <DependentUpon>Gamma_Correction.cs</DependentUpon>
     </Compile>
     <Compile Include="用户界面\子窗口\GDIR_ChartSetting.cs">
       <SubType>Form</SubType>
@@ -266,8 +266,8 @@
     <EmbeddedResource Include="用户界面\子窗口\DBConfig.resx">
       <DependentUpon>DBConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="用户界面\子窗口\GammaCorrection.resx">
-      <DependentUpon>GammaCorrection.cs</DependentUpon>
+    <EmbeddedResource Include="用户界面\子窗口\Gamma_Correction.resx">
+      <DependentUpon>Gamma_Correction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="用户界面\子窗口\GDIR_ChartSetting.resx">
       <DependentUpon>GDIR_ChartSetting.cs</DependentUpon>

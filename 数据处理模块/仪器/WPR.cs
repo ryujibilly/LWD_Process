@@ -69,6 +69,8 @@ namespace LWD_DataProcess
         private List<XYValue> chartLeftcurve = new List<XYValue>();
         private List<XYValue> chartRightcurve = new List<XYValue>();
         private List<XYValue> chartMidcurve = new List<XYValue>();
+        private DataTable dt_CorData = new DataTable();
+        private DataSet ds_CorData = new DataSet();
         /// <summary>
         /// 左参数 字符串
         /// </summary>
@@ -482,49 +484,6 @@ namespace LWD_DataProcess
                 resRange = value;
             }
         }
-        ///// <summary>
-        ///// 左边界曲线
-        ///// </summary>
-        //public List<XYValue> CurveLeft
-        //{
-        //    get
-        //    {
-        //        return curveLeft;
-        //    }
-        //    set
-        //    {
-        //        curveLeft = value;
-        //    }
-        //}
-        ///// <summary>
-        ///// 曲线
-        ///// </summary>
-        //public List<XYValue> CurveMid
-        //{
-        //    get
-        //    {
-        //        return curveMid;
-        //    }
-        //    set
-        //    {
-        //        curveMid = value;
-        //    }
-        //}
-        ///// <summary>
-        ///// 右边界曲线
-        ///// </summary>
-        //public List<XYValue> CurveRight
-        //{
-        //    get
-        //    {
-        //        return curveRight;
-        //    }
-
-        //    set
-        //    {
-        //        curveRight = value;
-        //    }
-        //}
         /// <summary>
         /// 目的层厚左边界
         /// </summary>
@@ -1437,6 +1396,42 @@ namespace LWD_DataProcess
             }
             LeftPoint = range[left];
             RightPoint = range[right];
+        }
+
+        public DataTable getCorDataTable()
+        {
+            try
+            {
+                dt_CorData.Columns.Add(new DataColumn("DEPTH"));
+                dt_CorData.Columns.Add(new DataColumn("RACECHM_AC"));
+                dt_CorData.Columns.Add(new DataColumn("RACECLM_AC"));
+                dt_CorData.Columns.Add(new DataColumn("RACECSHM_AC"));
+                dt_CorData.Columns.Add(new DataColumn("RACECSLM_AC"));
+                dt_CorData.Columns.Add(new DataColumn("RPCECHM_AC"));
+                dt_CorData.Columns.Add(new DataColumn("RPCECLM_AC"));
+                dt_CorData.Columns.Add(new DataColumn("RPCECSHM_AC"));
+                dt_CorData.Columns.Add(new DataColumn("RPCECSLM_AC"));
+                for (int i = 0; i < List_DEPTH.Count; i++)
+                {
+                    DataRow _MergeRow = dt_CorData.NewRow();
+                    float[] temp = new float[9];
+                    temp[0] = List_DEPTH[i];
+                    temp[1] = List_RACECHM_AC[i];
+                    temp[2] = List_RACECLM_AC[i];
+                    temp[3] = List_RACECSHM_AC[i];
+                    temp[4] = List_RACECSLM_AC[i];
+                    temp[5] = List_RPCECHM_AC[i];
+                    temp[6] = List_RPCECLM_AC[i];
+                    temp[7] = List_RPCECSHM_AC[i];
+                    temp[8] = List_RPCECSLM_AC[i];
+                    dt_CorData.Rows.Add(temp);
+                }
+                return dt_CorData;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }

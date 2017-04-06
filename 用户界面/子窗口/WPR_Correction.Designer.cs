@@ -475,9 +475,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.comboBox_BoreHole = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.numericUpDown_MudResistivity = new System.Windows.Forms.NumericUpDown();
             this.button_LoadBorehole = new System.Windows.Forms.Button();
             this.radioButton_Borehole2 = new System.Windows.Forms.RadioButton();
             this.radioButton_Borehole1 = new System.Windows.Forms.RadioButton();
@@ -498,6 +496,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -528,10 +528,11 @@
             this.toolStripMenuItem_Expand = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_Collapse = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button_Correct = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_Output = new System.Windows.Forms.Button();
+            this.comboBox_BoreHole = new System.Windows.Forms.ComboBox();
+            this.numericUpDown_MudResistivity = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_BedThickness = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_SBR = new System.Windows.Forms.NumericUpDown();
             this.textBox_WellName = new System.Windows.Forms.TextBox();
@@ -544,7 +545,6 @@
             this.groupBox3.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -552,13 +552,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.contextMenuStrip_Tree.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).BeginInit();
             this.SuspendLayout();
@@ -748,16 +750,6 @@
             this.tabPage3.Text = "井眼校正";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // comboBox_BoreHole
-            // 
-            this.comboBox_BoreHole.FormatString = "N3";
-            this.comboBox_BoreHole.FormattingEnabled = true;
-            this.comboBox_BoreHole.Location = new System.Drawing.Point(194, 11);
-            this.comboBox_BoreHole.Name = "comboBox_BoreHole";
-            this.comboBox_BoreHole.Size = new System.Drawing.Size(120, 21);
-            this.comboBox_BoreHole.TabIndex = 14;
-            this.comboBox_BoreHole.SelectedIndexChanged += new System.EventHandler(this.comboBox_BoreHole_SelectedIndexChanged);
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -766,26 +758,6 @@
             this.label14.Size = new System.Drawing.Size(161, 13);
             this.label14.TabIndex = 13;
             this.label14.Text = "泥 浆 电 阻 率(Ω.m)：";
-            // 
-            // numericUpDown_MudResistivity
-            // 
-            this.numericUpDown_MudResistivity.DecimalPlaces = 2;
-            this.numericUpDown_MudResistivity.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDown_MudResistivity.Location = new System.Drawing.Point(194, 39);
-            this.numericUpDown_MudResistivity.Name = "numericUpDown_MudResistivity";
-            this.numericUpDown_MudResistivity.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown_MudResistivity.TabIndex = 12;
-            this.numericUpDown_MudResistivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_MudResistivity.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            65536});
-            this.numericUpDown_MudResistivity.ValueChanged += new System.EventHandler(this.numericUpDown_MudResistivity_ValueChanged);
             // 
             // button_LoadBorehole
             // 
@@ -982,6 +954,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Font = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1000,8 +973,28 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(843, 462);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "数据预览";
+            this.tabPage1.Text = "原始数据";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.dataGridView2);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(843, 462);
+            this.tabPage8.TabIndex = 2;
+            this.tabPage8.Text = "校后数据";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(9, 7);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(828, 447);
+            this.dataGridView2.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -1999,6 +1992,38 @@
             this.button_Output.UseVisualStyleBackColor = true;
             this.button_Output.Click += new System.EventHandler(this.button_Output_Click);
             // 
+            // comboBox_BoreHole
+            // 
+            this.comboBox_BoreHole.DataBindings.Add(new System.Windows.Forms.Binding("Name", global::LWD_DataProcess.Properties.Settings.Default, "WPR_Borehole", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBox_BoreHole.FormatString = "N3";
+            this.comboBox_BoreHole.FormattingEnabled = true;
+            this.comboBox_BoreHole.Items.AddRange(new object[] {
+            "6.75",
+            "4.75"});
+            this.comboBox_BoreHole.Location = new System.Drawing.Point(194, 11);
+            this.comboBox_BoreHole.Name = global::LWD_DataProcess.Properties.Settings.Default.WPR_Borehole;
+            this.comboBox_BoreHole.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_BoreHole.TabIndex = 14;
+            this.comboBox_BoreHole.Text = "6.75";
+            this.comboBox_BoreHole.SelectedIndexChanged += new System.EventHandler(this.comboBox_BoreHole_SelectedIndexChanged);
+            // 
+            // numericUpDown_MudResistivity
+            // 
+            this.numericUpDown_MudResistivity.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "WPR_MudRes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown_MudResistivity.DecimalPlaces = 3;
+            this.numericUpDown_MudResistivity.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown_MudResistivity.Location = new System.Drawing.Point(194, 39);
+            this.numericUpDown_MudResistivity.Name = "numericUpDown_MudResistivity";
+            this.numericUpDown_MudResistivity.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_MudResistivity.TabIndex = 12;
+            this.numericUpDown_MudResistivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_MudResistivity.Value = global::LWD_DataProcess.Properties.Settings.Default.WPR_MudRes;
+            this.numericUpDown_MudResistivity.ValueChanged += new System.EventHandler(this.numericUpDown_MudResistivity_ValueChanged);
+            // 
             // numericUpDown_BedThickness
             // 
             this.numericUpDown_BedThickness.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "Tb", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -2125,7 +2150,6 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -2137,14 +2161,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.contextMenuStrip_Tree.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).EndInit();
             this.ResumeLayout(false);
@@ -2220,7 +2246,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button_Correct;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -2235,5 +2260,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_SBR;
         private System.Windows.Forms.NumericUpDown numericUpDown_BedThickness;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

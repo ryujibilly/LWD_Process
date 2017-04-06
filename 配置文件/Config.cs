@@ -56,6 +56,15 @@ namespace LWD_DataProcess
         /// 图版配置数据库文件路径
         /// </summary>
         public String DBPath_CorrectionChart { get; set; }
+
+        /// <summary>
+        /// WPR泥浆电阻率
+        /// </summary>
+        public float WPR_MudRes { get; set; }
+        /// <summary>
+        /// WPR井眼尺寸
+        /// </summary>
+        public float WPR_Borehole { get; set; }
         /// <summary>
         /// WPR校正围岩电阻率
         /// </summary>
@@ -64,6 +73,22 @@ namespace LWD_DataProcess
         /// WPR校正目的层厚
         /// </summary>
         public float WPR_Tb { get; set; }
+        /// <summary>
+        /// GDIR泥浆电阻率
+        /// </summary>
+        public float GDIR_MudRes { get; set; }
+        /// <summary>
+        /// GDIR井眼尺寸
+        /// </summary>
+        public float GDIR_Borehole { get; set; }
+        /// <summary>
+        /// GDIR围岩电阻率
+        /// </summary>
+        public float GDIR_SBR { get; set; }
+        /// <summary>
+        /// GDIR目的层厚
+        /// </summary>
+        public float GDIR_Tb { get; set; }
     }
 
     /// <summary>
@@ -120,13 +145,38 @@ namespace LWD_DataProcess
                 //环境校正图版数据库文件地址
                 XmlElement eleDBPath_CorrectionChart = doc.CreateElement("DBPath_CorrectionChart");
                 XmlText txtDBPath_CorrectionChart = doc.CreateTextNode(CfgInfo.DBPath_CorrectionChart.ToString());
-                //围岩电阻率
+
+                //WPR泥浆电阻率
+                XmlElement eleWPR_MudRes = doc.CreateElement("WPR_MudRes");
+                XmlText txtWPR_MudRes = doc.CreateTextNode(CfgInfo.WPR_MudRes.ToString("F3"));
+
+                //WPR井眼尺寸
+                XmlElement eleWPR_Borehole = doc.CreateElement("WPR_Borehole");
+                XmlText txtWPR_Borehole = doc.CreateTextNode(CfgInfo.WPR_Borehole.ToString("F3"));
+
+                //WPR围岩电阻率
                 XmlElement eleWPR_SBR = doc.CreateElement("WPR_SBR");
                 XmlText txtWPR_SBR = doc.CreateTextNode(CfgInfo.WPR_SBR.ToString("F3"));
 
-                //目的层厚
+                //WPR目的层厚
                 XmlElement eleWPR_Tb = doc.CreateElement("WPR_Tb");
                 XmlText txtWPR_Tb = doc.CreateTextNode(CfgInfo.WPR_Tb.ToString("F3"));
+
+                //GDIR目的层厚
+                XmlElement eleGDIR_Tb = doc.CreateElement("GDIR_Tb");
+                XmlText txtGDIR_Tb = doc.CreateTextNode(CfgInfo.GDIR_Tb.ToString("F3"));
+
+                //GDIR围岩电阻率
+                XmlElement eleGDIR_SBR = doc.CreateElement("GDIR_SBR");
+                XmlText txtGDIR_SBR = doc.CreateTextNode(CfgInfo.GDIR_SBR.ToString("F3"));
+
+                //GDIR泥浆电阻率
+                XmlElement eleGDIR_MudRes = doc.CreateElement("GDIR_MudRes");
+                XmlText txtGDIR_MudRes = doc.CreateTextNode(CfgInfo.GDIR_MudRes.ToString("F3"));
+
+                //GDIR井眼尺寸
+                XmlElement eleGDIR_Borehole = doc.CreateElement("GDIR_Borehole");
+                XmlText txtGDIR_Borehole = doc.CreateTextNode(CfgInfo.GDIR_Borehole.ToString("F3"));
 
                 XmlNode newElem = doc.CreateNode("element", "config", "");
 
@@ -151,11 +201,30 @@ namespace LWD_DataProcess
                 newElem.AppendChild(eleDBPath_CorrectionChart);
                 newElem.LastChild.AppendChild(txtDBPath_CorrectionChart);
 
+                //WPR 校正参数
                 newElem.AppendChild(eleWPR_SBR);
                 newElem.LastChild.AppendChild(txtWPR_SBR);
 
                 newElem.AppendChild(eleWPR_Tb);
                 newElem.LastChild.AppendChild(txtWPR_Tb);
+
+                newElem.AppendChild(eleWPR_Borehole);
+                newElem.LastChild.AppendChild(txtWPR_Borehole);
+
+                newElem.AppendChild(eleWPR_MudRes);
+                newElem.LastChild.AppendChild(txtWPR_MudRes);
+                //GDIR校正参数
+                newElem.AppendChild(eleGDIR_SBR);
+                newElem.LastChild.AppendChild(txtGDIR_SBR);
+
+                newElem.AppendChild(eleGDIR_Tb);
+                newElem.LastChild.AppendChild(txtGDIR_Tb);
+
+                newElem.AppendChild(eleGDIR_Borehole);
+                newElem.LastChild.AppendChild(txtGDIR_Borehole);
+
+                newElem.AppendChild(eleGDIR_MudRes);
+                newElem.LastChild.AppendChild(txtGDIR_MudRes);
 
 
                 XmlElement root = doc.CreateElement("config");
@@ -194,6 +263,12 @@ namespace LWD_DataProcess
                 CfgInfo.DBPath_CorrectionChart = doc.SelectSingleNode("//DBPath_CorrectionChart").InnerText;
                 CfgInfo.WPR_SBR = float.Parse( doc.SelectSingleNode("//WPR_SBR").InnerText);
                 CfgInfo.WPR_Tb = float.Parse(doc.SelectSingleNode("//WPR_Tb").InnerText);
+                CfgInfo.WPR_Borehole = float.Parse(doc.SelectSingleNode("//WPR_Borehole").InnerText);
+                CfgInfo.WPR_MudRes = float.Parse(doc.SelectSingleNode("//WPR_MudRes").InnerText);
+                CfgInfo.GDIR_SBR = float.Parse(doc.SelectSingleNode("//GDIR_SBR").InnerText);
+                CfgInfo.GDIR_Tb = float.Parse(doc.SelectSingleNode("//GDIR_Tb").InnerText);
+                CfgInfo.GDIR_Borehole = float.Parse(doc.SelectSingleNode("//GDIR_Borehole").InnerText);
+                CfgInfo.GDIR_MudRes = float.Parse(doc.SelectSingleNode("//GDIR_MudRes").InnerText);
 
                 XmlDocument xmldoc = new XmlDocument();
                 if (File.Exists("NodeSettings.xml"))
@@ -209,8 +284,16 @@ namespace LWD_DataProcess
                         CfgInfo.DBPath_CorrectionChart = element.Attributes["dbPath_CorrectionChart"].Value;
                         Properties.Settings.Default.DBPath_ChartInfo = CfgInfo.DBPath_CorrectionChart;
                         Properties.Settings.Default.DBPath_WellInfo = CfgInfo.DBPath_Well;
+                        //WPR 校正参数
                         Properties.Settings.Default.SBR = (decimal)CfgInfo.WPR_SBR;
                         Properties.Settings.Default.Tb = (decimal)CfgInfo.WPR_Tb;
+                        Properties.Settings.Default.WPR_Borehole =CfgInfo.WPR_Borehole.ToString("F3");
+                        Properties.Settings.Default.WPR_MudRes = (decimal)CfgInfo.WPR_Tb;
+                        //GDIR 校正参数
+                        Properties.Settings.Default.GDIR_SBR = (decimal)CfgInfo.GDIR_SBR;
+                        Properties.Settings.Default.GDIR_Tb = (decimal)CfgInfo.GDIR_Tb;
+                        Properties.Settings.Default.GDIR_BoreHole = CfgInfo.GDIR_Borehole.ToString("F3");
+                        Properties.Settings.Default.GDIR_MudRes = (decimal)CfgInfo.GDIR_MudRes;
                         break;
                     }
                 }

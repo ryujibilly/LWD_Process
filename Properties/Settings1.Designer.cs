@@ -121,7 +121,7 @@ namespace LWD_DataProcess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3.7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.9")]
         public decimal SBR {
             get {
                 return ((decimal)(this["SBR"]));
@@ -133,13 +133,85 @@ namespace LWD_DataProcess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7.3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("11.48")]
         public decimal Tb {
             get {
                 return ((decimal)(this["Tb"]));
             }
             set {
                 this["Tb"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.9")]
+        public decimal GDIR_SBR {
+            get {
+                return ((decimal)(this["GDIR_SBR"]));
+            }
+            set {
+                this["GDIR_SBR"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11.48")]
+        public decimal GDIR_Tb {
+            get {
+                return ((decimal)(this["GDIR_Tb"]));
+            }
+            set {
+                this["GDIR_Tb"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("comboBox_BoreHole")]
+        public string GDIR_BoreHole {
+            get {
+                return ((string)(this["GDIR_BoreHole"]));
+            }
+            set {
+                this["GDIR_BoreHole"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.25")]
+        public decimal GDIR_MudRes {
+            get {
+                return ((decimal)(this["GDIR_MudRes"]));
+            }
+            set {
+                this["GDIR_MudRes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("comboBox_BoreHole")]
+        public string WPR_Borehole {
+            get {
+                return ((string)(this["WPR_Borehole"]));
+            }
+            set {
+                this["WPR_Borehole"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        public decimal WPR_MudRes {
+            get {
+                return ((decimal)(this["WPR_MudRes"]));
+            }
+            set {
+                this["WPR_MudRes"] = value;
             }
         }
     }

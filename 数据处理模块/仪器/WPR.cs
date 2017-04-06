@@ -894,6 +894,7 @@ namespace LWD_DataProcess
         /// 1.层厚在曲线上；
         /// 2.层厚曲线外，获取最近的2个目的层厚
         /// </summary>
+        /// <param name="index">图版索引值</param>
         /// <param name="res">8条电阻率曲线之一</param>
         /// <param name="curveLeft">左曲线数据</param>
         /// <param name="curveReft">右曲线数据</param>
@@ -912,40 +913,6 @@ namespace LWD_DataProcess
             }
             return List_Factor;
         }
-        //for (int i = 0; i < tbRange.Count - 2; i++)
-        //{
-        //    if ((tbRange[i].XValue < Tb && tbRange[i + 1].XValue > Tb))
-        //    {
-        //        TbLeft.Add(tbRange[i].XValue);
-        //        TbRight.Add(tbRange[i + 1].XValue);
-        //        TbMid.Add(-999.25f);
-        //        break;
-        //    }
-        //    else if (Tb == tbRange[i].XValue)
-        //    {
-        //        TbLeft.Add(-999.25f);
-        //        TbRight.Add(-999.25f);
-        //        TbMid.Add(Tb);
-        //        break;
-        //    }
-        //    else if (Tb == tbRange[i + 1].XValue)
-        //    {
-        //        TbLeft.Add(-999.25f);
-        //        TbRight.Add(-999.25f);
-        //        TbMid.Add(Tb);
-        //        break;
-        //    }
-        //    else if (Tb > tbRange[i].XValue && Tb > tbRange[i + 1].XValue)
-        //        continue;
-        //    else if (Tb < tbRange[i].XValue && Tb < tbRange[i + 1].XValue)
-        //    {
-        //        TbLeft.Add(tbRange[i].XValue);
-        //        TbRight.Add(tbRange[i + 1].XValue);
-        //        TbMid.Add(-999.25f);
-        //        break;
-        //    }
-        //}
-
 
         /// <summary>
         /// 通过某图版左、右曲线上的临近点，获得插值后目的层厚在左、右曲线上的点.
@@ -1435,3 +1402,37 @@ namespace LWD_DataProcess
         }
     }
 }
+
+//for (int i = 0; i < tbRange.Count - 2; i++)
+//{
+//    if ((tbRange[i].XValue < Tb && tbRange[i + 1].XValue > Tb))
+//    {
+//        TbLeft.Add(tbRange[i].XValue);
+//        TbRight.Add(tbRange[i + 1].XValue);
+//        TbMid.Add(-999.25f);
+//        break;
+//    }
+//    else if (Tb == tbRange[i].XValue)
+//    {
+//        TbLeft.Add(-999.25f);
+//        TbRight.Add(-999.25f);
+//        TbMid.Add(Tb);
+//        break;
+//    }
+//    else if (Tb == tbRange[i + 1].XValue)
+//    {
+//        TbLeft.Add(-999.25f);
+//        TbRight.Add(-999.25f);
+//        TbMid.Add(Tb);
+//        break;
+//    }
+//    else if (Tb > tbRange[i].XValue && Tb > tbRange[i + 1].XValue)
+//        continue;
+//    else if (Tb < tbRange[i].XValue && Tb < tbRange[i + 1].XValue)
+//    {
+//        TbLeft.Add(tbRange[i].XValue);
+//        TbRight.Add(tbRange[i + 1].XValue);
+//        TbMid.Add(-999.25f);
+//        break;
+//    }
+//}

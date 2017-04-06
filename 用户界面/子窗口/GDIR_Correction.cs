@@ -25,6 +25,10 @@ namespace LWD_DataProcess
         private void GDIR_Correction_Load(object sender, EventArgs e)
         {
             Config.GetConfig();
+            Config.SaveConfig();
+            //读取NodeSettings.xml配置
+            Properties.Settings.Default.DB_Well_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_WellInfo;
+            Properties.Settings.Default.DB_Chart_ConnectionString = "Data Source=" + Properties.Settings.Default.DBPath_ChartInfo;
         }
 
         private void button_SelectFolder_Click(object sender, EventArgs e)

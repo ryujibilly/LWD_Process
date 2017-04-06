@@ -169,7 +169,7 @@ namespace LWD_DataProcess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("comboBox_BoreHole")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6.75")]
         public string GDIR_BoreHole {
             get {
                 return ((string)(this["GDIR_BoreHole"]));
@@ -193,7 +193,7 @@ namespace LWD_DataProcess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("comboBox_BoreHole")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6.75")]
         public string WPR_Borehole {
             get {
                 return ((string)(this["WPR_Borehole"]));

@@ -24,7 +24,7 @@ namespace LWD_DataProcess
 
         private void GDIR_Correction_Load(object sender, EventArgs e)
         {
-
+            Config.GetConfig();
         }
 
         private void button_SelectFolder_Click(object sender, EventArgs e)
@@ -87,6 +87,11 @@ namespace LWD_DataProcess
             GDIR._gdir.Tb = tb;
             Config.CfgInfo.GDIR_Tb = sbr;
             Properties.Settings.Default.GDIR_Tb = numericUpDown_BedThickness.Value;
+        }
+
+        private void 保存配置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Config.SaveConfig();
         }
     }
 }

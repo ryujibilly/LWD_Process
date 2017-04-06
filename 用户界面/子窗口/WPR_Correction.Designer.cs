@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("A");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("P");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
@@ -1009,16 +1009,16 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(8, 6);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(829, 448);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -1994,17 +1994,17 @@
             // 
             // comboBox_BoreHole
             // 
-            this.comboBox_BoreHole.DataBindings.Add(new System.Windows.Forms.Binding("Name", global::LWD_DataProcess.Properties.Settings.Default, "WPR_Borehole", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBox_BoreHole.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "WPR_Borehole", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.comboBox_BoreHole.FormatString = "N3";
             this.comboBox_BoreHole.FormattingEnabled = true;
             this.comboBox_BoreHole.Items.AddRange(new object[] {
             "6.75",
             "4.75"});
             this.comboBox_BoreHole.Location = new System.Drawing.Point(194, 11);
-            this.comboBox_BoreHole.Name = global::LWD_DataProcess.Properties.Settings.Default.WPR_Borehole;
+            this.comboBox_BoreHole.Name = "comboBox_BoreHole";
             this.comboBox_BoreHole.Size = new System.Drawing.Size(120, 21);
             this.comboBox_BoreHole.TabIndex = 14;
-            this.comboBox_BoreHole.Text = "6.75";
+            this.comboBox_BoreHole.Text = global::LWD_DataProcess.Properties.Settings.Default.WPR_Borehole;
             this.comboBox_BoreHole.SelectedIndexChanged += new System.EventHandler(this.comboBox_BoreHole_SelectedIndexChanged);
             // 
             // numericUpDown_MudResistivity

@@ -279,7 +279,6 @@ namespace LWD_DataProcess
                     {
                         CfgInfo.DeviceSN = element.Attributes["deviceSN"].Value;
                         CfgInfo.NetKey = element.Attributes["netKey"].Value;
-                        //CfgInfo.DB_PATH = element.Attributes["dbPath"].Value;
                         CfgInfo.DBPath_Well = element.Attributes["dbPath_Well"].Value;
                         CfgInfo.DBPath_CorrectionChart = element.Attributes["dbPath_CorrectionChart"].Value;
                         Properties.Settings.Default.DBPath_ChartInfo = CfgInfo.DBPath_CorrectionChart;

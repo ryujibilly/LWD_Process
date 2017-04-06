@@ -644,21 +644,22 @@
             this.保存配置ToolStripMenuItem.Name = "保存配置ToolStripMenuItem";
             this.保存配置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.保存配置ToolStripMenuItem.Text = "保存配置";
+            this.保存配置ToolStripMenuItem.Click += new System.EventHandler(this.保存配置ToolStripMenuItem_Click);
             // 
             // comboBox_BoreHole
             // 
-            this.comboBox_BoreHole.DataBindings.Add(new System.Windows.Forms.Binding("Name", global::LWD_DataProcess.Properties.Settings.Default, "GDIR_BoreHole", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBox_BoreHole.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "GDIR_BoreHole", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.comboBox_BoreHole.FormatString = "N3";
             this.comboBox_BoreHole.FormattingEnabled = true;
             this.comboBox_BoreHole.Items.AddRange(new object[] {
             "4.75",
             "6.75"});
             this.comboBox_BoreHole.Location = new System.Drawing.Point(218, 25);
-            this.comboBox_BoreHole.Name = global::LWD_DataProcess.Properties.Settings.Default.GDIR_BoreHole;
+            this.comboBox_BoreHole.Name = "comboBox_BoreHole";
             this.comboBox_BoreHole.Size = new System.Drawing.Size(120, 21);
             this.comboBox_BoreHole.Sorted = true;
             this.comboBox_BoreHole.TabIndex = 14;
-            this.comboBox_BoreHole.Text = "6.75";
+            this.comboBox_BoreHole.Text = global::LWD_DataProcess.Properties.Settings.Default.GDIR_BoreHole;
             this.comboBox_BoreHole.SelectedIndexChanged += new System.EventHandler(this.comboBox_BoreHole_SelectedIndexChanged);
             // 
             // numericUpDown_MudResistivity

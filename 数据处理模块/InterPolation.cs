@@ -145,7 +145,7 @@ namespace LWD_DataProcess
         /// <param name="para0">值i</param>
         /// <param name="para1">值i+1</param>
         /// <returns>插值点j</returns>
-        private double[] Lagrange(double x0, double x1, double x, double[] para0, double[] para1)//out double[] para
+        private double[] Lagrange(double x0, double x1, double x, double[] para0, double[] para1)
         {
             double[] para = new double[ParaLength];
             try
@@ -186,7 +186,7 @@ namespace LWD_DataProcess
             }
         }
         /// <summary>
-        /// 两点不等间距插值
+        /// X值不相同时-两点不等间距插值
         /// </summary>
         /// <param name="targetx">目标点X</param>
         /// <param name="leftpoint">左插值点</param>
@@ -197,8 +197,9 @@ namespace LWD_DataProcess
             XYValue result;
             try
             {
-                float y= leftpoint.YValue * (targetx - rightpoint.XValue) / (leftpoint.XValue - rightpoint.XValue) + 
-                    rightpoint.XValue * (targetx - leftpoint.XValue) / (rightpoint.XValue - leftpoint.XValue);
+                float y;
+                y= leftpoint.YValue * (targetx - rightpoint.XValue) / (leftpoint.XValue - rightpoint.XValue) + 
+                    rightpoint.YValue * (targetx - leftpoint.XValue) / (rightpoint.XValue - leftpoint.XValue);
                 result = new XYValue(targetx, y);
                 return result;
             }
@@ -208,6 +209,33 @@ namespace LWD_DataProcess
                 return null;
             }
         }
+
+        /// <summary>
+        /// X值相同时-两点不等间距插值
+        /// </summary>
+        /// <param name="targetx">目标点X</param>
+        /// <param name="leftpoint">左插值点</param>
+        /// <param name="rightpoint">右插值点</param>
+        /// <param name="targetRes">目标点Res</param>
+        /// <returns>目标点</returns>
+        public XYValue LagLinerInter(float targetx,XYValue leftpoint, XYValue rightpoint,float targetRes)
+        {
+            XYValue result;
+            try
+            {
+                float y;
+                y = leftpoint.YValue * (targetRes - rightpoint.ParaValue) / (leftpoint.ParaValue - rightpoint.ParaValue) +
+                    rightpoint.YValue * (targetRes - leftpoint.ParaValue) / (rightpoint.ParaValue - leftpoint.ParaValue);
+                result = new XYValue(targetx, y,targetRes);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return null;
+            }
+        }
+
         /// <summary>
         /// 键值数组初始化
         /// </summary>

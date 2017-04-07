@@ -840,82 +840,115 @@ namespace LWD_DataProcess
             curveleft = new List<XYValue>();
             curveright = new List<XYValue>();
             curvemid = new List<XYValue>();
-
             List<XYValue> left = new List<XYValue>();
             List<XYValue> right = new List<XYValue>();
             List<XYValue> mid = new List<XYValue>();
-            //填充曲线边界参数
-            for (int j = 0; j < List_DEPTH.Count; j++)
-                for (int i = 0; i < ResRange.Length - 1; i++)
-                {
-                    if ((ResRange[i] < res[j] && res[j] < ResRange[i + 1]))
+            try
+            {
+                //填充曲线边界参数
+                for (int j = 0; j < List_DEPTH.Count; j++)
+                    for (int i = 0; i < ResRange.Length - 1; i++)
                     {
-                        left.Add(new XYValue(Tb, -999.25f, ResRange[i]));
-                        right.Add(new XYValue(Tb, -999.25f, ResRange[i + 1]));
-                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
-                        break;
+                        if ((ResRange[i] < res[j] && res[j] < ResRange[i + 1]))
+                        {
+                            left.Add(new XYValue(Tb, -999.25f, ResRange[i]));
+                            right.Add(new XYValue(Tb, -999.25f, ResRange[i + 1]));
+                            mid.Add(new XYValue(Tb, -999.25f, res[j]));
+                            break;
+                        }
+                        else if (res[j] == ResRange[i])
+                        {
+                            left.Add(new XYValue(Tb, -999.25f, res[j]));
+                            right.Add(new XYValue(Tb, -999.25f, res[j]));
+                            mid.Add(new XYValue(Tb, -999.25f, res[j]));
+                            break;
+                        }
+                        else if (res[j] == ResRange[i + 1])
+                        {
+                            left.Add(new XYValue(Tb, -999.25f, res[j]));
+                            right.Add(new XYValue(Tb, -999.25f, res[j]));
+                            mid.Add(new XYValue(Tb, -999.25f, res[j]));
+                            break;
+                        }
+                        else if (res[j] < ResRange[i] && res[j] < ResRange[i + 1])
+                        {
+                            left.Add(new XYValue(Tb, 0.8f, ResRange[i]));
+                            right.Add(new XYValue(Tb, 0.8f, ResRange[i + 1]));
+                            mid.Add(new XYValue(Tb, 0.8f, res[j]));
+                            break;
+                        }
+                        else if (res[j] > ResRange[ResRange.Length - 2] && res[j] > ResRange[ResRange.Length - 1])
+                        {
+                            left.Add(new XYValue(Tb, 1.2f, res[j]));
+                            right.Add(new XYValue(Tb, 1.2f, res[j]));
+                            mid.Add(new XYValue(Tb, 1.2f, res[j]));
+                            break;
+                        }
                     }
-                    else if (res[j] == ResRange[i])
-                    {
-                        left.Add(new XYValue(Tb, -999.25f, res[j]));
-                        right.Add(new XYValue(Tb, -999.25f, res[j]));
-                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
-                        break;
-                    }
-                    else if (res[j] == ResRange[i + 1])
-                    {
-                        left.Add(new XYValue(Tb, -999.25f, res[j]));
-                        right.Add(new XYValue(Tb, -999.25f, res[j]));
-                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
-                        break;
-                    }
-                    else if (res[j] < ResRange[i] && res[j] < ResRange[i + 1])
-                    {
-                        left.Add(new XYValue(Tb, -999.25f, ResRange[i]));
-                        right.Add(new XYValue(Tb, -999.25f, ResRange[i + 1]));
-                        mid.Add(new XYValue(Tb, -999.25f, res[j]));
-                        break;
-                    }
-                    else if (res[j] > ResRange[ResRange.Length-2] && res[j] > ResRange[ResRange.Length-1])
-                    {
-                        left.Add(new XYValue(Tb, 1, res[j]));
-                        right.Add(new XYValue(Tb, 1, res[j]));
-                        mid.Add(new XYValue(Tb, 1, res[j]));
-                        break;
-                    }
-                }
-            curveleft.AddRange(left);
-            curveright.AddRange(right);
-            curvemid.AddRange(mid);
+                curveleft.AddRange(left);
+                curveright.AddRange(right);
+                curvemid.AddRange(mid);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message+ "getResBounder()函数异常！");
+            }
         }
 
         /// <summary>
-        /// 获取左、右某一个图版上测量点的乘系数列表
+        /// （不同曲线 第二次插值）获取左、右某一个图版上测量点的乘系数列表
         /// 1.层厚在曲线上；
         /// 2.层厚曲线外，获取最近的2个目的层厚
         /// </summary>
         /// <param name="index">图版索引值</param>
         /// <param name="res">8条电阻率曲线之一</param>
         /// <param name="curveLeft">左曲线数据</param>
-        /// <param name="curveReft">右曲线数据</param>
+        /// <param name="curveRight">右曲线数据</param>
         /// <param name="chartlist">图版</param>
         public List<float> getOneCorrectList(int chartindex, List<float> res,List<XYValue> curveLeft,List<XYValue> curveRight, List<List<XYValue>> chartlist)
         {
-            XYValue pointOnLeftChart = new XYValue();
-            XYValue pointOnRightChart = new XYValue();
+            //XYValue pointOnLeftChart = new XYValue();
+            //XYValue pointOnRightChart = new XYValue();
             List<float> List_Factor = new List<float>();
-            for (int j = 0; j < List_DEPTH.Count; j++)
+            try
             {
-                curveLeft[j].YValue = getChartPoint(chartindex, curveLeft[j].ParaValue, chartlist).YValue;
-                curveRight[j].YValue = getChartPoint(chartindex, curveRight[j].ParaValue, chartlist).YValue;
-                List_Factor.Add(InterPolation._InterPo.LagLinerInter(curveLeft[j].ParaValue, curveRight[j].ParaValue,
-                    res[j], curveLeft[j].YValue, curveRight[j].YValue));
+                float factor = 0.0f;
+                for (int j = 0; j < List_DEPTH.Count; j++)
+                {
+                    
+                    curveLeft[j].YValue = getChartPoint(chartindex, curveLeft[j].ParaValue, chartlist).YValue;
+                    if (Math.Abs(curveLeft[j].YValue) > 1.2)
+                        curveLeft[j].YValue = 1.2f;
+                    else if(Math.Abs(curveLeft[j].YValue) <0.8)
+                        curveLeft[j].YValue = 0.8f;
+
+                    curveRight[j].YValue = getChartPoint(chartindex, curveRight[j].ParaValue, chartlist).YValue;
+                    if (Math.Abs(curveRight[j].YValue) > 1.2)
+                        curveRight[j].YValue = 1.2f;
+                    else if (Math.Abs(curveRight[j].YValue) < 0.8)
+                        curveRight[j].YValue = 0.8f;
+                    if (Math.Abs(curveLeft[j].XValue -curveRight[j].XValue)<0.001f)
+                    {
+                        factor = InterPolation._InterPo.LagLinerInter(Tb, curveLeft[j], curveRight[j], res[j]).YValue;
+                        List_Factor.Add(factor);
+                    }
+                    else
+                    {
+                        factor = InterPolation._InterPo.LagLinerInter(Tb, curveLeft[j], curveRight[j]).YValue;
+                        List_Factor.Add(factor);
+                    }
+                }
+                return List_Factor;
             }
-            return List_Factor;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message+"getOneCorrectList()函数异常!");
+                return List_Factor;
+            }
         }
 
         /// <summary>
-        /// 通过某图版左、右曲线上的临近点，获得插值后目的层厚在左、右曲线上的点.
+        /// （同曲线 第一次插值）通过某图版左、右曲线上的临近点，获得插值后目的层厚在左、右曲线上的点.
         /// </summary>
         /// <param name="Index">测量值电阻率曲线对应的校正图版索引</param>
         /// <param name="resBounder">电阻率左、右边界</param>
@@ -923,24 +956,36 @@ namespace LWD_DataProcess
         /// <returns>目的层厚上的XYValue</returns>
         private XYValue getChartPoint(int Index, float resBounder, List<List<XYValue>> chartlist)
         {
-            XYValue result;
+            XYValue result=new XYValue();
             List<XYValue> curve = new List<XYValue>();//曲线
             XYValue LeftPoint = new XYValue();//曲线上的左点
             XYValue RightPoint = new XYValue();//曲线上的右点
-            for (int j=0;j< chartlist[Index].Count;j++)
+            try
             {
-                if (chartlist[Index].ElementAt(j).ParaValue == resBounder)
-                    curve.Add(chartlist[Index].ElementAt(j));
+                for (int j = 0; j < chartlist[Index].Count; j++)
+                {
+                    //if (chartlist[Index].ElementAt(j).ParaValue == resBounder)
+                        curve.Add(chartlist[Index].ElementAt(j));
+                }
+                //Debug：打印曲线数据
+                //ChartDataPrint(curve);
+                if (curve.Count > 0)
+                    Nearest2Point(curve, Tb, out LeftPoint, out RightPoint);
+                if (LeftPoint.XValue != RightPoint.XValue)
+                    result = InterPolation._InterPo.LagLinerInter(Tb, LeftPoint, RightPoint);
+                else if (LeftPoint.XValue == RightPoint.XValue)
+                    result = InterPolation._InterPo.LagLinerInter(Tb, LeftPoint, RightPoint, resBounder);
+                else result = LeftPoint;
+                curve.Clear();
+                result.ParaValue = resBounder;
+                return result;
             }
-            //Debug：打印曲线数据
-            //ChartDataPrint(curve);
-            Nearest2Point(curve, Tb, out LeftPoint, out RightPoint);
-            if (LeftPoint.XValue != RightPoint.XValue)
-                result = InterPolation._InterPo.LagLinerInter(Tb, LeftPoint, RightPoint);
-            else result = LeftPoint;
-            curve.Clear();
-            result.ParaValue = resBounder;
-            return result;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message + "getChartPoint(）函数异常！");
+                return result;
+            }
+
         }
         /// <summary>
         /// 打印图版曲线数据
@@ -1210,7 +1255,7 @@ namespace LWD_DataProcess
             }
         }
         /// <summary>
-        /// 获取某一个电阻率曲线的校正值列表
+        /// （不同图版 第三次插值）获取某一个电阻率曲线的校正值列表
         /// </summary>
         /// <param name="OneRes"></param>
         private void GetOneResValue(List<float> OneRes,int chartindex)
@@ -1320,49 +1365,59 @@ namespace LWD_DataProcess
         private void Nearest2Point(List<XYValue> range, float target,out XYValue LeftPoint,out XYValue RightPoint)
         {
             int left = 0;
-            int right = range.Count - 1;
+            int right = range.Count-1;
             int mid = 0;
-            while (left < right)
+            LeftPoint = new XYValue();
+            RightPoint = new XYValue();
+            try
             {
-                mid = left + (right - left) / 2;
-                if (range[mid].XValue == target)
+                while (range.Count>0&&left < right)
                 {
-                    LeftPoint = range[mid];
-                    RightPoint = range[mid];
-                    range[mid].ValueOnChart = true;
-                    break;
-                }
-                else if (range[mid].XValue > target)
-                {
-                    if ((right != mid) || (left != mid))
-                        right = mid;
-                    if (range[right - 1] == range[left])
+                    mid = left + (right - left) / 2;
+                    if (range[mid].XValue == target)
                     {
+                        LeftPoint = range[mid];
+                        RightPoint = range[mid];
+                        range[mid].ValueOnChart = true;
                         break;
                     }
-                }
-                else if (range[mid].XValue < target)
-                {
-                    if ((right != mid) || (left != mid))
-                        left = mid;
-                    if (range[right - 1] == range[left])
+                    else if (range[mid].XValue > target)
                     {
-                        break;
+                        if ((right != mid) || (left != mid))
+                            right = mid;
+                        if (range[right - 1] == range[left])
+                        {
+                            break;
+                        }
+                    }
+                    else if (range[mid].XValue < target)
+                    {
+                        if ((right != mid) || (left != mid))
+                            left = mid;
+                        if (range[right - 1] == range[left])
+                        {
+                            break;
+                        }
+                    }
+                    else if (target < range[1].XValue && target < range[0].XValue)
+                    {
+                        left = 0;
+                        right = 0;
+                    }
+                    else if (target > range[0].XValue && target > range[1].XValue)
+                    {
+                        left = range.Count - 1;
+                        right = range.Count - 1;
                     }
                 }
-                else if(target <range[1].XValue&&target<range[0].XValue)
-                {
-                    left = 0;
-                    right = 0;
-                }
-                else if(target > range[0].XValue && target > range[1].XValue)
-                {
-                    left = range.Count - 1;
-                    right = range.Count - 1;
-                }
+                LeftPoint = range[left];
+                RightPoint = range[right];
             }
-            LeftPoint = range[left];
-            RightPoint = range[right];
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message + "\r\t Nearest2Point()函数异常！");
+            }
+
         }
 
         public DataTable getCorDataTable()

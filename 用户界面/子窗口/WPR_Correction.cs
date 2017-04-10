@@ -16,6 +16,10 @@ namespace LWD_DataProcess
     public partial class WPR_Correction : Form
     {
         #region 全局变量
+        Boolean save2root = false;
+        String outputPath = "";
+        FileStream fsOutPut;
+        StreamWriter swOutPut;
         private String[] EmptyString8 = new String[8];
         /// <summary>
         /// 静态SQLiteConnectionPool接口实例
@@ -111,9 +115,26 @@ namespace LWD_DataProcess
         /// 校正类型
         /// </summary>
         private WPR_CorMethod corMethod {get;set;}
+        /// <summary>
+        /// 校正参数
+        /// </summary>
+        public float Para
+        {
+            get
+            {
+                return para;
+            }
+
+            set
+            {
+                para = value;
+            }
+        }
+
         String[] borehole675 = { "8.000", "9.000", "10.000", "12.000", "14.000", "16.000", "18.000" };
         String[] borehole475 = { "5.625", "6.000", "6.500", "7.000", "8.000", "10.000", "12.000" };
 
+        private float para = 0.0f;
         #endregion
 
         public WPR_Correction()
@@ -158,6 +179,9 @@ namespace LWD_DataProcess
                 textBox_Folder.Text = FileName_WellData;
                 Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
                 button_Load.Enabled = true;
+                String[] str = openFileDialog_WPR.FileName.Split(openFileDialog_WPR.SafeFileNames, StringSplitOptions.RemoveEmptyEntries);
+                String FilePath = str[0];
+                openFileDialog_WPR.InitialDirectory = FilePath;
             }
             Properties.Settings.Default.RawFile = textBox_Folder.Text.Trim();
         }
@@ -656,12 +680,12 @@ namespace LWD_DataProcess
                 numericUpDown_BedThickness.Enabled = true;
                 button_ShoulderBedFile.Enabled = false;
             }
-            else if (!radioButton_ShoulderBedPara.Checked)
-            {
-                numericUpDown_SBR.Enabled = false;
-                numericUpDown_BedThickness.Enabled = false;
-                button_ShoulderBedFile.Enabled = true;
-            }
+            //else if (!radioButton_ShoulderBedPara.Checked)
+            //{
+            //    numericUpDown_SBR.Enabled = false;
+            //    numericUpDown_BedThickness.Enabled = false;
+            //    button_ShoulderBedFile.Enabled = true;
+            //}
         }
 
         private void radioButton_ShoulderBedFile_CheckedChanged(object sender, EventArgs e)
@@ -672,12 +696,12 @@ namespace LWD_DataProcess
                 numericUpDown_BedThickness.Enabled = false;
                 button_ShoulderBedFile.Enabled = true;
             }
-            else if (!radioButton_ShoulderBedPara.Checked)
-            {
-                numericUpDown_SBR.Enabled = true;
-                numericUpDown_BedThickness.Enabled = true;
-                button_ShoulderBedFile.Enabled = false;
-            }
+            //else if (!radioButton_ShoulderBedPara.Checked)
+            //{
+            //    numericUpDown_SBR.Enabled = true;
+            //    numericUpDown_BedThickness.Enabled = true;
+            //    button_ShoulderBedFile.Enabled = false;
+            //}
         }
 
         private void numericUpDown_SBR_ValueChanged(object sender, EventArgs e)
@@ -689,7 +713,8 @@ namespace LWD_DataProcess
 
         private void numericUpDown_BedThickness_ValueChanged(object sender, EventArgs e)
         {
-            WPR._wpr.Tb = float.Parse(numericUpDown_BedThickness.Value.ToString());
+            WPR._wpr.Tb = (float)numericUpDown_BedThickness.Value;
+            Para = WPR._wpr.Tb;
             Config.CfgInfo.WPR_Tb = WPR._wpr.Tb;
             Properties.Settings.Default.Tb = (decimal)Config.CfgInfo.WPR_Tb;
         }
@@ -787,6 +812,7 @@ namespace LWD_DataProcess
         private void textBox_WellName_TextChanged(object sender, EventArgs e)
         {
             WellName = textBox_WellName.Text.Trim();
+
         }
         /// <summary>
         /// 选择仪器尺寸，确定井眼尺寸范围。
@@ -822,11 +848,13 @@ namespace LWD_DataProcess
             Config.SaveConfig();
             SelectCorMethod();
             WPR._wpr.MatchChart(RawCurveNames);
-            WPR._wpr.CorrectFlow(WPR._wpr.CorMethod);
-            DataTable dt = new DataTable();
-            dt = WPR._wpr.getCorDataTable();
-            if (dt != null)
-                Fill_DGV(dataGridView2, dt);
+            WPR._wpr.CorrectFlow(WPR._wpr.CorMethod,Para);
+            DataTable dt_ac = new DataTable();
+            dt_ac = WPR._wpr.getCorDataTable();
+            if (dt_ac != null)
+                Fill_DGV(dataGridView2, dt_ac);
+            PrePrint();
+            EndPrint();
         }
         /// <summary>
         /// 选择校正类型
@@ -875,11 +903,18 @@ namespace LWD_DataProcess
         {
             //选择井眼校正
             if (tabControl2.SelectedTab == tabPage3)
+            {
                 corMethod = WPR_CorMethod.HoleDiameter;//井眼
+                Para = float.Parse(comboBox_BoreHole.Text.Trim());
+            }
             if (tabControl2.SelectedTab == tabPage4)
                 corMethod = WPR_CorMethod.Dieletric;//介电
             if (tabControl2.SelectedTab == tabPage5)
+            {
                 corMethod = WPR_CorMethod.ShoulderBed;//围岩
+                Para = (float)numericUpDown_BedThickness.Value;
+            }
+
             if (tabControl2.SelectedTab == tabPage6)
                 corMethod = WPR_CorMethod.Invasion;//侵入
             if (tabControl2.SelectedTab == tabPage7)
@@ -891,6 +926,66 @@ namespace LWD_DataProcess
         private void WPR_Correction_FormClosed(object sender, FormClosedEventArgs e)
         {
             Config.SaveConfig();
+        }
+        #region 
+        /// <summary>
+        /// 打印文件头
+        /// </summary>
+        private void PrePrint()
+        {
+            try
+            {
+                if (save2root)
+                    outputPath = openFileDialog_WPR.InitialDirectory + WellName + ".txt";
+                else
+                    outputPath = openFileDialog_WPR.InitialDirectory + WellName + ".txt";
+                fsOutPut = new FileStream(outputPath, FileMode.Append, FileAccess.Write);
+                swOutPut = new StreamWriter(fsOutPut);
+                for (int i = 0; i < RawCurveNames.Length; i++)
+                    swOutPut.Write(RawCurveNames[i] + "_AC\t");
+                swOutPut.WriteLine() ;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine(ex.ToString());
+            }
+        }
+
+        private void EndPrint()
+        {
+            try
+            {
+                while (true)
+                {
+                    for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+                    {
+                        for (int j = 0; j < dataGridView2.Columns.Count; j++)
+                        {
+                            swOutPut.Write(float.Parse(dataGridView2.Rows[i].Cells[j].Value.ToString()).ToString("F3") + "\t");
+                        }
+                        swOutPut.Write("\r\n");
+                    }
+                    break;
+                }
+                Application.DoEvents();
+                swOutPut.Flush();
+                fsOutPut.Flush();
+                swOutPut.Close();
+                fsOutPut.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        private void checkBox_Save2Root_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Save2Root.Checked)
+                save2root = true;
+            if (!checkBox_Save2Root.Checked)
+                save2root = false;
         }
     }
 }

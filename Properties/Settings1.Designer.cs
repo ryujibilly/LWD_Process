@@ -193,7 +193,7 @@ namespace LWD_DataProcess.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6.75")]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
         public string WPR_Borehole {
             get {
                 return ((string)(this["WPR_Borehole"]));

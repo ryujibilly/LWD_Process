@@ -45,7 +45,7 @@
       <Value Profile="(Default)">1.25</Value>
     </Setting>
     <Setting Name="WPR_Borehole" Type="System.String" Scope="User">
-      <Value Profile="(Default)">6.75</Value>
+      <Value Profile="(Default)">12</Value>
     </Setting>
     <Setting Name="WPR_MudRes" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1.0</Value>

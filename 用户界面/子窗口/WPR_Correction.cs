@@ -228,7 +228,7 @@ namespace LWD_DataProcess
                 }
                 else ChartIndexs[2] = "22.5";
                 //AmplitudeRatio\PhaseDifference
-                if (curTableName.Contains("A"))
+                if (curTableName.Contains("A")|| curTableName.Contains("a"))
                 {
                     ChartIndexs[3] = "1";
                     ChartIndexs[4] = "0";
@@ -297,10 +297,10 @@ namespace LWD_DataProcess
         {
             try
             {
-                if (Funcs.IsParameterExpression(curLine[0]))//参数-表达式
+                if (Funcs.IsParameterExpression(curLine[curLine.Length-1]))//参数-表达式
                 {
-                    CommonData.ChartParaExpression=curLine[0];
-                    CommonData.getParaValue(curLine[0]);//分解表达式
+                    CommonData.ChartParaExpression= curLine[curLine.Length - 1];
+                    CommonData.getParaValue(curLine[curLine.Length - 1]);//分解表达式
                 }
                 if (Funcs.IsScienceNumber(curLine[0])&& Funcs.IsScienceNumber(curLine[1]))//验证科学记数法-表达式
                 {

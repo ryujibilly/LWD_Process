@@ -112,6 +112,10 @@ namespace LWD_DataProcess
         /// </summary>
         Thread CorrectionThread { get; set; }
         /// <summary>
+        /// 输出到井数据库
+        /// </summary>
+        Thread WriteDBThread { get; set; }
+        /// <summary>
         /// 校正类型
         /// </summary>
         private WPR_CorMethod corMethod {get;set;}
@@ -156,6 +160,7 @@ namespace LWD_DataProcess
             ChartHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
             WPR._wpr.DBHelper = new SQLiteDBHelper(Properties.Settings.Default.DBPath_ChartInfo);//XML的节点赋值
             CorrectionThread = new Thread(new ThreadStart(Correct));
+            WriteDBThread = new Thread(new ThreadStart(WriteDB));
             tabControl2.SelectedTab = tabPage3;
             //初始化井眼尺寸、仪器尺寸
             comboBox_ToolSize.Text = "6.75";
@@ -164,6 +169,8 @@ namespace LWD_DataProcess
             comboBox_BoreHole.SelectedIndex = 0;
             button_Load.Enabled = false;
         }
+
+
 
         /// <summary>
         /// 
@@ -890,9 +897,90 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void button_Output_Click(object sender, EventArgs e)
         {
-
+            FillWellInfo();
+            try
+            {
+                SQLiteConnection conn = WellHelper.DbConnection;
+                if (!WellHelper.IsExistTable(WellName))//创建与井名相同的校后数据表
+                    WellHelper.Create_WellTable(conn, WellName);
+                WriteDB();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message + "----输出线程异常！");
+            }
+        }
+        /// <summary>
+        /// 校正数据写入井信息数据库
+        /// </summary>
+        private void WriteDB()
+        {
+            DateTime time = new DateTime();
+            SQLiteConnection conn = WellHelper.DbConnection;
+            SQLiteTransaction tran = conn.BeginTransaction();
+            SQLiteCommand cmd = new SQLiteCommand(conn);
+            cmd.Transaction = tran;
+            try
+            {
+                WellHelper.Open();
+                for(int i=0;i<corDataTable.Rows.Count;i++)
+                {
+                    //设置带参数的Transact-SQL语句
+                    cmd.CommandText = "insert into [" + WellName+ "] values(@ID,@Time, @Depth, @RACECHM_AC,@RACECLM_AC,@RACECSHM_AC,@RACECLSM_AC,@RPCECHM_AC,@PRCECLM_AC,@RPCECSHM_AC,@RPCECLSM_AC)";
+                    cmd.Parameters.AddRange(new[]
+                    {
+                        new SQLiteParameter("@ID",i),
+                        new SQLiteParameter("@Time",time.ToLongDateString()),
+                        new SQLiteParameter("@Depth",WPR._wpr.List_DEPTH[i]),
+                        new SQLiteParameter("@RACECHM_AC",WPR._wpr.List_RACECHM_AC[i]),
+                        new SQLiteParameter("@RACECLM_AC",WPR._wpr.List_RACECLM_AC[i]),
+                        new SQLiteParameter("@RACECSHM_AC",WPR._wpr.List_RACECSHM_AC[i]),
+                        new SQLiteParameter("@RACECLSM_AC",WPR._wpr.List_RACECSLM_AC[i]),
+                        new SQLiteParameter("@RPCECHM_AC",WPR._wpr.List_RPCECHM_AC[i]),
+                        new SQLiteParameter("@PRCECLM_AC",WPR._wpr.List_RPCECLM_AC[i]),
+                        new SQLiteParameter("@RPCECSHM_AC",WPR._wpr.List_RPCECSHM_AC[i]),
+                        new SQLiteParameter("@RPCECLSM_AC",WPR._wpr.List_RPCECSLM_AC[i])
+                    });
+                    cmd.ExecuteNonQuery();
+                }
+                tran.Commit();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message+"----WriteDB线程异常！");
+                tran.Rollback();
+            }
         }
 
+        /// <summary>
+        /// 填充ChartInfo表
+        /// </summary>
+        public void FillWellInfo()
+        {
+            SQLiteConnection conn = WellHelper.DbConnection;
+            SQLiteTransaction tran = conn.BeginTransaction();//实例化事务  
+            SQLiteCommand cmd = new SQLiteCommand(conn);
+            cmd.Transaction = tran;
+            try
+            {
+                WellHelper.Open();
+                cmd.CommandText = "insert into [WellInfo] values(@WellName,@RawData,@CorrectionData,@ToolSize,@Remark)";
+                cmd.Parameters.AddRange(new[] {//添加参数
+                    new SQLiteParameter("@WellName",curTableName),
+                    new SQLiteParameter("@RawData",openFileDialog_WPR.SafeFileName),
+                    new SQLiteParameter("@CorrectionData",WellName),
+                    new SQLiteParameter("@ToolSize",ToolSize),
+                    new SQLiteParameter("@Remark","")
+                });
+                cmd.ExecuteNonQuery();//执行插入
+                tran.Commit();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message+"填充井信息异常！FillWellInfo error!");
+                tran.Rollback();//事务回滚
+            }
+        }
 
         /// <summary>
         /// 给WPR类的校正类型赋值

@@ -216,7 +216,7 @@ namespace LWD_DataProcess
         }
 
         /// <summary>
-        /// 创建SQLite数据库表 
+        /// 创建SQLite图版数据库表 
         /// </summary>
         /// <param name="con">数据库连接</param>
         /// <param name="tableName">表名</param>
@@ -225,7 +225,7 @@ namespace LWD_DataProcess
             try
             {
                 // 自动打开
-                if (con == null)
+                if (con != null)
                 {
                     con.Open();
                 }
@@ -239,9 +239,36 @@ namespace LWD_DataProcess
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message+ "创建SQLite图版数据库表异常！");
             }
 
+        }
+        /// <summary>
+        /// 创建SQLite校后数据库表 
+        /// </summary>
+        /// <param name="con">数据库连接</param>
+        /// <param name="tableName">表名</param>
+        public void Create_WellTable(SQLiteConnection con,String tableName)
+        {
+            try
+            {
+                // 自动打开
+                if (con != null)
+                {
+                    con.Open();
+                }
+                else if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                dbCommand = con.CreateCommand();
+                dbCommand.CommandText = "CREATE TABLE [" + tableName + "] ( ID INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL UNIQUE, Time VARCHAR(13)    NOT NULL  DEFAULT('000101/000000'),  Depth NUMERIC(8, 2)  NOT NULL DEFAULT(-999.25), RPCECHM_AC  REAL(15) NOT NULL DEFAULT(-999.25), RPCECSHM_AC REAL(15) NOT NULL  DEFAULT(-999.25), PRCECLM_AC  REAL(15) NOT NULL DEFAULT(-999.25), RPCECLSM_AC REAL(15) NOT NULL DEFAULT(-999.25), RACECHM_AC  REAL(15) NOT NULL  DEFAULT(-999.25), RACECSHM_AC REAL(15) NOT NULL  DEFAULT(-999.25), RACECLM_AC  REAL(15)  NOT NULL   DEFAULT(-999.25), RACECLSM_AC REAL(15)   NOT NULL   DEFAULT(-999.25))";
+                dbCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message+ "创建SQLite校后数据库表异常！");
+            }
         }
 
         #endregion

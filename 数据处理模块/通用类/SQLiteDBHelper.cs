@@ -225,7 +225,7 @@ namespace LWD_DataProcess
             try
             {
                 // 自动打开
-                if (con != null)
+                if (con == null)
                 {
                     con.Open();
                 }
@@ -253,7 +253,7 @@ namespace LWD_DataProcess
             try
             {
                 // 自动打开
-                if (con != null)
+                if (con == null)
                 {
                     con.Open();
                 }

@@ -858,6 +858,7 @@ namespace LWD_DataProcess
             WPR._wpr.CorrectFlow(WPR._wpr.CorMethod,Para);
             DataTable dt_ac = new DataTable();
             dt_ac = WPR._wpr.getCorDataTable();
+            corDataTable = dt_ac;
             if (dt_ac != null)
                 Fill_DGV(dataGridView2, dt_ac);
             PrePrint();
@@ -897,12 +898,16 @@ namespace LWD_DataProcess
         /// <param name="e"></param>
         private void button_Output_Click(object sender, EventArgs e)
         {
-            FillWellInfo();
+
             try
             {
                 SQLiteConnection conn = WellHelper.DbConnection;
                 if (!WellHelper.IsExistTable(WellName))//创建与井名相同的校后数据表
+                {
                     WellHelper.Create_WellTable(conn, WellName);
+                    WellHelper.Create_WellTable(conn, WellName+"_AC");
+                }
+                FillWellInfo();
                 WriteDB();
             }
             catch (Exception ex)
@@ -910,12 +915,12 @@ namespace LWD_DataProcess
                 Debug.WriteLine(ex.Message + "----输出线程异常！");
             }
         }
+
         /// <summary>
         /// 校正数据写入井信息数据库
         /// </summary>
         private void WriteDB()
         {
-            DateTime time = new DateTime();
             SQLiteConnection conn = WellHelper.DbConnection;
             SQLiteTransaction tran = conn.BeginTransaction();
             SQLiteCommand cmd = new SQLiteCommand(conn);
@@ -923,6 +928,7 @@ namespace LWD_DataProcess
             try
             {
                 WellHelper.Open();
+                //校正后数据
                 for(int i=0;i<corDataTable.Rows.Count;i++)
                 {
                     //设置带参数的Transact-SQL语句
@@ -930,16 +936,37 @@ namespace LWD_DataProcess
                     cmd.Parameters.AddRange(new[]
                     {
                         new SQLiteParameter("@ID",i),
-                        new SQLiteParameter("@Time",time.ToLongDateString()),
-                        new SQLiteParameter("@Depth",WPR._wpr.List_DEPTH[i]),
-                        new SQLiteParameter("@RACECHM_AC",WPR._wpr.List_RACECHM_AC[i]),
-                        new SQLiteParameter("@RACECLM_AC",WPR._wpr.List_RACECLM_AC[i]),
-                        new SQLiteParameter("@RACECSHM_AC",WPR._wpr.List_RACECSHM_AC[i]),
-                        new SQLiteParameter("@RACECLSM_AC",WPR._wpr.List_RACECSLM_AC[i]),
-                        new SQLiteParameter("@RPCECHM_AC",WPR._wpr.List_RPCECHM_AC[i]),
-                        new SQLiteParameter("@PRCECLM_AC",WPR._wpr.List_RPCECLM_AC[i]),
-                        new SQLiteParameter("@RPCECSHM_AC",WPR._wpr.List_RPCECSHM_AC[i]),
-                        new SQLiteParameter("@RPCECLSM_AC",WPR._wpr.List_RPCECSLM_AC[i])
+                        new SQLiteParameter("@Time",DateTime.Now.ToLongDateString()),
+                        new SQLiteParameter("@Depth",WPR._wpr.List_DEPTH[i].ToString("F3")),
+                        new SQLiteParameter("@RACECHM_AC",WPR._wpr.List_RACECHM_AC[i].ToString("F3")),
+                        new SQLiteParameter("@RACECLM_AC",WPR._wpr.List_RACECLM_AC[i].ToString("F3")),
+                        new SQLiteParameter("@RACECSHM_AC",WPR._wpr.List_RACECSHM_AC[i].ToString("F3")),
+                        new SQLiteParameter("@RACECLSM_AC",WPR._wpr.List_RACECSLM_AC[i].ToString("F3")),
+                        new SQLiteParameter("@RPCECHM_AC",WPR._wpr.List_RPCECHM_AC[i].ToString("F3")),
+                        new SQLiteParameter("@PRCECLM_AC",WPR._wpr.List_RPCECLM_AC[i].ToString("F3")),
+                        new SQLiteParameter("@RPCECSHM_AC",WPR._wpr.List_RPCECSHM_AC[i].ToString("F3")),
+                        new SQLiteParameter("@RPCECLSM_AC",WPR._wpr.List_RPCECSLM_AC[i].ToString("F3"))
+                    });
+                    cmd.ExecuteNonQuery();
+                }
+                //原始数据
+                for (int i = 0; i < rawDataTable.Rows.Count; i++)
+                {
+                    //设置带参数的Transact-SQL语句
+                    cmd.CommandText = "insert into [" + WellName + "_AC" + "] values(@ID,@Time, @Depth, @RACECHM_AC,@RACECLM_AC,@RACECSHM_AC,@RACECLSM_AC,@RPCECHM_AC,@PRCECLM_AC,@RPCECSHM_AC,@RPCECLSM_AC)";
+                    cmd.Parameters.AddRange(new[]
+                    {
+                        new SQLiteParameter("@ID",i),
+                        new SQLiteParameter("@Time",DateTime.Now.ToLongDateString()),
+                        new SQLiteParameter("@Depth",WPR._wpr.List_DEPTH[i].ToString("F3")),
+                        new SQLiteParameter("@RACECHM_AC",WPR._wpr.List_RACECHM[i].ToString("F3")),
+                        new SQLiteParameter("@RACECLM_AC",WPR._wpr.List_RACECLM[i].ToString("F3")),
+                        new SQLiteParameter("@RACECSHM_AC",WPR._wpr.List_RACECSHM[i].ToString("F3")),
+                        new SQLiteParameter("@RACECLSM_AC",WPR._wpr.List_RACECSLM[i].ToString("F3")),
+                        new SQLiteParameter("@RPCECHM_AC",WPR._wpr.List_RPCECHM[i].ToString("F3")),
+                        new SQLiteParameter("@PRCECLM_AC",WPR._wpr.List_RPCECLM[i].ToString("F3")),
+                        new SQLiteParameter("@RPCECSHM_AC",WPR._wpr.List_RPCECSHM[i].ToString("F3")),
+                        new SQLiteParameter("@RPCECLSM_AC",WPR._wpr.List_RPCECSLM[i].ToString("F3"))
                     });
                     cmd.ExecuteNonQuery();
                 }
@@ -953,7 +980,7 @@ namespace LWD_DataProcess
         }
 
         /// <summary>
-        /// 填充ChartInfo表
+        /// 填充WellInfo表
         /// </summary>
         public void FillWellInfo()
         {
@@ -966,9 +993,9 @@ namespace LWD_DataProcess
                 WellHelper.Open();
                 cmd.CommandText = "insert into [WellInfo] values(@WellName,@RawData,@CorrectionData,@ToolSize,@Remark)";
                 cmd.Parameters.AddRange(new[] {//添加参数
-                    new SQLiteParameter("@WellName",curTableName),
-                    new SQLiteParameter("@RawData",openFileDialog_WPR.SafeFileName),
-                    new SQLiteParameter("@CorrectionData",WellName),
+                    new SQLiteParameter("@WellName",WellName),
+                    new SQLiteParameter("@RawData",WellName),
+                    new SQLiteParameter("@CorrectionData",WellName+"校正后"),
                     new SQLiteParameter("@ToolSize",ToolSize),
                     new SQLiteParameter("@Remark","")
                 });

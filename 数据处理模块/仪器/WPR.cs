@@ -1557,15 +1557,15 @@ namespace LWD_DataProcess
                 {
                     DataRow _MergeRow = dt_CorData.NewRow();
                     object[] temp = new object[9];
-                    temp[0] = (object)List_DEPTH[i];
-                    temp[1] = (object)List_RACECHM_AC[i];
-                    temp[2] = (object)List_RACECLM_AC[i];
-                    temp[3] = (object)List_RACECSHM_AC[i];
-                    temp[4] = (object)List_RACECSLM_AC[i];
-                    temp[5] = (object)List_RPCECHM_AC[i];
-                    temp[6] = (object)List_RPCECLM_AC[i];
-                    temp[7] = (object)List_RPCECSHM_AC[i];
-                    temp[8] = (object)List_RPCECSLM_AC[i];
+                    temp[0] = (object)List_DEPTH[i].ToString("F3");
+                    temp[1] = (object)List_RACECHM_AC[i].ToString("F3");
+                    temp[2] = (object)List_RACECLM_AC[i].ToString("F3");
+                    temp[3] = (object)List_RACECSHM_AC[i].ToString("F3");
+                    temp[4] = (object)List_RACECSLM_AC[i].ToString("F3");
+                    temp[5] = (object)List_RPCECHM_AC[i].ToString("F3");
+                    temp[6] = (object)List_RPCECLM_AC[i].ToString("F3");
+                    temp[7] = (object)List_RPCECSHM_AC[i].ToString("F3");
+                    temp[8] = (object)List_RPCECSLM_AC[i].ToString("F3");
                     dt_CorData.Rows.Add(temp);
                 }
                 return dt_CorData;

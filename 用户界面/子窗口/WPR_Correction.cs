@@ -917,23 +917,23 @@ namespace LWD_DataProcess
         }
 
         /// <summary>
-        /// 校正数据写入井信息数据库
+        /// 校正前后数据写入井信息数据库
         /// </summary>
         private void WriteDB()
         {
             SQLiteConnection conn = WellHelper.DbConnection;
-            SQLiteTransaction tran = conn.BeginTransaction();
-            SQLiteCommand cmd = new SQLiteCommand(conn);
-            cmd.Transaction = tran;
+            SQLiteTransaction tran1 = conn.BeginTransaction();
+            SQLiteCommand cmd1 = new SQLiteCommand(conn);
+            cmd1.Transaction = tran1;
             try
             {
                 WellHelper.Open();
                 //校正后数据
-                for(int i=0;i<corDataTable.Rows.Count;i++)
+                for (int i = 0; i < corDataTable.Rows.Count; i++)
                 {
                     //设置带参数的Transact-SQL语句
-                    cmd.CommandText = "insert into [" + WellName+ "] values(@ID,@Time, @Depth, @RACECHM_AC,@RACECLM_AC,@RACECSHM_AC,@RACECLSM_AC,@RPCECHM_AC,@PRCECLM_AC,@RPCECSHM_AC,@RPCECLSM_AC)";
-                    cmd.Parameters.AddRange(new[]
+                    cmd1.CommandText = "insert into [" + WellName + "] values(@ID,@Time, @Depth, @RACECHM_AC,@RACECLM_AC,@RACECSHM_AC,@RACECLSM_AC,@RPCECHM_AC,@PRCECLM_AC,@RPCECSHM_AC,@RPCECLSM_AC)";
+                    cmd1.Parameters.AddRange(new[]
                     {
                         new SQLiteParameter("@ID",i),
                         new SQLiteParameter("@Time",DateTime.Now.ToLongDateString()),
@@ -947,14 +947,26 @@ namespace LWD_DataProcess
                         new SQLiteParameter("@RPCECSHM_AC",WPR._wpr.List_RPCECSHM_AC[i].ToString("F3")),
                         new SQLiteParameter("@RPCECLSM_AC",WPR._wpr.List_RPCECSLM_AC[i].ToString("F3"))
                     });
-                    cmd.ExecuteNonQuery();
+                    cmd1.ExecuteNonQuery();
                 }
-                //原始数据
-                for (int i = 0; i < rawDataTable.Rows.Count; i++)
+                tran1.Commit();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message + "----WriteDB线程 tran1 事务异常！");
+                tran1.Rollback();
+            }
+            SQLiteTransaction tran2 = conn.BeginTransaction();
+            SQLiteCommand cmd2 = new SQLiteCommand(conn);
+            cmd2.Transaction = tran2;
+            try
+            {
+            //原始数据
+            for (int i = 0; i < rawDataTable.Rows.Count; i++)
                 {
                     //设置带参数的Transact-SQL语句
-                    cmd.CommandText = "insert into [" + WellName + "_AC" + "] values(@ID,@Time, @Depth, @RACECHM_AC,@RACECLM_AC,@RACECSHM_AC,@RACECLSM_AC,@RPCECHM_AC,@PRCECLM_AC,@RPCECSHM_AC,@RPCECLSM_AC)";
-                    cmd.Parameters.AddRange(new[]
+                    cmd2.CommandText = "insert into [" + WellName + "_AC" + "] values(@ID,@Time, @Depth, @RACECHM_AC,@RACECLM_AC,@RACECSHM_AC,@RACECLSM_AC,@RPCECHM_AC,@PRCECLM_AC,@RPCECSHM_AC,@RPCECLSM_AC)";
+                    cmd2.Parameters.AddRange(new[]
                     {
                         new SQLiteParameter("@ID",i),
                         new SQLiteParameter("@Time",DateTime.Now.ToLongDateString()),
@@ -968,17 +980,16 @@ namespace LWD_DataProcess
                         new SQLiteParameter("@RPCECSHM_AC",WPR._wpr.List_RPCECSHM[i].ToString("F3")),
                         new SQLiteParameter("@RPCECLSM_AC",WPR._wpr.List_RPCECSLM[i].ToString("F3"))
                     });
-                    cmd.ExecuteNonQuery();
+                    cmd2.ExecuteNonQuery();
                 }
-                tran.Commit();
+                tran2.Commit();
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message+"----WriteDB线程异常！");
-                tran.Rollback();
+                Debug.WriteLine(ex.Message + "----WriteDB线程 tran2 事务异常！");
+                tran2.Rollback();
             }
         }
-
         /// <summary>
         /// 填充WellInfo表
         /// </summary>

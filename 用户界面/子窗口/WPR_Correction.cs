@@ -1040,7 +1040,6 @@ namespace LWD_DataProcess
                 corMethod = WPR_CorMethod.ShoulderBed;//围岩
                 Para = (float)numericUpDown_BedThickness.Value;
             }
-
             if (tabControl2.SelectedTab == tabPage6)
                 corMethod = WPR_CorMethod.Invasion;//侵入
             if (tabControl2.SelectedTab == tabPage7)

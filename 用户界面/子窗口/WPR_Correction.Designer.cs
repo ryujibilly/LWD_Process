@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("A");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("P");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("R36长源距", new System.Windows.Forms.TreeNode[] {
@@ -464,18 +464,23 @@
             this.ToolStripMenuItem_CollapseNode = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.textBox_WellName = new System.Windows.Forms.TextBox();
             this.button_Load = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button_SelectFolder = new System.Windows.Forms.Button();
+            this.comboBox_ToolSize = new System.Windows.Forms.ComboBox();
             this.checkBox_Save2Root = new System.Windows.Forms.CheckBox();
             this.label_ToolSize = new System.Windows.Forms.Label();
+            this.textBox_Folder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.comboBox_BoreHole = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.numericUpDown_MudResistivity = new System.Windows.Forms.NumericUpDown();
             this.button_LoadBorehole = new System.Windows.Forms.Button();
             this.radioButton_Borehole2 = new System.Windows.Forms.RadioButton();
             this.radioButton_Borehole1 = new System.Windows.Forms.RadioButton();
@@ -483,6 +488,8 @@
             this.button_DieletricFile = new System.Windows.Forms.Button();
             this.label_Dielectric = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.numericUpDown_BedThickness = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_SBR = new System.Windows.Forms.NumericUpDown();
             this.label_BedThickness = new System.Windows.Forms.Label();
             this.radioButton_ShoulderBedPara = new System.Windows.Forms.RadioButton();
             this.radioButton_ShoulderBedFile = new System.Windows.Forms.RadioButton();
@@ -531,13 +538,6 @@
             this.button_Correct = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_Output = new System.Windows.Forms.Button();
-            this.comboBox_BoreHole = new System.Windows.Forms.ComboBox();
-            this.numericUpDown_MudResistivity = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_BedThickness = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_SBR = new System.Windows.Forms.NumericUpDown();
-            this.textBox_WellName = new System.Windows.Forms.TextBox();
-            this.comboBox_ToolSize = new System.Windows.Forms.ComboBox();
-            this.textBox_Folder = new System.Windows.Forms.TextBox();
             this.openFileDialog_WPR = new System.Windows.Forms.OpenFileDialog();
             this.openFile_BindChart = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStrip_ChartInfo.SuspendLayout();
@@ -545,8 +545,11 @@
             this.groupBox3.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -560,9 +563,6 @@
             this.groupBox5.SuspendLayout();
             this.contextMenuStrip_Tree.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip_ChartInfo
@@ -635,6 +635,16 @@
             this.label13.TabIndex = 6;
             this.label13.Text = "inch";
             // 
+            // textBox_WellName
+            // 
+            this.textBox_WellName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "WellName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox_WellName.Location = new System.Drawing.Point(79, 70);
+            this.textBox_WellName.Name = "textBox_WellName";
+            this.textBox_WellName.Size = new System.Drawing.Size(173, 22);
+            this.textBox_WellName.TabIndex = 5;
+            this.textBox_WellName.Text = global::LWD_DataProcess.Properties.Settings.Default.WellName;
+            this.textBox_WellName.TextChanged += new System.EventHandler(this.textBox_WellName_TextChanged);
+            // 
             // button_Load
             // 
             this.button_Load.Font = new System.Drawing.Font("黑体", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -665,6 +675,20 @@
             this.button_SelectFolder.UseVisualStyleBackColor = true;
             this.button_SelectFolder.Click += new System.EventHandler(this.button_SelectFolder_Click);
             // 
+            // comboBox_ToolSize
+            // 
+            this.comboBox_ToolSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "ToolSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBox_ToolSize.FormattingEnabled = true;
+            this.comboBox_ToolSize.Items.AddRange(new object[] {
+            "6.75",
+            "4.75"});
+            this.comboBox_ToolSize.Location = new System.Drawing.Point(79, 98);
+            this.comboBox_ToolSize.Name = "comboBox_ToolSize";
+            this.comboBox_ToolSize.Size = new System.Drawing.Size(78, 21);
+            this.comboBox_ToolSize.TabIndex = 3;
+            this.comboBox_ToolSize.Text = global::LWD_DataProcess.Properties.Settings.Default.ToolSize;
+            this.comboBox_ToolSize.SelectedIndexChanged += new System.EventHandler(this.comboBox_ToolSize_SelectedIndexChanged);
+            // 
             // checkBox_Save2Root
             // 
             this.checkBox_Save2Root.AutoSize = true;
@@ -686,6 +710,16 @@
             this.label_ToolSize.Size = new System.Drawing.Size(63, 13);
             this.label_ToolSize.TabIndex = 0;
             this.label_ToolSize.Text = "钻铤尺寸";
+            // 
+            // textBox_Folder
+            // 
+            this.textBox_Folder.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "RawFile", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox_Folder.Enabled = false;
+            this.textBox_Folder.Location = new System.Drawing.Point(6, 42);
+            this.textBox_Folder.Name = "textBox_Folder";
+            this.textBox_Folder.Size = new System.Drawing.Size(380, 22);
+            this.textBox_Folder.TabIndex = 1;
+            this.textBox_Folder.Text = global::LWD_DataProcess.Properties.Settings.Default.RawFile;
             // 
             // label1
             // 
@@ -753,6 +787,18 @@
             this.tabPage3.Text = "井眼校正";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // comboBox_BoreHole
+            // 
+            this.comboBox_BoreHole.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "WPR_Borehole", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBox_BoreHole.FormatString = "N3";
+            this.comboBox_BoreHole.FormattingEnabled = true;
+            this.comboBox_BoreHole.Location = new System.Drawing.Point(194, 11);
+            this.comboBox_BoreHole.Name = "comboBox_BoreHole";
+            this.comboBox_BoreHole.Size = new System.Drawing.Size(120, 21);
+            this.comboBox_BoreHole.TabIndex = 14;
+            this.comboBox_BoreHole.Text = global::LWD_DataProcess.Properties.Settings.Default.WPR_Borehole;
+            this.comboBox_BoreHole.SelectedIndexChanged += new System.EventHandler(this.comboBox_BoreHole_SelectedIndexChanged);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -761,6 +807,23 @@
             this.label14.Size = new System.Drawing.Size(161, 13);
             this.label14.TabIndex = 13;
             this.label14.Text = "泥 浆 电 阻 率(Ω.m)：";
+            // 
+            // numericUpDown_MudResistivity
+            // 
+            this.numericUpDown_MudResistivity.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "WPR_MudRes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown_MudResistivity.DecimalPlaces = 3;
+            this.numericUpDown_MudResistivity.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown_MudResistivity.Location = new System.Drawing.Point(194, 39);
+            this.numericUpDown_MudResistivity.Name = "numericUpDown_MudResistivity";
+            this.numericUpDown_MudResistivity.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_MudResistivity.TabIndex = 12;
+            this.numericUpDown_MudResistivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_MudResistivity.Value = global::LWD_DataProcess.Properties.Settings.Default.WPR_MudRes;
+            this.numericUpDown_MudResistivity.ValueChanged += new System.EventHandler(this.numericUpDown_MudResistivity_ValueChanged);
             // 
             // button_LoadBorehole
             // 
@@ -842,10 +905,63 @@
             this.tabPage5.Text = "围岩校正";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // numericUpDown_BedThickness
+            // 
+            this.numericUpDown_BedThickness.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "Tb", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numericUpDown_BedThickness.DecimalPlaces = 3;
+            this.numericUpDown_BedThickness.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown_BedThickness.Location = new System.Drawing.Point(196, 40);
+            this.numericUpDown_BedThickness.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericUpDown_BedThickness.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown_BedThickness.Name = "numericUpDown_BedThickness";
+            this.numericUpDown_BedThickness.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_BedThickness.TabIndex = 13;
+            this.numericUpDown_BedThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_BedThickness.Value = global::LWD_DataProcess.Properties.Settings.Default.Tb;
+            this.numericUpDown_BedThickness.ValueChanged += new System.EventHandler(this.numericUpDown_BedThickness_ValueChanged);
+            // 
+            // numericUpDown_SBR
+            // 
+            this.numericUpDown_SBR.DecimalPlaces = 3;
+            this.numericUpDown_SBR.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown_SBR.Location = new System.Drawing.Point(196, 9);
+            this.numericUpDown_SBR.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown_SBR.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown_SBR.Name = "numericUpDown_SBR";
+            this.numericUpDown_SBR.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown_SBR.TabIndex = 12;
+            this.numericUpDown_SBR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_SBR.Value = global::LWD_DataProcess.Properties.Settings.Default.SBR;
+            this.numericUpDown_SBR.ValueChanged += new System.EventHandler(this.numericUpDown_SBR_ValueChanged);
+            // 
             // label_BedThickness
             // 
             this.label_BedThickness.AutoSize = true;
-            this.label_BedThickness.Location = new System.Drawing.Point(39, 41);
+            this.label_BedThickness.Location = new System.Drawing.Point(29, 44);
             this.label_BedThickness.Name = "label_BedThickness";
             this.label_BedThickness.Size = new System.Drawing.Size(133, 13);
             this.label_BedThickness.TabIndex = 11;
@@ -855,7 +971,7 @@
             // 
             this.radioButton_ShoulderBedPara.AutoSize = true;
             this.radioButton_ShoulderBedPara.Checked = true;
-            this.radioButton_ShoulderBedPara.Location = new System.Drawing.Point(21, 7);
+            this.radioButton_ShoulderBedPara.Location = new System.Drawing.Point(11, 10);
             this.radioButton_ShoulderBedPara.Name = "radioButton_ShoulderBedPara";
             this.radioButton_ShoulderBedPara.Size = new System.Drawing.Size(151, 17);
             this.radioButton_ShoulderBedPara.TabIndex = 10;
@@ -867,7 +983,7 @@
             // radioButton_ShoulderBedFile
             // 
             this.radioButton_ShoulderBedFile.AutoSize = true;
-            this.radioButton_ShoulderBedFile.Location = new System.Drawing.Point(21, 68);
+            this.radioButton_ShoulderBedFile.Location = new System.Drawing.Point(11, 71);
             this.radioButton_ShoulderBedFile.Name = "radioButton_ShoulderBedFile";
             this.radioButton_ShoulderBedFile.Size = new System.Drawing.Size(137, 17);
             this.radioButton_ShoulderBedFile.TabIndex = 9;
@@ -877,7 +993,7 @@
             // 
             // button_ShoulderBedFile
             // 
-            this.button_ShoulderBedFile.Location = new System.Drawing.Point(206, 66);
+            this.button_ShoulderBedFile.Location = new System.Drawing.Point(196, 69);
             this.button_ShoulderBedFile.Name = "button_ShoulderBedFile";
             this.button_ShoulderBedFile.Size = new System.Drawing.Size(120, 21);
             this.button_ShoulderBedFile.TabIndex = 8;
@@ -1012,16 +1128,16 @@
             // 
             // chart1
             // 
-            chartArea9.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            this.chart1.Legends.Add(legend9);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(8, 6);
             this.chart1.Name = "chart1";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chart1.Series.Add(series9);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(829, 448);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -1995,122 +2111,6 @@
             this.button_Output.UseVisualStyleBackColor = true;
             this.button_Output.Click += new System.EventHandler(this.button_Output_Click);
             // 
-            // comboBox_BoreHole
-            // 
-            this.comboBox_BoreHole.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "WPR_Borehole", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.comboBox_BoreHole.FormatString = "N3";
-            this.comboBox_BoreHole.FormattingEnabled = true;
-            this.comboBox_BoreHole.Location = new System.Drawing.Point(194, 11);
-            this.comboBox_BoreHole.Name = "comboBox_BoreHole";
-            this.comboBox_BoreHole.Size = new System.Drawing.Size(120, 21);
-            this.comboBox_BoreHole.TabIndex = 14;
-            this.comboBox_BoreHole.Text = global::LWD_DataProcess.Properties.Settings.Default.WPR_Borehole;
-            this.comboBox_BoreHole.SelectedIndexChanged += new System.EventHandler(this.comboBox_BoreHole_SelectedIndexChanged);
-            // 
-            // numericUpDown_MudResistivity
-            // 
-            this.numericUpDown_MudResistivity.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "WPR_MudRes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown_MudResistivity.DecimalPlaces = 3;
-            this.numericUpDown_MudResistivity.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDown_MudResistivity.Location = new System.Drawing.Point(194, 39);
-            this.numericUpDown_MudResistivity.Name = "numericUpDown_MudResistivity";
-            this.numericUpDown_MudResistivity.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown_MudResistivity.TabIndex = 12;
-            this.numericUpDown_MudResistivity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_MudResistivity.Value = global::LWD_DataProcess.Properties.Settings.Default.WPR_MudRes;
-            this.numericUpDown_MudResistivity.ValueChanged += new System.EventHandler(this.numericUpDown_MudResistivity_ValueChanged);
-            // 
-            // numericUpDown_BedThickness
-            // 
-            this.numericUpDown_BedThickness.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::LWD_DataProcess.Properties.Settings.Default, "Tb", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.numericUpDown_BedThickness.DecimalPlaces = 3;
-            this.numericUpDown_BedThickness.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown_BedThickness.Location = new System.Drawing.Point(206, 37);
-            this.numericUpDown_BedThickness.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDown_BedThickness.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown_BedThickness.Name = "numericUpDown_BedThickness";
-            this.numericUpDown_BedThickness.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown_BedThickness.TabIndex = 13;
-            this.numericUpDown_BedThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_BedThickness.Value = global::LWD_DataProcess.Properties.Settings.Default.Tb;
-            this.numericUpDown_BedThickness.ValueChanged += new System.EventHandler(this.numericUpDown_BedThickness_ValueChanged);
-            // 
-            // numericUpDown_SBR
-            // 
-            this.numericUpDown_SBR.DecimalPlaces = 3;
-            this.numericUpDown_SBR.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDown_SBR.Location = new System.Drawing.Point(206, 6);
-            this.numericUpDown_SBR.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown_SBR.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDown_SBR.Name = "numericUpDown_SBR";
-            this.numericUpDown_SBR.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown_SBR.TabIndex = 12;
-            this.numericUpDown_SBR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown_SBR.Value = global::LWD_DataProcess.Properties.Settings.Default.SBR;
-            this.numericUpDown_SBR.ValueChanged += new System.EventHandler(this.numericUpDown_SBR_ValueChanged);
-            // 
-            // textBox_WellName
-            // 
-            this.textBox_WellName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "WellName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox_WellName.Location = new System.Drawing.Point(79, 70);
-            this.textBox_WellName.Name = "textBox_WellName";
-            this.textBox_WellName.Size = new System.Drawing.Size(173, 22);
-            this.textBox_WellName.TabIndex = 5;
-            this.textBox_WellName.Text = global::LWD_DataProcess.Properties.Settings.Default.WellName;
-            this.textBox_WellName.TextChanged += new System.EventHandler(this.textBox_WellName_TextChanged);
-            // 
-            // comboBox_ToolSize
-            // 
-            this.comboBox_ToolSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "ToolSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.comboBox_ToolSize.FormattingEnabled = true;
-            this.comboBox_ToolSize.Items.AddRange(new object[] {
-            "6.75",
-            "4.75"});
-            this.comboBox_ToolSize.Location = new System.Drawing.Point(79, 98);
-            this.comboBox_ToolSize.Name = "comboBox_ToolSize";
-            this.comboBox_ToolSize.Size = new System.Drawing.Size(78, 21);
-            this.comboBox_ToolSize.TabIndex = 3;
-            this.comboBox_ToolSize.Text = global::LWD_DataProcess.Properties.Settings.Default.ToolSize;
-            this.comboBox_ToolSize.SelectedIndexChanged += new System.EventHandler(this.comboBox_ToolSize_SelectedIndexChanged);
-            // 
-            // textBox_Folder
-            // 
-            this.textBox_Folder.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LWD_DataProcess.Properties.Settings.Default, "RawFile", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox_Folder.Enabled = false;
-            this.textBox_Folder.Location = new System.Drawing.Point(6, 42);
-            this.textBox_Folder.Name = "textBox_Folder";
-            this.textBox_Folder.Size = new System.Drawing.Size(380, 22);
-            this.textBox_Folder.TabIndex = 1;
-            this.textBox_Folder.Text = global::LWD_DataProcess.Properties.Settings.Default.RawFile;
-            // 
             // openFileDialog_WPR
             // 
             this.openFileDialog_WPR.FileName = global::LWD_DataProcess.Properties.Settings.Default.RawFile;
@@ -2150,10 +2150,13 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
@@ -2170,9 +2173,6 @@
             this.groupBox5.ResumeLayout(false);
             this.contextMenuStrip_Tree.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_MudResistivity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_BedThickness)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_SBR)).EndInit();
             this.ResumeLayout(false);
 
         }
